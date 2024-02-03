@@ -1,65 +1,109 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, avoid_print, sized_box_for_whitespace
-// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
-class ProfileScreen extends StatelessWidget {
-  // static const Color backgroundColor = Color.fromRGBO(242, 224, 183, 1);
-  const ProfileScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String _aboutText = ' '; // Başlangıç metni
+  TextEditingController _textEditingController = TextEditingController();
+
+  void _showEditDialog() {
+    // Pop-up'ı gösteren fonksiyon
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Hakkımda Düzenle'), // Pop-up başlığı
+          content: TextField(
+            // TextField, kullanıcının metni düzenlemesini sağlar
+            controller: _textEditingController,
+            maxLength: 100, // Metnin maksimum uzunluğu
+            maxLines: null, // Birden fazla satır girişine izin verilir
+            decoration: InputDecoration(
+              hintText: 'Hakkımda...', // Boş alan için ipucu metni
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // İptal butonu, pop-up'ı kapatır
+              },
+              child: Text('İptal'), // İptal butonunun metni
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  _aboutText = _textEditingController.text; // Metni güncelle
+                });
+                Navigator.pop(context); // Kaydet butonu, pop-up'ı kapatır
+              },
+              child: Text('Kaydet'), // Kaydet butonunun metni
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBar(title: "PROFİL"),
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    backgroundImage:
-                       AssetImage("assets/images/profile/profile.png"),
-                    radius: 60,
-                  ),
-                  SizedBox(height: 7),
-                  Column(
-                    children: [
-                      Text(
-                        "İlknur Kavaklı",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
+    return SafeArea(
+      child: Scaffold(
+        appBar: MyAppBar(title: "PROFİL"),
+        body: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage("assets/images/profile/profile.png"),
+                      radius: 50,
+                    ),
+                    SizedBox(width: 7),
+                    Column(
+                      children: [
+                        Text(
+                          "İlknur Kavaklı",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Ultra Pro Gezgin",
-                        style: TextStyle(
-                          fontSize: 12,
+                        Text(
+                          "Ultra Pro Gezgin",
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 35,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
+            SizedBox(
+              height: 18,
+            ),
+            Expanded(
               child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 250,
+                    width: 300,
+                    height: 165,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
                       border: Border.all(
@@ -70,59 +114,52 @@ class ProfileScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, '/AboutUsScreen');
-                                  // Buraya tıklama işlemlerinizi ekleyin
-                                },
-                                child: Row(
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   children: [
-                                    Icon(Icons.info, color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Hakkımda...',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16,
+                                            fontFamily: 'poppions',
+                                          ),
+                                        ),
+                                        IconButton(
+                                          onPressed: _showEditDialog,
+                                          icon: Icon(Icons.edit,
+                                              color: Colors.grey),
+                                        ),
+                                      ],
+                                    ),
+                                   
+                                    Divider(),
                                     Text(
-                                      'Hakkımda', // Burada metni belirle
+                                      _aboutText,
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 14,
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
                             ],
-                          ),
-                          Divider(),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, '/Achievemets');
-                              // Buraya tıklama işlemlerinizi ekleyin
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(Icons.military_tech,
-                                        color: Colors.grey),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      'Başarımlar', // Burada metni belirle
-                                    ),
-                                  ],
-                                ),
-                                Icon(Icons.arrow_forward_ios,
-                                    color: Colors.grey),
-                              ],
-                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 18),
                   Container(
-                    width: 250,
+                    width: 300,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
                       border: Border.all(
@@ -134,19 +171,21 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, '/PhotographsScreen');
-                              // Buraya tıklama işlemlerinizi ekleyin
+                              Navigator.pushNamed(context, '/Photographs');
                             },
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
                                     Icon(Icons.photo_camera_back,
                                         color: Colors.grey),
                                     SizedBox(width: 5),
-                                    Text("Fotoğraf"),
+                                    Text("Fotoğraf",
+                                        style: TextStyle(
+                                          fontFamily: 'poppions',
+                                        )),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -157,17 +196,23 @@ class ProfileScreen extends StatelessWidget {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/BlogsScreen');
+                              Navigator.pushNamed(context, '/UserBlogs');
                             },
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
                                     Icon(Icons.save_outlined,
                                         color: Colors.grey),
                                     SizedBox(width: 5),
-                                    Text("Bloglar"),
+                                    Text(
+                                      "Bloglar",
+                                      style: TextStyle(
+                                        fontFamily: 'poppions',
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -178,17 +223,21 @@ class ProfileScreen extends StatelessWidget {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/CommentsScreen');
+                              Navigator.pushNamed(context, '/UserComments');
                             },
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
                                     Icon(Icons.mode_comment,
                                         color: Colors.grey),
                                     SizedBox(width: 5),
-                                    Text("Yorumlar"),
+                                    Text("Yorumlar",
+                                        style: TextStyle(
+                                          fontFamily: 'poppions',
+                                        )),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -199,18 +248,21 @@ class ProfileScreen extends StatelessWidget {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, '/VisitPlacesScreen');
+                              Navigator.pushNamed(context, '/PlaceToVisit');
                             },
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
                                     Icon(Icons.location_city,
                                         color: Colors.grey),
                                     SizedBox(width: 5),
-                                    Text("Gezilmek İstenilenler"),
+                                    Text("Gezilmek İstenilenler",
+                                        style: TextStyle(
+                                          fontFamily: 'poppions',
+                                        )),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -221,18 +273,46 @@ class ProfileScreen extends StatelessWidget {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, '/FavoritesScreen');
+                              Navigator.pushNamed(context, '/Favorites');
                             },
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
                                     Icon(Icons.favorite_border,
                                         color: Colors.grey),
                                     SizedBox(width: 5),
-                                    Text("Favoriler"),
+                                    Text("Favoriler",
+                                        style: TextStyle(
+                                          fontFamily: 'poppions',
+                                        )),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward_ios,
+                                    color: Colors.grey),
+                              ],
+                            ),
+                          ),
+                          Divider(),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/Achievemets');
+                            },
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.military_tech,
+                                        color: Colors.grey),
+                                    SizedBox(width: 5),
+                                    Text("Başarımlar",
+                                        style: TextStyle(
+                                          fontFamily: 'poppions',
+                                        )),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -243,14 +323,14 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
+        bottomNavigationBar: MyBottomNavBar(),
       ),
-      bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

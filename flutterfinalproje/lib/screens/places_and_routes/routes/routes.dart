@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 
@@ -18,21 +19,14 @@ class _RoutesScreenState extends State<RoutesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Rotalar" + (isSearching ? "" : "")),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              setState(() {
-                isSearching = !isSearching;
-                if (!isSearching) {
-                  searchController.clear();
-                }
-              });
-            },
-          ),
-        ],
+      appBar:  AppBarWithSearchIcon( 
+        title: 'ROTALAR',
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },
       ),
       bottomNavigationBar: MyBottomNavBar(),
       body: SingleChildScrollView(

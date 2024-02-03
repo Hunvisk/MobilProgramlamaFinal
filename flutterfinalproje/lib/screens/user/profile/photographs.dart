@@ -11,8 +11,8 @@ class Photographs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'Routes',),
-        body: Text("routes page"),
+        appBar: MyAppBar(title: 'Fotoğraflar',),
+        body: Text("fotğraf page"),
         bottomNavigationBar: MyBottomNavBar(),
       )
     );

@@ -11,8 +11,8 @@ class UserBlogs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'Routes',),
-        body: Text("routes page"),
+        appBar: MyAppBar(title: 'Bloglar',),
+        body: Text("blog page"),
         bottomNavigationBar: MyBottomNavBar(),
       )
     );

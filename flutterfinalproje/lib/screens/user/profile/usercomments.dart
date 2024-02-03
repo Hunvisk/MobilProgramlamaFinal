@@ -11,8 +11,8 @@ class UserComments extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'Routes',),
-        body: Text("routes page"),
+        appBar: MyAppBar(title: 'Yorumlar',),
+        body: Text("yorum page"),
         bottomNavigationBar: MyBottomNavBar(),
       )
     );
