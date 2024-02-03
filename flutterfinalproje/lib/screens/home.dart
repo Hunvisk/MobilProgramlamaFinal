@@ -15,10 +15,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final myitems = [
-    Image.asset("assets/images/image7.jpg"),
-    Image.asset("assets/images/image8.jpeg"),
-    Image.asset("assets/images/image7.jpg"),
-    Image.asset("assets/images/image8.jpeg"),
+    Image.asset("assets/images/carouselslider/image7.jpg"),
+    Image.asset("assets/images/carouselslider/image8.jpeg"),
+    Image.asset("assets/images/carouselslider/image7.jpg"),
+    Image.asset("assets/images/carouselslider/image8.jpeg"),
   ];
 
   int myCurrentIndex = 0;

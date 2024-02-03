@@ -1,7 +1,9 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, sort_child_properties_last, empty_statements,  non_constant_identifier_names, deprecated_member_use, avoid_print, unused_import, use_build_context_synchronously
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(LoginScreen());
@@ -15,6 +17,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  instagram() {
+    final Uri uri = Uri.parse("https://www.instagram.com");
+    launchUrl(uri);
+  }
+
+  linkedin() {
+    final Uri uri = Uri.parse("https://www.linkedin.com");
+    launchUrl(uri);
+  }
+
   @override
   @override
   Widget build(BuildContext context) {
@@ -36,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //Logo(),
+        Logo(),
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Column(
@@ -138,6 +151,32 @@ class _LoginScreenState extends State<LoginScreen> {
               SignInButton(context),
               Gap(10), // Boşluk ekledik
               OtherSignInText(context), // "Diğer Giriş" metni
+              Gap(10), // Boşluk ekledik
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: InkWell(
+                      onTap: instagram,
+                      child: SvgPicture.asset(
+                        "assets/icons/instagram.svg",
+                        height: 35,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: InkWell(
+                      onTap: linkedin,
+                      child: SvgPicture.asset(
+                        "assets/icons/linkedin.svg",
+                        height: 35,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -154,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
             width: 200,
             height: 200,
             child: Image.asset(
-              "assets/images/logo/login.jpg",
+              "assets/images/login/login.jpg",
             ),
           ),
         ],
