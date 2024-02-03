@@ -113,9 +113,9 @@ class RegisterScreen extends StatelessWidget {
                     labelStyle:
                         TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
                   ),
-                  cursorColor: Colors.black, // Yazma imleci rengi
+                  cursorColor: Colors.black, 
                   obscureText:
-                      false, // Bu satır, şifrenin görünürlüğünü kontrol eder
+                      false, 
                 ),
               ),
 
@@ -156,9 +156,9 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  cursorColor: Colors.black, // Yazma imleci rengi
+                  cursorColor: Colors.black, 
                   obscureText:
-                      true, // Bu satır, şifrenin görünürlüğünü kontrol eder
+                      true, 
                 ),
               ),
               Gap(2),
@@ -199,14 +199,14 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  cursorColor: Colors.black, // Yazma imleci rengi
+                  cursorColor: Colors.black, 
                   obscureText:
-                      true, // Bu satır, şifrenin görünürlüğünü kontrol eder
+                      true, 
                 ),
               ),
               SignInButton(context),
               Gap(2), // Boşluk ekledik
-              OtherSignInText(context), // "Diğer Giriş" metni
+              OtherSignInText(context), 
             ],
           ),
         ),
@@ -223,7 +223,7 @@ class RegisterScreen extends StatelessWidget {
             width: 200,
             height: 200,
             child: Image.asset(
-              "assets/images/logo/register.jpg",
+              "assets/images/register/register.jpg",
             ),
           ),
         ],

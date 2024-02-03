@@ -92,8 +92,8 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
               ],
             ),
           ),
@@ -102,8 +102,8 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
               ],
             ),
           ),
@@ -112,8 +112,8 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
               ],
             ),
           ),

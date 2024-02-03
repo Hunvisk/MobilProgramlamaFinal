@@ -101,7 +101,7 @@ class AchievementsBox1 extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 5.0, bottom: 5.0, left: 5.0, right: 8.0),
-              child: Image.asset("assets/images/rozet.jpeg")
+              child: Image.asset("assets/images/achievements/rozet.jpeg")
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),

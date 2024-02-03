@@ -22,9 +22,9 @@ class ProfileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    //backgroundImage:
-                    //    AssetImage("assets/images/profileImage/p2.jpg"),
-                    radius: 50,
+                    backgroundImage:
+                       AssetImage("assets/images/profile/profile.png"),
+                    radius: 60,
                   ),
                   SizedBox(height: 7),
                   Column(

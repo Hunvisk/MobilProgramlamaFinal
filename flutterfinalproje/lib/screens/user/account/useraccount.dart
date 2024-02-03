@@ -11,8 +11,8 @@ class UserAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'Routes',),
-        body: Text("routes page"),
+        appBar: MyAppBar(title: 'User Account',),
+        body: Text("User Account page"),
         bottomNavigationBar: MyBottomNavBar(),
       )
     );

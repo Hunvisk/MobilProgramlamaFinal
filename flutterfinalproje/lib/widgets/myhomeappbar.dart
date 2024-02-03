@@ -3,6 +3,17 @@
 import 'package:flutter/material.dart';
 
 class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
+  final String title;
+  final Icon icon;
+
+  const MyHomeAppBar(
+    {
+      Key? key, 
+      required this.title,
+      required this.icon,
+    }
+  ) : super(key: key);
+
   @override
   _MyHomeAppBarState createState() => _MyHomeAppBarState();
 
@@ -17,26 +28,14 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: isSearching
-          ? TextField(
-              controller: searchController,
-              onChanged: (value) {
-                // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
-              },
-              onSubmitted: (value) {
-                // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
-              },
-              decoration: InputDecoration(
-                hintText: "Ara...",
-                border: InputBorder.none,
-              ),
-            )
-          : Center(
-              child: Text("ANA SAYFA"),
-            ),
+      title: Center(
+        child: Text(
+          widget.title,
+        ),
+      ),
       actions: [
         IconButton(
-          icon: Icon(Icons.search),
+          icon: widget.icon,
           onPressed: () {
             setState(() {
               isSearching = !isSearching;

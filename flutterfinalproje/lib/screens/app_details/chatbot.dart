@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
-class Settings extends StatelessWidget {
-  const Settings({super.key});
+class ChatBot extends StatelessWidget {
+  const ChatBot({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'Settings',),
-        body: Text("Settings page"),
+        appBar: MyAppBar(title: 'ChatBot',),
+        body: Text("ChatBot page"),
         bottomNavigationBar: MyBottomNavBar(),
       )
     );

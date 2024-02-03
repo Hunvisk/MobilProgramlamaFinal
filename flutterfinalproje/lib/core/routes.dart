@@ -1,9 +1,8 @@
-// routes.dart
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/screens/app_details/aboutus.dart';
+import 'package:flutterfinalproje/screens/app_details/chatbot.dart';
 import 'package:flutterfinalproje/screens/app_details/settings.dart';
 import 'package:flutterfinalproje/screens/app_details/vipgezgininfo.dart';
 import 'package:flutterfinalproje/screens/home.dart';
@@ -30,8 +29,9 @@ import 'package:flutterfinalproje/screens/user/register.dart';
 class Routes {
   static final Map<String, WidgetBuilder> routes = {
     // App Details
-      'AboutUs': (context) => AboutUs(),
-      'Settings': (context) => Settings(),
+      '/AboutUs': (context) => AboutUs(),
+      '/ChatBot': (context) => ChatBot(),
+      '/Settings': (context) => Settings(),
       '/VipGezginInfo':(context) => VipGezginInfo(),
     // Places And Routes
       // Places
@@ -60,5 +60,6 @@ class Routes {
       '/LogIn': (context) => LoginScreen(),
       '/Register': (context) => RegisterScreen(),
     '/Home': (context) => Home(),
+    
       };
 }

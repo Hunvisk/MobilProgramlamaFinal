@@ -1,7 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 final lightTheme = FlexThemeData.light(
-  scheme: FlexScheme.greyLaw,
+  scheme: FlexScheme.blue,
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 7,
   fontFamily: "Poppins",
@@ -23,7 +23,7 @@ final lightTheme = FlexThemeData.light(
 );
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.greyLaw,
+  scheme: FlexScheme.blue,
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 13,
   fontFamily: "Poppins",

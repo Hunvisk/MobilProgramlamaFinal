@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     labelText: 'E-Mail',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     labelText: 'Şifre',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -248,6 +248,7 @@ Widget SignInButton(BuildContext context) {
         ),
       ),
     ),
+    
   );
 }
 
