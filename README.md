@@ -61,7 +61,7 @@ https://github.com/Hunvisk/MobilProgramlamaFinal/assets/119500243/a5e95cb2-b082-
 https://github.com/Hunvisk/MobilProgramlamaFinal/assets/119500243/a839e94f-46b3-4e9d-95e7-e3d6054b545c
 
 #### 3-) Ana Sayfa
-https://github.com/Hunvisk/MobilProgramlamaFinal/assets/119500243/66072657-e202-4d3c-a4cc-253c15f34363
+(https://github.com/Hunvisk/MobilProgramlamaFinal/assets/119500243/66072657-e202-4d3c-a4cc-253c15f34363)
 
 #### 4-) VİP Gezgin
 https://github.com/Hunvisk/MobilProgramlamaFinal/assets/119500243/62763ab2-515a-43c8-9f1a-871e22c55f2f
