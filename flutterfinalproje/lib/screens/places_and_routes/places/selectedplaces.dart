@@ -1,11 +1,10 @@
-// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 class SelectedPlaces extends StatelessWidget {
-  // static const Color backgroundColor = Color.fromRGBO(242, 224, 183, 1);
   const SelectedPlaces({super.key});
 
   @override
@@ -25,6 +24,7 @@ class SelectedPlaces extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
+                      height: 350,
                       width: double.infinity,
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
@@ -34,7 +34,7 @@ class SelectedPlaces extends StatelessWidget {
                           bottomRight: Radius.circular(50),
                         ), // Kenarların ovalleşme miktarını belirleyin
                         child: Image.asset(
-                          'assets/images/placesImages/ortakoy.jpeg',
+                          'assets/images/places/galata.jpg',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -45,12 +45,12 @@ class SelectedPlaces extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.white,width: 2),
+                          border: Border.all(color: Colors.white, width: 2),
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
                           child: Image.asset(
-                            'assets/images/placesImages/ortakoy.jpeg', // İkinci resmin dosya yolu
+                            'assets/images/places/galata.jpg', // İkinci resmin dosya yolu
                             fit: BoxFit.cover,
                             width: 100, // İkinci resmin genişliği
                             height: 90, // İkinci resmin yüksekliği
@@ -59,39 +59,39 @@ class SelectedPlaces extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 120, 
-                      right: 30, 
+                      top: 120,
+                      right: 30,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.white,width: 2),
+                          border: Border.all(color: Colors.white, width: 2),
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
                           child: Image.asset(
-                            'assets/images/placesImages/ortakoy.jpeg', // İkinci resmin dosya yolu
+                            'assets/images/places/galata.jpg', // İkinci resmin dosya yolu
                             fit: BoxFit.cover,
-                            width: 100, 
-                            height: 90, 
+                            width: 100,
+                            height: 90,
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 240, 
-                      right: 30, 
+                      top: 240,
+                      right: 30,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.white,width: 2),
+                          border: Border.all(color: Colors.white, width: 2),
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
                           child: Image.asset(
-                            'assets/images/placesImages/ortakoy.jpeg', // İkinci resmin dosya yolu
+                            'assets/images/places/galata.jpg', // İkinci resmin dosya yolu
                             fit: BoxFit.cover,
-                            width: 100, 
-                            height: 90, 
+                            width: 100,
+                            height: 90,
                           ),
                         ),
                       ),
@@ -112,7 +112,7 @@ class SelectedPlaces extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Ortaköy, Boğaziçi'nin Avrupa yakasında, Beşiktaş ilçesine bağlı mahalle ve semt. Ortaköy ve Mecidiye mahallelerinden oluşan Ortaköy semti, sahile açılan vadi boyunca yamaçlara kurulmuş bir yerleşmedir.",
+                      "İstanbul’un biriciği Galata Kulesi; bazıları insan hayal gücünün eseri, bazıları da tarihi belgelerle kanıtlamış hikayeleriyle pek meşhur. İstanbul silüetine gizemli bir hava katan Galata Kulesi’nin hikayelerine, İhsan Oktay Anar’ın Puslu Kıtalar Atlası kitabından bir örnekle başlayalım. Kitapta, İstanbul’a ilk kez gelen denizci Cenevizlilere, ak martının karanlıkta yol gösterdiği anlatılır. İnançlarının bir tezahürü olarak martıyı Hz İsa ile özdeşleştiren Cenevizliler, onu yuvasına kadar takip ettikten sonra yakalar, pişirir ve yerler. Yuvasının bulunduğu yere de onun hatırası için Galata Kulesini inşa ederler.",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',

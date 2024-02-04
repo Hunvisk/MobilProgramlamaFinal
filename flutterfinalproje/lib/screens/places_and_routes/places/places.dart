@@ -20,12 +20,12 @@ class _PlacesState extends State<Places> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWithSearchIcon(
-        title:"MEKANLAR",
+        title: "MEKANLAR",
         icon: Icon(Icons.search),
-        onSearchChanged: (isSearching){
-         setState(() {
-          this.isSearching = isSearching;
-         });
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
         },
       ),
       bottomNavigationBar: MyBottomNavBar(),
@@ -34,37 +34,40 @@ class _PlacesState extends State<Places> {
           children: [
             if (isSearching)
               Container(
-                height: 32, 
+                height: 32,
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
                   controller: searchController,
-                  onChanged: (value) {
-                  },
-                  onSubmitted: (value) {
-                  },
+                  onChanged: (value) {},
+                  onSubmitted: (value) {},
                   decoration: InputDecoration(
                     hintText: "Ara...",
                     border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.all(4.0), 
+                    contentPadding: EdgeInsets.all(4.0),
                   ),
                 ),
               ),
             FilterWidget(),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: PlacesContainerDesign(
-                imagePath: "assets/images/places/galata.jpg",
-                title: "Galata Kulesi",
-                way: "8",
-                rating: "8.5",
-                views: "1500",
-                comments: "45",
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/SelectedPlaces');
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: PlacesContainerDesign(
+                  imagePath: "assets/images/places/galata.jpg",
+                  title: "Galata Kulesi",
+                  way: "8",
+                  rating: "8.5",
+                  views: "1500",
+                  comments: "45",
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: PlacesContainerDesign(
-                imagePath:  "assets/images/places/kız.png",
+                imagePath: "assets/images/places/kız.png",
                 title: "Kız Kulesi",
                 way: "12",
                 rating: "9.0",
@@ -89,6 +92,7 @@ class _PlacesState extends State<Places> {
     );
   }
 }
+
 class FilterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

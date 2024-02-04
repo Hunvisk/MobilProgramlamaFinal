@@ -1,19 +1,20 @@
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
-class AppBarWithSearchIcon extends StatefulWidget implements PreferredSizeWidget  {
+class AppBarWithSearchIcon extends StatefulWidget
+    implements PreferredSizeWidget {
   final String title;
   final Icon icon;
   final Function(bool) onSearchChanged;
 
-  const AppBarWithSearchIcon( 
-    {
-      Key? key,
-      required this.title,
-      required this.icon,
-      required this.onSearchChanged,
-    }
-  ) :  super(key: key);
-     @override
+  const AppBarWithSearchIcon({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onSearchChanged,
+  }) : super(key: key);
+  @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
   @override
   _AppBarWithSearchIconState createState() => _AppBarWithSearchIconState();
@@ -22,7 +23,7 @@ class AppBarWithSearchIcon extends StatefulWidget implements PreferredSizeWidget
 class _AppBarWithSearchIconState extends State<AppBarWithSearchIcon> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -33,16 +34,12 @@ class _AppBarWithSearchIconState extends State<AppBarWithSearchIcon> {
           color: Colors.black,
         ),
         onPressed: () {
-          Navigator.pop(context); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
+          Navigator.pop(
+              context); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
         },
       ),
-      title: Center(
-
-        child: Text(
-          widget.title + (isSearching ? "" : "")
-        )
-      ),
-     actions: [
+      title: Center(child: Text(widget.title + (isSearching ? "" : ""))),
+      actions: [
         IconButton(
           icon: widget.icon,
           onPressed: () {

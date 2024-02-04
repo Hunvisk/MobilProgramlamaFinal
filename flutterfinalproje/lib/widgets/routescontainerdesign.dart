@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class RoutesContainerDesign extends StatelessWidget {
-
   final String photo;
   final String title;
   final String puan;
@@ -12,17 +11,15 @@ class RoutesContainerDesign extends StatelessWidget {
   final String comment;
   final String durak;
 
-  const RoutesContainerDesign(
-    {
-      super.key,
-      required this.photo,
-      required this.title,
-      required this.puan,
-      required this.visualization,
-      required this.comment,
-      required this.durak,
-    }
-  );
+  const RoutesContainerDesign({
+    super.key,
+    required this.photo,
+    required this.title,
+    required this.puan,
+    required this.visualization,
+    required this.comment,
+    required this.durak,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +46,8 @@ class RoutesContainerDesign extends StatelessWidget {
           bottom: 5,
           left: 10,
           right: 10,
-          child: InfoColumns(puan, visualization, comment, durak), // Durak sayısı ekleniyor
+          child: InfoColumns(
+              puan, visualization, comment, durak), // Durak sayısı ekleniyor
         ),
       ],
     );
@@ -89,7 +87,8 @@ class RoutesContainerDesign extends StatelessWidget {
     );
   }
 
-Widget InfoColumns(String puan, String visualization, String comment, String durak) {
+  Widget InfoColumns(
+      String puan, String visualization, String comment, String durak) {
     return Container(
       width: 140,
       decoration: BoxDecoration(
@@ -109,7 +108,7 @@ Widget InfoColumns(String puan, String visualization, String comment, String dur
               ),
               InfoRow(
                 icon: Icons.star,
-                text:  ": $puan",
+                text: ": $puan",
               ),
             ],
           ),
