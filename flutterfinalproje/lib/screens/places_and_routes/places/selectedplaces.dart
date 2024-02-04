@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+import 'package:gap/gap.dart';
 
 class SelectedPlaces extends StatelessWidget {
   const SelectedPlaces({super.key});
@@ -11,7 +12,7 @@ class SelectedPlaces extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(title: "Seçilen Mekanlar"),
+        appBar: MyAppBar(title: "SEÇİLEN MEKANLAR"),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -119,7 +120,7 @@ class SelectedPlaces extends StatelessWidget {
                         fontSize: 13,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    Gap(5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -150,9 +151,7 @@ class SelectedPlaces extends StatelessWidget {
                               Icons.remove_red_eye_outlined,
                               size: 15,
                             ),
-                            SizedBox(
-                              width: 3,
-                            ),
+                            Gap(3),
                             Text(
                               "5.600",
                               style: TextStyle(
@@ -215,7 +214,7 @@ class SelectedPlaces extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 6),
+              Gap(6),
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -241,7 +240,7 @@ class SelectedPlaces extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 5),
+                      Gap(5),
                       Row(
                         children: [
                           Text(
@@ -269,9 +268,7 @@ class SelectedPlaces extends StatelessWidget {
                             Icons.mode_comment,
                             size: 18,
                           ),
-                          SizedBox(
-                            width: 7,
-                          ),
+                          Gap(7),
                           Text(
                             "50",
                             style: TextStyle(

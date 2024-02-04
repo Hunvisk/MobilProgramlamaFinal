@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
@@ -11,30 +11,29 @@ class VipGezginInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'VİP GEZGİN',),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: SubscriptionBox(),
-                      ),
-                      ContainerOfAllAdvantages(),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        //child: ComparisonBox(),
-                      ),
-                    ],
-                  )
-                )
-              ),
-            ],
-          )
+        appBar: MyAppBar(
+          title: 'VİP GEZGİN',
         ),
+        body: SafeArea(
+            child: Column(
+          children: [
+            Expanded(
+                child: SingleChildScrollView(
+                    child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SubscriptionBox(),
+                ),
+                ContainerOfAllAdvantages(),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  //child: ComparisonBox(),
+                ),
+              ],
+            ))),
+          ],
+        )),
         bottomNavigationBar: MyBottomNavBar(),
       ),
     );
@@ -49,22 +48,19 @@ class ComparisonBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey.shade200,
-      height: 500,
-      width: double.infinity,
-      child: Column(
-        children: [
-          Text(
-            "abc",
-          ),
-          Row(
-            children: [
-
-            ],
-          ),
-        ],
-      )
-    );
+        color: Colors.grey.shade200,
+        height: 500,
+        width: double.infinity,
+        child: Column(
+          children: [
+            Text(
+              "abc",
+            ),
+            Row(
+              children: [],
+            ),
+          ],
+        ));
   }
 }
 
@@ -92,8 +88,18 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
               ],
             ),
           ),
@@ -102,8 +108,18 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
               ],
             ),
           ),
@@ -112,8 +128,18 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
-                FavoriteVipGezginAdvantages(imagePath: "assets/images/carouselslider/image8.jpeg", title: "Özellik Başlık", content: "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
               ],
             ),
           ),
@@ -134,10 +160,9 @@ class SubscriptionBox extends StatelessWidget {
       height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        border: Border.all(color: Colors.grey.shade300, width: 1),
-        borderRadius: BorderRadius.circular(10)
-      ),
+          color: Colors.grey.shade200,
+          border: Border.all(color: Colors.grey.shade300, width: 1),
+          borderRadius: BorderRadius.circular(10)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -155,11 +180,19 @@ class SubscriptionBox extends StatelessWidget {
             ],
           ),
           ElevatedButton(
-            onPressed: () {
-              
-            },
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              primary: Theme.of(context).primaryColor,
+              textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 21,
+              ),
+            ),
             child: Text(
-              "Abone Ol!",
+              "Abone Ol",
+              style: TextStyle(
+                color: Colors.white,
+              ),
             ),
           )
         ],
@@ -186,10 +219,9 @@ class FavoriteVipGezginAdvantages extends StatelessWidget {
       height: 220,
       width: 180,
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        border: Border.all(color: Colors.grey.shade300, width: 1),
-        borderRadius: BorderRadius.circular(10)
-      ),
+          color: Colors.grey.shade200,
+          border: Border.all(color: Colors.grey.shade300, width: 1),
+          borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [
           Image.asset(

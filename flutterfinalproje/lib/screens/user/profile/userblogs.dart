@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+import 'package:gap/gap.dart';
 
 void main() {
   runApp(UserBlogs());
@@ -99,7 +100,7 @@ class UserBlogs extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
+                    Gap(8),
                     Container(
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
@@ -122,14 +123,14 @@ class UserBlogs extends StatelessWidget {
                                 Icons.person,
                                 size: 25,
                               ),
-                              SizedBox(width: 5),
+                              Gap(5),
                               Text(
                                 "Eda Aydın",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          Gap(20),
                           Column(
                             children: [
                               Text(
@@ -238,7 +239,7 @@ class UserBlogs extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
+                    Gap(8),
                     Container(
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
@@ -261,14 +262,14 @@ class UserBlogs extends StatelessWidget {
                                 Icons.person,
                                 size: 25,
                               ),
-                              SizedBox(width: 5),
+                              Gap(5),
                               Text(
                                 "Eda Aydın",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          Gap(20),
                           Text(
                             'Sarıyer, İstanbul"un kuzeyinde yer alan güzide ilçelerimizden birisidir. Belgrad Ormanı ve Atatürk Arboretumu gibi huzurlu yemyeşil alanların yanı sıra, Emirgan Korusu ve Rumeli Hisarı gibi turistik merkezleriyle de burası İstanbulluların en sevdiği ilçeler arasında yer alıyor. Sarıyer, ayrıca kahvaltı yapılabilecek ve yemek yenebilecek mekanlarıyla da gurmelere hitap eden, her yönüyle gezip görülmesi gereken yemyeşil bir semt',
                             style: TextStyle(fontSize: 16),
@@ -390,7 +391,7 @@ class UserBlogs extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
+                    Gap(8),
                     Container(
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
@@ -412,14 +413,14 @@ class UserBlogs extends StatelessWidget {
                                 Icons.person,
                                 size: 25,
                               ),
-                              SizedBox(width: 5),
+                              Gap(5),
                               Text(
                                 "Eda Aydın",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          Gap(20),
                           Text(
                             'Eminönü vapur iskelesinde ya da Eminönü tramvay durağında indiniz. Sırtınızı denize verip karşıya baktığınızda kalabalık bir meydan göreceksiniz. İşte burası Eminönü’ne giriş noktanız. Eminönü meydan neredeyse günün her saatinde iğne atsan yere düşmeyecek bir yer. Yani İstanbul"un özeti gibi',
                             style: TextStyle(fontSize: 16),

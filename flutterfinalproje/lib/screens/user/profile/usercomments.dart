@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+import 'package:gap/gap.dart';
 
 void main() {
   runApp(UserComments());
@@ -22,7 +23,7 @@ class UserComments extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 10),
+                Gap(10),
                 buildColoredBox(
                   Color.fromARGB(255, 255, 229, 170),
                   'Eda Aydın',
@@ -30,7 +31,7 @@ class UserComments extends StatelessWidget {
                   'Beşiktaş',
                   '12/02/2023',
                 ),
-                SizedBox(height: 10),
+                Gap(10),
                 buildColoredBox(
                   Color.fromARGB(255, 255, 229, 170),
                   'Eda Aydın',
@@ -38,7 +39,7 @@ class UserComments extends StatelessWidget {
                   'Kız Kulesi',
                   '11/04/2023',
                 ),
-                SizedBox(height: 10),
+                Gap(10),
                 buildColoredBox(
                   Color.fromARGB(255, 255, 229, 170),
                   'Eda Aydın',
@@ -46,7 +47,7 @@ class UserComments extends StatelessWidget {
                   'Sarıyer',
                   '09/09/2023',
                 ),
-                SizedBox(height: 10),
+                Gap(10),
                 buildColoredBox(
                   Color.fromARGB(255, 255, 229, 170),
                   'Eda Aydın',
@@ -54,7 +55,7 @@ class UserComments extends StatelessWidget {
                   'Kadıköy',
                   '14/08/2023',
                 ),
-                SizedBox(height: 10),
+                Gap(10),
                 buildColoredBox(
                   Color.fromARGB(255, 255, 229, 170),
                   'Eda Aydın',
@@ -62,7 +63,7 @@ class UserComments extends StatelessWidget {
                   'Galata Kulesi',
                   '14/06/2023',
                 ),
-                SizedBox(height: 10),
+                Gap(10),
                 buildColoredBox(
                   Color.fromARGB(255, 255, 229, 170),
                   'Eda Aydın',
@@ -70,7 +71,7 @@ class UserComments extends StatelessWidget {
                   'İstinye',
                   '12/05/2023',
                 ),
-                SizedBox(height: 10),
+                Gap(10),
               ],
             ),
           ),
@@ -103,7 +104,7 @@ class UserComments extends StatelessWidget {
               Row(
                 children: [
                   Icon(Icons.account_circle),
-                  SizedBox(width: 5),
+                  Gap(5),
                   Text(
                     title,
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -112,10 +113,10 @@ class UserComments extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 5),
+          Gap(5),
           Text(content),
-          SizedBox(height: 10),
-          SizedBox(height: 10),
+          Gap(10),
+          Gap(10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

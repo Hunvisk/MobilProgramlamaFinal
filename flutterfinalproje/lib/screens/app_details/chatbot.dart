@@ -10,11 +10,12 @@ class ChatBot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: MyAppBar(title: 'ChatBot',),
-        body: Text("ChatBot page"),
-        bottomNavigationBar: MyBottomNavBar(),
-      )
-    );
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'CHATBOT',
+      ),
+      body: Text("CHATBOT SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }

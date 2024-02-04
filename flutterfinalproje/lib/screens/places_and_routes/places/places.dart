@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors, sized_box_for_whitespace, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
@@ -57,7 +57,6 @@ class _PlacesState extends State<Places> {
                 child: PlacesContainerDesign(
                   imagePath: "assets/images/places/galata.jpg",
                   title: "Galata Kulesi",
-                  way: "8",
                   rating: "8.5",
                   views: "1500",
                   comments: "45",
@@ -69,7 +68,6 @@ class _PlacesState extends State<Places> {
               child: PlacesContainerDesign(
                 imagePath: "assets/images/places/kız.png",
                 title: "Kız Kulesi",
-                way: "12",
                 rating: "9.0",
                 views: "2000",
                 comments: "60",
@@ -80,7 +78,6 @@ class _PlacesState extends State<Places> {
               child: PlacesContainerDesign(
                 imagePath: "assets/images/places/dolmabahçe.jpg",
                 title: "Dolmabahçe Sarayı",
-                way: "5",
                 rating: "4.0",
                 views: "3000",
                 comments: "45",
@@ -101,28 +98,27 @@ class FilterWidget extends StatelessWidget {
       child: Container(
         width: 350,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
+              width: MediaQuery.of(context).size.width * 0.30,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
                   _showSortPopup(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  primary: Theme.of(context).primaryColor,
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Sırala'),
+                child: Text(
+                  'Sırala',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            Container(
-              height: 24,
-              width: 3,
             ),
             VerticalDivider(
               color: Color.fromRGBO(0, 0, 0, 1),
@@ -133,34 +129,24 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
+              width: MediaQuery.of(context).size.width * 0.30,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
-                  // Show the custom sorting popup
                   _showSortPopup2(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  primary: Theme.of(context).primaryColor,
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Filtrele'),
+                child: Text(
+                  'Filtrele',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            Container(
-              height: 24,
-              width: 3,
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
             ),
           ],
         ),
@@ -275,11 +261,14 @@ void _showSortPopup2(BuildContext context) {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  'Filtrele',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Filtrele',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Divider(),

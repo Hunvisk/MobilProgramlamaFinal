@@ -19,7 +19,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBarWithSearchIcon( 
+      appBar: AppBarWithSearchIcon(
         title: 'ROTALAR',
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {

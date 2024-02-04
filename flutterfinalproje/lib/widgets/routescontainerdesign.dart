@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_key_in_widget_constructors, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class RoutesContainerDesign extends StatelessWidget {
+class RoutesContainerDesign extends StatefulWidget {
   final String photo;
   final String title;
   final String puan;
@@ -12,14 +12,24 @@ class RoutesContainerDesign extends StatelessWidget {
   final String durak;
 
   const RoutesContainerDesign({
-    super.key,
+    Key? key,
     required this.photo,
     required this.title,
     required this.puan,
     required this.visualization,
     required this.comment,
     required this.durak,
-  });
+  }) : super(key: key);
+
+  @override
+  State<RoutesContainerDesign> createState() => _RoutesContainerDesignState();
+}
+
+class _RoutesContainerDesignState extends State<RoutesContainerDesign> {
+  bool isBookmarked = false;
+  Color iconColor = Colors.white;
+  bool isGezilmekIstenilenChecked = false;
+  bool isDigerChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,7 @@ class RoutesContainerDesign extends StatelessWidget {
             height: 250,
             width: double.infinity,
             child: Image.asset(
-              photo,
+              widget.photo,
               fit: BoxFit.cover,
             ),
           ),
@@ -40,14 +50,18 @@ class RoutesContainerDesign extends StatelessWidget {
           top: 10,
           left: 0,
           right: 0,
-          child: TitleAndBookmark(title),
+          child: TitleAndBookmark(widget.title),
         ),
         Positioned(
           bottom: 5,
           left: 10,
           right: 10,
           child: InfoColumns(
-              puan, visualization, comment, durak), // Durak sayısı ekleniyor
+            widget.puan,
+            widget.visualization,
+            widget.comment,
+            widget.durak,
+          ),
         ),
       ],
     );
@@ -74,11 +88,18 @@ class RoutesContainerDesign extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(
-                Icons.bookmark,
-                color: Colors.white,
+                isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
+                color: isBookmarked
+                    ? Colors.white
+                    : Colors.white, // Değişiklik burada
               ),
               onPressed: () {
-                // Kaydet ikonuna tıklanınca yapılacak işlem
+                setState(() {
+                  isBookmarked = !isBookmarked;
+                  if (isBookmarked) {
+                    _showSavePopup(context);
+                  }
+                });
               },
             ),
           ],
@@ -88,7 +109,11 @@ class RoutesContainerDesign extends StatelessWidget {
   }
 
   Widget InfoColumns(
-      String puan, String visualization, String comment, String durak) {
+    String puan,
+    String visualization,
+    String comment,
+    String durak,
+  ) {
     return Container(
       width: 140,
       decoration: BoxDecoration(
@@ -127,6 +152,70 @@ class RoutesContainerDesign extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showSavePopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: Text("Kaydedilenler"),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: isGezilmekIstenilenChecked,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            isGezilmekIstenilenChecked = newValue ?? false;
+                          });
+                        },
+                        checkColor: Colors.white, // Checkbox işaret rengi
+                        activeColor: Colors.blue, // Checkbox aktif rengi
+                      ),
+                      Text("Gezilmek İstenilen Yerler"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: isDigerChecked,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            isDigerChecked = newValue ?? false;
+                          });
+                        },
+                        checkColor: Colors.white, // Checkbox işaret rengi
+                        activeColor: Colors.blue, // Checkbox aktif rengi
+                      ),
+                      Text("Mekanlar"),
+                    ],
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('İptal'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Tamam'),
+                ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 }

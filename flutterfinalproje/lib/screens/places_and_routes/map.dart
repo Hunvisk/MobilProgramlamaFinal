@@ -11,8 +11,10 @@ class MyMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: MyAppBar(title: 'Map',),
-        body: Text("map page"),
+        appBar: MyAppBar(
+          title: 'HARİTALAR',
+        ),
+        body: Text("HARİTALAR SAYFASI"),
         bottomNavigationBar: MyBottomNavBar(),
       ),
     );

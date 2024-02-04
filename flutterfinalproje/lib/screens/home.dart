@@ -5,7 +5,9 @@ import 'package:flutterfinalproje/screens/app_details/chatbot.dart';
 import 'package:flutterfinalproje/widgets/myhomeappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
+import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home extends StatefulWidget {
@@ -25,6 +27,13 @@ class _HomeState extends State<Home> {
       comment: "32",
       durak: "9", // Durak sayısı
     ),
+    PlacesContainerDesign(
+      imagePath: "assets/images/places/galata.jpg",
+      title: "Galata Kulesi",
+      rating: "8.5",
+      views: "1500",
+      comments: "45",
+    ),
     RoutesContainerDesign(
       photo: "assets/images/routes/sariyer.jpeg",
       title: "Sarıyer",
@@ -32,6 +41,13 @@ class _HomeState extends State<Home> {
       visualization: "2024",
       comment: "38",
       durak: "7", // Durak sayısı
+    ),
+    PlacesContainerDesign(
+      imagePath: "assets/images/places/galata.jpg",
+      title: "Galata Kulesi",
+      rating: "8.5",
+      views: "1500",
+      comments: "45",
     ),
     RoutesContainerDesign(
       photo: "assets/images/routes/camlica.jpeg",
@@ -41,6 +57,13 @@ class _HomeState extends State<Home> {
       comment: "38",
       durak: "7", // Durak sayısı
     ),
+    PlacesContainerDesign(
+      imagePath: "assets/images/places/galata.jpg",
+      title: "Galata Kulesi",
+      rating: "8.5",
+      views: "1500",
+      comments: "45",
+    ),
     RoutesContainerDesign(
       photo: "assets/images/routes/ortakoy.jpeg",
       title: "Ortaköy",
@@ -49,19 +72,56 @@ class _HomeState extends State<Home> {
       comment: "38",
       durak: "7", // Durak sayısı
     ),
+    PlacesContainerDesign(
+      imagePath: "assets/images/places/galata.jpg",
+      title: "Galata Kulesi",
+      rating: "8.5",
+      views: "1500",
+      comments: "45",
+    ),
   ];
 
   int myCurrentIndex = 0;
+  int carouselsliderindex = 0;
+  bool isSearching = false;
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MyHomeAppBar(title: 'ANA SAYFA', icon: Icon(Icons.search),),
+        appBar: MyHomeAppBar(
+          title: 'ANA SAYFA',
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        ),
         drawer: MyDrawer(context),
         body: SafeArea(
           child: Column(
             children: [
+              if (isSearching)
+                Container(
+                  height: 32, // Arama çubuğu yüksekliği
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: TextField(
+                    controller: searchController,
+                    onChanged: (value) {
+                      // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
+                    },
+                    onSubmitted: (value) {
+                      // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Ara...",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
+                    ),
+                  ),
+                ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -139,12 +199,13 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/Home');
-                          },
-                          child: NavigatorBox(
-                            title: "Gezgin Ürünlerini Keşfet!",
-                          )),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/Products');
+                        },
+                        child: NavigatorBox(
+                          title: "Gezgin Ürünlerini Keşfet!",
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -243,9 +304,7 @@ class _HomeState extends State<Home> {
               context, 'Ayarlar', '/Settings', Icons.settings, Colors.black54),
           ListTileItem(
               context, 'Oturumu Kapat', '/LogIn', Icons.logout, Colors.black54),
-          SizedBox(
-            height: 300,
-          ),
+          Gap(300),
           Container(
             alignment: Alignment.bottomCenter,
             child: Row(

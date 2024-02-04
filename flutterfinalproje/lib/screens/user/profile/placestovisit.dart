@@ -10,11 +10,12 @@ class PlaceToVisit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: MyAppBar(title: 'Gezilmek İstenilenler',),
-        body: Text(" Gezilmek İstenilenler page"),
-        bottomNavigationBar: MyBottomNavBar(),
-      )
-    );
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'GEZİLMEK İSTENİLENLER',
+      ),
+      body: Text("GEZİLMEK İSTENİLENLER SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }

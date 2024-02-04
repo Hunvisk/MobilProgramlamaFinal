@@ -38,7 +38,16 @@ class _AppBarWithSearchIconState extends State<AppBarWithSearchIcon> {
               context); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
         },
       ),
-      title: Center(child: Text(widget.title + (isSearching ? "" : ""))),
+      title: Center(
+        child: Text(
+          widget.title + (isSearching ? "" : ""),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
       actions: [
         IconButton(
           icon: widget.icon,

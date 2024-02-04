@@ -17,9 +17,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   instagram() {
     final Uri uri = Uri.parse("https://www.instagram.com");
+    launchUrl(uri);
+  }
+
+  apple() {
+    final Uri uri = Uri.parse("https://www.apple.com");
+    launchUrl(uri);
+  }
+
+  google() {
+    final Uri uri = Uri.parse("https://www.google.com");
     launchUrl(uri);
   }
 
@@ -28,7 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
     launchUrl(uri);
   }
 
-  @override
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -168,6 +176,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: InkWell(
+                      onTap: apple,
+                      child: SvgPicture.asset(
+                        "assets/icons/apple.svg",
+                        height: 35,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: InkWell(
+                      onTap: google,
+                      child: SvgPicture.asset(
+                        "assets/icons/google.svg",
+                        height: 35,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: InkWell(
                       onTap: linkedin,
                       child: SvgPicture.asset(
                         "assets/icons/linkedin.svg",
@@ -248,7 +276,6 @@ Widget SignInButton(BuildContext context) {
         ),
       ),
     ),
-    
   );
 }
 

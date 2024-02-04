@@ -1,28 +1,33 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_key_in_widget_constructors, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, non_constant_identifier_names, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class PlacesContainerDesign extends StatelessWidget {
-
+class PlacesContainerDesign extends StatefulWidget {
   final String imagePath;
   final String title;
-  final String way;
   final String rating;
   final String views;
   final String comments;
 
-  const PlacesContainerDesign(
-    {
-      super.key,
-      required this.imagePath,
-      required this.title,
-      required this.way,
-      required this.rating,
-      required this.views,
-      required this.comments,
-    }
-  );
+  const PlacesContainerDesign({
+    super.key,
+    required this.imagePath,
+    required this.title,
+    required this.rating,
+    required this.views,
+    required this.comments,
+  });
+
+  @override
+  State<PlacesContainerDesign> createState() => _PlacesContainerDesignState();
+}
+
+class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
+  bool isBookmarked = false;
+  Color iconColor = Colors.white;
+  bool isGezilmekIstenilenChecked = false;
+  bool isDigerChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class PlacesContainerDesign extends StatelessWidget {
             height: 250,
             width: double.infinity,
             child: Image.asset(
-              imagePath,
+              widget.imagePath,
               fit: BoxFit.cover,
             ),
           ),
@@ -43,13 +48,13 @@ class PlacesContainerDesign extends StatelessWidget {
           top: 10,
           left: 0,
           right: 0,
-          child: TitleAndBookmark(title),
+          child: TitleAndBookmark(widget.title),
         ),
         Positioned(
           bottom: 5,
           left: 10,
           right: 10,
-          child: InfoColumns(way, rating, views, comments), 
+          child: InfoColumns(widget.rating, widget.views, widget.comments),
         ),
       ],
     );
@@ -76,10 +81,17 @@ class PlacesContainerDesign extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(
-                Icons.bookmark,
-                color: Colors.white,
+                isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
+                color: iconColor,
               ),
               onPressed: () {
+                setState(() {
+                  isBookmarked = !isBookmarked;
+                  iconColor = isBookmarked ? Colors.white : Colors.white;
+                  if (isBookmarked) {
+                    _showSavePopup(context);
+                  }
+                });
               },
             ),
           ],
@@ -88,7 +100,7 @@ class PlacesContainerDesign extends StatelessWidget {
     );
   }
 
-Widget InfoColumns(String way, String rating, String views, String comments) {
+  Widget InfoColumns(String rating, String views, String comments) {
     return Container(
       width: 140,
       decoration: BoxDecoration(
@@ -99,34 +111,84 @@ Widget InfoColumns(String way, String rating, String views, String comments) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InfoRow(
-                icon: Icons.directions_bus, 
-                text: ": $way", 
-              ),
-              InfoRow(
-                icon: Icons.star,
-                text:  ": $rating",
-              ),
-            ],
+          InfoRow(
+            icon: Icons.star,
+            text: ": $rating",
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InfoRow(
-                icon: Icons.remove_red_eye,
-                text: ": $views",
-              ),
-              InfoRow(
-                icon: Icons.comment,
-                text: ": $comments",
-              ),
-            ],
+          InfoRow(
+            icon: Icons.remove_red_eye,
+            text: ": $views",
+          ),
+          InfoRow(
+            icon: Icons.comment,
+            text: ": $comments",
           ),
         ],
       ),
+    );
+  }
+
+  void _showSavePopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: Text("Kaydedilenler"),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: isGezilmekIstenilenChecked,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            isGezilmekIstenilenChecked = newValue ?? false;
+                          });
+                        },
+                        checkColor: Colors.white, // Checkbox işaret rengi
+                        activeColor: Colors.blue, // Checkbox aktif rengi
+                      ),
+                      Text("Gezilmek İstenilen Yerler"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: isDigerChecked,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            isDigerChecked = newValue ?? false;
+                          });
+                        },
+                        checkColor: Colors.white, // Checkbox işaret rengi
+                        activeColor: Colors.blue, // Checkbox aktif rengi
+                      ),
+                      Text("Mekanlar"),
+                    ],
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('İptal'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Tamam'),
+                ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 }

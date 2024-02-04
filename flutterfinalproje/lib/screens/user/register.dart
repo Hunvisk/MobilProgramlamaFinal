@@ -28,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //logo(),
+        logo(),
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Column(
@@ -64,7 +64,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: 'Kullanıcı Adı',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -98,7 +98,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: 'E-Mail',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -113,9 +113,8 @@ class RegisterScreen extends StatelessWidget {
                     labelStyle:
                         TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
                   ),
-                  cursorColor: Colors.black, 
-                  obscureText:
-                      false, 
+                  cursorColor: Colors.black,
+                  obscureText: false,
                 ),
               ),
 
@@ -136,7 +135,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: 'Şifre',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -156,9 +155,8 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  cursorColor: Colors.black, 
-                  obscureText:
-                      true, 
+                  cursorColor: Colors.black,
+                  obscureText: true,
                 ),
               ),
               Gap(2),
@@ -179,7 +177,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: ' Tekrar Şifre',
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -199,14 +197,13 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  cursorColor: Colors.black, 
-                  obscureText:
-                      true, 
+                  cursorColor: Colors.black,
+                  obscureText: true,
                 ),
               ),
               SignInButton(context),
               Gap(2), // Boşluk ekledik
-              OtherSignInText(context), 
+              OtherSignInText(context),
             ],
           ),
         ),

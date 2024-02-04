@@ -10,11 +10,12 @@ class Products extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: MyAppBar(title: 'Routes',),
-        body: Text("routes page"),
-        bottomNavigationBar: MyBottomNavBar(),
-      )
-    );
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'GEZGİN ÜRÜN',
+      ),
+      body: Text("GEZGİN ÜRÜN SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }

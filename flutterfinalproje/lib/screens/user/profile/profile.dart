@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+import 'package:gap/gap.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -72,7 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           AssetImage("assets/images/profile/profile.png"),
                       radius: 50,
                     ),
-                    SizedBox(width: 7),
+                    Gap(7),
                     Column(
                       children: [
                         Text(
@@ -93,9 +94,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: 18,
             ),
             Expanded(
               child: Column(
@@ -156,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 18),
+                  Gap(20),
                   Container(
                     width: 300,
                     decoration: BoxDecoration(
@@ -179,7 +177,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Icon(Icons.photo_camera_back,
                                         color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Gap(5),
                                     Text("Fotoğraf",
                                         style: TextStyle(
                                           fontFamily: 'poppions',
@@ -203,7 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Icon(Icons.save_outlined,
                                         color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Gap(5),
                                     Text(
                                       "Bloglar",
                                       style: TextStyle(
@@ -229,7 +227,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Icon(Icons.mode_comment,
                                         color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Gap(5),
                                     Text("Yorumlar",
                                         style: TextStyle(
                                           fontFamily: 'poppions',
@@ -253,7 +251,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Icon(Icons.location_city,
                                         color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Gap(5),
                                     Text("Gezilmek İstenilenler",
                                         style: TextStyle(
                                           fontFamily: 'poppions',
@@ -277,7 +275,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Icon(Icons.favorite_border,
                                         color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Gap(5),
                                     Text("Favoriler",
                                         style: TextStyle(
                                           fontFamily: 'poppions',
@@ -301,7 +299,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Icon(Icons.military_tech,
                                         color: Colors.grey),
-                                    SizedBox(width: 5),
+                                    Gap(5),
                                     Text("Başarımlar",
                                         style: TextStyle(
                                           fontFamily: 'poppions',

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final Icon icon;
+  final Function(bool) onSearchChanged;
 
-  const MyHomeAppBar(
-    {
-      Key? key, 
-      required this.title,
-      required this.icon,
-    }
-  ) : super(key: key);
+  const MyHomeAppBar({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onSearchChanged,
+  }) : super(key: key);
 
   @override
   _MyHomeAppBarState createState() => _MyHomeAppBarState();
@@ -31,6 +31,11 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
       title: Center(
         child: Text(
           widget.title,
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
         ),
       ),
       actions: [
@@ -42,6 +47,7 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
               if (!isSearching) {
                 searchController.clear();
               }
+              widget.onSearchChanged(isSearching);
             });
           },
         ),

@@ -10,11 +10,12 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: MyAppBar(title: 'Settings',),
-        body: Text("Settings page"),
-        bottomNavigationBar: MyBottomNavBar(),
-      )
-    );
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'AYARLAR',
+      ),
+      body: Text("AYARLAR SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }

@@ -10,11 +10,12 @@ class Photographs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: MyAppBar(title: 'Fotoğraflar',),
-        body: Text("fotğraf page"),
-        bottomNavigationBar: MyBottomNavBar(),
-      )
-    );
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'FOTOĞRAFLAR',
+      ),
+      body: Text("FOTOĞRAFLAR SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }

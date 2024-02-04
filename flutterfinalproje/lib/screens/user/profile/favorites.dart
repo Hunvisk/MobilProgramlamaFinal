@@ -132,30 +132,28 @@ class FilterWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        width: 350,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
+              width: MediaQuery.of(context).size.width * 0.30,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
                   _showSortPopup(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  primary: Theme.of(context).primaryColor,
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Sırala'),
+                child: Text(
+                  'Sırala',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            Container(
-              height: 24,
-              width: 3,
             ),
             VerticalDivider(
               color: Color.fromRGBO(0, 0, 0, 1),
@@ -166,7 +164,7 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
+              width: MediaQuery.of(context).size.width * 0.30,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -174,26 +172,17 @@ class FilterWidget extends StatelessWidget {
                   _showSortPopup2(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  primary: Theme.of(context).primaryColor,
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Filtrele'),
+                child: Text('Filtrele',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
               ),
-            ),
-            Container(
-              height: 24,
-              width: 3,
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
             ),
           ],
         ),
@@ -308,11 +297,14 @@ void _showSortPopup2(BuildContext context) {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  'Filtrele',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Filtrele',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Divider(),

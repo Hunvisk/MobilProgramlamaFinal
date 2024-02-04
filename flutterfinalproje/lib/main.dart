@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Final Proje',
       debugShowCheckedModeBanner: false,
       routes: Routes.routes,
-      initialRoute: '/Home',
+      initialRoute: '/LogIn',
       themeMode: ThemeMode.light,
       theme: lightTheme,
       darkTheme: darkTheme,

@@ -10,11 +10,12 @@ class SelectedRoutes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: MyAppBar(title: 'Routes',),
-        body: Text("routes page"),
-        bottomNavigationBar: MyBottomNavBar(),
-      )
-    );
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'SEÇİLEN ROTALAR',
+      ),
+      body: Text("SEÇİLEN ROTALAR SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }
