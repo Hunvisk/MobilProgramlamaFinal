@@ -31,7 +31,7 @@ class _AppBarWithSearchIconState extends State<AppBarWithSearchIcon> {
         icon: Icon(
           Icons.arrow_back,
           size: 25,
-          color: Colors.black,
+          color: Theme.of(context).primaryColor,
         ),
         onPressed: () {
           Navigator.pop(
@@ -41,16 +41,13 @@ class _AppBarWithSearchIconState extends State<AppBarWithSearchIcon> {
       title: Center(
         child: Text(
           widget.title + (isSearching ? "" : ""),
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
+          style: Theme.of(context).textTheme.headlineSmall,
+        )
       ),
       actions: [
         IconButton(
           icon: widget.icon,
+          color: Theme.of(context).primaryColor,
           onPressed: () {
             setState(() {
               isSearching = !isSearching;

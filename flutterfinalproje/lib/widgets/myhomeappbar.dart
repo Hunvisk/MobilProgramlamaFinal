@@ -14,6 +14,10 @@ class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.onSearchChanged,
   }) : super(key: key);
 
+
+  
+
+
   @override
   _MyHomeAppBarState createState() => _MyHomeAppBarState();
 
@@ -31,11 +35,7 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
       title: Center(
         child: Text(
           widget.title,
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
       actions: [

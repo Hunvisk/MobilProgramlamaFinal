@@ -7,7 +7,6 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
-import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home extends StatefulWidget {
@@ -43,11 +42,11 @@ class _HomeState extends State<Home> {
       durak: "7", // Durak sayısı
     ),
     PlacesContainerDesign(
-      imagePath: "assets/images/places/galata.jpg",
-      title: "Galata Kulesi",
-      rating: "8.5",
-      views: "1500",
-      comments: "45",
+      imagePath: "assets/images/places/kız.png",
+      title: "Kız Kulesi",
+      rating: "9.0",
+      views: "2000",
+      comments: "60",
     ),
     RoutesContainerDesign(
       photo: "assets/images/routes/camlica.jpeg",
@@ -58,10 +57,10 @@ class _HomeState extends State<Home> {
       durak: "7", // Durak sayısı
     ),
     PlacesContainerDesign(
-      imagePath: "assets/images/places/galata.jpg",
-      title: "Galata Kulesi",
-      rating: "8.5",
-      views: "1500",
+      imagePath: "assets/images/places/dolmabahçe.jpg",
+      title: "Dolmabahçe Sarayı",
+      rating: "4.0",
+      views: "3000",
       comments: "45",
     ),
     RoutesContainerDesign(
@@ -71,13 +70,6 @@ class _HomeState extends State<Home> {
       visualization: "2024",
       comment: "38",
       durak: "7", // Durak sayısı
-    ),
-    PlacesContainerDesign(
-      imagePath: "assets/images/places/galata.jpg",
-      title: "Galata Kulesi",
-      rating: "8.5",
-      views: "1500",
-      comments: "45",
     ),
   ];
 
@@ -90,6 +82,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: MyHomeAppBar(
           title: 'ANA SAYFA',
           icon: Icon(Icons.search),
@@ -105,7 +98,7 @@ class _HomeState extends State<Home> {
             children: [
               if (isSearching)
                 Container(
-                  height: 32, // Arama çubuğu yüksekliği
+                  height: 32, // Arama çubuğu yüksekliği,,,,
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: TextField(
                     controller: searchController,
@@ -126,6 +119,7 @@ class _HomeState extends State<Home> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      SizedBox(height: 50,),
                       WeatherBox(),
                       GestureDetector(
                           onTap: () {
@@ -150,10 +144,8 @@ class _HomeState extends State<Home> {
                                   padding: const EdgeInsets.all(5.0),
                                   child: Text(
                                     "Bu Hafta Popüler",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                                    style: Theme.of(context).textTheme.headlineSmall,
+                                  )
                                 ),
                               ),
                               Divider(),
@@ -200,11 +192,11 @@ class _HomeState extends State<Home> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/Products');
+                          Navigator.pushNamed(context, '/Home');
                         },
                         child: NavigatorBox(
                           title: "Gezgin Ürünlerini Keşfet!",
-                        ),
+                        )
                       ),
                     ],
                   ),
@@ -227,7 +219,7 @@ class _HomeState extends State<Home> {
 
   Drawer MyDrawer(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).backgroundColor,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -279,67 +271,77 @@ class _HomeState extends State<Home> {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: ElevatedButton(
+                      
                       onPressed: () {
                         Navigator.pushNamed(context, '/Profile');
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).primaryColor,
+                        backgroundColor: Theme.of(context).secondaryHeaderColor,
                       ),
                       child: Text(
                         "Profil",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      )
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          ListTileItem(
-              context, 'Hesabım', '/UserAccount', Icons.person, Colors.black54),
-          ListTileItem(context, 'VİP Gezgin', '/VipGezginInfo', Icons.star,
-              Colors.black54),
-          ListTileItem(
-              context, 'Ayarlar', '/Settings', Icons.settings, Colors.black54),
-          ListTileItem(
-              context, 'Oturumu Kapat', '/LogIn', Icons.logout, Colors.black54),
-          Gap(300),
           Container(
-            alignment: Alignment.bottomCenter,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Icon(Icons.question_mark),
-                ),
                 Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Column(
+                    ListTileItem(
+                        context, 'Hesabım', '/UserAccount', Icons.person, Colors.black54),
+                    ListTileItem(context, 'VİP Gezgin', '/VipGezginInfo', Icons.star,
+                        Colors.black54),
+                    ListTileItem(
+                        context, 'Ayarlar', '/Settings', Icons.settings, Colors.black54),
+                    ListTileItem(
+                        context, 'Oturumu Kapat', '/LogIn', Icons.logout, Colors.black54),
+                  ],
+                ),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Icon(Icons.question_mark),
+                      ),
+                      Column(
                         children: [
-                          Text("Having Trouble?"),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ChatBot()),
-                              );
-                            },
-                            child: Text(
-                              'Help For You',
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                              ),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(
+                              children: [
+                                Text("Having Trouble?"),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ChatBot()),
+                                    );
+                                  },
+                                  child: Text(
+                                    'Help For You',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -352,6 +354,7 @@ class _HomeState extends State<Home> {
 
 class NavigatorBox extends StatelessWidget {
   final String title;
+  
 
   const NavigatorBox({super.key, required this.title});
 
@@ -369,7 +372,7 @@ class NavigatorBox extends StatelessWidget {
         width: double.infinity,
         child: Text(
           title,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
     );
@@ -388,7 +391,7 @@ class WeatherBox extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.grey.shade200,
+          color: Theme.of(context).colorScheme.primaryContainer,
         ),
         height: 185,
         child: Row(
@@ -399,7 +402,7 @@ class WeatherBox extends StatelessWidget {
                   bottomLeft: Radius.circular(10),
                   topLeft: Radius.circular(10),
                 ),
-                color: Colors.blue.shade300,
+                color: Theme.of(context).colorScheme.tertiaryContainer,
               ),
               alignment: Alignment.center,
               child: Padding(
@@ -422,26 +425,21 @@ class WeatherBox extends StatelessWidget {
                       child: Container(
                         child: Text(
                           "İstanbul",
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
-                        ),
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        )
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Container(
-                          child: Text(
+                    Container(
+                      height: 65,
+                      width: double.infinity,
+                      child: Text(
                         "Karlı",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      )
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
+                          color: Theme.of(context).colorScheme.secondaryContainer,
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(10))),
                       height: 65,
@@ -509,9 +507,11 @@ class WeatherInfo extends StatelessWidget {
         children: [
           Text(
             labelText,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           Text(
             valueText,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       )

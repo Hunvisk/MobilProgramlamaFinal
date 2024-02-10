@@ -17,18 +17,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: Icon(
           Icons.arrow_back,
           size: 25,
-          color: Colors.black,
+          color: Theme.of(context).primaryColor,
         ),
         onPressed: () {
           Navigator.pop(context); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
         },
       ),
-      title: Text(
-        title,
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
+      title: Center(
+        child: Text(
+          title,
+          style: Theme.of(context).textTheme.headlineSmall
         ),
       ),
       centerTitle: true, // Center the title
