@@ -13,6 +13,7 @@ import 'package:flutterfinalproje/screens/places_and_routes/routes/routes.dart';
 import 'package:flutterfinalproje/screens/places_and_routes/routes/selectedroutes.dart';
 import 'package:flutterfinalproje/screens/shopping/product/products.dart';
 import 'package:flutterfinalproje/screens/shopping/product/selectedproducts.dart';
+import 'package:flutterfinalproje/screens/user/account/addcard.dart';
 import 'package:flutterfinalproje/screens/user/account/cardsinfo.dart';
 import 'package:flutterfinalproje/screens/user/account/useraccount.dart';
 import 'package:flutterfinalproje/screens/user/login.dart';
@@ -49,6 +50,7 @@ class Routes {
       // Account
         '/UserAccount': (context) => UserAccount(),
         '/CardsInfo': (context) => CardsInfo(),
+        '/AddCard': (context) => AddCard(),
       // Profile
         '/Achievemets': (context) => Achievemets(),
         '/Favorites': (context) => Favorites(),

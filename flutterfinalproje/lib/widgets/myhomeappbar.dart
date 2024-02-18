@@ -11,7 +11,7 @@ class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
     Key? key,
     required this.title,
     required this.icon,
-    required this.onSearchChanged,
+    required this.onSearchChanged, required List<IconButton> actions,
   }) : super(key: key);
 
 

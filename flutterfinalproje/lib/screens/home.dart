@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
             setState(() {
               this.isSearching = isSearching;
             });
-          },
+          }, actions: [],
         ),
         drawer: MyDrawer(context),
         body: SafeArea(

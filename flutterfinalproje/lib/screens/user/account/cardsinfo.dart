@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/screens/user/account/addcard.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 
@@ -25,7 +26,11 @@ class _CardsInfoState extends State<CardsInfo> {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  // Add your onTap functionality here
+                  // Yeni kart ekle sayfasına geçiş yapılıyor
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddCard()),
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -98,7 +103,7 @@ class _CardsInfoState extends State<CardsInfo> {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          // Add your onTap functionality here
+          // Kart bilgileri görüntüleme işlevi buraya eklenebilir
         },
         child: Container(
           decoration: BoxDecoration(
