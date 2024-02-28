@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, prefer_final_fields, sized_box_for_whitespace, library_private_types_in_public_api, deprecated_member_use
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace, library_private_types_in_public_api, prefer_final_fields, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
@@ -24,12 +24,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return AlertDialog(
           title: Text('Hakkımda Düzenle'), // Pop-up başlığı
           content: TextField(
-            // TextField, kullanıcının metni düzenlemesini sağlar
             controller: _textEditingController,
             maxLength: 100, // Metnin maksimum uzunluğu
             maxLines: null, // Birden fazla satır girişine izin verilir
             decoration: InputDecoration(
-              hintText: 'Hakkımda...', // Boş alan için ipucu metni
+              hintText: 'Hakkımda...',
             ),
           ),
           actions: [
@@ -54,46 +53,268 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  void _showImageOptionsDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Profil Fotoğrafını Değiştir'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    // Kamera açılacak işlemleri buraya ekleyin
+                    Navigator.of(context).pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Fotoğraf Çek'),
+                      Icon(
+                        Icons.camera_alt,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(20),
+                GestureDetector(
+                  onTap: () {
+                    // Galeri açılacak işlemleri buraya ekleyin
+                    Navigator.of(context).pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Fotoğraf Seç'),
+                      Icon(
+                        Icons.photo,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(20),
+                GestureDetector(
+                  onTap: () {
+                    // Galeri açılacak işlemleri buraya ekleyin
+                    Navigator.of(context).pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Fotoğraf Sil',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      Icon(
+                        Icons.delete,
+                        size: 30,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showCoverPhotoOptionsDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Kapak Fotoğrafını Değiştir'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    // Kamera açılacak işlemleri buraya ekleyin
+                    Navigator.of(context).pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Fotoğraf Çek'),
+                      Icon(
+                        Icons.camera_alt,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(20),
+                GestureDetector(
+                  onTap: () {
+                    // Galeri açılacak işlemleri buraya ekleyin
+                    Navigator.of(context).pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Fotoğraf Seç'),
+                      Icon(
+                        Icons.photo,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(20),
+                GestureDetector(
+                  onTap: () {
+                    // Kapak fotoğrafını silme işlemleri buraya ekleyin
+                    Navigator.of(context).pop();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Fotoğraf Sil',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      Icon(
+                        Icons.delete,
+                        size: 30,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
         appBar: MyAppBar(title: "PROFİL"),
         body: Column(
           children: [
             Container(
               width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage:
-                          AssetImage("assets/images/profile/profile.png"),
-                      radius: 50,
+              height: 230,
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
                     ),
-                    Gap(7),
-                    Column(
+                    child: Image.asset(
+                      "assets/images/profile/travell.jpeg",
+                      width: double.infinity,
+                      height: 300, // Sabit yükseklik
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      _showCoverPhotoOptionsDialog(); // Resmi değiştirme fonksiyonu çağrılıyor
+                    },
+                    child: Stack(
+                      alignment: Alignment
+                          .bottomRight, // İkonun sağ alt köşede olmasını sağlar
                       children: [
-                        Text(
-                          "İlknur Kavaklı",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                        ),
-                        Text(
-                          "Ultra Pro Gezgin",
-                          style: TextStyle(
-                            fontSize: 12,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment:MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.6),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Icon(
+                                  Icons.add_a_photo,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                _showImageOptionsDialog(); // Resmi değiştirme fonksiyonu çağrılıyor
+                              },
+                              child: Stack(
+                                alignment: Alignment
+                                    .bottomRight, // İkonun sağ alt köşede olmasını sağlar
+                                children: [
+                                  CircleAvatar(
+                                    radius: 45,
+                                    backgroundImage: AssetImage(
+                                        "assets/images/profile/profile.png"),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.6),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Icon(
+                                      Icons.camera_alt,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Gap(7),
+                        Column(
+                          children: [
+                            Text(
+                              "İlknur Kavaklı",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                            Text(
+                              "Ultra Pro Gezgin",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -180,9 +401,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         color: Colors.grey),
                                     Gap(5),
                                     Text("Fotoğraf",
-                                        style: TextStyle(
-                                          fontFamily: 'poppions',
-                                        )),
+                                        style:
+                                            TextStyle(fontFamily: 'poppions')),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -203,12 +423,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Icon(Icons.save_outlined,
                                         color: Colors.grey),
                                     Gap(5),
-                                    Text(
-                                      "Bloglar",
-                                      style: TextStyle(
-                                        fontFamily: 'poppions',
-                                      ),
-                                    ),
+                                    Text("Bloglar",
+                                        style:
+                                            TextStyle(fontFamily: 'poppions')),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -230,9 +447,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         color: Colors.grey),
                                     Gap(5),
                                     Text("Yorumlar",
-                                        style: TextStyle(
-                                          fontFamily: 'poppions',
-                                        )),
+                                        style:
+                                            TextStyle(fontFamily: 'poppions')),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -254,9 +470,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         color: Colors.grey),
                                     Gap(5),
                                     Text("Gezilmek İstenilenler",
-                                        style: TextStyle(
-                                          fontFamily: 'poppions',
-                                        )),
+                                        style:
+                                            TextStyle(fontFamily: 'poppions')),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -278,9 +493,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         color: Colors.grey),
                                     Gap(5),
                                     Text("Favoriler",
-                                        style: TextStyle(
-                                          fontFamily: 'poppions',
-                                        )),
+                                        style:
+                                            TextStyle(fontFamily: 'poppions')),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
@@ -302,9 +516,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         color: Colors.grey),
                                     Gap(5),
                                     Text("Başarımlar",
-                                        style: TextStyle(
-                                          fontFamily: 'poppions',
-                                        )),
+                                        style:
+                                            TextStyle(fontFamily: 'poppions')),
                                   ],
                                 ),
                                 Icon(Icons.arrow_forward_ios,
