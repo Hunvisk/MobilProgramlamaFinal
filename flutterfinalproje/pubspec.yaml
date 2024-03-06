@@ -45,6 +45,7 @@ dependencies:
   flutter_credit_card: ^4.0.1
   credit_card_form: ^0.0.7
   image_picker: ^1.0.7
+  intl: ^0.19.0
 
 
 dev_dependencies:
