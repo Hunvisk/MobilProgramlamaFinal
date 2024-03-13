@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/routes.dart';
+import 'core/routes.dart';
 import 'package:flutterfinalproje/core/theme.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Final Proje',
       debugShowCheckedModeBanner: false,
-      routes: Routes.routes,
-      initialRoute: '/LogIn',
+      routerConfig:routes,
       themeMode: ThemeMode.light,
       theme: lightTheme,
       darkTheme: darkTheme,

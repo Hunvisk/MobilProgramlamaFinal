@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart'; // Intl kütüphanesini ekliyoruz
 
 class Transaction {
@@ -101,7 +102,8 @@ class UserAccount extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20), // Butonun iç boşluğunu ayarla
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/CardsInfo');
+                  // Navigator.pushNamed(context, '/CardsInfo');
+                  context.go('/CardsInfo');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

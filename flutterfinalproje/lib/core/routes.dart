@@ -1,67 +1,155 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:go_router/go_router.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/app_details/aboutus.dart';
-import 'package:flutterfinalproje/screens/app_details/chatbot.dart';
-import 'package:flutterfinalproje/screens/app_details/settings.dart';
-import 'package:flutterfinalproje/screens/app_details/vipgezgininfo.dart';
-import 'package:flutterfinalproje/screens/home.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/map.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/places.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/routes/routes.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/routes/selectedroutes.dart';
-import 'package:flutterfinalproje/screens/shopping/product/products.dart';
-import 'package:flutterfinalproje/screens/shopping/product/selectedproducts.dart';
-import 'package:flutterfinalproje/screens/user/account/addcard.dart';
-import 'package:flutterfinalproje/screens/user/account/cardsinfo.dart';
-import 'package:flutterfinalproje/screens/user/account/useraccount.dart';
-import 'package:flutterfinalproje/screens/user/login.dart';
-import 'package:flutterfinalproje/screens/user/profile/achievements.dart';
-import 'package:flutterfinalproje/screens/user/profile/favorites.dart';
-import 'package:flutterfinalproje/screens/user/profile/photographs.dart';
-import 'package:flutterfinalproje/screens/user/profile/placestovisit.dart';
-import 'package:flutterfinalproje/screens/user/profile/profile.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
-import 'package:flutterfinalproje/screens/user/profile/usercomments.dart';
-import 'package:flutterfinalproje/screens/user/register.dart';
+import '../screens/app_details/aboutus.dart';
+import '../screens/app_details/chatbot.dart';
+import '../screens/app_details/settings.dart';
+import '../screens/app_details/vipgezgininfo.dart';
+import '../screens/Home.dart';
+import '../screens/places_and_routes/map.dart';
+import '../screens/places_and_routes/places/places.dart';
+import '../screens/places_and_routes/places/selectedplaces.dart';
+import '../screens/places_and_routes/routes/routes.dart';
+import '../screens/places_and_routes/routes/selectedroutes.dart';
+import '../screens/shopping/product/products.dart';
+import '../screens/shopping/product/selectedproducts.dart';
+import '../screens/user/account/addcard.dart';
+import '../screens/user/account/cardsinfo.dart';
+import '../screens/user/account/useraccount.dart';
+import '../screens/user/Login.dart';
+import '../screens/user/profile/achievements.dart';
+import '../screens/user/profile/favorites.dart';
+import '../screens/user/profile/photographs.dart';
+import '../screens/user/profile/placestovisit.dart';
+import '../screens/user/profile/profile.dart';
+import '../screens/user/profile/userblogs.dart';
+import '../screens/user/profile/usercomments.dart';
+import '../screens/user/register.dart';
 
 
-class Routes {
-  static final Map<String, WidgetBuilder> routes = {
+
+// GoRouter configuration
+final routes = GoRouter(
+  routes: [
+    // GoRoute(
+    //   path: '/',
+    //   builder: (context, state) => const LoaderScreen(),
+    // ),
+
     // App Details
-      '/AboutUs': (context) => AboutUs(),
-      '/ChatBot': (context) => ChatBot(),
-      '/Settings': (context) => Settings(),
-      '/VipGezginInfo':(context) => VipGezginInfo(),
+    GoRoute(
+      path: '/ChatBot',
+      builder: (context, state) => const ChatBot(),
+    ),
+    GoRoute(
+      path: '/Settings',
+      builder: (context, state) => const Settings(),
+    ),
+    GoRoute(
+      path: '/VipGezginInfo',
+      builder: (context, state) => const VipGezginInfo(),
+    ),
+    GoRoute(
+      path: '/Aboutus',
+      builder: (context, state) => const AboutUs(),
+    ),
+    GoRoute(
+      path: '/VipGezginInfo',
+      builder: (context, state) => const VipGezginInfo(),
+    ),
+
     // Places And Routes
-      // Places
-        '/Places': (context) => Places(),
-        '/SelectedPlaces': (context) => SelectedPlaces(),
-      // Routes
-        '/Routes': (context) => RoutesScreen(),
-        '/SelectedRoutes': (context) => SelectedRoutes(),
-      '/Map': (context) => MyMap(),
+
+    // Places
+    GoRoute(
+      path: '/Places',
+      builder: (context, state) => const Places(),
+    ),
+    GoRoute(
+      path: '/SelectedPlaces',
+      builder: (context, state) => const SelectedPlaces(),
+    ),
+
+    // Routes
+    GoRoute(
+      path: '/Routes',
+      builder: (context, state) => const RoutesScreen(),
+    ),
+    GoRoute(
+      path: '/SelectedRoutes',
+      builder: (context, state) => const SelectedRoutes(),
+    ),
+    GoRoute(
+      path: '/Map',
+      builder: (context, state) => const MyMap(),
+    ),
+
     // Shopping
-      // Product
-        '/Products': (context) => Products(),
-        '/SelectedProducts': (context) => SelectedProducts(),
+    // Product
+    GoRoute(
+      path: '/Products',
+      builder: (context, state) => const Products(),
+    ),
+    GoRoute(
+      path: '/SelectedProducts',
+      builder: (context, state) => const SelectedProducts(),
+    ),
+
     // User
-      // Account
-        '/UserAccount': (context) => UserAccount(),
-        '/CardsInfo': (context) => CardsInfo(),
-        '/AddCard': (context) => AddCard(),
-      // Profile
-        '/Achievemets': (context) => Achievemets(),
-        '/Favorites': (context) => Favorites(),
-        '/Photographs': (context) => Photographs(),
-        '/PlaceToVisit': (context) => PlaceToVisit(),
-        '/Profile': (context) => ProfileScreen(),
-        '/UserBlogs': (context) => UserBlogs(),
-        '/UserComments': (context) => UserComments(),
-      '/LogIn': (context) => LoginScreen(),
-      '/Register': (context) => RegisterScreen(),
-    '/Home': (context) => Home(),
-    
-      };
-}
+    // Account
+    GoRoute(
+      path: '/UserAccount',
+      builder: (context, state) => const UserAccount(),
+    ),
+    GoRoute(
+      path: '/CardsInfo',
+      builder: (context, state) => const CardsInfo(),
+    ),
+    GoRoute(
+      path: '/AddCard',
+      builder: (context, state) => const AddCard(),
+    ),
+    // Profile
+    GoRoute(
+      path: '/Achievemets',
+      builder: (context, state) => const Achievemets(),
+    ),
+
+    GoRoute(
+      path: '/Favorites',
+      builder: (context, state) => const Favorites(),
+    ),
+    GoRoute(
+      path: '/Photographs',
+      builder: (context, state) => const Photographs(),
+    ),
+    GoRoute(
+      path: '/PlaceToVisit',
+      builder: (context, state) => const PlaceToVisit(),
+    ),
+    GoRoute(
+      path: '/Profile',
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: '/UserBlogs',
+      builder: (context, state) => UserBlogs(),
+    ),
+    GoRoute(
+      path: '/UserComments',
+      builder: (context, state) => UserComments(),
+    ),
+    GoRoute(
+      path: '/LogIn',
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: '/Register',
+      builder: (context, state) => RegisterScreen(),
+    ),
+    GoRoute(
+      path: '/Home',
+      builder: (context, state) => Home(),
+    ),
+  ],
+);
