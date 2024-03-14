@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWithSearchIcon extends StatefulWidget
@@ -45,18 +46,23 @@ class _AppBarWithSearchIconState extends State<AppBarWithSearchIcon> {
         )
       ),
       actions: [
-        IconButton(
-          icon: widget.icon,
-          color: Theme.of(context).primaryColor,
-          onPressed: () {
-            setState(() {
-              isSearching = !isSearching;
-              if (!isSearching) {
-                searchController.clear();
-              }
-              widget.onSearchChanged(isSearching);
-            });
+        AnimSearchBar(
+          width: MediaQuery.of(context).size.width, 
+          textController: searchController, 
+          onSuffixTap: () {}, 
+          onSubmitted: (p0) {
+            
           },
+          autoFocus: true,
+          prefixIcon: Icon(Icons.search),
+          suffixIcon: Icon(Icons.search),
+          helpText: "Search...",
+          closeSearchOnSuffixTap: false,
+          rtl: true,
+          textFieldColor: Theme.of(context).secondaryHeaderColor,
+          color: Theme.of(context).backgroundColor,
+          boxShadow: false,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
     );

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
+import 'package:go_router/go_router.dart';
 
 class CreditCardInfo {
   String cardNumber = '';
@@ -102,7 +103,7 @@ class _AddCardState extends State<AddCard> {
 
   void _saveCreditCard() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, '/CardsInfo');
+      context.go('/CardsInfo');
       print('Kart bilgileri kaydedildi:');
       print('Kart Numarası: ${_creditCardInfo.cardNumber}');
       print('Son Kullanma Tarihi: ${_creditCardInfo.expiryDate}');

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -390,7 +391,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/Photographs');
+                              context.go('/Photographs');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -413,7 +414,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/UserBlogs');
+                              context.go('/UserBlogs');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -436,7 +437,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/UserComments');
+                              context.go('/UserComments');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -459,7 +460,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/PlaceToVisit');
+                              context.go('/PlaceToVisit');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -482,7 +483,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/Favorites');
+                              context.go('/Favorites');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -505,7 +506,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/Achievemets');
+                              context.go('/Achievemets');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

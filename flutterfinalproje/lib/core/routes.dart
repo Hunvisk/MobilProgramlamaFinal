@@ -140,7 +140,7 @@ final routes = GoRouter(
       builder: (context, state) => UserComments(),
     ),
     GoRoute(
-      path: '/LogIn',
+      path: '/',
       builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(

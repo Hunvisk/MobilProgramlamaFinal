@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Flutter Final Proje',
       debugShowCheckedModeBanner: false,
-      routerConfig:routes,
+      routerConfig: routes,
       themeMode: ThemeMode.light,
       theme: lightTheme,
       darkTheme: darkTheme,

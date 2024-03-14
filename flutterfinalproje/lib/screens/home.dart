@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/app_details/chatbot.dart';
+import 'package:go_router/go_router.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:flutterfinalproje/widgets/myhomeappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -123,7 +124,7 @@ class _HomeState extends State<Home> {
                       WeatherBox(),
                       GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/VipGezginInfo');
+                            context.go('/VipGezginInfo');
                           },
                           child: NavigatorBox(
                             title: "Hemen VİP Gezgin Ol!",
@@ -192,7 +193,7 @@ class _HomeState extends State<Home> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/Home');
+                          context.go('/Home');
                         },
                         child: NavigatorBox(
                           title: "Gezgin Ürünlerini Keşfet!",
@@ -273,7 +274,7 @@ class _HomeState extends State<Home> {
                     child: ElevatedButton(
                       
                       onPressed: () {
-                        Navigator.pushNamed(context, '/Profile');
+                        context.go('/Profile');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -322,11 +323,7 @@ class _HomeState extends State<Home> {
                                 Text("Having Trouble?"),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ChatBot()),
-                                    );
+                                    context.go('/ChatBot');
                                   },
                                   child: Text(
                                     'Help For You',
@@ -527,7 +524,7 @@ Widget ListTileItem(BuildContext context, String name, String screen,
       child: Container(
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(context, screen);
+            context.go(screen);
           },
           child: Padding(
             padding:

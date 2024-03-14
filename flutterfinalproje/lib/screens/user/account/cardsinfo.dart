@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/user/account/addcard.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class CardsInfo extends StatefulWidget {
   const CardsInfo({Key? key}) : super(key: key);
@@ -27,10 +27,7 @@ class _CardsInfoState extends State<CardsInfo> {
               child: InkWell(
                 onTap: () {
                   // Yeni kart ekle sayfasına geçiş yapılıyor
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddCard()),
-                  );
+                  context.go('/AddCard');
                 },
                 child: Container(
                   decoration: BoxDecoration(

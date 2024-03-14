@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
+import 'package:go_router/go_router.dart';
 
 class Places extends StatefulWidget {
   const Places({Key? key}) : super(key: key);
@@ -50,7 +51,7 @@ class _PlacesState extends State<Places> {
             FilterWidget(),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/SelectedPlaces');
+                context.go('/SelectedPlaces');
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),

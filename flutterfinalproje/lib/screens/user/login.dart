@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -262,7 +263,7 @@ Widget SignInButton(BuildContext context) {
     margin: EdgeInsets.all(5),
     child: ElevatedButton(
       onPressed: () {
-        Navigator.pushNamed(context, '/Home');
+        context.go('/Home');
       },
       child: Text(
         'Giriş Yap',
@@ -296,7 +297,7 @@ Widget OtherSignInText(BuildContext context) {
           Gap(5),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, "/Register");
+              context.go('/Register');
             },
             child: Text(
               'Kayıt Ol',

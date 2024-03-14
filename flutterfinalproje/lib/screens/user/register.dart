@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(RegisterScreen());
@@ -238,7 +239,7 @@ Widget SignInButton(BuildContext context) {
         margin: EdgeInsets.all(5),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/LogIn');
+            context.go('/');
           },
           child: Text(
             'Kayıt Ol',
@@ -277,7 +278,7 @@ Widget OtherSignInText(
           Gap(5),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, "/LogIn");
+              context.go('/');
             },
             child: Text(
               'Oturum Aç',

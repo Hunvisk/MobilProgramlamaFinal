@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, library_private_types_in_public_api, prefer_const_constructors_in_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MyBottomNavBar extends StatefulWidget {
@@ -37,7 +38,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               // Şu anki sayfayı kontrol et
               String currentRoute = ModalRoute.of(context)!.settings.name!;
               if (currentRoute != rotaAdlari[index]) {
-                Navigator.pushNamed(context, rotaAdlari[index]);
+                context.go(rotaAdlari[index]);
+                
                 print('Selected Index: $selectedIndex');
               }
             }
