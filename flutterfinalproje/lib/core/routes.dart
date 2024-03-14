@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutterfinalproje/screens/core/error.dart';
 import 'package:go_router/go_router.dart';
 
 import '../screens/app_details/aboutus.dart';
@@ -30,6 +31,7 @@ import '../screens/user/register.dart';
 
 // GoRouter configuration
 final routes = GoRouter(
+  errorBuilder: (context, state) => const ErrorScreen(),
   routes: [
     // GoRoute(
     //   path: '/',
