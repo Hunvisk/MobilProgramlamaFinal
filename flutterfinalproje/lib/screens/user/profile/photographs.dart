@@ -19,7 +19,7 @@ class PhotographsState extends State<Photographs> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MyAppBar(
           title: 'FOTOĞRAFLAR',
         ),

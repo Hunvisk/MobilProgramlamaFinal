@@ -26,8 +26,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         height: 35,
         child: GNav(
           gap: 10,
+          duration: Duration(seconds: 0),
           color: Colors.grey,
-          activeColor: Colors.grey,
+          activeColor: Theme.of(context).primaryColor,
           //tabBackgroundColor: Colors.grey.shade400,
           onTabChange: (index) {
             if (selectedIndex != index) {
@@ -38,6 +39,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               // Şu anki sayfayı kontrol et
               String currentRoute = ModalRoute.of(context)!.settings.name!;
               if (currentRoute != rotaAdlari[index]) {
+
+                // GoRouter.of(context).pushReplacement(rotaAdlari[index]);
                 context.go(rotaAdlari[index]);
                 
                 print('Selected Index: $selectedIndex');

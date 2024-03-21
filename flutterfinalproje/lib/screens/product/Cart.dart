@@ -1,4 +1,5 @@
-// TODO Implement this library.// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+// TODO Implement this library.
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
   import 'package:anim_search_bar/anim_search_bar.dart';
   import 'package:flutter/material.dart';
@@ -56,13 +57,13 @@
               
             },
             autoFocus: true,
-            prefixIcon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.search),
+            prefixIcon: const Icon(Icons.search),
+            suffixIcon: const Icon(Icons.search),
             helpText: "Search...",
             closeSearchOnSuffixTap: false,
             rtl: true,
             textFieldColor: Theme.of(context).secondaryHeaderColor,
-            color: Theme.of(context).backgroundColor,
+            color: Theme.of(context).colorScheme.background,
             boxShadow: false,
             style: Theme.of(context).textTheme.bodyMedium,
           ),

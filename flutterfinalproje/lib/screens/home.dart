@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MyHomeAppBar(
           title: 'ANA SAYFA',
           icon: Icon(Icons.search),
@@ -220,7 +220,7 @@ class _HomeState extends State<Home> {
 
   Drawer MyDrawer(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[

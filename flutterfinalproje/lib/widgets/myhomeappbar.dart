@@ -54,7 +54,7 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
           closeSearchOnSuffixTap: false,
           rtl: true,
           textFieldColor: Theme.of(context).secondaryHeaderColor,
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.background,
           boxShadow: false,
           style: Theme.of(context).textTheme.bodyMedium,
         ),

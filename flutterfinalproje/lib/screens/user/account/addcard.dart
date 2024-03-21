@@ -40,7 +40,7 @@ class _AddCardState extends State<AddCard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MyAppBar(title: 'Yeni Kart Ekle'),
         body: SingleChildScrollView(
           padding: EdgeInsets.all(20.0),
