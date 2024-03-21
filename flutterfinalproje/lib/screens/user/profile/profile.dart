@@ -35,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // İptal butonu, pop-up'ı kapatır
+                GoRouter.of(context).pop(); // İptal butonu, pop-up'ı kapatır
               },
               child: Text('İptal'), // İptal butonunun metni
             ),
@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 setState(() {
                   _aboutText = _textEditingController.text; // Metni güncelle
                 });
-                Navigator.pop(context); // Kaydet butonu, pop-up'ı kapatır
+                GoRouter.of(context).pop(); // Kaydet butonu, pop-up'ı kapatır
               },
               child: Text('Kaydet'), // Kaydet butonunun metni
             ),

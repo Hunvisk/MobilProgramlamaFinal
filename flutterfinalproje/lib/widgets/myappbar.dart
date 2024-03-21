@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -20,7 +21,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Theme.of(context).primaryColor,
         ),
         onPressed: () {
-          Navigator.pop(context); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
+          GoRouter.of(context).pop(); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
         },
       ),
       title: Center(

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
+import 'package:go_router/go_router.dart';
 
 
 class Photographs extends StatefulWidget {
@@ -232,7 +233,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Yıla Göre (En Eski)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -240,7 +241,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Yıla Göre (En Yeni)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -248,7 +249,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Aya Göre (En Eski)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -256,7 +257,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Aya Göre (En Yeni)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -264,7 +265,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Güne Göre (En Eski)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -272,7 +273,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Güne Göre (En Yeni)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
