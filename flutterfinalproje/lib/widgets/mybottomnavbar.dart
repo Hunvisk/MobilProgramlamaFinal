@@ -41,7 +41,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               if (currentRoute != rotaAdlari[index]) {
 
                 // GoRouter.of(context).pushReplacement(rotaAdlari[index]);
-                context.go(rotaAdlari[index]);
+                context.go(rotaAdlari[index],  );
                 
                 print('Selected Index: $selectedIndex');
               }

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutterfinalproje/screens/core/error.dart';
+import 'package:flutterfinalproje/screens/user/account/forgotPassword.dart';
 import 'package:go_router/go_router.dart';
-
 import '../screens/app_details/aboutus.dart';
 import '../screens/app_details/chatbot.dart';
 import '../screens/app_details/settings.dart';
@@ -111,6 +111,11 @@ final routes = GoRouter(
       path: '/AddCard',
       builder: (context, state) => const AddCard(),
     ),
+    GoRoute(
+      path: '/ForgotPassword',
+      builder: (context, state) => const ForgotPassword(),
+    ),
+    
     // Profile
     GoRoute(
       path: '/Achievemets',

@@ -238,8 +238,8 @@ Widget SignInLink(BuildContext context) {
       alignment: Alignment.topRight,
       child: InkWell(
         onTap: () {
-          // "Şifremi Unuttum" linkine tıklanınca yapılacak işlemler buraya gelecek
-          // Örneğin, şifreyi sıfırlama sayfasına yönlendirebilirsiniz.
+           context.go('/ForgotPassword');
+      
         },
         child: Padding(
           padding: const EdgeInsets.only(top: 1),
