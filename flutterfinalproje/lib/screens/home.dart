@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -91,7 +93,8 @@ class _HomeState extends State<Home> {
             setState(() {
               this.isSearching = isSearching;
             });
-          }, actions: [],
+          },
+          actions: [],
         ),
         drawer: MyDrawer(context),
         body: SafeArea(
@@ -120,7 +123,9 @@ class _HomeState extends State<Home> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 50,),
+                      SizedBox(
+                        height: 50,
+                      ),
                       WeatherBox(),
                       GestureDetector(
                           onTap: () {
@@ -142,12 +147,13 @@ class _HomeState extends State<Home> {
                               Container(
                                 alignment: Alignment.topLeft,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Text(
-                                    "Bu Hafta Popüler",
-                                    style: Theme.of(context).textTheme.headlineSmall,
-                                  )
-                                ),
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text(
+                                      "Bu Hafta Popüler",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall,
+                                    )),
                               ),
                               Divider(),
                               Padding(
@@ -192,13 +198,12 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          context.push('/Home');
-                        },
-                        child: NavigatorBox(
-                          title: "Gezgin Ürünlerini Keşfet!",
-                        )
-                      ),
+                          onTap: () {
+                            context.push('/Home');
+                          },
+                          child: NavigatorBox(
+                            title: "Gezgin Ürünlerini Keşfet!",
+                          )),
                     ],
                   ),
                 ),
@@ -216,6 +221,14 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  late ClientCubit clientCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    clientCubit = context.read<ClientCubit>();
   }
 
   Drawer MyDrawer(BuildContext context) {
@@ -272,18 +285,17 @@ class _HomeState extends State<Home> {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: ElevatedButton(
-                      
-                      onPressed: () {
-                        context.push('/Profile');
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).secondaryHeaderColor,
-                      ),
-                      child: Text(
-                        "Profil",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      )
-                    ),
+                        onPressed: () {
+                          context.push('/Profile');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).secondaryHeaderColor,
+                        ),
+                        child: Text(
+                          "Profil",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )),
                   ),
                 ],
               ),
@@ -294,15 +306,75 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
-                  children: [
+                  children: <Widget>[
                     ListTileItem(
-                        context, 'Hesabım', '/UserAccount', Icons.person, Colors.black54),
-                    ListTileItem(context, 'VİP Gezgin', '/VipGezginInfo', Icons.star,
-                        Colors.black54),
+                      context,
+                      'Hesabım',
+                      '/UserAccount',
+                      Icons.person,
+                      Colors.black54,
+                    ),
                     ListTileItem(
-                        context, 'Ayarlar', '/Settings', Icons.settings, Colors.black54),
+                      context,
+                      'VİP Gezgin',
+                      '/VipGezginInfo',
+                      Icons.star,
+                      Colors.black54,
+                    ),
                     ListTileItem(
-                        context, 'Oturumu Kapat', '/LogIn', Icons.logout, Colors.black54),
+                      context,
+                      'Ayarlar',
+                      '/Settings',
+                      Icons.settings,
+                      Colors.black54,
+                    ),
+                    ListTileItem(
+                      context,
+                      'Dil: ' +
+                          context
+                              .read<ClientCubit>()
+                              .state
+                              .language, // assuming language is a state in your ClientCubit
+                      '/Settings',
+                      Icons.language,
+                      Colors.black54,
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        context.read<ClientCubit>().state.darkMode
+                            ? Icons.nightlight
+                            : Icons.wb_sunny,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
+                      title: Text(
+                        'Gece Modu : ' +
+                            (context.read<ClientCubit>().state.darkMode
+                                ? 'Açık'
+                                : 'Kapalı'),
+                      ),
+                      trailing: Switch(
+                        value: context.read<ClientCubit>().state.darkMode,
+                        onChanged: (bool newValue) {
+                          // Gece modu geçişini yapar
+                          context
+                              .read<ClientCubit>()
+                              .changeDarkMode(newValue, darkMode: true);
+                          // Gündüz modu geçişi için bir kontrol yapar
+                          if (!newValue) {
+                            context
+                                .read<ClientCubit>()
+                                .changeDarkMode(newValue, darkMode: false);
+                          }
+                        },
+                      ),
+                    ),
+                    ListTileItem(
+                      context,
+                      'Oturumu Kapat',
+                      '/LogIn',
+                      Icons.logout,
+                      Colors.black54,
+                    ),
                   ],
                 ),
                 Container(
@@ -312,7 +384,7 @@ class _HomeState extends State<Home> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: Icon(Icons.question_mark),
+                        child: Icon(Icons.help),
                       ),
                       Column(
                         children: [
@@ -323,7 +395,7 @@ class _HomeState extends State<Home> {
                                 Text("Having Trouble?"),
                                 InkWell(
                                   onTap: () {
-                                    context.push('/ChatBot');
+                                    context.go('/ChatBot');
                                   },
                                   child: Text(
                                     'Help For You',
@@ -342,7 +414,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -351,7 +423,6 @@ class _HomeState extends State<Home> {
 
 class NavigatorBox extends StatelessWidget {
   final String title;
-  
 
   const NavigatorBox({super.key, required this.title});
 
@@ -420,23 +491,22 @@ class WeatherBox extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
-                        child: Text(
-                          "İstanbul",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        )
-                      ),
+                          child: Text(
+                        "İstanbul",
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      )),
                     ),
                     Container(
-                      height: 65,
-                      width: double.infinity,
-                      child: Text(
-                        "Karlı",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      )
-                    ),
+                        height: 65,
+                        width: double.infinity,
+                        child: Text(
+                          "Karlı",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        )),
                     Container(
                       decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.secondaryContainer,
+                          color:
+                              Theme.of(context).colorScheme.secondaryContainer,
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(10))),
                       height: 65,
@@ -518,43 +588,50 @@ class WeatherInfo extends StatelessWidget {
 
 Widget ListTileItem(BuildContext context, String name, String screen,
     IconData iconData, Color iconColor) {
-  return Padding(
-    padding: const EdgeInsets.all(4.0),
-    child: ClipRRect(
-      child: Container(
-        child: InkWell(
-          onTap: () {
-            context.push(screen);
-          },
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Icon(
-                    iconData,
-                    color: iconColor,
-                    size: 25,
-                  ),
+  return BlocBuilder<ClientCubit, ClientState>(
+    builder: (context, state) {
+      bool isDarkMode =
+          state.darkMode ?? false; // Varsayılan olarak false kullanıyoruz
+
+      return Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: ClipRRect(
+          child: Container(
+            child: InkWell(
+              onTap: () {
+                context.push(screen);
+              },
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Icon(
+                        iconData,
+                        color: iconColor,
+                        size: 25,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        name,
+                        style: TextStyle(
+                            color: isDarkMode ? Colors.white : Colors.black87,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 15,
+                            fontFamily: ('Poppins')),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(
-                    name,
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                        fontFamily: ('Poppins')),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
-      ),
-    ),
+      );
+    },
   );
 }

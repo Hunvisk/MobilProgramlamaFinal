@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Final Proje',
             debugShowCheckedModeBanner: false,
             routerConfig: routes,
-            themeMode: ThemeMode.light,
-            theme: darkTheme,
+            themeMode: state.darkMode ? ThemeMode.dark : ThemeMode.light,
+            theme: lightTheme,
             darkTheme: darkTheme,
           );
         }

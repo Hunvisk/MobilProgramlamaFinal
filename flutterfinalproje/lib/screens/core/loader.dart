@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -16,37 +18,31 @@ class LoaderScreen extends StatefulWidget {
 
 class _LoaderScreenState extends State<LoaderScreen> {
   loadApp() async {
-    final storage = Storage();
-    final firstLaunch = await storage.isFirstLaunch();
+  final storage = Storage();
+  final firstLaunch = await storage.isFirstLaunch();
 
-    if (firstLaunch)
-    {
-    // cihazin gece gunduz moduna erismek
-    const darkMode = ThemeMode.system == ThemeMode.dark; 
+  if (firstLaunch) {
+    // cihazın gece gündüz moduna erişmek
+    final darkMode = ThemeMode.system == ThemeMode.dark;
 
-    // cihazin varsayilan diline erismek
-    
+    // cihazın varsayılan diline erişmek
+    final language = getDeviceLanguage();
 
-      await storage.setConfig(language: getDeviceLanguage(), darkMode: darkMode);
+    await storage.setConfig(language: language, darkMode: darkMode);
 
-      GoRouter.of(context).replace("/Boarding");
-    }
-    else
-    {
-      final config = await storage.setConfig();
+    GoRouter.of(context).replace("/Boarding");
+  } else {
+    final config = await storage.setConfig();
 
-      if (config["language"] == null) {
-        storage.setConfig(language: getDeviceLanguage());
-      }
+    final language = config?["language"] ?? getDeviceLanguage();
+    final darkMode = config?["darkMode"] ?? (ThemeMode.system == ThemeMode.dark);
 
-      if (config["darkMode"] == null) {
-        const darkMode = ThemeMode.system == ThemeMode.dark; 
-        await storage.setConfig(darkMode: darkMode);
-      }
+    await storage.setConfig(language: language, darkMode: darkMode);
 
-      GoRouter.of(context).replace("/Home");
-    }
+    GoRouter.of(context).replace("/Home");
   }
+}
+
 
   getDeviceLanguage() {
     final String defaultLocale;
