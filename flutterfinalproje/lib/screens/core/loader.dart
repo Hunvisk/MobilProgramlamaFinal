@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,12 +21,58 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
     if (firstLaunch)
     {
+    // cihazin gece gunduz moduna erismek
+    const darkMode = ThemeMode.system == ThemeMode.dark; 
+
+    // cihazin varsayilan diline erismek
+    
+
+      await storage.setConfig(language: getDeviceLanguage(), darkMode: darkMode);
+
       GoRouter.of(context).replace("/Boarding");
     }
     else
     {
-      GoRouter.of(context).replace("/Login");
+      final config = await storage.setConfig();
+
+      if (config["language"] == null) {
+        storage.setConfig(language: getDeviceLanguage());
+      }
+
+      if (config["darkMode"] == null) {
+        const darkMode = ThemeMode.system == ThemeMode.dark; 
+        await storage.setConfig(darkMode: darkMode);
+      }
+
+      GoRouter.of(context).replace("/Home");
     }
+  }
+
+  getDeviceLanguage() {
+    final String defaultLocale;
+
+    if (!kIsWeb) {
+      defaultLocale = 
+        Platform.localeName;
+    }
+    else {
+      defaultLocale = "en";
+    }
+
+      final langParts = defaultLocale.split("_");
+      
+      final supportedLanguages = ["en", "tr", "de"];
+
+      final String finalLang;
+
+      if (supportedLanguages.contains(langParts[0])) {
+        finalLang = langParts[0];
+      }
+      else {
+        finalLang = "en";
+      }
+
+      return finalLang;
   }
 
   @override
