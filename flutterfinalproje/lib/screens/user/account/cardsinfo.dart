@@ -27,7 +27,7 @@ class _CardsInfoState extends State<CardsInfo> {
               child: InkWell(
                 onTap: () {
                   // Yeni kart ekle sayfasına geçiş yapılıyor
-                  context.go('/AddCard');
+                  context.push('/AddCard');
                 },
                 child: Container(
                   decoration: BoxDecoration(

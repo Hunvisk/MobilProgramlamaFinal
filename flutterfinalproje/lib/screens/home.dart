@@ -124,7 +124,7 @@ class _HomeState extends State<Home> {
                       WeatherBox(),
                       GestureDetector(
                           onTap: () {
-                            context.go('/VipGezginInfo');
+                            context.push('/VipGezginInfo');
                           },
                           child: NavigatorBox(
                             title: "Hemen VİP Gezgin Ol!",
@@ -193,7 +193,7 @@ class _HomeState extends State<Home> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context.go('/Home');
+                          context.push('/Home');
                         },
                         child: NavigatorBox(
                           title: "Gezgin Ürünlerini Keşfet!",
@@ -274,7 +274,7 @@ class _HomeState extends State<Home> {
                     child: ElevatedButton(
                       
                       onPressed: () {
-                        context.go('/Profile');
+                        context.push('/Profile');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -323,7 +323,7 @@ class _HomeState extends State<Home> {
                                 Text("Having Trouble?"),
                                 InkWell(
                                   onTap: () {
-                                    context.go('/ChatBot');
+                                    context.push('/ChatBot');
                                   },
                                   child: Text(
                                     'Help For You',
@@ -524,7 +524,7 @@ Widget ListTileItem(BuildContext context, String name, String screen,
       child: Container(
         child: InkWell(
           onTap: () {
-            context.go(screen);
+            context.push(screen);
           },
           child: Padding(
             padding:

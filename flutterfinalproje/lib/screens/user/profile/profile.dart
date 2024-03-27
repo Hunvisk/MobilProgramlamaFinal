@@ -391,7 +391,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           InkWell(
                             onTap: () {
-                              context.go('/Photographs');
+                              context.push('/Photographs');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -414,7 +414,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              context.go('/UserBlogs');
+                              context.push('/UserBlogs');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -437,7 +437,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              context.go('/UserComments');
+                              context.push('/UserComments');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -460,7 +460,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              context.go('/PlaceToVisit');
+                              context.push('/PlaceToVisit');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -483,7 +483,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              context.go('/Favorites');
+                              context.push('/Favorites');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -506,7 +506,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Divider(),
                           InkWell(
                             onTap: () {
-                              context.go('/Achievemets');
+                              context.push('/Achievemets');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

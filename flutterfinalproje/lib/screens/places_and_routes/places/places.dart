@@ -51,7 +51,7 @@ class _PlacesState extends State<Places> {
             FilterWidget(),
             InkWell(
               onTap: () {
-                context.go('/SelectedPlaces');
+                context.push('/SelectedPlaces');
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),

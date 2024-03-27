@@ -72,7 +72,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               const Gap(10),
               ElevatedButton(
                 onPressed: () {
-                  context.go('/');
+                  context.push('/');
                 },
                 child:  Text(
                   'Şifremi Sıfırla ',

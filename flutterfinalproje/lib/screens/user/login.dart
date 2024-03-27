@@ -238,7 +238,7 @@ Widget SignInLink(BuildContext context) {
       alignment: Alignment.topRight,
       child: InkWell(
         onTap: () {
-           context.go('/ForgotPassword');
+           context.push('/ForgotPassword');
       
         },
         child: Padding(
@@ -263,7 +263,7 @@ Widget SignInButton(BuildContext context) {
     margin: EdgeInsets.all(5),
     child: ElevatedButton(
       onPressed: () {
-        context.go('/Home');
+        context.push('/Home');
       },
       child: Text(
         'Giriş Yap',
@@ -297,7 +297,7 @@ Widget OtherSignInText(BuildContext context) {
           Gap(5),
           InkWell(
             onTap: () {
-              context.go('/Register');
+              context.push('/Register');
             },
             child: Text(
               'Kayıt Ol',

@@ -239,7 +239,7 @@ Widget SignInButton(BuildContext context) {
         margin: EdgeInsets.all(5),
         child: ElevatedButton(
           onPressed: () {
-            context.go('/');
+            context.push('/');
           },
           child: Text(
             'Kayıt Ol',
@@ -278,7 +278,7 @@ Widget OtherSignInText(
           Gap(5),
           InkWell(
             onTap: () {
-              context.go('/');
+              context.push('/');
             },
             child: Text(
               'Oturum Aç',

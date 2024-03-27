@@ -103,7 +103,7 @@ class _AddCardState extends State<AddCard> {
 
   void _saveCreditCard() {
     if (_formKey.currentState!.validate()) {
-      context.go('/CardsInfo');
+      context.push('/CardsInfo');
       print('Kart bilgileri kaydedildi:');
       print('Kart Numarası: ${_creditCardInfo.cardNumber}');
       print('Son Kullanma Tarihi: ${_creditCardInfo.expiryDate}');

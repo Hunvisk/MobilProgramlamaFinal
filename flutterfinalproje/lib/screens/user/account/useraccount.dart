@@ -103,7 +103,7 @@ class UserAccount extends StatelessWidget {
                 ),
                 onPressed: () {
                   // Navigator.pushNamed(context, '/CardsInfo');
-                  context.go('/CardsInfo');
+                  context.push('/CardsInfo');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
