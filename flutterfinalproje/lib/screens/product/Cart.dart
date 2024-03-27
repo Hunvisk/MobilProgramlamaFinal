@@ -1,5 +1,5 @@
 // TODO Implement this library.
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, file_names
 
   import 'package:anim_search_bar/anim_search_bar.dart';
   import 'package:flutter/material.dart';

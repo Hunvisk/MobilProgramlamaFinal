@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:flutterfinalproje/screens/core/error.dart';
-import 'package:flutterfinalproje/screens/user/account/forgotPassword.dart';
 import 'package:go_router/go_router.dart';
+
 import '../screens/app_details/aboutus.dart';
 import '../screens/app_details/chatbot.dart';
 import '../screens/app_details/settings.dart';
 import '../screens/app_details/vipgezgininfo.dart';
 import '../screens/Home.dart';
+import '../screens/core/error.dart';
+import '../screens/core/loader.dart';
 import '../screens/places_and_routes/map.dart';
 import '../screens/places_and_routes/places/places.dart';
 import '../screens/places_and_routes/places/selectedplaces.dart';
@@ -14,8 +15,10 @@ import '../screens/places_and_routes/routes/routes.dart';
 import '../screens/places_and_routes/routes/selectedroutes.dart';
 import '../screens/shopping/product/products.dart';
 import '../screens/shopping/product/selectedproducts.dart';
+import '../screens/static/boarding.dart';
 import '../screens/user/account/addcard.dart';
 import '../screens/user/account/cardsinfo.dart';
+import '../screens/user/account/forgotPassword.dart';
 import '../screens/user/account/useraccount.dart';
 import '../screens/user/Login.dart';
 import '../screens/user/profile/achievements.dart';
@@ -33,10 +36,11 @@ import '../screens/user/register.dart';
 final routes = GoRouter(
   errorBuilder: (context, state) => const ErrorScreen(),
   routes: [
-    // GoRoute(
-    //   path: '/',
-    //   builder: (context, state) => const LoaderScreen(),
-    // ),
+    // Uygulama LoaderScreen ile başlayacak.
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const LoaderScreen(),
+    ),
 
     // App Details
     GoRoute(
@@ -97,6 +101,12 @@ final routes = GoRouter(
       builder: (context, state) => const SelectedProducts(),
     ),
 
+    // Static
+    GoRoute(
+      path: '/Boarding',
+      builder: (context, state) => const BoardingScreen(),
+    ),
+
     // User
     // Account
     GoRoute(
@@ -147,7 +157,7 @@ final routes = GoRouter(
       builder: (context, state) => UserComments(),
     ),
     GoRoute(
-      path: '/',
+      path: '/Login',
       builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(

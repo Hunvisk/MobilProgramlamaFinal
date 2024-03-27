@@ -143,7 +143,7 @@ class FilterWidget extends StatelessWidget {
                   _showSortPopup(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).primaryColor,
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,
@@ -172,7 +172,7 @@ class FilterWidget extends StatelessWidget {
                   _showSortPopup2(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).primaryColor,
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,

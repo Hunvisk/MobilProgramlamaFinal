@@ -182,7 +182,7 @@ class SubscriptionBox extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              primary: Theme.of(context).primaryColor,
+              backgroundColor: Theme.of(context).primaryColor,
               textStyle: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 21,

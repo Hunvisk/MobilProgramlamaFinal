@@ -94,7 +94,7 @@ class UserAccount extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).primaryColor,
                   textStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 21,

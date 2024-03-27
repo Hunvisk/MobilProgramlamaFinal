@@ -247,8 +247,7 @@ Widget SignInButton(BuildContext context) {
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           style: ElevatedButton.styleFrom(
-            primary:
-                Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
+            backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),

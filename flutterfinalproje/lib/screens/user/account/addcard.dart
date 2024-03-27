@@ -72,8 +72,7 @@ class _AddCardState extends State<AddCard> {
                 child: ElevatedButton(
                   onPressed: _saveCreditCard,
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50), // Kenarlara doğru genişletme
-                    primary: Theme.of(context).primaryColor, // Buton rengini temaya uygun olarak ayarlama
+                    minimumSize: Size(double.infinity, 50), backgroundColor: Theme.of(context).primaryColor, // Buton rengini temaya uygun olarak ayarlama
                   ),
                   child: Text(
                     'Kartı Kaydet',
