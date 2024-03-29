@@ -8,7 +8,6 @@ import '../screens/app_details/vipgezgininfo.dart';
 import '../screens/Home.dart';
 import '../screens/core/change_language.dart';
 import '../screens/core/error.dart';
-import '../screens/core/loader.dart';
 import '../screens/places_and_routes/map.dart';
 import '../screens/places_and_routes/places/places.dart';
 import '../screens/places_and_routes/places/selectedplaces.dart';
@@ -42,11 +41,6 @@ final routes = GoRouter(
     //   path: '/',
     //   builder: (context, state) => const LoaderScreen(),
     // ),
-
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const BoardingScreen(),
-    ),
 
     // App Details
     GoRoute(
@@ -115,7 +109,7 @@ final routes = GoRouter(
 
     // Static
     GoRoute(
-      path: '/Boarding',
+      path: '/',
       builder: (context, state) => const BoardingScreen(),
     ),
 
