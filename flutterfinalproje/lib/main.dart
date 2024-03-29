@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterfinalproje/core/localizations.dart';
 import 'bloc/client/client_cubit.dart';
 import 'core/routes.dart';
 import 'package:flutterfinalproje/core/theme.dart';
@@ -29,6 +31,17 @@ class MyApp extends StatelessWidget {
             themeMode: state.darkMode ? ThemeMode.dark : ThemeMode.light,
             theme: lightTheme,
             darkTheme: darkTheme,
+            localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('tr', 'TR'),
+          ],
+          locale: Locale(state.language),
           );
         }
       ),

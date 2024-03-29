@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MyHomeAppBar(
-          title: 'ANA SAYFA',
+          //title: 'Ana Sayfa',
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -307,6 +307,49 @@ class _HomeState extends State<Home> {
               children: [
                 Column(
                   children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        leading: Icon(
+                          context.read<ClientCubit>().state.darkMode
+                              ? Icons.nightlight
+                              : Icons.wb_sunny,
+                          color: Theme.of(context).iconTheme.color,
+                        ),
+                        title: Text(
+                          'Mod: ' +
+                              (context.read<ClientCubit>().state.darkMode
+                                  ? 'Gece'
+                                  : 'Gündüz'),
+                        ),
+                        trailing: Switch(
+                          value: context.read<ClientCubit>().state.darkMode,
+                          onChanged: (bool newValue) {
+                            // Gece modu geçişini yapar
+                            context
+                                .read<ClientCubit>()
+                                .changeDarkMode(newValue, darkMode: true);
+                            // Gündüz modu geçişi için bir kontrol yapar
+                            if (!newValue) {
+                              context
+                                  .read<ClientCubit>()
+                                  .changeDarkMode(newValue, darkMode: false);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    ListTileItem(
+                      context,
+                      'Dil: ' +
+                          context
+                              .read<ClientCubit>()
+                              .state
+                              .language, // assuming language is a state in your ClientCubit
+                      '/Change_LanguageScreen',
+                      Icons.language,
+                      Colors.black54,
+                    ),
                     ListTileItem(
                       context,
                       'Hesabım',
@@ -327,46 +370,6 @@ class _HomeState extends State<Home> {
                       '/Settings',
                       Icons.settings,
                       Colors.black54,
-                    ),
-                    ListTileItem(
-                      context,
-                      'Dil: ' +
-                          context
-                              .read<ClientCubit>()
-                              .state
-                              .language, // assuming language is a state in your ClientCubit
-                      '/Settings',
-                      Icons.language,
-                      Colors.black54,
-                    ),
-                    ListTile(
-                      leading: Icon(
-                        context.read<ClientCubit>().state.darkMode
-                            ? Icons.nightlight
-                            : Icons.wb_sunny,
-                        color: Theme.of(context).iconTheme.color,
-                      ),
-                      title: Text(
-                        'Gece Modu : ' +
-                            (context.read<ClientCubit>().state.darkMode
-                                ? 'Açık'
-                                : 'Kapalı'),
-                      ),
-                      trailing: Switch(
-                        value: context.read<ClientCubit>().state.darkMode,
-                        onChanged: (bool newValue) {
-                          // Gece modu geçişini yapar
-                          context
-                              .read<ClientCubit>()
-                              .changeDarkMode(newValue, darkMode: true);
-                          // Gündüz modu geçişi için bir kontrol yapar
-                          if (!newValue) {
-                            context
-                                .read<ClientCubit>()
-                                .changeDarkMode(newValue, darkMode: false);
-                          }
-                        },
-                      ),
                     ),
                     ListTileItem(
                       context,

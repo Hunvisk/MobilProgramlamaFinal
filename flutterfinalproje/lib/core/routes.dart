@@ -6,6 +6,7 @@ import '../screens/app_details/chatbot.dart';
 import '../screens/app_details/settings.dart';
 import '../screens/app_details/vipgezgininfo.dart';
 import '../screens/Home.dart';
+import '../screens/core/change_language.dart';
 import '../screens/core/error.dart';
 import '../screens/core/loader.dart';
 import '../screens/places_and_routes/map.dart';
@@ -19,7 +20,7 @@ import '../screens/static/boarding.dart';
 import '../screens/user/account/addcard.dart';
 import '../screens/user/account/cardsinfo.dart';
 import '../screens/user/account/forgotPassword.dart';
-import '../screens/user/account/useraccount.dart';
+//import '../screens/user/account/useraccount.dart';
 import '../screens/user/Login.dart';
 import '../screens/user/profile/achievements.dart';
 import '../screens/user/profile/favorites.dart';
@@ -62,6 +63,12 @@ final routes = GoRouter(
     GoRoute(
       path: '/VipGezginInfo',
       builder: (context, state) => const VipGezginInfo(),
+    ),
+
+    // Core
+    GoRoute(
+      path: '/Change_LanguageScreen',
+      builder: (context, state) => const Change_LanguageScreen(),
     ),
 
     // Places And Routes
@@ -109,10 +116,10 @@ final routes = GoRouter(
 
     // User
     // Account
-    GoRoute(
-      path: '/UserAccount',
-      builder: (context, state) => const UserAccount(),
-    ),
+    //GoRoute(
+    //  path: '/UserAccount',
+    //  builder: (context, state) => const UserAccount(),
+    //),
     GoRoute(
       path: '/CardsInfo',
       builder: (context, state) => const CardsInfo(),

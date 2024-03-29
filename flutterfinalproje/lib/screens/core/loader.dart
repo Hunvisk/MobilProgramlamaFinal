@@ -23,7 +23,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
   if (firstLaunch) {
     // cihazın gece gündüz moduna erişmek
-    final darkMode = ThemeMode.system == ThemeMode.dark;
+    const darkMode = ThemeMode.system == ThemeMode.dark;
 
     // cihazın varsayılan diline erişmek
     final language = getDeviceLanguage();

@@ -2,15 +2,17 @@
 
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/core/localizations.dart';
+//import 'package:flutterfinalproje/core/localizations.dart';
 
 class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final String title;
+  //final String title;
   final Icon icon;
   final Function(bool) onSearchChanged;
 
   const MyHomeAppBar({
     Key? key,
-    required this.title,
+    //required this.title,
     required this.icon,
     required this.onSearchChanged, required List<IconButton> actions,
   }) : super(key: key);
@@ -35,8 +37,9 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
     return AppBar(
       title: Center(
         child: Text(
-          widget.title,
-          style: Theme.of(context).textTheme.headlineSmall,
+          //widget.title,
+          //style: Theme.of(context).textTheme.headlineSmall,
+          AppLocalizations.of(context).getTranslate("home_title")
         ),
       ),
       actions: [
