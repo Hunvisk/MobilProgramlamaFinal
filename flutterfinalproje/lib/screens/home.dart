@@ -257,7 +257,7 @@ class _HomeState extends State<Home> {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/images/profile/profile.png"), // Profil fotoğrafı
+                                        "assets/images/logo/GR_Logo.png"), // Profil fotoğrafı
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -269,7 +269,7 @@ class _HomeState extends State<Home> {
                       child: CircleAvatar(
                         radius: 45,
                         backgroundImage:
-                            AssetImage("assets/images/profile/profile.png"),
+                            AssetImage("assets/images/logo/GR_Logo.png"),
                       ),
                     ),
                   ),

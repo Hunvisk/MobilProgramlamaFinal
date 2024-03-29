@@ -38,9 +38,14 @@ final routes = GoRouter(
   errorBuilder: (context, state) => const ErrorScreen(),
   routes: [
     // Uygulama LoaderScreen ile başlayacak.
+    // GoRoute(
+    //   path: '/',
+    //   builder: (context, state) => const LoaderScreen(),
+    // ),
+
     GoRoute(
       path: '/',
-      builder: (context, state) => const LoaderScreen(),
+      builder: (context, state) => const BoardingScreen(),
     ),
 
     // App Details

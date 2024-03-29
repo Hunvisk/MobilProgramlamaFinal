@@ -8,9 +8,6 @@ import 'package:preload_page_view/preload_page_view.dart';
 
 import '../../core/storage.dart';
 
-
-
-
 class BoardingScreen extends StatefulWidget {
   const BoardingScreen({Key? key});
 
@@ -33,41 +30,35 @@ class _BoardingScreenState extends State<BoardingScreen> {
             });
           },
           children: const [
-            // BoardingItem(
-            //   image: AssetImage('assets/images/boardingImages/boarding-1.jpg'), // AssetImage olarak güncellendi
-            //   title: "Zekat Nedir ?",
-            //   description: "Zekat, İslam dininde mal varlığına sahip olanların belirli bir yüzdesini ihtiyaç sahiplerine vermeyi öngören bir ibadet ve sosyal yardımlaşma sistemidir.",
-            // ),
-            // BoardingItem(
-            //   image: AssetImage('assets/images/boardingImages/boarding-2.png'), // AssetImage olarak güncellendi
-            //   title: "Zekatın Önemi",
-            //   description: "Zekat, inananlar için maddi varlıklarını paylaşma, yardımlaşma ve toplumsal dayanışmanın bir ifadesidir. İslam'ın beş şartından biridir ve inananlar için büyük bir öneme sahiptir."
-
-
-            // ),
-            // BoardingItem(
-            //   image: AssetImage('assets/images/boardingImages/boarding-3.jpg'), // AssetImage olarak güncellendi
-            //   title: "Zekat Kimlere Verilir ?",
-            //   description: "Zekat, ihtiyaç sahiplerine, yoksullara, yetimlere, dul kadınlara, borçlulara ve diğer zor durumda olanlara verilir. Bu kişilerin yardıma muhtaç olmaları zekatın verilme şartıdır.",
-            // ),
-            
-            // BoardingItem(
-            //   image: AssetImage('assets/images/boardingImages/boarding-4.png'), // AssetImage olarak güncellendi
-            //   title: "Zekat Nasıl Hesaplanır?",
-            //   description: "Zekat genellikle mal varlığının belirli bir yüzdesi olarak hesaplanır. Altın, gümüş, para, ticari mallar gibi çeşitli varlıkların değerleri üzerinden hesaplanır ve belirli bir oranda zekat verilir.",
-            // ),
-            
-            // BoardingItem(
-            //   image: AssetImage('assets/images/boardingImages/boarding-5.jpg'), // AssetImage olarak güncellendi
-            //   title: "Zekatın Verilme Zamanı",
-            //   description: "Zekat, İslam takvimine göre belirli zamanlarda verilir. Genellikle Ramazan ayı boyunca veya yılın herhangi bir zamanında zekat verilmesi uygundur.",
-            // ),
-            
-            // BoardingItem(
-            //   image: AssetImage('assets/images/boardingImages/boarding-6.png'), // AssetImage olarak güncellendi
-            //   title: "Zekatın Faziletleri",
-            //   description: "Zekat vermek, inananlar için bir ibadet olarak kabul edilir ve manevi bir rızık olarak değerlendirilir. Zekatın verilmesi, bireylerin manevi gelişimine katkı sağlar ve toplumsal dayanışmayı güçlendirir.",
-            // ),
+            BoardingItem(
+                image: AssetImage(
+                    'assets/images/boarding/boarding-1.jpg'), // AssetImage olarak güncellendi
+                title: "İstanbul'un Gizemli Sokaklarında Yolculuk",
+                description:
+                    "Hoş geldiniz İstanbul'un Gizemli Sokaklarına ve Tarih Dolu Mekanlarına! İstanbul'un Kalbini Keşfetmek İçin Hazır Mısınız? Bizimle Bu Büyülü Şehri Adım Adım Gezin ve Unutulmaz Anılar Biriktirin."),
+            BoardingItem(
+                image: AssetImage(
+                    'assets/images/boarding/boarding-2.jpg'), // AssetImage olarak güncellendi
+                title: "Pasaportunuzdaki Macera... ",
+                description:
+                    "Artık Pasaportunuzla Bu Eşsiz Şehri Keşfetmenin Zamanı Geldi. "),
+            BoardingItem(
+              image: AssetImage(
+                  'assets/images/boarding/boarding-3.jpg'), // AssetImage olarak güncellendi
+              title: "Harita",
+              description: "Burayada Haritayala Alakalı Bir Mesaj Yazılacak ",
+            ),
+            BoardingItem(
+              image: AssetImage(
+                  'assets/images/boarding/boarding-4.jpg'), // AssetImage olarak güncellendi
+              title: "Galata Kulesi",
+              description: "Mekan Mesajı Buraya Yazılacak",
+            ),
+            BoardingItem(
+                image: AssetImage(
+                    'assets/images/logo/GR_Logo.png'), // AssetImage olarak güncellendi
+                title: "Hoşgeldin",
+                description: "Hoşgeldin Mesajı Yazılcak Buraya "),
           ],
         ),
       ),
@@ -80,12 +71,21 @@ class _BoardingScreenState extends State<BoardingScreen> {
             children: [
               Row(
                 children: [
-                  Icon(page == 0 ? CupertinoIcons.circle_filled : CupertinoIcons.circle),
-                  Icon(page == 1 ? CupertinoIcons.circle_filled : CupertinoIcons.circle),
-                  Icon(page == 2 ? CupertinoIcons.circle_filled : CupertinoIcons.circle),
-                  Icon(page == 3 ? CupertinoIcons.circle_filled : CupertinoIcons.circle),
-                  Icon(page == 4 ? CupertinoIcons.circle_filled : CupertinoIcons.circle),
-                  Icon(page == 5 ? CupertinoIcons.circle_filled : CupertinoIcons.circle),
+                  Icon(page == 0
+                      ? CupertinoIcons.circle_filled
+                      : CupertinoIcons.circle),
+                  Icon(page == 1
+                      ? CupertinoIcons.circle_filled
+                      : CupertinoIcons.circle),
+                  Icon(page == 2
+                      ? CupertinoIcons.circle_filled
+                      : CupertinoIcons.circle),
+                  Icon(page == 3
+                      ? CupertinoIcons.circle_filled
+                      : CupertinoIcons.circle),
+                  Icon(page == 4
+                      ? CupertinoIcons.circle_filled
+                      : CupertinoIcons.circle),
                 ],
               ),
               InkWell(
@@ -96,7 +96,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(page == 5 ? "Bitir" : "Geç"),
+                  child: Text(page == 4 ? "Bitir" : "Geç"),
                 ),
               )
             ],
@@ -133,7 +133,8 @@ class BoardingItem extends StatelessWidget {
                 const Gap(20),
                 Text(
                   title,
-                  style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 28, fontWeight: FontWeight.bold),
                 ),
                 const Gap(20),
                 Text(description),
