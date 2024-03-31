@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace, library_private_types_in_public_api, prefer_final_fields, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
+import 'package:flutterfinalproje/core/responsive.dart';
+import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
+import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
+import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +21,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String _aboutText = ' '; // Başlangıç metni
   TextEditingController _textEditingController = TextEditingController();
 
+Screen device = Screen.mobile;
+
+  set isSearching(bool isSearching) {}
+
+drawScreen() {
+    switch (device) {
+      case (Screen.mobile):
+        return profileMenu(context);
+      case (Screen.tablet):
+        return blogsScr();
+      case (Screen.desktop):
+        return selectedPlac();
+    }
+  }
+drawAppar() {
+  switch (device) {
+    case (Screen.mobile):
+      return AppBarWithSearchIcon(title: "PROFİL",
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.tablet):
+      return AppBarWithSearchIcon(title: "PROFİL",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.desktop):
+      return AppBarWithSearchIcon(title: "PROFİL",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+  }
+}
+  
+drawBottom(){
+     switch (device) {
+      case (Screen.mobile):
+       return  MyBottomNavBar();
+      case (Screen.tablet):
+       return MyBottomNavBar();
+      case (Screen.desktop):
+       return ;
+     }
+   }
   void _showEditDialog() {
     // Pop-up'ı gösteren fonksiyon
     showDialog(
@@ -202,123 +257,135 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+        device = detectScreen(MediaQuery.of(context).size);
+      });
     return SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(title: "PROFİL"),
-        body: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 230,
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                    child: Image.asset(
-                      "assets/images/profile/travell.jpeg",
-                      width: double.infinity,
-                      height: 300, // Sabit yükseklik
-                      fit: BoxFit.cover,
-                    ),
+        appBar: drawAppar(),
+        body: drawScreen(),
+        bottomNavigationBar:drawBottom(),
+      ),
+    );
+  }
+
+  Column profileMenu(BuildContext context) {
+    return Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 230,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      _showCoverPhotoOptionsDialog(); // Resmi değiştirme fonksiyonu çağrılıyor
-                    },
-                    child: Stack(
-                      alignment: Alignment
-                          .bottomRight, // İkonun sağ alt köşede olmasını sağlar
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment:MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(2),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.6),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Icon(
-                                  Icons.add_a_photo,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                  child: Image.asset(
+                    "assets/images/profile/travell.jpeg",
+                    width: double.infinity,
+                    height: 300, // Sabit yükseklik
+                    fit: BoxFit.cover,
                   ),
-                  Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                _showImageOptionsDialog(); // Resmi değiştirme fonksiyonu çağrılıyor
-                              },
-                              child: Stack(
-                                alignment: Alignment
-                                    .bottomRight, // İkonun sağ alt köşede olmasını sağlar
-                                children: [
-                                  CircleAvatar(
-                                    radius: 45,
-                                    backgroundImage: AssetImage(
-                                        "assets/images/profile/profile.png"),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.withOpacity(0.6),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Icon(
-                                      Icons.camera_alt,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Gap(7),
-                        Column(
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _showCoverPhotoOptionsDialog(); // Resmi değiştirme fonksiyonu çağrılıyor
+                  },
+                  child: Stack(
+                    alignment: Alignment
+                        .bottomRight, // İkonun sağ alt köşede olmasını sağlar
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment:MainAxisAlignment.end,
                           children: [
-                            Text(
-                              "İlknur Kavaklı",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
+                            Container(
+                              padding: EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.withOpacity(0.6),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                            ),
-                            Text(
-                              "Ultra Pro Gezgin",
-                              style: TextStyle(
+                              child: Icon(
+                                Icons.add_a_photo,
                                 color: Colors.white,
-                                fontSize: 12,
+                                size: 20,
                               ),
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              _showImageOptionsDialog(); // Resmi değiştirme fonksiyonu çağrılıyor
+                            },
+                            child: Stack(
+                              alignment: Alignment
+                                  .bottomRight, // İkonun sağ alt köşede olmasını sağlar
+                              children: [
+                                CircleAvatar(
+                                  radius: 45,
+                                  backgroundImage: AssetImage(
+                                      "assets/images/profile/profile.png"),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.all(2),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.6),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Icon(
+                                    Icons.camera_alt,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Gap(7),
+                      Column(
+                        children: [
+                          Text(
+                            "İlknur Kavaklı",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
+                          ),
+                          Text(
+                            "Ultra Pro Gezgin",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Expanded(
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -533,10 +600,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-          ],
-        ),
-        bottomNavigationBar: MyBottomNavBar(),
-      ),
-    );
+          ),
+        ],
+      );
   }
 }

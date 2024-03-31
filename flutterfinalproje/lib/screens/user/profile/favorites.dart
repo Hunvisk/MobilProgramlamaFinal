@@ -1,9 +1,12 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_literals_to_create_immutables, non_constant_identifier_names, prefer_const_constructors, use_key_in_widget_constructors, camel_case_types, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
+import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
+import '../../../core/responsive.dart';
 
 class Favorites extends StatefulWidget {
   const Favorites({Key? key}) : super(key: key);
@@ -15,113 +18,164 @@ class Favorites extends StatefulWidget {
 class _FavoritesState extends State<Favorites> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
+  Screen device = Screen.mobile;
+
+   drawScreen(){
+     switch (device) {
+      case (Screen.mobile):
+       return favorilerSayfa(isSearching: isSearching, searchController: searchController) ;
+      case (Screen.tablet):
+       return   blogsScr();
+      case (Screen.desktop):
+       return  selectedPlac();
+     }
+   }
+drawAppar() {
+  switch (device) {
+    case (Screen.mobile):
+      return AppBarWithSearchIcon(title: "FAVORİLER",
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.tablet):
+      return AppBarWithSearchIcon(title: "FAVORİLER",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.desktop):
+      return AppBarWithSearchIcon(title: "FAVORİLER",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+  }
+}
+   
+
 
   @override
   Widget build(BuildContext context) {
+      setState(() {
+        device = detectScreen(MediaQuery.of(context).size);
+      });
     return SafeArea(
       child: Scaffold(
-        appBar: AppBarWithSearchIcon(
-          title: 'FAVORİLER',
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        ),
+        appBar: drawAppar(),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              if (isSearching)
-                Container(
-                  height: 32, // Arama çubuğu yüksekliği
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: TextField(
-                    controller: searchController,
-                    onChanged: (value) {
-                      // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
-                    },
-                    onSubmitted: (value) {
-                      // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Ara...",
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
-                    ),
-                  ),
-                ),
-              FilterWidget(),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: RoutesContainerDesign(
-                  photo: "assets/images/routes/eminonu.jpeg",
-                  title: "Eminönü",
-                  puan: "5.0",
-                  visualization: "2024",
-                  comment: "32",
-                  durak: "9", // Durak sayısı
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: RoutesContainerDesign(
-                  photo: "assets/images/routes/ortakoy.jpeg",
-                  title: "Ortaköy",
-                  puan: "4.5",
-                  visualization: "1500",
-                  comment: "25",
-                  durak: "6", // Durak sayısı
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: RoutesContainerDesign(
-                  photo: "assets/images/routes/sariyer.jpeg",
-                  title: "Sarıyer",
-                  puan: "4.7",
-                  visualization: "1800",
-                  comment: "28",
-                  durak: "12", // Durak sayısı
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: RoutesContainerDesign(
-                  photo: "assets/images/routes/eminonu.jpeg",
-                  title: "Eminönü",
-                  puan: "5.0",
-                  visualization: "2024",
-                  comment: "32",
-                  durak: "9", // Durak sayısı
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: RoutesContainerDesign(
-                  photo: "assets/images/routes/camlica.jpeg",
-                  title: "Çamlıca Tepesi",
-                  puan: "4.2",
-                  visualization: "3200",
-                  comment: "78",
-                  durak: "15", // Durak sayısı
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: RoutesContainerDesign(
-                  photo: "assets/images/routes/kizKulesi.jpeg",
-                  title: "Kız Kulesi",
-                  puan: "3.9",
-                  visualization: "1293",
-                  comment: "22",
-                  durak: "3", // Durak sayısı
-                ),
-              ),
-            ],
-          ),
+          child:drawScreen(),
         ),
       ),
+    );
+  }
+}
+
+class favorilerSayfa extends StatelessWidget {
+  const favorilerSayfa({
+    super.key,
+    required this.isSearching,
+    required this.searchController,
+  });
+
+  final bool isSearching;
+  final TextEditingController searchController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        if (isSearching)
+          Container(
+            height: 32, // Arama çubuğu yüksekliği
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: TextField(
+              controller: searchController,
+              onChanged: (value) {
+                // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
+              },
+              onSubmitted: (value) {
+                // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
+              },
+              decoration: InputDecoration(
+                hintText: "Ara...",
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
+              ),
+            ),
+          ),
+        FilterWidget(),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: RoutesContainerDesign(
+            photo: "assets/images/routes/eminonu.jpeg",
+            title: "Eminönü",
+            puan: "5.0",
+            visualization: "2024",
+            comment: "32",
+            durak: "9", // Durak sayısı
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: RoutesContainerDesign(
+            photo: "assets/images/routes/ortakoy.jpeg",
+            title: "Ortaköy",
+            puan: "4.5",
+            visualization: "1500",
+            comment: "25",
+            durak: "6", // Durak sayısı
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: RoutesContainerDesign(
+            photo: "assets/images/routes/sariyer.jpeg",
+            title: "Sarıyer",
+            puan: "4.7",
+            visualization: "1800",
+            comment: "28",
+            durak: "12", // Durak sayısı
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: RoutesContainerDesign(
+            photo: "assets/images/routes/eminonu.jpeg",
+            title: "Eminönü",
+            puan: "5.0",
+            visualization: "2024",
+            comment: "32",
+            durak: "9", // Durak sayısı
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: RoutesContainerDesign(
+            photo: "assets/images/routes/camlica.jpeg",
+            title: "Çamlıca Tepesi",
+            puan: "4.2",
+            visualization: "3200",
+            comment: "78",
+            durak: "15", // Durak sayısı
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: RoutesContainerDesign(
+            photo: "assets/images/routes/kizKulesi.jpeg",
+            title: "Kız Kulesi",
+            puan: "3.9",
+            visualization: "1293",
+            comment: "22",
+            durak: "3", // Durak sayısı
+          ),
+        ),
+      ],
     );
   }
 }

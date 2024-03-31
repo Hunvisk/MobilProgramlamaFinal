@@ -6,7 +6,6 @@ import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import 'package:flutterfinalproje/widgets/myhomeappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';

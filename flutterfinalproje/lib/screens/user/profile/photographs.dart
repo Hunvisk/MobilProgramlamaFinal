@@ -1,8 +1,13 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
+import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
+import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
+import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../core/responsive.dart';
 
 
 class Photographs extends StatefulWidget {
@@ -14,61 +19,116 @@ class Photographs extends StatefulWidget {
 
 class PhotographsState extends State<Photographs> {
   bool isSearching = false;
+Screen device = Screen.mobile;
 
+ 
+
+drawScreen() {
+    switch (device) {
+      case (Screen.mobile):
+        return FotografSayfa();
+      case (Screen.tablet):
+        return selectedPlac() ;
+      case (Screen.desktop):
+        return blogsScr();
+    }
+  }
+drawAppar() {
+  switch (device) {
+    case (Screen.mobile):
+      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.tablet):
+      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.desktop):
+      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+  }
+}
+  
+drawBottom(){
+     switch (device) {
+      case (Screen.mobile):
+       return  MyBottomNavBar();
+      case (Screen.tablet):
+       return MyBottomNavBar();
+      case (Screen.desktop):
+       return ;
+     }
+   }
   @override
   Widget build(BuildContext context) {
+      setState(() {
+        device = detectScreen(MediaQuery.of(context).size);
+      });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: MyAppBar(
-          title: 'FOTOĞRAFLAR',
-        ),
+        appBar: drawAppar(),
         body: SingleChildScrollView(scrollDirection:Axis.vertical ,
-          child: Column(
-            children: [
-              Divider(thickness: 3),
-              FilterWidget(),
-              SingleChildScrollView(scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    PhotoItem("Kamera", "1.151", "assets/images/photographs/anlatan_meydanı.jpeg"),
-                    PhotoItem("Kolaj", "2.345", "assets/images/photographs/yalvac.jpg"),
-                    PhotoItem("Çiçekler", "3.789", "assets/images/photographs/isparta.jpg"),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    PhotoItem("Hayvanlar", "1.151", "assets/images/photographs/yalvac.jpg"),
-                    PhotoItem("Aile", "2.345", "assets/images/photographs/isparta.jpg"),
-                    PhotoItem("Facebook", "3.789", "assets/images/photographs/cinaralti.jpeg"),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    PhotoItem("WhatsApp", "1.151", "assets/images/photographs/pisidia.jpeg"),
-                    PhotoItem("Snapchat", "2.345", "assets/images/photographs/yalvac.jpg"),
-                    PhotoItem("Instagram", "3.789", "assets/images/photographs/isparta.jpg"),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    PhotoItem("ScreenShootlar", "1.151", "assets/images/photographs/isparta.jpg"),
-                    PhotoItem("Snapchat", "2.345", "assets/images/photographs/cinaralti.jpeg"),
-                    PhotoItem("Instagram", "3.789", "assets/images/photographs/yalvac.jpg"),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          child: drawScreen(),
         ),
       ),
     );
+  }
+
+  Column FotografSayfa() {
+    return Column(
+          children: [
+            Divider(thickness: 3),
+            FilterWidget(),
+            SingleChildScrollView(scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  PhotoItem("Kamera", "1.151", "assets/images/photographs/anlatan_meydanı.jpeg"),
+                  PhotoItem("Kolaj", "2.345", "assets/images/photographs/yalvac.jpg"),
+                  PhotoItem("Çiçekler", "3.789", "assets/images/photographs/isparta.jpg"),
+                ],
+              ),
+            ),
+            SingleChildScrollView(scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  PhotoItem("Hayvanlar", "1.151", "assets/images/photographs/yalvac.jpg"),
+                  PhotoItem("Aile", "2.345", "assets/images/photographs/isparta.jpg"),
+                  PhotoItem("Facebook", "3.789", "assets/images/photographs/cinaralti.jpeg"),
+                ],
+              ),
+            ),
+            SingleChildScrollView(scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  PhotoItem("WhatsApp", "1.151", "assets/images/photographs/pisidia.jpeg"),
+                  PhotoItem("Snapchat", "2.345", "assets/images/photographs/yalvac.jpg"),
+                  PhotoItem("Instagram", "3.789", "assets/images/photographs/isparta.jpg"),
+                ],
+              ),
+            ),
+            SingleChildScrollView(scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  PhotoItem("ScreenShootlar", "1.151", "assets/images/photographs/isparta.jpg"),
+                  PhotoItem("Snapchat", "2.345", "assets/images/photographs/cinaralti.jpeg"),
+                  PhotoItem("Instagram", "3.789", "assets/images/photographs/yalvac.jpg"),
+                ],
+              ),
+            ),
+          ],
+        );
   }
 
   Widget PhotoItem(String title, String count, String photo) {
