@@ -13,5 +13,10 @@
     "settings": "Einstellungen",
     "log_out": "Abmelden",
     "having_trouble": "Probleme?",
-    "help_for_you": "Hilfe für dich"
+    "help_for_you": "Hilfe für dich",
+    "mode": "Mod: ",
+    "night": "Nacht",
+    "light": "Licht",
+    "language": "Sprache: ",
+    "profile": "Profil"
 }

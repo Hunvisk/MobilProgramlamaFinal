@@ -140,7 +140,7 @@ class _HomeState extends State<Home> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey.shade200,
+                            color: Theme.of(context).colorScheme.secondaryContainer,
                           ),
                           width: double.infinity,
                           child: Column(
@@ -294,7 +294,7 @@ class _HomeState extends State<Home> {
                               Theme.of(context).secondaryHeaderColor,
                         ),
                         child: Text(
-                          "Profil",
+                          AppLocalizations.of(context).getTranslate("profile"),
                           style: Theme.of(context).textTheme.bodyMedium,
                         )),
                   ),
@@ -318,10 +318,10 @@ class _HomeState extends State<Home> {
                           color: Theme.of(context).iconTheme.color,
                         ),
                         title: Text(
-                          'Mod: ' +
+                          AppLocalizations.of(context).getTranslate("mode")+
                               (context.read<ClientCubit>().state.darkMode
-                                  ? 'Gece'
-                                  : 'Gündüz'),
+                                  ? AppLocalizations.of(context).getTranslate("night")
+                                  : AppLocalizations.of(context).getTranslate("light")),
                         ),
                         trailing: Switch(
                           value: context.read<ClientCubit>().state.darkMode,
@@ -342,7 +342,7 @@ class _HomeState extends State<Home> {
                     ),
                     ListTileItem(
                       context,
-                      'Dil: ' +
+                      AppLocalizations.of(context).getTranslate("language")+
                           context
                               .read<ClientCubit>()
                               .state
@@ -399,7 +399,7 @@ class _HomeState extends State<Home> {
                                 Text(AppLocalizations.of(context).getTranslate("having_trouble")),
                                 InkWell(
                                   onTap: () {
-                                    context.go('/ChatBot');
+                                    context.push('/ChatBot');
                                   },
                                   child: Text(
                                     AppLocalizations.of(context).getTranslate("help_for_you"),
@@ -595,7 +595,7 @@ Widget ListTileItem(BuildContext context, String name, String screen,
   return BlocBuilder<ClientCubit, ClientState>(
     builder: (context, state) {
       bool isDarkMode =
-          state.darkMode ?? false; // Varsayılan olarak false kullanıyoruz
+          state.darkMode; // Varsayılan olarak false kullanıyoruz
 
       return Padding(
         padding: const EdgeInsets.all(4.0),

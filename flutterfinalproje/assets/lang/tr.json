@@ -13,5 +13,10 @@
     "settings": "Ayarlar",
     "log_out": "Oturumu kapat",
     "having_trouble": "Problemin mi var?",
-    "help_for_you": "Yardım İçin Tıkla"
+    "help_for_you": "Yardım İçin Tıkla",
+    "mode":"Mod: ",
+    "night":"Gece",
+    "light":"Gündüz",
+    "language":"Dil: ",
+    "profile": "Profil"
 }
