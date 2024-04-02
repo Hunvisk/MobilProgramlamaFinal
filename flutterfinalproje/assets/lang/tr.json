@@ -5,6 +5,13 @@
     "location": "İstanbul",
     "snowy": "Karlı",
     "wind": "Rüzgar",
-    "Humidty": "Nem",
-    "rainfall": "Yağış"
+    "humidty": "Nem",
+    "rainfall": "Yağış",
+    "become_a_VIP_traveler_now": "Hemen VİP Gezgin Ol!",
+    "my_account": "Hesabım",
+    "vip_traveler": "VİP Gezgin",
+    "settings": "Ayarlar",
+    "log_out": "Oturumu kapat",
+    "having_trouble": "Problemin mi var?",
+    "help_for_you": "Yardım İçin Tıkla"
 }

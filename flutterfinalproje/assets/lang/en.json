@@ -5,6 +5,13 @@
     "location": "Istanbul",
     "snowy": "Snowy",
     "wind": "Wind",
-    "Humidty": "Humidty",
-    "rainfall": "Rainfall"
+    "humidty": "Humidty",
+    "rainfall": "Rainfall",
+    "become_a_VIP_traveler_now": "Become A VIP Traveler Now!",
+    "my_account": "My Account",
+    "vip_traveler": "VIP Traveler",
+    "settings": "Settings",
+    "log_out": "Log Out",
+    "having_trouble": "Having Trouble?",
+    "help_for_you": "Help For You"
 }

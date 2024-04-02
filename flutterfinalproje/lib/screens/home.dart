@@ -11,6 +11,8 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 
+import '../core/localizations.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -131,7 +133,7 @@ class _HomeState extends State<Home> {
                             context.push('/VipGezginInfo');
                           },
                           child: NavigatorBox(
-                            title: "Hemen VİP Gezgin Ol!",
+                            title:  AppLocalizations.of(context).getTranslate("become_a_VIP_traveler_now"),
                           )),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -148,7 +150,7 @@ class _HomeState extends State<Home> {
                                 child: Padding(
                                     padding: const EdgeInsets.all(5.0),
                                     child: Text(
-                                      "Bu Hafta Popüler",
+                                      AppLocalizations.of(context).getTranslate("popular_this_week"),
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall,
@@ -201,7 +203,7 @@ class _HomeState extends State<Home> {
                             context.push('/Home');
                           },
                           child: NavigatorBox(
-                            title: "Gezgin Ürünlerini Keşfet!",
+                            title: AppLocalizations.of(context).getTranslate("discover_traveler_products"),
                           )),
                     ],
                   ),
@@ -351,28 +353,28 @@ class _HomeState extends State<Home> {
                     ),
                     ListTileItem(
                       context,
-                      'Hesabım',
+                      AppLocalizations.of(context).getTranslate("my_account"),
                       '/UserAccount',
                       Icons.person,
                       Colors.black54,
                     ),
                     ListTileItem(
                       context,
-                      'VİP Gezgin',
+                      AppLocalizations.of(context).getTranslate("vip_traveler"),
                       '/VipGezginInfo',
                       Icons.star,
                       Colors.black54,
                     ),
                     ListTileItem(
                       context,
-                      'Ayarlar',
+                      AppLocalizations.of(context).getTranslate("settings"),
                       '/Settings',
                       Icons.settings,
                       Colors.black54,
                     ),
                     ListTileItem(
                       context,
-                      'Oturumu Kapat',
+                      AppLocalizations.of(context).getTranslate("log_out"),
                       '/LogIn',
                       Icons.logout,
                       Colors.black54,
@@ -394,13 +396,13 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.all(5.0),
                             child: Column(
                               children: [
-                                Text("Having Trouble?"),
+                                Text(AppLocalizations.of(context).getTranslate("having_trouble")),
                                 InkWell(
                                   onTap: () {
                                     context.go('/ChatBot');
                                   },
                                   child: Text(
-                                    'Help For You',
+                                    AppLocalizations.of(context).getTranslate("help_for_you"),
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                     ),
@@ -494,7 +496,7 @@ class WeatherBox extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
                           child: Text(
-                        "İstanbul",
+                        AppLocalizations.of(context).getTranslate("location"),
                         style: Theme.of(context).textTheme.bodyLarge,
                       )),
                     ),
@@ -502,7 +504,7 @@ class WeatherBox extends StatelessWidget {
                         height: 65,
                         width: double.infinity,
                         child: Text(
-                          "Karlı",
+                          AppLocalizations.of(context).getTranslate("snowy"),
                           style: Theme.of(context).textTheme.headlineMedium,
                         )),
                     Container(
@@ -520,7 +522,7 @@ class WeatherBox extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: WeatherInfo(
                               icon: Icons.water_drop_outlined,
-                              labelText: "Nem",
+                              labelText: AppLocalizations.of(context).getTranslate("humidty"),
                               valueText: "30%",
                             ),
                           ),
@@ -528,7 +530,7 @@ class WeatherBox extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: WeatherInfo(
                               icon: Icons.air,
-                              labelText: "Rüzgar",
+                              labelText: AppLocalizations.of(context).getTranslate("wind"),
                               valueText: "27kh/h",
                             ),
                           ),
@@ -536,7 +538,7 @@ class WeatherBox extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: WeatherInfo(
                               icon: Icons.umbrella,
-                              labelText: "Yağış",
+                              labelText: AppLocalizations.of(context).getTranslate("rainfall"),
                               valueText: "20%",
                             ),
                           ),
