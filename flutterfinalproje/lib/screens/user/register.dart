@@ -277,7 +277,7 @@ Widget OtherSignInText(
           Gap(5),
           InkWell(
             onTap: () {
-              context.push('/');
+              context.push('/Login');
             },
             child: Text(
               'Oturum Aç',
