@@ -61,6 +61,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   static const List<String> _supportedLanguages = [
     'en',
     'tr',
+    'de',
+    'ru',
   ];
 
   const AppLocalizationsDelegate();
