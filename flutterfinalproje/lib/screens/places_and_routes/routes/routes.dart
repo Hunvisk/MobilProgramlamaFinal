@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
 import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
 
@@ -21,60 +20,69 @@ class _RoutesScreenState extends State<RoutesScreen> {
   bool isSearching = false;
   Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return    routesSayfa(isSearching: isSearching, searchController: searchController);
+        return routesSayfa(
+            isSearching: isSearching, searchController: searchController);
       case (Screen.tablet):
-       return   selectedPlac();
+        return selectedPlac();
       case (Screen.desktop):
-       return  blogsScr();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "ROTALAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "ROTALAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "ROTALAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return blogsScr();
+    }
   }
-}
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: "ROTALAR",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: "ROTALAR",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: "ROTALAR",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return SizedBox(); // Return an empty SizedBox for desktop
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    // final ScreenOrientation = MediaQuery.of(context).orientation;
-      setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return Scaffold(
       appBar: drawAppar(),
       bottomNavigationBar: drawBottom(),
@@ -87,10 +95,10 @@ drawBottom(){
 
 class routesSayfa extends StatelessWidget {
   const routesSayfa({
-    super.key,
+    Key? key,
     required this.isSearching,
     required this.searchController,
-  });
+  }) : super(key: key);
 
   final bool isSearching;
   final TextEditingController searchController;
@@ -101,7 +109,7 @@ class routesSayfa extends StatelessWidget {
       children: [
         if (isSearching)
           Container(
-            height: 32, // Arama çubuğu yüksekliği
+            height: 32,
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
               controller: searchController,
@@ -114,74 +122,88 @@ class routesSayfa extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: "Ara...",
                 border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
+                contentPadding: EdgeInsets.all(4.0),
               ),
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/eminonu.jpeg",
-            title: "Eminönü",
-            puan: "5.0",
-            visualization: "2024",
-            comment: "32",
-            durak: "9", // Durak sayısı
+        InkWell(
+          onTap: () {
+            GoRouter.of(context).push('/SelectedRoutes');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RoutesContainerDesign(
+              photo: "assets/images/routes/eminonu.jpeg",
+              title: "Eminönü",
+              puan: "5.0",
+              visualization: "2024",
+              comment: "32",
+              durak: "9",
+            ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/ortakoy.jpeg",
-            title: "Ortaköy",
-            puan: "4.5",
-            visualization: "1500",
-            comment: "25",
-            durak: "6", // Durak sayısı
+        InkWell(
+          onTap: () {
+            GoRouter.of(context).push('/SelectedRoutes');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RoutesContainerDesign(
+              photo: "assets/images/routes/ortakoy.jpeg",
+              title: "Ortaköy",
+              puan: "4.5",
+              visualization: "1500",
+              comment: "25",
+              durak: "6",
+            ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/sariyer.jpeg",
-            title: "Sarıyer",
-            puan: "4.7",
-            visualization: "1800",
-            comment: "28",
-            durak: "12", // Durak sayısı
+        InkWell(
+          onTap: () {
+            GoRouter.of(context).push('/SelectedRoutes');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RoutesContainerDesign(
+              photo: "assets/images/routes/sariyer.jpeg",
+              title: "Sarıyer",
+              puan: "4.7",
+              visualization: "1800",
+              comment: "28",
+              durak: "12",
+            ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/eminonu.jpeg",
-            title: "Eminönü",
-            puan: "5.0",
-            visualization: "2024",
-            comment: "32",
-            durak: "9", // Durak sayısı
+        InkWell(
+          onTap: () {
+            GoRouter.of(context).push('/SelectedRoutes');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RoutesContainerDesign(
+              photo: "assets/images/routes/camlica.jpeg",
+              title: "Çamlıca Tepesi",
+              puan: "4.2",
+              visualization: "3200",
+              comment: "78",
+              durak: "15",
+            ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/camlica.jpeg",
-            title: "Çamlıca Tepesi",
-            puan: "4.2",
-            visualization: "3200",
-            comment: "78",
-            durak: "15", // Durak sayısı
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/kizKulesi.jpeg",
-            title: "Kız Kulesi",
-            puan: "3.9",
-            visualization: "1293",
-            comment: "22",
-            durak: "3", // Durak sayısı
+        InkWell(
+          onTap: () {
+            GoRouter.of(context).push('/SelectedRoutes');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RoutesContainerDesign(
+              photo: "assets/images/routes/kizKulesi.jpeg",
+              title: "Kız Kulesi",
+              puan: "3.9",
+              visualization: "1293",
+              comment: "22",
+              durak: "3",
+            ),
           ),
         ),
       ],

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
 
@@ -128,7 +129,7 @@ class placesScr extends StatelessWidget {
         FilterWidget(),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/SelectedPlaces');
+              GoRouter.of(context).push('/SelectedPlaces');
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
