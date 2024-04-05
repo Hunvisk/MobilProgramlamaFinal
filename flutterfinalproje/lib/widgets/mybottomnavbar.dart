@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MyBottomNavBar extends StatefulWidget {
   MyBottomNavBar({Key? key, }) : super(key: key);
@@ -12,8 +11,6 @@ class MyBottomNavBar extends StatefulWidget {
 }
 
 class _MyBottomNavBarState extends State<MyBottomNavBar> {
-  int selectedIndex = 0;
-  final List<String> rotaAdlari = ['/Home', '/Places', '/Map', '/Routes'];
 
   @override
   Widget build(BuildContext context) {
@@ -24,54 +21,35 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
       ),
       child: Container(
         height: 35,
-        child: GNav(
-          gap: 10,
-          duration: Duration(seconds: 0),
-          color: Colors.grey,
-          activeColor: Theme.of(context).primaryColor,
-          //tabBackgroundColor: Colors.grey.shade400,
-          onTabChange: (index) {
-            if (selectedIndex != index) {
-              setState(() {
-                selectedIndex = index;
-              });
-      
-              // Şu anki sayfayı kontrol et
-              String currentRoute = ModalRoute.of(context)!.settings.name!;
-              if (currentRoute != rotaAdlari[index]) {
-
-                // GoRouter.of(context).pushReplacement(rotaAdlari[index]);
-                context.push(rotaAdlari[index],  );
-                
-                print('Selected Index: $selectedIndex');
-              }
-            }
-          },
-          padding: EdgeInsets.all(15),
-          tabs: [
-            GButton(
-              icon: Icons.home,
-              //text: 'Ana Sayfa',
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                context.push('/Home');
+              },
+              icon: Icon(Icons.home),
             ),
-            GButton(
-              icon: Icons.place,
-              //text: 'Mekanlar',
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+            IconButton(
+              onPressed: () {
+                context.push('/Places');
+              },
+              icon: Icon(Icons.location_on_sharp),
             ),
-            GButton(
-              icon: Icons.map,
-              //text: 'Harita',
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+            IconButton(
+              onPressed: () {
+                context.push('/Map');
+              },
+              icon: Icon(Icons.map),
             ),
-            GButton(
-              icon: Icons.route,
-              //text: 'Rotalar',
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+            IconButton(
+              onPressed: () {
+                context.push('/Routes');
+              },
+              icon: Icon(Icons.route),
             ),
           ],
-          selectedIndex: selectedIndex,
-        ),
+        )
       ),
     );
   }

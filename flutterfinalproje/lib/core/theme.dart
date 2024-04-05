@@ -58,7 +58,7 @@ final darkTheme = FlexThemeData.dark(
   primary: const Color(0xffc4d7f8),
   primaryContainer: const Color(0xff577cbf),
   secondary: const Color(0xffdde5f5),
-  secondaryContainer: const Color(0xff7297d9),
+  secondaryContainer: const Color(0xff1145a4),
   tertiary: const Color(0xfff1bbbb),
   tertiaryContainer: const Color(0xffcb6060),
   error: const Color(0xffcf6679),

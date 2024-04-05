@@ -13,5 +13,10 @@
     "settings": "Settings",
     "log_out": "Log Out",
     "having_trouble": "Having Trouble?",
-    "help_for_you": "Help For You"
+    "help_for_you": "Help For You",
+    "mode":"Mode: ",
+    "night":"Night",
+    "light":"Light",
+    "language":"Language: ",
+    "profile": "Profile"
 }

@@ -13,5 +13,14 @@
     "settings": "Настройки",
     "log_out": "Выйти",
     "having_trouble": "Есть проблемы?",
-    "help_for_you": "Помощь для вас"
+    "help_for_you": "Помощь для вас",
+    "mode": "Режим: ",
+    "night": "Ночь",
+    "light": "Свет",
+    "language": "Язык: ",
+    "profile": "Профиль"
+
+
+
+
 }
