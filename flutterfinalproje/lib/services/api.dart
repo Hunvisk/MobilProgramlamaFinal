@@ -25,13 +25,4 @@ class WeatherAPI {
   }
 }
 
-void main() {
-  final apiKey = '2a209ebdc173950d2a371516a733bc95';
-  final weatherAPI = WeatherAPI(apiKey);
-  
-  weatherAPI.getWeather('İstanbul').then((weatherData) {
-    print(weatherData); // Hava durumu verileri burada alınır
-  }).catchError((error) {
-    print('Hata oluştu: $error');
-  });
-}
+

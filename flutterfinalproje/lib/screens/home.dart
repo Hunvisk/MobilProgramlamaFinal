@@ -470,7 +470,7 @@ class _WeatherBoxState extends State<WeatherBox> {
     super.initState();
     final apiKey = '2a209ebdc173950d2a371516a733bc95';
     final weatherAPI = WeatherAPI(apiKey);
-    _weatherFuture = weatherAPI.getWeather('Şırnak');
+    _weatherFuture = weatherAPI.getWeather('İstanbul');
   }
 
   @override
