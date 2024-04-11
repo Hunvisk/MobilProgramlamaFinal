@@ -1,101 +1,31 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors, sized_box_for_whitespace, deprecated_member_use, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, unused_element, dead_code, camel_case_types
-
-
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+import 'package:flutterfinalproje/core/responsive.dart';
+import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
-import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/responsive.dart';
-import '../../../tabletscreens.dart/places_and_routes/places/tabletplaces.dart';
+import '../../../widgets/placescontainerdesign.dart';
 
-class Places extends StatefulWidget {
-  const Places({Key? key}) : super(key: key);
-
-  @override
-  State<Places> createState() => _PlacesState();
-}
-
-class _PlacesState extends State<Places> {
-
-  TextEditingController searchController = TextEditingController();
-  bool isSearching = false;
-
-   Screen device = Screen.mobile;
-
-   drawScreen(){
-     switch (device) {
-      case (Screen.mobile):
-       return   placesScr(device: device, isSearching: isSearching, searchController: searchController);
-      case (Screen.tablet):
-       return  TabletPlacesScreen(device: device, isSearching: isSearching, searchController: searchController);
-
-      case (Screen.desktop):
-       return  Column(children: [
-         Text("masaüstü modu"), 
-        ],);
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "MEKANLAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
-drawBottom(){
-     switch (device) {
-      case (Screen.mobile):
-       return  MyBottomNavBar();
-      case (Screen.tablet):
-       return MyBottomNavBar();
-      case (Screen.desktop):
-       return ;
-     }
-   }
+class TabletPlaces extends StatelessWidget {
+  const TabletPlaces({super.key});
 
   @override
   Widget build(BuildContext context) {
-     // final screenSize =  MediaQuery.of(context).size;
-     // final ScreenOrientation = MediaQuery.of(context).orientation;
-      setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
-    return Scaffold(
-      appBar: drawAppar(),
-      bottomNavigationBar: drawBottom(),
-      body: SingleChildScrollView(
-        child: drawScreen(),
+    return Container(
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'GEZİLMEK İSTENİLENLER',
       ),
-    );
+      body: Text("GEZİLMEK İSTENİLENLER SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    ));
   }
 }
 
-class placesScr extends StatelessWidget {
-  const placesScr({
-    
+class TabletPlacesScreen extends StatelessWidget {
+  const TabletPlacesScreen({
     required this.device,
     required this.isSearching,
     required this.searchController,
@@ -125,46 +55,86 @@ class placesScr extends StatelessWidget {
             ),
           ),
         FilterWidget(),
-        InkWell(
-          onTap: () {
-              GoRouter.of(context).push('/SelectedPlaces');
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: PlacesContainerDesign(
-              imagePath: "assets/images/places/galata.jpg",
-              title: "Galata Kulesi",
-              rating: "8.5",
-              views: "1500",
-              comments: "45",
+        Row(
+          children: [
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  GoRouter.of(context).push('/SelectedPlaces');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: PlacesContainerDesign(
+                    imagePath: "assets/images/places/galata.jpg",
+                    title: "Galata Kulesi",
+                    rating: "8.5",
+                    views: "1500",
+                    comments: "45",
+                  ),
+                ),
+              ),
             ),
-          ),
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  GoRouter.of(context).push('/SelectedPlaces');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: PlacesContainerDesign(
+                    imagePath: "assets/images/places/kız.png",
+                    title: "Kız Kulesi",
+                    rating: "9.0",
+                    views: "2000",
+                    comments: "60",
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: PlacesContainerDesign(
-            imagePath: "assets/images/places/kız.png",
-            title: "Kız Kulesi",
-            rating: "9.0",
-            views: "2000",
-            comments: "60",
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: PlacesContainerDesign(
-            imagePath: "assets/images/places/dolmabahçe.jpg",
-            title: "Dolmabahçe Sarayı",
-            rating: "4.0",
-            views: "3000",
-            comments: "45",
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  GoRouter.of(context).push('/SelectedPlaces');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: PlacesContainerDesign(
+                    imagePath: "assets/images/places/dolmabahçe.jpg",
+                    title: "Dolmabahçe Sarayı",
+                    rating: "4.0",
+                    views: "3000",
+                    comments: "45",
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  GoRouter.of(context).push('/SelectedPlaces');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: PlacesContainerDesign(
+                    imagePath: "assets/images/places/dolmabahçe.jpg",
+                    title: "Dolmabahçe Sarayı",
+                    rating: "4.0",
+                    views: "3000",
+                    comments: "45",
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
 }
-
 
 class FilterWidget extends StatelessWidget {
   @override

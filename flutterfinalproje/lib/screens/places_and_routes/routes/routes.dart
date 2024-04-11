@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
 import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
@@ -7,6 +6,7 @@ import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/places_and_routes/routes/tabletroutes.dart';
 
 class RoutesScreen extends StatefulWidget {
   const RoutesScreen({Key? key}) : super(key: key);
@@ -26,7 +26,9 @@ class _RoutesScreenState extends State<RoutesScreen> {
         return routesSayfa(
             isSearching: isSearching, searchController: searchController);
       case (Screen.tablet):
-        return selectedPlac();
+        return TabletRoutesScreen(
+            isSearching: isSearching, searchController: searchController);
+
       case (Screen.desktop):
         return blogsScr();
     }

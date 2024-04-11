@@ -29,6 +29,18 @@ import '../screens/user/profile/profile.dart';
 import '../screens/user/profile/userblogs.dart';
 import '../screens/user/profile/usercomments.dart';
 import '../screens/user/register.dart';
+import '../tabletscreens.dart/app_details/tabletvipgezgininfo.dart';
+import '../tabletscreens.dart/places_and_routes/places/tabletplaces.dart';
+import '../tabletscreens.dart/places_and_routes/places/tabletselectedplaces.dart';
+import '../tabletscreens.dart/places_and_routes/routes/tabletroutes.dart';
+import '../tabletscreens.dart/places_and_routes/routes/tabletselectedroutes.dart';
+import '../tabletscreens.dart/user/profile/tabletachievements.dart';
+import '../tabletscreens.dart/user/profile/tabletfavorites.dart';
+import '../tabletscreens.dart/user/profile/tabletphotographs.dart';
+import '../tabletscreens.dart/user/profile/tabletplacestovisit.dart';
+import '../tabletscreens.dart/user/profile/tabletprofile.dart';
+import '../tabletscreens.dart/user/profile/tabletuserblogs.dart';
+import '../tabletscreens.dart/user/profile/tabletusercomments.dart';
 
 
 
@@ -55,6 +67,10 @@ final routes = GoRouter(
       path: '/VipGezginInfo',
       builder: (context, state) => const VipGezginInfo(),
     ),
+        GoRoute(
+      path: '/TabletVipGezginInfo',
+      builder: (context, state) => const TabletVipGezginInfo(),
+    ),
     GoRoute(
       path: '/Aboutus',
       builder: (context, state) => const AboutUs(),
@@ -77,9 +93,17 @@ final routes = GoRouter(
       path: '/Places',
       builder: (context, state) => const Places(),
     ),
+        GoRoute(
+      path: '/TabletPlaces',
+      builder: (context, state) => const TabletPlaces(),
+    ),
     GoRoute(
       path: '/SelectedPlaces',
       builder: (context, state) => const SelectedPlaces(),
+    ),
+        GoRoute(
+      path: '/TabletSelectedPlaces',
+      builder: (context, state) => const TabletSelectedPlaces(),
     ),
 
     // Routes
@@ -87,9 +111,17 @@ final routes = GoRouter(
       path: '/Routes',
       builder: (context, state) => const RoutesScreen(),
     ),
+        GoRoute(
+      path: '/TabletRoutes',
+      builder: (context, state) => const TabletRoutes(),
+    ),
     GoRoute(
       path: '/SelectedRoutes',
       builder: (context, state) => const SelectedRoutes(),
+    ),
+        GoRoute(
+      path: '/TabletSelectedRoutes',
+      builder: (context, state) => const TabletSelectedRoutes(),
     ),
     GoRoute(
       path: '/Map',
@@ -137,30 +169,57 @@ final routes = GoRouter(
       path: '/Achievemets',
       builder: (context, state) => const Achievemets(),
     ),
-
+    GoRoute(
+      path: '/TabletAchievemets',
+      builder: (context, state) => const TabletAchievemets(),
+    ),
     GoRoute(
       path: '/Favorites',
       builder: (context, state) => const Favorites(),
     ),
     GoRoute(
+      path: '/TabletFavorites',
+      builder: (context, state) => const TabletFavorites(),
+    ),
+    GoRoute(
       path: '/Photographs',
       builder: (context, state) => const Photographs(),
+    ),
+        GoRoute(
+      path: '/TabletPhotographs',
+      builder: (context, state) => const TabletPhotographs(),
     ),
     GoRoute(
       path: '/PlaceToVisit',
       builder: (context, state) => const PlaceToVisit(),
     ),
+        GoRoute(
+      path: '/TabletPlaceToVisit',
+      builder: (context, state) => const TabletPlaceToVisit(),
+    ),
     GoRoute(
       path: '/Profile',
       builder: (context, state) => const ProfileScreen(),
+    ),
+        GoRoute(
+      path: '/TabletProfile',
+      builder: (context, state) => const TabletProfile(),
     ),
     GoRoute(
       path: '/UserBlogs',
       builder: (context, state) => UserBlogs(),
     ),
+        GoRoute(
+      path: '/TabletUserBlogs',
+      builder: (context, state) => TabletUserBlogs(),
+    ),
     GoRoute(
       path: '/UserComments',
       builder: (context, state) => UserComments(),
+    ),
+        GoRoute(
+      path: '/TabletUserComments',
+      builder: (context, state) => TabletUserComments(),
     ),
     GoRoute(
       path: '/Login',

@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/profile/tabletplacestovisit.dart';
 import '../../../widgets/placescontainerdesign.dart';
 import '../../../widgets/routescontainerdesign.dart';
 
@@ -28,7 +29,7 @@ class _PlacesState extends State<PlaceToVisit> {
       case (Screen.mobile):
        return  gezilmekIstenenSayfa(device: device, isSearching: isSearching, searchController: searchController);
       case (Screen.tablet):
-       return   Column(children: [Text("tablet modu")],);
+       return TabletPlacesToVisitScreen(device: device, isSearching: isSearching, searchController: searchController);
       case (Screen.desktop):
        return Column(children: [Text("masaüstü modu")],) ;
      }
@@ -86,8 +87,6 @@ drawBottom(){
     ));
   }
 }
-
-
 
 class gezilmekIstenenSayfa extends StatelessWidget {
   const gezilmekIstenenSayfa({
@@ -152,6 +151,7 @@ class gezilmekIstenenSayfa extends StatelessWidget {
             ),
           ),
         ),
+
       ],
     );
   }
@@ -163,7 +163,6 @@ class FilterWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        width: 350,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -200,6 +199,7 @@ class FilterWidget extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
+                  // Show the custom sorting popup
                   _showSortPopup2(context);
                 },
                 style: ElevatedButton.styleFrom(
@@ -209,10 +209,10 @@ class FilterWidget extends StatelessWidget {
                     fontSize: 21,
                   ),
                 ),
-                child: Text(
-                  'Filtrele',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: Text('Filtrele',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
               ),
             ),
           ],
@@ -244,7 +244,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('A - Z'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -252,7 +252,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Z- A'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -260,7 +260,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('En çok yorum'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -268,7 +268,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('En çok beğeni'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -276,7 +276,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Puanlama (artan)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -284,7 +284,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Puanlama (azalan)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -292,7 +292,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Semte göre (A - Z)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -300,7 +300,7 @@ class FilterWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Semte göre (Z - A)'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -342,7 +342,7 @@ void _showSortPopup2(BuildContext context) {
                 ListTile(
                   title: Text('Z - A'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),
@@ -350,7 +350,7 @@ void _showSortPopup2(BuildContext context) {
                 ListTile(
                   title: Text('A - Z'),
                   onTap: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
                   },
                   trailing: Icon(Icons.chevron_right),
                 ),

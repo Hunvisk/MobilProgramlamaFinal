@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/profile/tabletfavorites.dart';
 
 class Favorites extends StatefulWidget {
   const Favorites({Key? key}) : super(key: key);
@@ -20,55 +20,67 @@ class _FavoritesState extends State<Favorites> {
   bool isSearching = false;
   Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return favorilerSayfa(isSearching: isSearching, searchController: searchController) ;
+        return favorilerSayfa(
+            isSearching: isSearching, searchController: searchController);
       case (Screen.tablet):
-       return   blogsScr();
+        return TabletFavoritesScreen(
+          isSearching: isSearching,
+          searchController: searchController,
+          device: device,
+        );
       case (Screen.desktop):
-       return  selectedPlac();
-     }
-   }
-drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "FAVORİLER",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "FAVORİLER",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "FAVORİLER",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return selectedPlac();
+    }
   }
-}
-   
 
+  drawAppar() {
+    switch (device) {
+      case (Screen.mobile):
+        return AppBarWithSearchIcon(
+          title: "FAVORİLER",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.tablet):
+        return AppBarWithSearchIcon(
+          title: "FAVORİLER",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.desktop):
+        return AppBarWithSearchIcon(
+          title: "FAVORİLER",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-      setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         appBar: drawAppar(),
         body: SingleChildScrollView(
-          child:drawScreen(),
+          child: drawScreen(),
         ),
       ),
     );
@@ -109,15 +121,20 @@ class favorilerSayfa extends StatelessWidget {
             ),
           ),
         FilterWidget(),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/eminonu.jpeg",
-            title: "Eminönü",
-            puan: "5.0",
-            visualization: "2024",
-            comment: "32",
-            durak: "9", // Durak sayısı
+        InkWell(
+          onTap: () {
+            GoRouter.of(context).push('/SelectedRoutes');
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RoutesContainerDesign(
+              photo: "assets/images/routes/eminonu.jpeg",
+              title: "Eminönü",
+              puan: "5.0",
+              visualization: "2024",
+              comment: "32",
+              durak: "9", // Durak sayısı
+            ),
           ),
         ),
         Padding(

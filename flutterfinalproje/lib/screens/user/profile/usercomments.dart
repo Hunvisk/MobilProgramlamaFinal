@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/profile/tabletusercomments.dart';
 
 void main() {
   runApp(UserComments());
@@ -28,7 +29,7 @@ drawScreen(){
       case (Screen.mobile):
        return   yorumSayfa();
       case (Screen.tablet):
-       return   Column(children: [Text("tablet modu")],);
+       return TabletUserCommentsScreen();
       case (Screen.desktop):
        return   Column(children: [Text("masaüstü modu")],);
      }

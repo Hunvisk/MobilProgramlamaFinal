@@ -1,27 +1,93 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
-class SelectedPlaces extends StatelessWidget {
-  const SelectedPlaces({super.key});
+import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/places_and_routes/places/tabletselectedplaces.dart';
+import '../../product/Cart.dart';
+
+void main() {
+  runApp(SelectedPlaces());
+}
+class SelectedPlaces extends StatefulWidget {
+  const SelectedPlaces({Key? key}) : super(key: key);
+
+  @override
+  _SelectedPlacesState createState() => _SelectedPlacesState();
+}
+
+class _SelectedPlacesState extends State<SelectedPlaces> {
+  Screen device = Screen.mobile;
+  
+  set isSearching(bool isSearching) {}
+
+   drawScreen(){
+     switch (device) {
+      case (Screen.mobile):
+       return   selectedPlac();
+      case (Screen.tablet):
+       return TabletSelectedPlacesScreen();
+      case (Screen.desktop):
+       return   Column(children: [Text("masaüstü modu")],);
+     }
+   }
+
+   drawAppar() {
+  switch (device) {
+    case (Screen.mobile):
+      return AppBarWithSearchIcon(title: "SEÇİLEN MEKANLAR",
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.tablet):
+      return AppBarWithSearchIcon(title: "SEÇİLEN MEKANLAR",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.desktop):
+      return AppBarWithSearchIcon(title: "SEÇİLEN MEKANLAR",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+  }
+}
+drawBottom(){
+     switch (device) {
+      case (Screen.mobile):
+       return  MyBottomNavBar();
+      case (Screen.tablet):
+       return MyBottomNavBar();
+      case (Screen.desktop):
+       return ;
+     }
+   }
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+        device = detectScreen(MediaQuery.of(context).size);
+      });
     return SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(title: "SEÇİLEN MEKANLAR"),
+        appBar: drawAppar(),
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: selectedPlac(),
+          child: drawScreen(),
         ),
-        bottomNavigationBar: MyBottomNavBar(),
+        bottomNavigationBar: drawBottom(),
       ),
     );
   }
 }
+
 
 class selectedPlac extends StatelessWidget {
   const selectedPlac({

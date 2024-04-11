@@ -1,110 +1,28 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, library_private_types_in_public_api, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-//import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../tabletscreens.dart/user/profile/tabletprofile.dart';
-
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
-  @override
-  _ProfileScreenState createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  //String _aboutText = ''; // Başlangıç metni
-  //TextEditingController _textEditingController = TextEditingController();
-
-  Screen device = Screen.mobile;
-
-  set isSearching(bool isSearching) {}
+class TabletProfile extends StatelessWidget {
+  const TabletProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      device = detectScreen(MediaQuery.of(context).size);
-    });
-    return SafeArea(
-      child: Scaffold(
-        appBar: drawAppBar(),
-        body: drawScreen(),
-        bottomNavigationBar: drawBottom(),
+    return Scaffold(
+      appBar: MyAppBar(
+        title: 'PROFİL',
       ),
+      body: Center(
+        child: Text("PROFİL SAYFASI"),
+      ),
+      bottomNavigationBar: MyBottomNavBar(),
     );
   }
+}
 
-  MyAppBar drawAppBar() {
-    return MyAppBar(
-      title: "PROFİL",
-    );
-  }
-
-  Widget drawScreen() {
-    switch (device) {
-      case Screen.mobile:
-        return profileMenu(context);
-      case Screen.tablet:
-        return TabletProfileScreen();
-      case Screen.desktop:
-        return selectedPlac();
-    }
-  }
-
-  Widget drawBottom() {
-    switch (device) {
-      case Screen.mobile:
-        return MyBottomNavBar();
-      case Screen.tablet:
-        return MyBottomNavBar();
-      case Screen.desktop:
-        return Container();
-    }
-  }
-
-  // void _showEditDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return AlertDialog(
-  //         title: Text('Hakkımda Düzenle'),
-  //         content: TextField(
-  //           controller: _textEditingController,
-  //           maxLength: 100,
-  //           maxLines: null,
-  //           decoration: const InputDecoration(
-  //             hintText: 'Hakkımda...',
-  //           ),
-  //         ),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () {
-  //               GoRouter.of(context).pop();
-  //             },
-  //             child: Text('İptal'),
-  //           ),
-  //           // TextButton(
-  //           //   onPressed: () {
-  //           //     setState(() {
-  //           //       _aboutText = _textEditingController.text;
-  //           //     });
-  //           //     GoRouter.of(context).pop();
-  //           //   },
-  //           //   child: Text('Kaydet'),
-  //           // ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-  void _showImageOptionsDialog() {
+class TabletProfileScreen extends StatelessWidget {
+  void _showImageOptionsDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -154,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _showCoverPhotoOptionsDialog() {
+  void _showCoverPhotoOptionsDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -204,12 +122,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: profileMenu(context),
+    );
+  }
+
   Column profileMenu(BuildContext context) {
     return Column(
       children: [
         Container(
           width: double.infinity,
-          height: 230,
+          height: 350, // Yükseklik artırıldı
           child: Stack(
             children: [
               ClipRRect(
@@ -220,7 +145,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Image.asset(
                   "assets/images/profile/travell.jpeg",
                   width: double.infinity,
-                  height: 300, // Sabit yükseklik
                   fit: BoxFit.cover,
                 ),
               ),
@@ -229,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 right: 10,
                 child: GestureDetector(
                   onTap: () {
-                    _showCoverPhotoOptionsDialog();
+                    _showCoverPhotoOptionsDialog(context);
                   },
                   child: CircleAvatar(
                     backgroundColor: Colors.grey.withOpacity(0.6),
@@ -238,41 +162,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              Center(
-                child: Positioned(
-                  top: MediaQuery.of(context).size.height * 0.15,
-          left: MediaQuery.of(context).size.width * 0.45,
-                  child: GestureDetector(
-                    onTap: () {
-                      _showImageOptionsDialog();
-                    },
-                    child: CircleAvatar(
-                      radius: 45,
-                      backgroundImage:
-                          AssetImage("assets/images/profile/profile.png"),
-                    ),
+              Positioned(
+                top: MediaQuery.of(context).size.height *
+                    0.25, // Yukarıya kaydırıldı
+                left: MediaQuery.of(context).size.width * 0.45,
+                child: GestureDetector(
+                  onTap: () {
+                    _showImageOptionsDialog(context);
+                  },
+                  child: CircleAvatar(
+                    radius: 70, // Daha büyük hale getirildi
+                    backgroundImage:
+                        AssetImage("assets/images/profile/profile.png"),
                   ),
                 ),
               ),
               Positioned(
-                 top: MediaQuery.of(context).size.height * 0.17,
-        left: MediaQuery.of(context).size.width * 0.33,
+                top: MediaQuery.of(context).size.height *
+                    0.35, // Yukarıya kaydırıldı
+                left: MediaQuery.of(context).size.width * 0.33,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.center, // Yatayda ortala
                   children: [
                     Text(
                       "İlknur Kavaklı",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                        fontSize: 24, // Yazı boyutu artırıldı
                       ),
                     ),
                     Text(
                       "Ultra Pro Gezgin",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 14, // Yazı boyutu artırıldı
                       ),
                     ),
                   ],
@@ -287,52 +212,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: Container(
-                //     width: 400,
-                //     height: 165,
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(11),
-                //       border: Border.all(
-                //           width: 1, color: const Color.fromARGB(42, 0, 0, 0)),
-                //     ),
-                //     child: Padding(
-                //       padding: const EdgeInsets.all(8.0),
-                //       child: Column(
-                //         crossAxisAlignment: CrossAxisAlignment.start,
-                //         children: [
-                //           Row(
-                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //             children: [
-                //               Text(
-                //                 'Hakkımda...',
-                //                 style: TextStyle(
-                //                   color: Colors.black,
-                //                   fontSize: 16,
-                //                   fontFamily: 'poppions',
-                //                 ),
-                //               ),
-                //               IconButton(
-                //                 onPressed: _showEditDialog,
-                //                 icon: Icon(Icons.edit, color: Colors.grey),
-                //               ),
-                //             ],
-                //           ),
-                //           Divider(thickness: 2),
-                //           Text(
-                //             _aboutText,
-                //             style: TextStyle(
-                //               color: Colors.grey,
-                //               fontSize: 14,
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-
                 Gap(18),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

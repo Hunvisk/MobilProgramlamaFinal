@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/profile/tabletuserblogs.dart';
 
 void main() {
   runApp(UserBlogs());
@@ -27,7 +28,7 @@ class _UserBlogState extends State<UserBlogs> {
       case (Screen.mobile):
        return   blogsScr();
       case (Screen.tablet):
-       return   Column(children: [Text("tablet modu")],);
+       return TabletUserBlogsScreen();
       case (Screen.desktop):
        return   Column(children: [Text("masaüstü modu")],);
      }

@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/profile/tabletachievements.dart';
 
 class Achievemets extends StatefulWidget {
   const Achievemets({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _AchievementsState extends State<Achievemets> {
       case (Screen.mobile):
        return   basarimlarSayfa();
       case (Screen.tablet):
-       return   blogsScr();
+       return   TabletAchievemetsScreen();
       case (Screen.desktop):
        return  selectedPlac();
      }
