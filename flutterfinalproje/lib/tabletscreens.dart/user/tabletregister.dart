@@ -1,95 +1,72 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, deprecated_member_use, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, non_constant_identifier_names, avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/desktopregister.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/responsive.dart';
-import '../../tabletscreens.dart/user/tabletregister.dart';
-
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class TabletRegister extends StatefulWidget {
+  const TabletRegister({Key? key}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<TabletRegister> createState() => _TabletRegisterState();
 }
 
-  class _RegisterScreenState extends State<RegisterScreen> {
-
+class _TabletRegisterState extends State<TabletRegister> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
 
-   Screen device = Screen.mobile;
-
-   drawScreen(){
-     switch (device) {
-      case (Screen.mobile):
-       return  RegisterScreen(context) ;
-      case (Screen.tablet):
-       return  TabletRegister();
-
-      case (Screen.desktop):
-       return  DesktopRegister();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "KAYIT OL",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
-
   @override
   Widget build(BuildContext context) {
-    setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: drawScreen(),
+          body: Center(
+            child: SingleChildScrollView(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: logo()),
+                  Expanded(child: buildColumn(context)),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Center RegisterScreen(BuildContext context) {
+  Center TabletRegister(BuildContext context) {
     return Center(
-          child: SingleChildScrollView(
-            child: buildColumn(context),
+      child: SingleChildScrollView(
+        child: buildColumn(context),
+      ),
+    );
+  }
+
+  Widget logo() {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 300,
+            height: 300,
+            child: Image.asset(
+              "assets/images/register/register.jpg",
+            ),
           ),
-        );
+        ],
+      ),
+    );
   }
 
   Widget buildColumn(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        logo(),
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Column(
@@ -272,84 +249,70 @@ class RegisterScreen extends StatefulWidget {
     );
   }
 
-  Widget logo() {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Column(
-        children: [
-          SizedBox(
-            width: 200,
-            height: 200,
-            child: Image.asset(
-              "assets/images/register/register.jpg",
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-Widget SignInButton(BuildContext context) {
-  return Column(
-    children: [
-      Gap(15),
-      Container(
-        width: double.infinity,
-        margin: EdgeInsets.all(5),
-        child: ElevatedButton(
-          onPressed: () {
-            context.push('/');
-          },
-          child: Text(
-            'Kayıt Ol',
-            style: Theme.of(context).textTheme.button!.copyWith(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget OtherSignInText(
-  BuildContext context,
-) {
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Zaten Bir Heabım Var ?',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey, // Yazı rengi
-            ),
-          ),
-          Gap(5),
-          InkWell(
-            onTap: () {
+  Widget SignInButton(BuildContext context) {
+    return Column(
+      children: [
+        Gap(15),
+        Container(
+          width: double.infinity,
+          margin: EdgeInsets.all(5),
+          child: ElevatedButton(
+            onPressed: () {
               context.push('/');
             },
             child: Text(
-              'Oturum Aç',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
+              'Kayıt Ol',
+              style: Theme.of(context).textTheme.button!.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor:
+                  Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
           ),
-        ],
-      ),
-    ],
-  );
+        ),
+      ],
+    );
+  }
+
+  Widget OtherSignInText(
+    BuildContext context,
+  ) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Zaten Bir Heabım Var ?',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey, // Yazı rengi
+              ),
+            ),
+            Gap(5),
+            InkWell(
+              onTap: () {
+                context.push('/');
+              },
+              child: Text(
+                'Oturum Aç',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 }

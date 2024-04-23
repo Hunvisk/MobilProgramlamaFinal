@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
 import '../../../desktopScreens/user/account/desktopCardsİnfo.dart';
+import '../../../tabletscreens.dart/user/account/tabletcardsinfo.dart';
 
 class CardsInfo extends StatefulWidget {
   const CardsInfo({Key? key}) : super(key: key);
@@ -27,11 +28,8 @@ class _CardsInfoState extends State<CardsInfo> {
       case (Screen.mobile):
        return   kayitliKartSayfa(context);
       case (Screen.tablet):
-       return   Column(
-        children: [
-          Text("tablet modu"), 
-        ],
-       ) ;
+       return tabletCardsInfo();
+
       case (Screen.desktop):
        return desktopCardsInfo();
      }

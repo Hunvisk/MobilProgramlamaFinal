@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../core/responsive.dart';
+import '../../tabletscreens.dart/places_and_routes/tabletmap.dart';
 
 class MyMap extends StatefulWidget {
   const MyMap({Key? key}) : super(key: key);
@@ -26,11 +27,7 @@ class _MyMapState extends State<MyMap> {
       case (Screen.mobile):
        return  haritaBuild() ;
       case (Screen.tablet):
-       return   Column(
-        children: [
-          Text("Tablet Modu"), 
-        ],
-       ) ;
+       return TabletMap();
       case (Screen.desktop):
        return DesktopMap();
      }

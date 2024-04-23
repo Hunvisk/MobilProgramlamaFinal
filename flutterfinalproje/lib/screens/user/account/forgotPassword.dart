@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last, deprecated_member_use, file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: sort_child_properties_last, deprecated_member_use, file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/account/desktopforgotPassword.dart';
@@ -8,6 +8,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/account/tabletforgotpassword.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -26,11 +27,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       case (Screen.mobile):
        return  passwordSayfa() ;
       case (Screen.tablet):
-       return   Column(
-        children: [
-          Text("tablet modu"), 
-        ],
-       ) ;
+       return TabletForgotPassword();
       case (Screen.desktop):
        return DesktopForgotPassword();
      }

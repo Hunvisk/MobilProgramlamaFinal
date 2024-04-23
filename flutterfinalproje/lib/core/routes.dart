@@ -54,6 +54,12 @@ import '../tabletscreens.dart/places_and_routes/places/tabletplaces.dart';
 import '../tabletscreens.dart/places_and_routes/places/tabletselectedplaces.dart';
 import '../tabletscreens.dart/places_and_routes/routes/tabletroutes.dart';
 import '../tabletscreens.dart/places_and_routes/routes/tabletselectedroutes.dart';
+import '../tabletscreens.dart/places_and_routes/tabletmap.dart';
+import '../tabletscreens.dart/shopping/product/tabletproducs.dart';
+import '../tabletscreens.dart/shopping/product/tabletselectedproducts.dart';
+import '../tabletscreens.dart/user/account/tabletaddcard.dart';
+import '../tabletscreens.dart/user/account/tabletcardsinfo.dart';
+import '../tabletscreens.dart/user/account/tabletforgotpassword.dart';
 import '../tabletscreens.dart/user/profile/tabletachievements.dart';
 import '../tabletscreens.dart/user/profile/tabletfavorites.dart';
 import '../tabletscreens.dart/user/profile/tabletphotographs.dart';
@@ -61,8 +67,8 @@ import '../tabletscreens.dart/user/profile/tabletplacestovisit.dart';
 import '../tabletscreens.dart/user/profile/tabletprofile.dart';
 import '../tabletscreens.dart/user/profile/tabletuserblogs.dart';
 import '../tabletscreens.dart/user/profile/tabletusercomments.dart';
-
-
+import '../tabletscreens.dart/user/tabletlogin.dart';
+import '../tabletscreens.dart/user/tabletregister.dart';
 
 // GoRouter configuration
 final routes = GoRouter(
@@ -87,11 +93,11 @@ final routes = GoRouter(
       path: '/VipGezginInfo',
       builder: (context, state) => const VipGezginInfo(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletVipGezginInfo',
       builder: (context, state) => const TabletVipGezginInfo(),
     ),
-     GoRoute(
+    GoRoute(
       path: '/DesktopVipGezginInfo',
       builder: (context, state) => const DesktopVipGezginInfo(),
     ),
@@ -117,11 +123,11 @@ final routes = GoRouter(
       path: '/Places',
       builder: (context, state) => const Places(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletPlaces',
       builder: (context, state) => const TabletPlaces(),
     ),
-     GoRoute(
+    GoRoute(
       path: '/DesktopPlaces',
       builder: (context, state) => const DesktopPlaces(),
     ),
@@ -129,7 +135,7 @@ final routes = GoRouter(
       path: '/SelectedPlaces',
       builder: (context, state) => const SelectedPlaces(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletSelectedPlaces',
       builder: (context, state) => const TabletSelectedPlaces(),
     ),
@@ -143,7 +149,7 @@ final routes = GoRouter(
       path: '/Routes',
       builder: (context, state) => const RoutesScreen(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletRoutes',
       builder: (context, state) => const TabletRoutes(),
     ),
@@ -155,8 +161,8 @@ final routes = GoRouter(
       path: '/SelectedRoutes',
       builder: (context, state) => const SelectedRoutes(),
     ),
-    
-        GoRoute(
+
+    GoRoute(
       path: '/TabletSelectedRoutes',
       builder: (context, state) => const TabletSelectedRoutes(),
     ),
@@ -167,6 +173,10 @@ final routes = GoRouter(
     GoRoute(
       path: '/Map',
       builder: (context, state) => const MyMap(),
+    ),
+    GoRoute(
+      path: '/TabletMap',
+      builder: (context, state) => const TabletMap(),
     ),
     GoRoute(
       path: '/DesktopMap',
@@ -180,6 +190,10 @@ final routes = GoRouter(
       builder: (context, state) => const Products(),
     ),
     GoRoute(
+      path: '/TabletProducts',
+      builder: (context, state) => const TabletProducts(),
+    ),
+    GoRoute(
       path: '/DesktopProducts',
       builder: (context, state) => const DesktopProducts(),
     ),
@@ -188,7 +202,11 @@ final routes = GoRouter(
       builder: (context, state) => const SelectedProducts(),
     ),
     GoRoute(
-      path: '/DeskropSelectedProducts',
+      path: '/TabletSelectedProducts',
+      builder: (context, state) => const TabletSelectedProducts(),
+    ),
+    GoRoute(
+      path: '/DesktopSelectedProducts',
       builder: (context, state) => const DesktopSelectedProducts(),
     ),
 
@@ -209,12 +227,20 @@ final routes = GoRouter(
       builder: (context, state) => const CardsInfo(),
     ),
     GoRoute(
+      path: '/TabletCardsInfo',
+      builder: (context, state) => const TabletCardsInfo(),
+    ),
+    GoRoute(
       path: '/DesktopCardsInfo',
       builder: (context, state) => const DesktopCardsInfo(),
     ),
     GoRoute(
       path: '/AddCard',
       builder: (context, state) => const AddCard(),
+    ),
+    GoRoute(
+      path: '/TabletAddCard',
+      builder: (context, state) => const TabletAddCard(),
     ),
     GoRoute(
       path: '/DesktopAddCard',
@@ -225,10 +251,14 @@ final routes = GoRouter(
       builder: (context, state) => const ForgotPassword(),
     ),
     GoRoute(
+      path: '/TabletForgotPassword',
+      builder: (context, state) => const TabletForgotPassword(),
+    ),
+    GoRoute(
       path: '/DesktopForgotPassword',
       builder: (context, state) => const DesktopForgotPassword(),
     ),
-    
+
     // Profile
     GoRoute(
       path: '/Achievemets',
@@ -258,7 +288,7 @@ final routes = GoRouter(
       path: '/Photographs',
       builder: (context, state) => const Photographs(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletPhotographs',
       builder: (context, state) => const TabletPhotographs(),
     ),
@@ -270,7 +300,7 @@ final routes = GoRouter(
       path: '/PlaceToVisit',
       builder: (context, state) => const PlaceToVisit(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletPlaceToVisit',
       builder: (context, state) => const TabletPlaceToVisit(),
     ),
@@ -282,11 +312,11 @@ final routes = GoRouter(
       path: '/Profile',
       builder: (context, state) => const ProfileScreen(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletProfile',
       builder: (context, state) => const TabletProfile(),
     ),
-   GoRoute(
+    GoRoute(
       path: '/DesktopProfile',
       builder: (context, state) => const DesktopProfile(),
     ),
@@ -294,7 +324,7 @@ final routes = GoRouter(
       path: '/UserBlogs',
       builder: (context, state) => UserBlogs(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletUserBlogs',
       builder: (context, state) => TabletUserBlogs(),
     ),
@@ -306,7 +336,7 @@ final routes = GoRouter(
       path: '/UserComments',
       builder: (context, state) => UserComments(),
     ),
-        GoRoute(
+    GoRoute(
       path: '/TabletUserComments',
       builder: (context, state) => TabletUserComments(),
     ),
@@ -319,12 +349,20 @@ final routes = GoRouter(
       builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
+      path: '/TabletLogin',
+      builder: (context, state) => TabletLogin(),
+    ),
+    GoRoute(
       path: '/DesktopLogin',
       builder: (context, state) => const DesktopLogin(),
     ),
     GoRoute(
       path: '/Register',
       builder: (context, state) => RegisterScreen(),
+    ),
+    GoRoute(
+      path: '/TabletRegister',
+      builder: (context, state) => TabletRegister(),
     ),
     GoRoute(
       path: '/DesktopRegister',
