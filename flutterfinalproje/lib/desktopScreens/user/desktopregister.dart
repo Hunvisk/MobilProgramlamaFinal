@@ -18,14 +18,23 @@ class DesktopRegister extends StatefulWidget {
   bool isSearching = false;
 
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: DesktopRegister(context),
+          body: Center(
+            child: SingleChildScrollView(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: logo()),
+                  Expanded(child: buildColumn(context)),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -33,17 +42,34 @@ class DesktopRegister extends StatefulWidget {
 
   Center DesktopRegister(BuildContext context) {
     return Center(
-          child: SingleChildScrollView(
-            child: buildColumn(context),
+      child: SingleChildScrollView(
+        child: buildColumn(context),
+      ),
+    );
+  }
+
+  Widget logo() {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 300,
+            height: 300,
+            child: Image.asset(
+              "assets/images/register/register.jpg",
+            ),
           ),
-        );
+        ],
+      ),
+    );
   }
 
   Widget buildColumn(BuildContext context) {
     return Column(
-     // crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        logo(),
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Column(
@@ -226,84 +252,70 @@ class DesktopRegister extends StatefulWidget {
     );
   }
 
-  Widget logo() {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Row(
-        children: [
-          SizedBox(
-            width: 300,
-            height: 300,
-            child: Image.asset(
-              "assets/images/register/register.jpg",
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-Widget SignInButton(BuildContext context) {
-  return Column(
-    children: [
-      Gap(15),
-      Container(
-        width: double.infinity,
-        margin: EdgeInsets.all(5),
-        child: ElevatedButton(
-          onPressed: () {
-            context.push('/');
-          },
-          child: Text(
-            'Kayıt Ol',
-            style: Theme.of(context).textTheme.button!.copyWith(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget OtherSignInText(
-  BuildContext context,
-) {
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Zaten Bir Heabım Var ?',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey, // Yazı rengi
-            ),
-          ),
-          Gap(5),
-          InkWell(
-            onTap: () {
+  Widget SignInButton(BuildContext context) {
+    return Column(
+      children: [
+        Gap(15),
+        Container(
+          width: double.infinity,
+          margin: EdgeInsets.all(5),
+          child: ElevatedButton(
+            onPressed: () {
               context.push('/');
             },
             child: Text(
-              'Oturum Aç',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
+              'Kayıt Ol',
+              style: Theme.of(context).textTheme.button!.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor:
+                  Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
           ),
-        ],
-      ),
-    ],
-  );
+        ),
+      ],
+    );
+  }
+
+  Widget OtherSignInText(
+    BuildContext context,
+  ) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Zaten Bir Heabım Var ?',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey, // Yazı rengi
+              ),
+            ),
+            Gap(5),
+            InkWell(
+              onTap: () {
+                context.push('/');
+              },
+              child: Text(
+                'Oturum Aç',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 }
