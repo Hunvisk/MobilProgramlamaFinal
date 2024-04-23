@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, camel_case_types, avoid_unnecessary_containers, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/desktopScreens/user/profile/desktopblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
@@ -30,7 +31,7 @@ class _UserBlogState extends State<UserBlogs> {
       case (Screen.tablet):
        return TabletUserBlogsScreen();
       case (Screen.desktop):
-       return   Column(children: [Text("masaüstü modu")],);
+       return   DesktopUserBlogsScreen();
      }
    }
 

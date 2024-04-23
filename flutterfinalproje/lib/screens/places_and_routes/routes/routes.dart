@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
+import 'package:flutterfinalproje/desktopScreens/places_and_routes/routes/desktoproutes.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
@@ -30,7 +32,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
             isSearching: isSearching, searchController: searchController);
 
       case (Screen.desktop):
-        return blogsScr();
+        return DesktopRoutesScreen(isSearching: isSearching, searchController: searchController);
     }
   }
 

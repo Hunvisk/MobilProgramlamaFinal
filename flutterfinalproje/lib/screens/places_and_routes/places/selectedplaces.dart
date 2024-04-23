@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/desktopScreens/places_and_routes/places/desktopselectedplaces.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
@@ -30,7 +31,7 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
       case (Screen.tablet):
        return TabletSelectedPlacesScreen();
       case (Screen.desktop):
-       return   Column(children: [Text("masaüstü modu")],);
+       return   DesktopSelectedPlacesScreen();
      }
    }
 

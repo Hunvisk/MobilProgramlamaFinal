@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/desktopScreens/user/profile/desktopcomments.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
@@ -31,7 +32,7 @@ drawScreen(){
       case (Screen.tablet):
        return TabletUserCommentsScreen();
       case (Screen.desktop):
-       return   Column(children: [Text("masaüstü modu")],);
+       return  DesktopUserCommentsScreen();
      }
    }
 

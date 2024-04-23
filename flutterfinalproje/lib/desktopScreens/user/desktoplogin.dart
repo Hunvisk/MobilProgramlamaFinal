@@ -2,79 +2,26 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterfinalproje/desktopScreens/user/desktoplogin.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'package:url_launcher/url_launcher.dart'; 
 import '../../core/responsive.dart';
 
 void main() {
-  runApp(LoginScreen());
+  runApp(DesktopLogin());
 }
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class DesktopLogin extends StatefulWidget {
+  const DesktopLogin({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<DesktopLogin> createState() => _DesktopLoginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _DesktopLoginState extends State<DesktopLogin> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
-  Screen device = Screen.mobile;
-
-  drawScreen() {
-    switch (device) {
-      case (Screen.mobile):
-        return  buildColumn(context) ;
-      case (Screen.tablet):
-        return Column(
-          children: [
-            Text("tablet modu"),
-          ],
-        );
-      case (Screen.desktop):
-        return DesktopLogin();
-    }
-  }
-
-  drawAppar() {
-    switch (device) {
-      case (Screen.mobile):
-        return AppBarWithSearchIcon(
-          title: "GİRİŞ YAP",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.tablet):
-        return AppBarWithSearchIcon(
-          title: "GİRİŞ YAP",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.desktop):
-        return AppBarWithSearchIcon(
-          title: "GİRİŞ YAP",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-    }
-  }
+  
 
   instagram() {
     final Uri uri = Uri.parse("https://www.instagram.com");
@@ -98,16 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
           body: Center(
             child: SingleChildScrollView(
-              child:drawScreen(),
+              child:DesktopLogin(context),
             ),
           ),
         ),
@@ -115,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildColumn(BuildContext context) {
+  Widget DesktopLogin(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -1,85 +1,37 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, deprecated_member_use, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, non_constant_identifier_names, avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/desktopregister.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/responsive.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class DesktopRegister extends StatefulWidget {
+  const DesktopRegister({Key? key}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<DesktopRegister> createState() => _DesktopRegisterState();
 }
 
-  class _RegisterScreenState extends State<RegisterScreen> {
+  class _DesktopRegisterState extends State<DesktopRegister> {
 
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
 
-   Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
-      case (Screen.mobile):
-       return  RegisterScreen(context) ;
-      case (Screen.tablet):
-       return   Column(
-        children: [
-          Text("tablet modu"), 
-        ],
-       ) ;
-      case (Screen.desktop):
-       return  DesktopRegister();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "KAYIT OL",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: drawScreen(),
+          body: DesktopRegister(context),
         ),
       ),
     );
   }
 
-  Center RegisterScreen(BuildContext context) {
+  Center DesktopRegister(BuildContext context) {
     return Center(
           child: SingleChildScrollView(
             child: buildColumn(context),
@@ -89,7 +41,7 @@ class RegisterScreen extends StatefulWidget {
 
   Widget buildColumn(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+     // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         logo(),
         Padding(
@@ -277,11 +229,11 @@ class RegisterScreen extends StatefulWidget {
   Widget logo() {
     return Align(
       alignment: Alignment.topCenter,
-      child: Column(
+      child: Row(
         children: [
           SizedBox(
-            width: 200,
-            height: 200,
+            width: 300,
+            height: 300,
             child: Image.asset(
               "assets/images/register/register.jpg",
             ),

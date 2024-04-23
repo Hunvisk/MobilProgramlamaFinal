@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, camel_case_types, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/desktopScreens/user/profile/desktopplacestovisit.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
@@ -31,7 +32,7 @@ class _PlacesState extends State<PlaceToVisit> {
       case (Screen.tablet):
        return TabletPlacesToVisitScreen(device: device, isSearching: isSearching, searchController: searchController);
       case (Screen.desktop):
-       return Column(children: [Text("masaüstü modu")],) ;
+       return DesktopPlaceToVisitScreen(device: device, isSearching: isSearching, searchController: searchController) ;
      }
    }
 

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
+import 'package:flutterfinalproje/desktopScreens/user/profile/desktopachievements.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
@@ -28,7 +28,7 @@ class _AchievementsState extends State<Achievemets> {
       case (Screen.tablet):
        return   TabletAchievemetsScreen();
       case (Screen.desktop):
-       return  selectedPlac();
+       return  DesktopAchievemetsScreen();
      }
    }
 

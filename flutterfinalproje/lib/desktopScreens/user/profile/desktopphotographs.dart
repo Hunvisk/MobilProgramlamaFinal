@@ -1,137 +1,84 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, unused_element
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/profile/desktopphotographs.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/responsive.dart';
-import '../../../tabletscreens.dart/user/profile/tabletphotographs.dart';
+class DesktopPhotographs extends StatelessWidget {
+  const DesktopPhotographs({Key? key}) : super(key: key);
 
-
-class Photographs extends StatefulWidget {
-  const Photographs({Key? key}) : super(key: key);
-
-  @override
-  State<Photographs> createState() => PhotographsState();
-}
-
-class PhotographsState extends State<Photographs> {
-  bool isSearching = false;
-Screen device = Screen.mobile;
-
- 
-
-drawScreen() {
-    switch (device) {
-      case (Screen.mobile):
-        return FotografSayfa();
-      case (Screen.tablet):
-        return TabletPhotographsScreen() ;
-      case (Screen.desktop):
-        return DesktopPhotographsScreen();
-    }
-  }
-drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
-  
-drawBottom(){
-     switch (device) {
-      case (Screen.mobile):
-       return  MyBottomNavBar();
-      case (Screen.tablet):
-       return MyBottomNavBar();
-      case (Screen.desktop):
-       return ;
-     }
-   }
   @override
   Widget build(BuildContext context) {
-      setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: drawAppar(),
-        body: SingleChildScrollView(scrollDirection:Axis.vertical ,
-          child: drawScreen(),
-        ),
+    return Scaffold(
+      appBar: MyAppBar(
+        title: 'FOTOĞRAFLAR',
       ),
+      body: Text("FOTOĞRAFLAR SAYFASI"),
+      bottomNavigationBar: MyBottomNavBar(),
+    );
+  }
+}
+
+class DesktopPhotographsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Divider(thickness: 3),
+        FilterWidget(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem("Kamera", "1.151",
+                  "assets/images/photographs/anlatan_meydanı.jpeg", context),
+              PhotoItem("Kolaj", "2.345",
+                  "assets/images/photographs/yalvac.jpg", context),
+              PhotoItem("Çiçekler", "3.789",
+                  "assets/images/photographs/isparta.jpg", context),
+              PhotoItem("Hayvanlar", "1.151",
+                  "assets/images/photographs/yalvac.jpg", context)
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem("Aile", "2.345",
+                  "assets/images/photographs/isparta.jpg", context),
+              PhotoItem("Facebook", "3.789",
+                  "assets/images/photographs/cinaralti.jpeg", context),
+              PhotoItem("WhatsApp", "1.151",
+                  "assets/images/photographs/pisidia.jpeg", context),
+              PhotoItem("Snapchat", "2.345",
+                  "assets/images/photographs/yalvac.jpg", context),
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem("Instagram", "3.789",
+                  "assets/images/photographs/isparta.jpg", context),
+              PhotoItem("ScreenShootlar", "1.151",
+                  "assets/images/photographs/isparta.jpg", context),
+              PhotoItem("Snapchat", "2.345",
+                  "assets/images/photographs/cinaralti.jpeg", context),
+              PhotoItem("Instagram", "3.789",
+                  "assets/images/photographs/yalvac.jpg", context),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
-  Column FotografSayfa() {
-    return Column(
-          children: [
-            Divider(thickness: 3),
-            FilterWidget(),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("Kamera", "1.151", "assets/images/photographs/anlatan_meydanı.jpeg"),
-                  PhotoItem("Kolaj", "2.345", "assets/images/photographs/yalvac.jpg"),
-                  PhotoItem("Çiçekler", "3.789", "assets/images/photographs/isparta.jpg"),
-                ],
-              ),
-            ),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("Hayvanlar", "1.151", "assets/images/photographs/yalvac.jpg"),
-                  PhotoItem("Aile", "2.345", "assets/images/photographs/isparta.jpg"),
-                  PhotoItem("Facebook", "3.789", "assets/images/photographs/cinaralti.jpeg"),
-                ],
-              ),
-            ),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("WhatsApp", "1.151", "assets/images/photographs/pisidia.jpeg"),
-                  PhotoItem("Snapchat", "2.345", "assets/images/photographs/yalvac.jpg"),
-                  PhotoItem("Instagram", "3.789", "assets/images/photographs/isparta.jpg"),
-                ],
-              ),
-            ),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("ScreenShootlar", "1.151", "assets/images/photographs/isparta.jpg"),
-                  PhotoItem("Snapchat", "2.345", "assets/images/photographs/cinaralti.jpeg"),
-                  PhotoItem("Instagram", "3.789", "assets/images/photographs/yalvac.jpg"),
-                ],
-              ),
-            ),
-          ],
-        );
-  }
-
-  Widget PhotoItem(String title, String count, String photo) {
+  Widget PhotoItem(
+      String title, String count, String photo, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -151,12 +98,13 @@ drawBottom(){
               ),
             ),
           ),
-          SizedBox(height: 8),
+          Gap(15),
           Text(
             title,
             style: TextStyle(
               color: Theme.of(context).textTheme.headlineMedium!.color,
-              fontWeight: Theme.of(context).textTheme.headlineMedium!.fontWeight,
+              fontWeight:
+                  Theme.of(context).textTheme.headlineMedium!.fontWeight,
             ),
           ),
           Text(
@@ -168,40 +116,6 @@ drawBottom(){
           ),
         ],
       ),
-    );
-  }
-
-  void _showAlbumPopup(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          contentPadding: EdgeInsets.zero,
-          content: SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Album',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }
@@ -223,7 +137,8 @@ class FilterWidget extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.05,
                 child: ElevatedButton(
                   onPressed: () {
-                    _showSortPopup(context);
+                    _showSortPopup(
+                        context); // Burada _showSortPopup kullanımı düzeltilmiştir.
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,
@@ -260,7 +175,6 @@ class FilterWidget extends StatelessWidget {
                         // Arama ikonuna tıklandığında yapılacak işlemler
                       },
                     ),
-                    
                   ],
                 ),
               ),
@@ -271,7 +185,8 @@ class FilterWidget extends StatelessWidget {
     );
   }
 
-  void _showSortPopup(BuildContext context) {
+  static void _showSortPopup(BuildContext context) {
+    // _showSortPopup fonksiyonu static olarak değiştirildi.
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {

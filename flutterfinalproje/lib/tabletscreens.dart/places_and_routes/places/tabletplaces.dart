@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../widgets/placescontainerdesign.dart';
@@ -15,11 +13,7 @@ class TabletPlaces extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      appBar: MyAppBar(
-        title: 'GEZİLMEK İSTENİLENLER',
-      ),
-      body: Text("GEZİLMEK İSTENİLENLER SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
+      
     ));
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_literals_to_create_immutables, non_constant_identifier_names, prefer_const_constructors, use_key_in_widget_constructors, camel_case_types, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
+import 'package:flutterfinalproje/desktopScreens/user/profile/desktopfavorites.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
@@ -32,7 +32,7 @@ class _FavoritesState extends State<Favorites> {
           device: device,
         );
       case (Screen.desktop):
-        return selectedPlac();
+        return DesktopFavoritesScreen(device: device, isSearching: isSearching, searchController: searchController);
     }
   }
 

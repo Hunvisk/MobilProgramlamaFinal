@@ -1,135 +1,46 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, deprecated_member_use, unused_local_variable, library_private_types_in_public_api, camel_case_types
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
-import '../../core/responsive.dart';
-import '../../desktopScreens/app_details/desktopvipgezgininfo.dart';
-import '../../tabletscreens.dart/app_details/tabletvipgezgininfo.dart';
+import 'package:flutterfinalproje/widgets/myappbar.dart';
 
-class VipGezginInfo extends StatefulWidget {
-  const VipGezginInfo({Key? key}) : super(key: key);
-
-  @override
-  _VipGezginInfoState createState() => _VipGezginInfoState();
-}
-
-class _VipGezginInfoState extends State<VipGezginInfo> {
-  Screen device = Screen.mobile;
-  bool isSearching = false;
-  late TextEditingController searchController;
- 
-
-  drawScreen() {
-    switch (device) {
-      case (Screen.mobile):
-        return vipGezginSayfa();
-      case (Screen.tablet):
-        return TabletVipGezginInfoScreen();
-      case (Screen.desktop):
-        return DesktopVipGezginInfoScreen();
-    }
-  }
-
-  drawAppar() {
-    switch (device) {
-      case (Screen.mobile):
-        return AppBarWithSearchIcon(
-          title: "VIP GEZGİN",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.tablet):
-        return AppBarWithSearchIcon(
-          title: "VIP GEZGİN",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.desktop):
-        return AppBarWithSearchIcon(
-          title: "VIP GEZGİN",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-    }
-  }
-
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    searchController = TextEditingController();
-     Screen device = Screen.mobile;
-  }
-
-  
-
-  
+class DesktopVipGezginInfo extends StatelessWidget {
+  const DesktopVipGezginInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      device = detectScreen(MediaQuery.of(context).size);
-    });
     return Container(
-      child: Scaffold(
-        appBar: drawAppar(),
-        body: SafeArea(
-            child: drawScreen()),
-        bottomNavigationBar: drawBottom(),
+        child: Scaffold(
+      appBar: MyAppBar(
+        title: 'VİP GEZGİN',
       ),
-    );
+      body: Text("VİP GEZGİN SAYFASI"),
+      
+    ));
   }
 }
 
-class vipGezginSayfa extends StatelessWidget {
-  const vipGezginSayfa({
-    super.key,
-  });
-
+class DesktopVipGezginInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-          children: [
-    Expanded(
-        child: SingleChildScrollView(
-            child: Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SubscriptionBox(),
-        ),
-        ContainerOfAllAdvantages(),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          //child: ComparisonBox(),
-        ),
-      ],
-    ))),
+        Expanded(
+            child: SingleChildScrollView(
+                child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SubscriptionBox(),
+            ),
+            ContainerOfAllAdvantages(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              //child: ComparisonBox(),
+            ),
           ],
-        );
+        ))),
+      ],
+    );
   }
 }
 
@@ -193,6 +104,24 @@ class ContainerOfAllAdvantages extends StatelessWidget {
                   content:
                       "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
                 ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
               ],
             ),
           ),
@@ -207,6 +136,24 @@ class ContainerOfAllAdvantages extends StatelessWidget {
                   content:
                       "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
                 ),
+                 FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                 FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
                   title: "Özellik Başlık",
@@ -221,6 +168,12 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
                   title: "Özellik Başlık",
@@ -251,7 +204,7 @@ class SubscriptionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      width: double.infinity,
+      width: 800,
       decoration: BoxDecoration(
           color: Colors.grey.shade200,
           border: Border.all(color: Colors.grey.shade300, width: 1),
