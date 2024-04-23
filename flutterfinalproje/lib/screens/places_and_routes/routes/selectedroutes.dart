@@ -31,7 +31,7 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
       case (Screen.tablet):
        return TabletSelectedRoutesScreen();
       case (Screen.desktop):
-       return  DesktopSelectedRoutes();
+       return  DesktopSelectedRoutesScreen();
      }
    }
 

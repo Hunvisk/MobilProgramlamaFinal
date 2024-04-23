@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
@@ -64,8 +64,8 @@ class DesktopUserBlogsScreen extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 10,
-                    right: 30,
+                    bottom: 1,
+                    right: 60,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -76,15 +76,15 @@ class DesktopUserBlogsScreen extends StatelessWidget {
                         child: Image.asset(
                           'assets/images/routes/ortakoy.jpeg',
                           fit: BoxFit.cover,
-                          width: 70,
-                          height: 50,
+                          width: 120,
+                          height: 90,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 120,
-                    right: 30,
+                    bottom: 1,
+                    right: 190,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -95,8 +95,27 @@ class DesktopUserBlogsScreen extends StatelessWidget {
                         child: Image.asset(
                           'assets/images/routes/ortakoy.jpeg',
                           fit: BoxFit.cover,
-                          width: 70,
-                          height: 50,
+                          width: 120,
+                          height: 90,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 1,
+                    right: 320,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.white, width: 2),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.asset(
+                          'assets/images/routes/ortakoy.jpeg',
+                          fit: BoxFit.cover,
+                          width: 120,
+                          height: 90,
                         ),
                       ),
                     ),
@@ -137,7 +156,7 @@ class DesktopUserBlogsScreen extends StatelessWidget {
                   ),
                   Gap(15),
                   Text(
-                    'Camiinin mimari açıdan en önemli özelliklerinden biri 18. yüzyıldan sonra özellikle Fransa ve İtalya saraylarında karşımıza çıkan Barok mimari tarzının kullanılması...',
+                    'Caminin mimari açıdan en önemli özelliklerinden biri 18. yüzyıldan sonra özellikle Fransa ve İtalya saraylarında karşımıza çıkan Barok mimari tarzının kullanılması...',
                     style: TextStyle(fontSize: 16),
                   ),
                   Gap(15),
@@ -199,8 +218,8 @@ Widget _buildBlogCard1() {
                   ),
                 ),
                 Positioned(
-                  top: 10,
-                  right: 30,
+                  bottom: 1,
+                  right: 320,
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -211,15 +230,15 @@ Widget _buildBlogCard1() {
                       child: Image.asset(
                         'assets/images/routes/sariyer.jpeg',
                         fit: BoxFit.cover,
-                        width: 70,
-                        height: 50,
+                        width: 120,
+                        height: 90,
                       ),
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 120,
-                  right: 30,
+                  bottom: 1,
+                  right: 60,
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -230,8 +249,46 @@ Widget _buildBlogCard1() {
                       child: Image.asset(
                         'assets/images/routes/sariyer.jpeg',
                         fit: BoxFit.cover,
-                        width: 70,
-                        height: 50,
+                        width: 120,
+                        height: 90,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 1,
+                  right: 190,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'assets/images/routes/sariyer.jpeg',
+                        fit: BoxFit.cover,
+                        width: 120,
+                        height: 90,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 1,
+                  right: 320,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'assets/images/routes/sariyer.jpeg',
+                        fit: BoxFit.cover,
+                        width: 120,
+                        height: 90,
                       ),
                     ),
                   ),
@@ -333,8 +390,8 @@ Widget _buildBlogCard2() {
                   ),
                 ),
                 Positioned(
-                  top: 10,
-                  right: 30,
+                  bottom: 1,
+                  right: 130,
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -345,15 +402,15 @@ Widget _buildBlogCard2() {
                       child: Image.asset(
                         'assets/images/routes/eminonu.jpeg',
                         fit: BoxFit.cover,
-                        width: 70,
-                        height: 50,
+                        width: 120,
+                        height: 90,
                       ),
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 120,
-                  right: 30,
+                  bottom: 1,
+                  right: 260,
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -364,8 +421,27 @@ Widget _buildBlogCard2() {
                       child: Image.asset(
                         'assets/images/routes/eminonu.jpeg',
                         fit: BoxFit.cover,
-                        width: 70,
-                        height: 50,
+                        width: 120,
+                        height: 90,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 1,
+                  right: 390,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'assets/images/routes/eminonu.jpeg',
+                        fit: BoxFit.cover,
+                        width: 120,
+                        height: 90,
                       ),
                     ),
                   ),

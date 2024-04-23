@@ -105,10 +105,6 @@ final routes = GoRouter(
       path: '/Aboutus',
       builder: (context, state) => const AboutUs(),
     ),
-    GoRoute(
-      path: '/VipGezginInfo',
-      builder: (context, state) => const VipGezginInfo(),
-    ),
 
     // Core
     GoRoute(
@@ -161,7 +157,6 @@ final routes = GoRouter(
       path: '/SelectedRoutes',
       builder: (context, state) => const SelectedRoutes(),
     ),
-
     GoRoute(
       path: '/TabletSelectedRoutes',
       builder: (context, state) => const TabletSelectedRoutes(),

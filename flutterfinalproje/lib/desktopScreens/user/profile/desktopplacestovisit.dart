@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+
 import 'package:go_router/go_router.dart';
 
 import '../../../widgets/placescontainerdesign.dart';
@@ -16,11 +15,6 @@ class DesktopPlaceToVisit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      appBar: MyAppBar(
-        title: 'GEZİLMEK İSTENİLENLER',
-      ),
-      body: Text("'GEZİLMEK İSTENİLENLER SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
     ));
   }
 }
@@ -96,6 +90,23 @@ class DesktopPlaceToVisitScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    GoRouter.of(context).push('/SelectedPlaces');
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: PlacesContainerDesign(
+                      imagePath: "assets/images/places/galata.jpg",
+                      title: "Galata Kulesi",
+                      rating: "8.5",
+                      views: "1500",
+                      comments: "45",
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ],
@@ -114,7 +125,7 @@ class FilterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.25,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -142,7 +153,7 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.25,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {

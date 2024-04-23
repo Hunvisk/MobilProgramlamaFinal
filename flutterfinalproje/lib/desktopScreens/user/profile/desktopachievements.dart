@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 class DesktopAchievemets extends StatelessWidget {
   const DesktopAchievemets({super.key});
@@ -11,11 +9,6 @@ class DesktopAchievemets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      appBar: MyAppBar(
-        title: 'BAŞARIMLAR',
-      ),
-      body: Text("BAŞARIMLAR SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
     ));
   }
 }
@@ -38,7 +31,7 @@ class DesktopAchievemetsScreen extends StatelessWidget {
       itemCount: achievements.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
           child: AchievementsBox1(
             title: achievements[index]['title']!,
             description: achievements[index]['description']!,
@@ -63,7 +56,7 @@ class AchievementsBox1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints:
-          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
+          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.1),
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
         border: Border.all(
@@ -77,11 +70,11 @@ class AchievementsBox1 extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(right: 5.0),
               child: Image.asset("assets/images/achievements/rozet.jpeg"),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   title,

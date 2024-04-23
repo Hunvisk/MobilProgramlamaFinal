@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, non_constant_identifier_names, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
@@ -39,7 +39,11 @@ class DesktopPhotographsScreen extends StatelessWidget {
               PhotoItem("Çiçekler", "3.789",
                   "assets/images/photographs/isparta.jpg", context),
               PhotoItem("Hayvanlar", "1.151",
-                  "assets/images/photographs/yalvac.jpg", context)
+                  "assets/images/photographs/yalvac.jpg", context),
+              PhotoItem("Kamera", "1.151",
+                  "assets/images/photographs/anlatan_meydanı.jpeg", context),
+              PhotoItem("Kolaj", "2.345",
+                  "assets/images/photographs/yalvac.jpg", context),
             ],
           ),
         ),
@@ -55,6 +59,10 @@ class DesktopPhotographsScreen extends StatelessWidget {
                   "assets/images/photographs/pisidia.jpeg", context),
               PhotoItem("Snapchat", "2.345",
                   "assets/images/photographs/yalvac.jpg", context),
+              PhotoItem("Aile", "2.345",
+                  "assets/images/photographs/isparta.jpg", context),
+              PhotoItem("Facebook", "3.789",
+                  "assets/images/photographs/cinaralti.jpeg", context),
             ],
           ),
         ),
@@ -64,12 +72,16 @@ class DesktopPhotographsScreen extends StatelessWidget {
             children: [
               PhotoItem("Instagram", "3.789",
                   "assets/images/photographs/isparta.jpg", context),
-              PhotoItem("ScreenShootlar", "1.151",
-                  "assets/images/photographs/isparta.jpg", context),
               PhotoItem("Snapchat", "2.345",
                   "assets/images/photographs/cinaralti.jpeg", context),
               PhotoItem("Instagram", "3.789",
                   "assets/images/photographs/yalvac.jpg", context),
+              PhotoItem("Instagram", "3.789",
+                  "assets/images/photographs/isparta.jpg", context),
+              PhotoItem("WhatsApp", "1.151",
+                  "assets/images/photographs/pisidia.jpeg", context),
+              PhotoItem("ScreenShootlar", "1.151",
+                  "assets/images/photographs/isparta.jpg", context),
             ],
           ),
         ),
@@ -127,10 +139,11 @@ class FilterWidget extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Container(
         width: double.infinity,
+        //alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.all(6.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.40,

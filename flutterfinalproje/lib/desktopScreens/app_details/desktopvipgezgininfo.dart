@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
 
 class DesktopVipGezginInfo extends StatelessWidget {
   const DesktopVipGezginInfo({super.key});
@@ -10,10 +9,7 @@ class DesktopVipGezginInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      appBar: MyAppBar(
-        title: 'VİP GEZGİN',
-      ),
-      body: Text("VİP GEZGİN SAYFASI"),
+     
       
     ));
   }
@@ -83,14 +79,14 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             child: Text(
               "Favori Vip Gezgin Avantajları",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 30,
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
@@ -126,9 +122,9 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
@@ -164,10 +160,22 @@ class ContainerOfAllAdvantages extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
+                FavoriteVipGezginAdvantages(
+                  imagePath: "assets/images/carouselslider/image8.jpeg",
+                  title: "Özellik Başlık",
+                  content:
+                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                ),
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
                   title: "Özellik Başlık",

@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,11 +14,7 @@ class DesktopFavorites extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      appBar: MyAppBar(
-        title: 'FAVORİLER',
-      ),
-      body: Text("FAVORİLER SAYFASI"),
-      
+     
     ));
   }
 }
@@ -94,6 +89,17 @@ class DesktopFavoritesScreen extends StatelessWidget {
                       durak: "6",
                     ),
                   ),
+                  Gap(15),
+                  Expanded(
+                    child: RoutesContainerDesign(
+                      photo: "assets/images/routes/sariyer.jpeg",
+                      title: "Sarıyer",
+                      puan: "4.7",
+                      visualization: "1800",
+                      comment: "28",
+                      durak: "12",
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -120,6 +126,17 @@ class DesktopFavoritesScreen extends StatelessWidget {
                       visualization: "2024",
                       comment: "32",
                       durak: "9",
+                    ),
+                  ),
+                  Gap(15),
+                  Expanded(
+                    child: RoutesContainerDesign(
+                      photo: "assets/images/routes/camlica.jpeg",
+                      title: "Çamlıca Tepesi",
+                      puan: "4.2",
+                      visualization: "3200",
+                      comment: "78",
+                      durak: "15",
                     ),
                   ),
                 ],
@@ -150,6 +167,17 @@ class DesktopFavoritesScreen extends StatelessWidget {
                       durak: "3",
                     ),
                   ),
+                  Gap(15),
+                  Expanded(
+                    child: RoutesContainerDesign(
+                      photo: "assets/images/routes/sariyer.jpeg",
+                      title: "Sarıyer",
+                      puan: "4.7",
+                      visualization: "1800",
+                      comment: "28",
+                      durak: "12",
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -170,7 +198,7 @@ class FilterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.25,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -198,7 +226,7 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.25,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
