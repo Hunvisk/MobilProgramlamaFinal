@@ -1,13 +1,13 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
+import 'package:flutterfinalproje/desktopScreens/user/profile/desktopphotographs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
+import '../../../tabletscreens.dart/user/profile/tabletphotographs.dart';
 
 
 class Photographs extends StatefulWidget {
@@ -28,9 +28,9 @@ drawScreen() {
       case (Screen.mobile):
         return FotografSayfa();
       case (Screen.tablet):
-        return selectedPlac() ;
+        return TabletPhotographsScreen() ;
       case (Screen.desktop):
-        return blogsScr();
+        return DesktopPhotographsScreen();
     }
   }
 drawAppar() {

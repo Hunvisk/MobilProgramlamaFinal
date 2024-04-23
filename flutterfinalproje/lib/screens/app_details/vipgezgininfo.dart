@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, deprecated_member_use, unused_local_variable, library_private_types_in_public_api, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import '../../core/responsive.dart';
+import '../../desktopScreens/app_details/desktopvipgezgininfo.dart';
+import '../../tabletscreens.dart/app_details/tabletvipgezgininfo.dart';
 
 class VipGezginInfo extends StatefulWidget {
   const VipGezginInfo({Key? key}) : super(key: key);
@@ -25,9 +25,9 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
       case (Screen.mobile):
         return vipGezginSayfa();
       case (Screen.tablet):
-        return selectedPlac();
+        return TabletVipGezginInfoScreen();
       case (Screen.desktop):
-        return blogsScr();
+        return DesktopVipGezginInfoScreen();
     }
   }
 

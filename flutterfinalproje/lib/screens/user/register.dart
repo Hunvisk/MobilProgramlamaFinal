@@ -1,28 +1,88 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, deprecated_member_use, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, non_constant_identifier_names, avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/desktopScreens/user/desktopregister.dart';
+import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-void main() {
-  runApp(RegisterScreen());
+import '../../core/responsive.dart';
+import '../../tabletscreens.dart/user/tabletregister.dart';
+
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class RegisterScreen extends StatelessWidget {
+  class _RegisterScreenState extends State<RegisterScreen> {
+
+  TextEditingController searchController = TextEditingController();
+  bool isSearching = false;
+
+   Screen device = Screen.mobile;
+
+   drawScreen(){
+     switch (device) {
+      case (Screen.mobile):
+       return  RegisterScreen(context) ;
+      case (Screen.tablet):
+       return  TabletRegister();
+
+      case (Screen.desktop):
+       return  DesktopRegister();
+     }
+   }
+
+   drawAppar() {
+  switch (device) {
+    case (Screen.mobile):
+      return AppBarWithSearchIcon(title: "KAYIT OL",
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.tablet):
+      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.desktop):
+      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+  }
+}
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+        device = detectScreen(MediaQuery.of(context).size);
+      });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: Center(
-            child: SingleChildScrollView(
-              child: buildColumn(context),
-            ),
-          ),
+          body: drawScreen(),
         ),
       ),
     );
+  }
+
+  Center RegisterScreen(BuildContext context) {
+    return Center(
+          child: SingleChildScrollView(
+            child: buildColumn(context),
+          ),
+        );
   }
 
   Widget buildColumn(BuildContext context) {
@@ -277,7 +337,7 @@ Widget OtherSignInText(
           Gap(5),
           InkWell(
             onTap: () {
-              context.push('/Login');
+              context.push('/');
             },
             child: Text(
               'Oturum Aç',

@@ -2,8 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
+import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../core/responsive.dart';
+import '../../../desktopScreens/user/account/desktopAddCard.dart';
+import '../../../tabletscreens.dart/user/account/tabletaddcard.dart';
 
 class CreditCardInfo {
   String cardNumber = '';
@@ -28,6 +34,57 @@ class AddCard extends StatefulWidget {
 }
 
 class _AddCardState extends State<AddCard> {
+  TextEditingController searchController = TextEditingController();
+  bool isSearching = false;
+
+  Screen device = Screen.mobile;
+
+  drawScreen() {
+    switch (device) {
+      case (Screen.mobile):
+        return;
+      case (Screen.tablet):
+        return tabletAddCard();
+      case (Screen.desktop):
+        return desktopAddCard();
+    }
+  }
+
+  drawAppar() {
+    switch (device) {
+      case (Screen.mobile):
+        return AppBarWithSearchIcon(
+          title: " YENİ KART EKLE",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.tablet):
+        return AppBarWithSearchIcon(
+          title: "YENİ KART EKLE",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.desktop):
+        return AppBarWithSearchIcon(
+          title: " YENİ KART EKLE",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   CreditCardInfo _creditCardInfo = CreditCardInfo(
     cardNumber: '',
@@ -38,10 +95,13 @@ class _AddCardState extends State<AddCard> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: MyAppBar(title: 'Yeni Kart Ekle'),
+        appBar: drawAppar(),
         body: SingleChildScrollView(
           padding: EdgeInsets.all(20.0),
           child: Column(
@@ -72,13 +132,17 @@ class _AddCardState extends State<AddCard> {
                 child: ElevatedButton(
                   onPressed: _saveCreditCard,
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50), backgroundColor: Theme.of(context).primaryColor, // Buton rengini temaya uygun olarak ayarlama
+                    minimumSize: Size(double.infinity, 50),
+                    backgroundColor: Theme.of(context)
+                        .primaryColor, // Buton rengini temaya uygun olarak ayarlama
                   ),
                   child: Text(
                     'Kartı Kaydet',
                     style: TextStyle(
-                      color: Colors.white, // Temaya uygun olarak metin rengini ayarlama
-                      fontWeight: FontWeight.bold, // Temaya uygun olarak font weight ayarlama
+                      color: Colors
+                          .white, // Temaya uygun olarak metin rengini ayarlama
+                      fontWeight: FontWeight
+                          .bold, // Temaya uygun olarak font weight ayarlama
                       fontSize: 20, // Metin boyutunu ayarlama
                     ),
                   ),

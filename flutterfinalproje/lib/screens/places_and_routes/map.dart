@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, camel_case_types, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/desktopScreens/places_and_routes/desktopmap.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../core/responsive.dart';
+import '../../tabletscreens.dart/places_and_routes/tabletmap.dart';
 
 class MyMap extends StatefulWidget {
   const MyMap({Key? key}) : super(key: key);
@@ -25,15 +27,9 @@ class _MyMapState extends State<MyMap> {
       case (Screen.mobile):
        return  haritaBuild() ;
       case (Screen.tablet):
-       return   Column(
-        children: [
-          Text("Tablet Modu"), 
-        ],
-       ) ;
+       return TabletMap();
       case (Screen.desktop):
-       return  Column(children: [
-         Text("Masaüstü Modu"), 
-        ],);
+       return DesktopMap();
      }
    }
 

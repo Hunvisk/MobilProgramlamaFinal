@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/screens/places_and_routes/places/selectedplaces.dart';
-import 'package:flutterfinalproje/screens/user/profile/userblogs.dart';
 //import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../desktopScreens/user/profile/desktopprofile.dart';
+import '../../../tabletscreens.dart/user/profile/tabletprofile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -50,9 +51,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       case Screen.mobile:
         return profileMenu(context);
       case Screen.tablet:
-        return blogsScr();
+        return TabletProfileScreen();
       case Screen.desktop:
-        return selectedPlac();
+        return DesktopProfileScreen();
     }
   }
 

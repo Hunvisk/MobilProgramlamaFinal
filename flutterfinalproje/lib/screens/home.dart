@@ -1,6 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use, prefer_interpolation_to_compose_strings, library_private_types_in_public_api, prefer_const_declarations, unnecessary_string_interpolations
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/core/responsive.dart';
+import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+import '../services/api.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +24,57 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+   Screen device = Screen.mobile;
+
+   drawScreen(){
+     switch (device) {
+      case (Screen.mobile):
+       return   ;
+      case (Screen.tablet):
+       return  ;
+
+      case (Screen.desktop):
+       return  ;
+     }
+   }
+
+   drawAppar() {
+  switch (device) {
+    case (Screen.mobile):
+      return AppBarWithSearchIcon(title: "MEKANLAR",
+        icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.tablet):
+      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+    case (Screen.desktop):
+      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
+        onSearchChanged: (isSearching) {
+          setState(() {
+            this.isSearching = isSearching;
+          });
+        },);
+  }
+}
+drawBottom(){
+     switch (device) {
+      case (Screen.mobile):
+       return  MyBottomNavBar();
+      case (Screen.tablet):
+       return MyBottomNavBar();
+      case (Screen.desktop):
+       return ;
+     }
+   }
   final myitems = [
     RoutesContainerDesign(
       photo: "assets/images/routes/eminonu.jpeg",
@@ -451,19 +505,51 @@ class NavigatorBox extends StatelessWidget {
   }
 }
 
-class WeatherBox extends StatelessWidget {
-  const WeatherBox({
-    super.key,
-  });
+
+
+
+class WeatherBox extends StatefulWidget {
+  const WeatherBox({Key? key}) : super(key: key);
+
+  @override
+  _WeatherBoxState createState() => _WeatherBoxState();
+}
+
+class _WeatherBoxState extends State<WeatherBox> {
+  late Future<Map<String, dynamic>> _weatherFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    final apiKey = '2a209ebdc173950d2a371516a733bc95';
+    final weatherAPI = WeatherAPI(apiKey);
+    _weatherFuture = weatherAPI.getWeather('İstanbul');
+  }
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<Map<String, dynamic>>(
+      future: _weatherFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator(); // Veri yüklenirken gösterilecek widget
+        } else if (snapshot.hasError) {
+          return Text('Hata: ${snapshot.error}'); // Hata durumunda gösterilecek widget
+        } else {
+          final weatherData = snapshot.data!; // API'den gelen hava durumu verileri
+          return _buildWeatherBox(weatherData); // Hava durumu widget'ını oluştur
+        }
+      },
+    );
+  }
+
+  Widget _buildWeatherBox(Map<String, dynamic> weatherData) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
         ),
         height: 185,
         child: Row(
@@ -474,7 +560,7 @@ class WeatherBox extends StatelessWidget {
                   bottomLeft: Radius.circular(10),
                   topLeft: Radius.circular(10),
                 ),
-                color: Theme.of(context).colorScheme.tertiaryContainer,
+                color: Theme.of(context).secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
               ),
               alignment: Alignment.center,
               child: Padding(
@@ -482,7 +568,7 @@ class WeatherBox extends StatelessWidget {
                 child: Icon(
                   Icons.cloudy_snowing,
                   size: 100,
-                  color: Colors.white,
+                  color: Colors.black, // Hava durumuna göre renk ayarlayabilirsiniz
                 ),
               ),
             ),
@@ -495,52 +581,46 @@ class WeatherBox extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
-                          child: Text(
-                        AppLocalizations.of(context).getTranslate("location"),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      )),
+                        child: Text(
+                          'Konum: ${weatherData['name']}',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
                     ),
                     Container(
-                        height: 65,
-                        width: double.infinity,
-                        child: Text(
-                          AppLocalizations.of(context).getTranslate("snowy"),
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        )),
+                      height: 65,
+                      width: double.infinity,
+                      child: Text(
+                        'Sıcaklık: ${weatherData['main']['temp']}°C',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
                     Container(
                       decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).colorScheme.secondaryContainer,
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(10))),
+                        color: Theme.of(context).secondaryHeaderColor ,// Hava durumuna göre renk ayarlayabilirsiniz
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
                       height: 65,
                       width: double.infinity,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: WeatherInfo(
-                              icon: Icons.water_drop_outlined,
-                              labelText: AppLocalizations.of(context).getTranslate("humidty"),
-                              valueText: "30%",
-                            ),
+                          WeatherInfo(
+                            icon: Icons.water_drop_outlined,
+                            labelText: 'Nem',
+                            valueText: '${weatherData['main']['humidity']}%',
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: WeatherInfo(
-                              icon: Icons.air,
-                              labelText: AppLocalizations.of(context).getTranslate("wind"),
-                              valueText: "27kh/h",
-                            ),
+                          WeatherInfo(
+                            icon: Icons.air,
+                            labelText: 'Rüzgar',
+                            valueText: '${weatherData['wind']['speed']}km/h',
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: WeatherInfo(
-                              icon: Icons.umbrella,
-                              labelText: AppLocalizations.of(context).getTranslate("rainfall"),
-                              valueText: "20%",
-                            ),
+                          WeatherInfo(
+                            icon: Icons.umbrella,
+                            labelText: 'Yağış Olasılığı',
+                            valueText: '${weatherData['rain'] != null ? weatherData['rain']['1h'].toString() + 'mm' : '0mm'}',
                           ),
                         ],
                       ),
@@ -570,25 +650,28 @@ class WeatherInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Icon(
-        icon,
-      ),
-      Column(
-        children: [
-          Text(
-            labelText,
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          Text(
-            valueText,
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ],
-      )
-    ]);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              labelText,
+              style: TextStyle(fontSize: 14),
+            ),
+            Text(
+              valueText,
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
+
 
 Widget ListTileItem(BuildContext context, String name, String screen,
     IconData iconData, Color iconColor) {
