@@ -194,7 +194,7 @@ drawBottom(){
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Theme.of(context).colorScheme.secondaryContainer,
+                            color: Theme.of(context).secondaryHeaderColor
                           ),
                           width: double.infinity,
                           child: Column(
@@ -568,7 +568,7 @@ class _WeatherBoxState extends State<WeatherBox> {
                 child: Icon(
                   Icons.cloudy_snowing,
                   size: 100,
-                  color: Colors.black, // Hava durumuna göre renk ayarlayabilirsiniz
+                  color: Theme.of(context).colorScheme.primary, // Hava durumuna göre renk ayarlayabilirsiniz
                 ),
               ),
             ),
@@ -582,7 +582,7 @@ class _WeatherBoxState extends State<WeatherBox> {
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
                         child: Text(
-                          'Konum: ${weatherData['name']}',
+                          '${weatherData['name']}',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
@@ -591,8 +591,8 @@ class _WeatherBoxState extends State<WeatherBox> {
                       height: 65,
                       width: double.infinity,
                       child: Text(
-                        'Sıcaklık: ${weatherData['main']['temp']}°C',
-                        style: TextStyle(fontSize: 16),
+                        '${weatherData['main']['temp']}°C',
+                        style: TextStyle(fontSize: 24),
                       ),
                     ),
                     Container(
@@ -609,17 +609,17 @@ class _WeatherBoxState extends State<WeatherBox> {
                         children: [
                           WeatherInfo(
                             icon: Icons.water_drop_outlined,
-                            labelText: 'Nem',
+                            labelText: AppLocalizations.of(context).getTranslate("humidty"),
                             valueText: '${weatherData['main']['humidity']}%',
                           ),
                           WeatherInfo(
                             icon: Icons.air,
-                            labelText: 'Rüzgar',
+                            labelText: AppLocalizations.of(context).getTranslate("wind"),
                             valueText: '${weatherData['wind']['speed']}km/h',
                           ),
                           WeatherInfo(
                             icon: Icons.umbrella,
-                            labelText: 'Yağış Olasılığı',
+                            labelText: AppLocalizations.of(context).getTranslate("rainfall"),
                             valueText: '${weatherData['rain'] != null ? weatherData['rain']['1h'].toString() + 'mm' : '0mm'}',
                           ),
                         ],
