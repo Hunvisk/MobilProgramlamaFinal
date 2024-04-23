@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutterfinalproje/screens/core/settings.dart';
 import 'package:go_router/go_router.dart';
 
 import '../screens/app_details/aboutus.dart';
 import '../screens/app_details/chatbot.dart';
-import '../screens/app_details/settings.dart';
 import '../screens/app_details/vipgezgininfo.dart';
 import '../screens/Home.dart';
 import '../screens/core/change_language.dart';
@@ -48,10 +48,6 @@ final routes = GoRouter(
       builder: (context, state) => const ChatBot(),
     ),
     GoRoute(
-      path: '/Settings',
-      builder: (context, state) => const Settings(),
-    ),
-    GoRoute(
       path: '/VipGezginInfo',
       builder: (context, state) => const VipGezginInfo(),
     ),
@@ -68,6 +64,10 @@ final routes = GoRouter(
     GoRoute(
       path: '/Change_LanguageScreen',
       builder: (context, state) => const Change_LanguageScreen(),
+    ),
+    GoRoute(
+      path: '/SettingsScreen',
+      builder: (context, state) => const SettingsScreen(),
     ),
 
     // Places And Routes

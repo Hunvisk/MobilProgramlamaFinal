@@ -57,7 +57,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
       final langParts = defaultLocale.split("_");
       
-      final supportedLanguages = ["en", "tr", "de"];
+      final supportedLanguages = ["en", "tr", "de", "ru"];
 
       final String finalLang;
 

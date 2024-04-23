@@ -86,7 +86,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
 Locale? localeResolutionCallback(
     Locale? deviceLocale, Iterable<Locale> supportedLocales) {
   // return deviceLocale != null &&
-  //         ['en', 'ar', 'tr', 'fa', 'fr', 'es']
+  //         ['en', 'tr']
   //             .contains(deviceLocale.languageCode)
   //     ? deviceLocale
   //     : supportedLocales.first;

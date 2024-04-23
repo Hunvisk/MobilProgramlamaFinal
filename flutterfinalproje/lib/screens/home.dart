@@ -353,9 +353,9 @@ class _HomeState extends State<Home> {
                     ),
                     ListTileItem(
                       context,
-                      AppLocalizations.of(context).getTranslate("my_account"),
-                      '/UserAccount',
-                      Icons.person,
+                      AppLocalizations.of(context).getTranslate("settings"),
+                      '/SettingsScreen',
+                      Icons.settings,
                       Colors.black54,
                     ),
                     ListTileItem(
