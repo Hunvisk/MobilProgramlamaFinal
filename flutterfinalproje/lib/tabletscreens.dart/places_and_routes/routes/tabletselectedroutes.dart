@@ -5,6 +5,8 @@ import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
+
 class TabletSelectedRoutes extends StatelessWidget {
   const TabletSelectedRoutes({Key? key}) : super(key: key);
 
@@ -138,14 +140,14 @@ class TabletSelectedRoutesScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Açıklama",
+                  AppLocalizations.of(context).getTranslate("explanation"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "Eminönü, İstanbul'un tarihi ve kültürel açıdan önemli sembollerinden biridir. İstanbul'un tarihi yarımadasında bulunan Eminönü, tarihi yapıları, kültürel mirası ve ticaret merkezi olmasıyla bilinir.",
+                                  AppLocalizations.of(context).getTranslate("eminonu_text"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
@@ -157,7 +159,8 @@ class TabletSelectedRoutesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Mekan",
+                             AppLocalizations.of(context).getTranslate("place"),
+
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',
@@ -230,7 +233,8 @@ class TabletSelectedRoutesScreen extends StatelessWidget {
                 ),
                 Gap(20),
                 Text(
-                  "Yorumlar",
+                       AppLocalizations.of(context).getTranslate("comments"),
+
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
@@ -267,7 +271,8 @@ class TabletSelectedRoutesScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "Muhteşem yer mutlaka gitmelisiniz",
+                              AppLocalizations.of(context).getTranslate("comment_content"),
+
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'poppions',

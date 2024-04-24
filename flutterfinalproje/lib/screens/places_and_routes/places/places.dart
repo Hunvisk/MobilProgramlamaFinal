@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors, sized_box_for_whitespace, deprecated_member_use, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, unused_element, dead_code, camel_case_types, avoid_unnecessary_containers
 
-
-
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/places_and_routes/places/desktopplaces.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
@@ -21,68 +19,85 @@ class Places extends StatefulWidget {
 }
 
 class _PlacesState extends State<Places> {
-
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
 
-   Screen device = Screen.mobile;
+  Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return   placesScr(device: device, isSearching: isSearching, searchController: searchController);
+        return placesScr(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
       case (Screen.tablet):
-       return  TabletPlacesScreen(device: device, isSearching: isSearching, searchController: searchController);
+        return TabletPlacesScreen(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
 
       case (Screen.desktop):
-       return  DesktopPlacesScreen(device: device, isSearching: isSearching, searchController: searchController);
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("venues"),
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("venues"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("venues"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return DesktopPlacesScreen(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
+    }
   }
-}
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-     // final screenSize =  MediaQuery.of(context).size;
-     // final ScreenOrientation = MediaQuery.of(context).orientation;
-      setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    // final screenSize =  MediaQuery.of(context).size;
+    // final ScreenOrientation = MediaQuery.of(context).orientation;
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return Scaffold(
       appBar: drawAppar(),
       bottomNavigationBar: drawBottom(),
@@ -95,7 +110,6 @@ drawBottom(){
 
 class placesScr extends StatelessWidget {
   const placesScr({
-    
     required this.device,
     required this.isSearching,
     required this.searchController,
@@ -127,7 +141,7 @@ class placesScr extends StatelessWidget {
         FilterWidget(),
         InkWell(
           onTap: () {
-              GoRouter.of(context).push('/SelectedPlaces');
+            GoRouter.of(context).push('/SelectedPlaces');
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -164,7 +178,6 @@ class placesScr extends StatelessWidget {
     );
   }
 }
-
 
 class FilterWidget extends StatelessWidget {
   @override
@@ -243,7 +256,7 @@ class FilterWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Sırala',
+                  AppLocalizations.of(context).getTranslate("sort"),
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -267,7 +280,9 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('En çok yorum'),
+                  title: Text(
+                    AppLocalizations.of(context).getTranslate("most_comments"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -275,7 +290,9 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('En çok beğeni'),
+                  title: Text(
+                    AppLocalizations.of(context).getTranslate("most_likes"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -283,7 +300,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Puanlama (artan)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("scoring_ascending"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -291,7 +311,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Puanlama (azalan)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("scoring_descending"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -299,7 +322,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Semte göre (A - Z)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_district_A-Z"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -307,7 +333,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Semte göre (Z - A)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_district_Z-A"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -340,7 +369,7 @@ void _showSortPopup2(BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Filtrele',
+                    AppLocalizations.of(context).getTranslate("filter"),
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,

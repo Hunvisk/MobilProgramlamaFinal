@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, library_private_types_in_public_api, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
 //import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
@@ -42,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   MyAppBar drawAppBar() {
     return MyAppBar(
-      title: "PROFİL",
+      title: AppLocalizations.of(context).getTranslate("Profile"),
     );
   }
 
@@ -109,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Profil Fotoğrafını Değiştir'),
+          title: Text(AppLocalizations.of(context).getTranslate("change_profile_photo")),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
@@ -120,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.camera_alt, size: 30),
-                    title: Text('Fotoğraf Çek'),
+                    title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
                   ),
                 ),
                 Gap(20),
@@ -131,7 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.photo, size: 30),
-                    title: Text('Fotoğraf Seç'),
+                    title: Text(AppLocalizations.of(context).getTranslate("select_a_photo")),
                   ),
                 ),
                 Gap(20),
@@ -142,7 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.delete, size: 30, color: Colors.red),
-                    title: Text('Fotoğraf Sil',
+                    title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
                         style: TextStyle(color: Colors.red)),
                   ),
                 ),
@@ -159,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Kapak Fotoğrafını Değiştir'),
+          title: Text(AppLocalizations.of(context).getTranslate("change_cover_photo")),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
@@ -170,7 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.camera_alt, size: 30),
-                    title: Text('Fotoğraf Çek'),
+                    title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
                   ),
                 ),
                 Gap(20),
@@ -181,7 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.photo, size: 30),
-                    title: Text('Fotoğraf Seç'),
+                    title: Text(AppLocalizations.of(context).getTranslate("select_a_photo"),),
                   ),
                 ),
                 Gap(20),
@@ -192,7 +193,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.delete, size: 30, color: Colors.red),
-                    title: Text('Fotoğraf Sil',
+                    title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
                         style: TextStyle(color: Colors.red)),
                   ),
                 ),
@@ -241,7 +242,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Center(
                 child: Positioned(
                   top: MediaQuery.of(context).size.height * 0.15,
-          left: MediaQuery.of(context).size.width * 0.45,
+                  left: MediaQuery.of(context).size.width * 0.45,
                   child: GestureDetector(
                     onTap: () {
                       _showImageOptionsDialog();
@@ -255,8 +256,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Positioned(
-                 top: MediaQuery.of(context).size.height * 0.17,
-        left: MediaQuery.of(context).size.width * 0.33,
+                top: MediaQuery.of(context).size.height * 0.17,
+                left: MediaQuery.of(context).size.width * 0.33,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -269,7 +270,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Text(
-                      "Ultra Pro Gezgin",
+                      AppLocalizations.of(context)
+                          .getTranslate("ultra_pro_traveler"),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12,
@@ -344,8 +346,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: ListTile(
                           leading: Icon(Icons.photo_camera, color: Colors.grey),
-                          title: Text("Fotoğraflar",
-                              style: TextStyle(fontFamily: 'poppions')),
+                          title: Text(
+                            AppLocalizations.of(context).getTranslate("photos"),
+                            style: TextStyle(
+                              fontFamily:'poppions', // Her iki yerde de aynı yazı tipini kullanmak için 'poppions' kullanıldı
+                              
+                            ),
+                          ),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
@@ -357,7 +364,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: ListTile(
                           leading: Icon(Icons.save, color: Colors.grey),
-                          title: Text("Bloglar",
+                          title: Text(AppLocalizations.of(context).getTranslate("blog"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -370,7 +377,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: ListTile(
                           leading: Icon(Icons.mode_comment, color: Colors.grey),
-                          title: Text("Yorumlar",
+                          title: Text(AppLocalizations.of(context).getTranslate("comments"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -387,7 +394,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           leading:
                               Icon(Icons.location_city, color: Colors.grey),
                           title: Text(
-                            "Gezilmek İstenilen Yerler",
+                            AppLocalizations.of(context).getTranslate("place_to_visit"),
                             style: TextStyle(fontFamily: 'poppions'),
                           ),
                           trailing:
@@ -401,7 +408,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: ListTile(
                           leading: Icon(Icons.favorite, color: Colors.grey),
-                          title: Text("Favoriler",
+                          title: Text(AppLocalizations.of(context).getTranslate("favorites"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -415,7 +422,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: ListTile(
                           leading:
                               Icon(Icons.military_tech, color: Colors.grey),
-                          title: Text("Başarımlar",
+                          title: Text(AppLocalizations.of(context).getTranslate("achievemets"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),

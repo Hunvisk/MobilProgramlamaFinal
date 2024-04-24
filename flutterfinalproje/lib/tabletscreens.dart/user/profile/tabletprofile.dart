@@ -4,6 +4,8 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
+
 class TabletProfile extends StatelessWidget {
   const TabletProfile({Key? key}) : super(key: key);
 
@@ -27,7 +29,7 @@ class TabletProfileScreen extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Profil Fotoğrafını Değiştir'),
+          title: Text(AppLocalizations.of(context).getTranslate("change_profile_photo")),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
@@ -38,7 +40,7 @@ class TabletProfileScreen extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Icon(Icons.camera_alt, size: 30),
-                    title: Text('Fotoğraf Çek'),
+                    title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
                   ),
                 ),
                 Gap(20),
@@ -49,7 +51,7 @@ class TabletProfileScreen extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Icon(Icons.photo, size: 30),
-                    title: Text('Fotoğraf Seç'),
+                    title: Text(AppLocalizations.of(context).getTranslate("select_a_photo")),
                   ),
                 ),
                 Gap(20),
@@ -60,7 +62,7 @@ class TabletProfileScreen extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Icon(Icons.delete, size: 30, color: Colors.red),
-                    title: Text('Fotoğraf Sil',
+                    title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
                         style: TextStyle(color: Colors.red)),
                   ),
                 ),
@@ -77,7 +79,8 @@ class TabletProfileScreen extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Kapak Fotoğrafını Değiştir'),
+            title: Text(AppLocalizations.of(context).getTranslate("change_cover_photo")),
+
           content: SingleChildScrollView(
             child: ListBody(
               children: [
@@ -88,7 +91,8 @@ class TabletProfileScreen extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Icon(Icons.camera_alt, size: 30),
-                    title: Text('Fotoğraf Çek'),
+                                    title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
+
                   ),
                 ),
                 Gap(20),
@@ -99,7 +103,8 @@ class TabletProfileScreen extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Icon(Icons.photo, size: 30),
-                    title: Text('Fotoğraf Seç'),
+                              title: Text(AppLocalizations.of(context).getTranslate("select_a_photo"),),
+
                   ),
                 ),
                 Gap(20),
@@ -110,7 +115,7 @@ class TabletProfileScreen extends StatelessWidget {
                   },
                   child: ListTile(
                     leading: Icon(Icons.delete, size: 30, color: Colors.red),
-                    title: Text('Fotoğraf Sil',
+                     title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
                         style: TextStyle(color: Colors.red)),
                   ),
                 ),
@@ -194,7 +199,8 @@ class TabletProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Ultra Pro Gezgin",
+                      AppLocalizations.of(context)
+                          .getTranslate("ultra_pro_traveler"),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14, // Yazı boyutu artırıldı
@@ -223,8 +229,13 @@ class TabletProfileScreen extends StatelessWidget {
                         },
                         child: ListTile(
                           leading: Icon(Icons.photo_camera, color: Colors.grey),
-                          title: Text("Fotoğraflar",
-                              style: TextStyle(fontFamily: 'poppions')),
+                          title: Text(
+                            AppLocalizations.of(context).getTranslate("photos"),
+                            style: TextStyle(
+                              fontFamily:'poppions', // Her iki yerde de aynı yazı tipini kullanmak için 'poppions' kullanıldı
+                              
+                            ),
+                          ),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
@@ -236,7 +247,7 @@ class TabletProfileScreen extends StatelessWidget {
                         },
                         child: ListTile(
                           leading: Icon(Icons.save, color: Colors.grey),
-                          title: Text("Bloglar",
+                          title: Text(AppLocalizations.of(context).getTranslate("blog"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -249,7 +260,7 @@ class TabletProfileScreen extends StatelessWidget {
                         },
                         child: ListTile(
                           leading: Icon(Icons.mode_comment, color: Colors.grey),
-                          title: Text("Yorumlar",
+                          title: Text(AppLocalizations.of(context).getTranslate("comments"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -266,7 +277,7 @@ class TabletProfileScreen extends StatelessWidget {
                           leading:
                               Icon(Icons.location_city, color: Colors.grey),
                           title: Text(
-                            "Gezilmek İstenilen Yerler",
+                            AppLocalizations.of(context).getTranslate("place_to_visit"),
                             style: TextStyle(fontFamily: 'poppions'),
                           ),
                           trailing:
@@ -280,7 +291,7 @@ class TabletProfileScreen extends StatelessWidget {
                         },
                         child: ListTile(
                           leading: Icon(Icons.favorite, color: Colors.grey),
-                          title: Text("Favoriler",
+                          title: Text(AppLocalizations.of(context).getTranslate("favorites"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -294,7 +305,7 @@ class TabletProfileScreen extends StatelessWidget {
                         child: ListTile(
                           leading:
                               Icon(Icons.military_tech, color: Colors.grey),
-                          title: Text("Başarımlar",
+                          title: Text(AppLocalizations.of(context).getTranslate("achievemets"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),

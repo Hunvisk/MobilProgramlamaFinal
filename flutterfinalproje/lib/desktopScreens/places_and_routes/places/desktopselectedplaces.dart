@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
+
 class DesktopSelectedPlaces extends StatelessWidget {
   const DesktopSelectedPlaces({Key? key}) : super(key: key);
 
@@ -125,7 +127,7 @@ class DesktopSelectedPlacesScreen extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
+         Expanded(
           flex: 3,
           child: Padding(
             padding: const EdgeInsets.all(13.0),
@@ -133,14 +135,15 @@ class DesktopSelectedPlacesScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Açıklama",
+                  AppLocalizations.of(context).getTranslate("explanation"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "İstanbul’un biriciği Galata Kulesi; bazıları insan hayal gücünün eseri, bazıları da tarihi belgelerle kanıtlamış hikayeleriyle pek meşhur. İstanbul silüetine gizemli bir hava katan Galata Kulesi’nin hikayelerine, İhsan Oktay Anar’ın Puslu Kıtalar Atlası kitabından bir örnekle başlayalım. Kitapta, İstanbul’a ilk kez gelen denizci Cenevizlilere, ak martının karanlıkta yol gösterdiği anlatılır. İnançlarının bir tezahürü olarak martıyı Hz İsa ile özdeşleştiren Cenevizliler, onu yuvasına kadar takip ettikten sonra yakalar, pişirir ve yerler. Yuvasının bulunduğu yere de onun hatırası için Galata Kulesini inşa ederler.",
+                  AppLocalizations.of(context)
+                      .getTranslate("galata_kulesi_text"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
@@ -152,7 +155,7 @@ class DesktopSelectedPlacesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Mekan",
+                      AppLocalizations.of(context).getTranslate("place"),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',
@@ -225,7 +228,7 @@ class DesktopSelectedPlacesScreen extends StatelessWidget {
                 ),
                 Gap(20),
                 Text(
-                  "Yorumlar",
+                  AppLocalizations.of(context).getTranslate("comments"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
@@ -262,7 +265,8 @@ class DesktopSelectedPlacesScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "Muhteşem yer mutlaka gitmelisiniz",
+                              AppLocalizations.of(context)
+                                  .getTranslate("comment_content"),
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'poppions',

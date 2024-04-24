@@ -5,6 +5,7 @@ import 'package:flutterfinalproje/desktopScreens/places_and_routes/routes/deskto
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/places_and_routes/routes/tabletselectedroutes.dart';
 import '../../product/Cart.dart';
@@ -12,6 +13,7 @@ import '../../product/Cart.dart';
 void main() {
   runApp(SelectedRoutes());
 }
+
 class SelectedRoutes extends StatefulWidget {
   const SelectedRoutes({Key? key}) : super(key: key);
 
@@ -21,62 +23,71 @@ class SelectedRoutes extends StatefulWidget {
 
 class _SelectedRoutesState extends State<SelectedRoutes> {
   Screen device = Screen.mobile;
-  
+
   set isSearching(bool isSearching) {}
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return   selectedRoute();
+        return selectedRoute();
       case (Screen.tablet):
-       return TabletSelectedRoutesScreen();
+        return TabletSelectedRoutesScreen();
       case (Screen.desktop):
-       return  DesktopSelectedRoutesScreen();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "SEÇİLEN ROTALAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "SEÇİLEN ROTALAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "SEÇİLEN ROTALAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return DesktopSelectedRoutesScreen();
+    }
   }
-}
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("selected_routes"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("selected_routes"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("selected_routes"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         appBar: drawAppar(),
@@ -88,7 +99,6 @@ drawBottom(){
     );
   }
 }
-
 
 class selectedRoute extends StatelessWidget {
   const selectedRoute({
@@ -188,14 +198,14 @@ class selectedRoute extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Açıklama",
+                AppLocalizations.of(context).getTranslate("explanation"),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
               Text(
-                "Eminönü, İstanbul un tarihi ve kültürel açıdan önemli sembollerinden biridir. İstanbul'un tarihi yarımadasında bulunan Eminönü, tarihi yapıları, kültürel mirası ve ticaret merkezi olmasıyla bilinir.",
+                AppLocalizations.of(context).getTranslate("eminonu_text"),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'poppions',
@@ -207,7 +217,7 @@ class selectedRoute extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Mekan",
+                    AppLocalizations.of(context).getTranslate("place"),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: 'poppions',
@@ -286,7 +296,7 @@ class selectedRoute extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 15),
               child: Text(
-                "Yorumlar",
+                AppLocalizations.of(context).getTranslate("comments"),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'poppions',
@@ -326,7 +336,7 @@ class selectedRoute extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Muhteşem yer mutlaka gitmelisiniz",
+                      AppLocalizations.of(context).getTranslate("comment_content"),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',

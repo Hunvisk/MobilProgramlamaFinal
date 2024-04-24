@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletuserblogs.dart';
 
@@ -38,7 +39,8 @@ class _UserBlogState extends State<UserBlogs> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "BLOGLAR",
+      return AppBarWithSearchIcon(          title: AppLocalizations.of(context).getTranslate("blogs"),
+
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
@@ -46,14 +48,14 @@ class _UserBlogState extends State<UserBlogs> {
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "BLOGLAR",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon( title: AppLocalizations.of(context).getTranslate("blogs"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "BLOGLAR",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon( title: AppLocalizations.of(context).getTranslate("blogs"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -214,7 +216,8 @@ class blogsScr extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          'Camiinin mimari açıdan en önemli özelliklerinden biri 18. yüzyıldan sonra özellikle Fransa ve İtalya saraylarında karşımıza çıkan Barok mimari tarzının kullanılması. Bu mimari tarzın bir özelliği olarak camiinin dış cephesi, muhteşem güzellikte taşlarla yapılmış oyma ve kabartma süslemeleriyle dikkat çekiyor. 19. yüzyıl camiilerinin genel özelliğinde olduğu gibi camii de ana ibadet bölümünün yanı sıra padişahların namaz kılması ve dinlenmesi için yapılan hünkâr kasrı bölümü de bulunur. Camii, geniş ve yüksek pencerelere sahiptir. Camii"nin iç duvarları kırmızı ve beyaz parlak çizgili, pembe renkli sıvalarla yapılmış, minberin mermer yapısıysa pembe renkli taşlarla süsleniyor.',
+                            AppLocalizations.of(context)
+                        .getTranslate("blogs_text"),
                           style: TextStyle(fontSize: 16),
                         ),
                         Padding(
@@ -351,8 +354,8 @@ class blogsScr extends StatelessWidget {
                     ),
                     Gap(20),
                     Text(
-                      'Sarıyer, İstanbul"un kuzeyinde yer alan güzide ilçelerimizden birisidir. Belgrad Ormanı ve Atatürk Arboretumu gibi huzurlu yemyeşil alanların yanı sıra, Emirgan Korusu ve Rumeli Hisarı gibi turistik merkezleriyle de burası İstanbulluların en sevdiği ilçeler arasında yer alıyor. Sarıyer, ayrıca kahvaltı yapılabilecek ve yemek yenebilecek mekanlarıyla da gurmelere hitap eden, her yönüyle gezip görülmesi gereken yemyeşil bir semt',
-                      style: TextStyle(fontSize: 16),
+                                   AppLocalizations.of(context)
+                        .getTranslate("blogs_text1"),                      style: TextStyle(fontSize: 16),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
@@ -502,7 +505,8 @@ class blogsScr extends StatelessWidget {
                     ),
                     Gap(20),
                     Text(
-                      'Eminönü vapur iskelesinde ya da Eminönü tramvay durağında indiniz. Sırtınızı denize verip karşıya baktığınızda kalabalık bir meydan göreceksiniz. İşte burası Eminönü’ne giriş noktanız. Eminönü meydan neredeyse günün her saatinde iğne atsan yere düşmeyecek bir yer. Yani İstanbul"un özeti gibi',
+                           AppLocalizations.of(context)
+                        .getTranslate("blogs_text2"),   
                       style: TextStyle(fontSize: 16),
                     ),
                     Padding(

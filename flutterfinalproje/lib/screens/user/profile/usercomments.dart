@@ -6,12 +6,14 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletusercomments.dart';
 
 void main() {
   runApp(UserComments());
 }
+
 class UserComments extends StatefulWidget {
   const UserComments({Key? key}) : super(key: key);
 
@@ -23,61 +25,70 @@ class _UserCommentsState extends State<UserComments> {
   Screen device = Screen.mobile;
   final double boxWidth = 300; // Kutu genişliği
   final double boxHeight = 180;
-  
-  set isSearching(bool isSearching) {} // Azaltılmış kutu yüksekliği
-drawScreen(){
-     switch (device) {
-      case (Screen.mobile):
-       return   yorumSayfa();
-      case (Screen.tablet):
-       return TabletUserCommentsScreen();
-      case (Screen.desktop):
-       return  DesktopUserCommentsScreen();
-     }
-   }
 
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "YORUMLAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "YORUMLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "YORUMLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
-drawBottom(){
-     switch (device) {
+  set isSearching(bool isSearching) {} // Azaltılmış kutu yüksekliği
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return yorumSayfa();
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return TabletUserCommentsScreen();
       case (Screen.desktop):
-       return ;
-     }
-   }
-  
+        return DesktopUserCommentsScreen();
+    }
+  }
+
+  drawAppar() {
+    switch (device) {
+      case (Screen.mobile):
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("Comments"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.tablet):
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("Comments"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.desktop):
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("Comments"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         appBar: drawAppar(),
@@ -93,59 +104,59 @@ drawBottom(){
 
   Column yorumSayfa() {
     return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Gap(10),
-              buildColoredBox(
-                Color.fromARGB(255, 255, 229, 170),
-                'Eda Aydın',
-                'Çok güzel bir yerdi. Herkesin gitmesini öneririm.',
-                'Beşiktaş',
-                '12/02/2023',
-              ),
-              Gap(10),
-              buildColoredBox(
-                Color.fromARGB(255, 255, 229, 170),
-                'Eda Aydın',
-                'Çok güzel bir yerdi. Herkesin gitmesini öneririm.',
-                'Kız Kulesi',
-                '11/04/2023',
-              ),
-              Gap(10),
-              buildColoredBox(
-                Color.fromARGB(255, 255, 229, 170),
-                'Eda Aydın',
-                'Çok güzel bir yerdi. Herkesin gitmesini öneririm.',
-                'Sarıyer',
-                '09/09/2023',
-              ),
-              Gap(10),
-              buildColoredBox(
-                Color.fromARGB(255, 255, 229, 170),
-                'Eda Aydın',
-                'Çok güzel bir yerdi. Herkesin gitmesini öneririm.',
-                'Kadıköy',
-                '14/08/2023',
-              ),
-              Gap(10),
-              buildColoredBox(
-                Color.fromARGB(255, 255, 229, 170),
-                'Eda Aydın',
-                'Çok güzel bir yerdi. Herkesin gitmesini öneririm.',
-                'Galata Kulesi',
-                '14/06/2023',
-              ),
-              Gap(10),
-              buildColoredBox(
-                Color.fromARGB(255, 255, 229, 170),
-                'Eda Aydın',
-                'Çok güzel bir yerdi. Herkesin gitmesini öneririm.',
-                'İstinye',
-                '12/05/2023',
-              ),
-              Gap(10),
-            ],
-          );
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Gap(10),
+        buildColoredBox(
+          Color.fromARGB(255, 255, 229, 170),
+          'Eda Aydın',
+          AppLocalizations.of(context).getTranslate("comments_text"),
+          'Beşiktaş',
+          '12/02/2023',
+        ),
+        Gap(10),
+        buildColoredBox(
+          Color.fromARGB(255, 255, 229, 170),
+          'Eda Aydın',
+          AppLocalizations.of(context).getTranslate("comments_text"),
+          'Kız Kulesi',
+          '11/04/2023',
+        ),
+        Gap(10),
+        buildColoredBox(
+          Color.fromARGB(255, 255, 229, 170),
+          'Eda Aydın',
+          AppLocalizations.of(context).getTranslate("comments_text"),
+          'Sarıyer',
+          '09/09/2023',
+        ),
+        Gap(10),
+        buildColoredBox(
+          Color.fromARGB(255, 255, 229, 170),
+          'Eda Aydın',
+          AppLocalizations.of(context).getTranslate("comments_text"),
+          'Kadıköy',
+          '14/08/2023',
+        ),
+        Gap(10),
+        buildColoredBox(
+          Color.fromARGB(255, 255, 229, 170),
+          'Eda Aydın',
+          AppLocalizations.of(context).getTranslate("comments_text"),
+          'Galata Kulesi',
+          '14/06/2023',
+        ),
+        Gap(10),
+        buildColoredBox(
+          Color.fromARGB(255, 255, 229, 170),
+          'Eda Aydın',
+          AppLocalizations.of(context).getTranslate("comments_text"),
+          'İstinye',
+          '12/05/2023',
+        ),
+        Gap(10),
+      ],
+    );
   }
 
   Widget buildColoredBox(

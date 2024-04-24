@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
+
 class DesktopSelectedRoutes extends StatelessWidget {
   const DesktopSelectedRoutes({Key? key}) : super(key: key);
 
@@ -126,7 +128,7 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
+       Expanded(
           flex: 3,
           child: Padding(
             padding: const EdgeInsets.all(13.0),
@@ -134,14 +136,14 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Açıklama",
+                  AppLocalizations.of(context).getTranslate("explanation"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "Eminönü, İstanbul'un tarihi ve kültürel açıdan önemli sembollerinden biridir. İstanbul'un tarihi yarımadasında bulunan Eminönü, tarihi yapıları, kültürel mirası ve ticaret merkezi olmasıyla bilinir.",
+                                  AppLocalizations.of(context).getTranslate("eminonu_text"),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
@@ -153,7 +155,8 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Mekan",
+                             AppLocalizations.of(context).getTranslate("place"),
+
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',
@@ -226,7 +229,8 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
                 ),
                 Gap(20),
                 Text(
-                  "Yorumlar",
+                       AppLocalizations.of(context).getTranslate("comments"),
+
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
@@ -263,7 +267,8 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "Muhteşem yer mutlaka gitmelisiniz",
+                              AppLocalizations.of(context).getTranslate("comment_content"),
+
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'poppions',

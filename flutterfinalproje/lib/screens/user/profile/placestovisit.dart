@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletplacestovisit.dart';
 import '../../../widgets/placescontainerdesign.dart';
@@ -19,67 +20,82 @@ class PlaceToVisit extends StatefulWidget {
 }
 
 class _PlacesState extends State<PlaceToVisit> {
-
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
 
-   Screen device = Screen.mobile;
+  Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return  gezilmekIstenenSayfa(device: device, isSearching: isSearching, searchController: searchController);
+        return gezilmekIstenenSayfa(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
       case (Screen.tablet):
-       return TabletPlacesToVisitScreen(device: device, isSearching: isSearching, searchController: searchController);
+        return TabletPlacesToVisitScreen(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
       case (Screen.desktop):
-       return DesktopPlaceToVisitScreen(device: device, isSearching: isSearching, searchController: searchController) ;
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "GEZİLMEK İSTENİLENLER",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "GEZİLMEK İSTENİLENLER",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "GEZİLMEK İSTENİLENLER",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return DesktopPlaceToVisitScreen(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
+    }
   }
-}
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places_to_visit"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places_to_visit"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places_to_visit"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
 
-
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return Container(
         child: Scaffold(
       appBar: drawAppar(),
@@ -91,7 +107,6 @@ drawBottom(){
 
 class gezilmekIstenenSayfa extends StatelessWidget {
   const gezilmekIstenenSayfa({
-    
     required this.device,
     required this.isSearching,
     required this.searchController,
@@ -123,7 +138,7 @@ class gezilmekIstenenSayfa extends StatelessWidget {
         FilterWidget(),
         InkWell(
           onTap: () {
-              GoRouter.of(context).push('/SelectedPlaces');
+            GoRouter.of(context).push('/SelectedPlaces');
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -152,7 +167,6 @@ class gezilmekIstenenSayfa extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
   }
@@ -168,7 +182,7 @@ class FilterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -182,7 +196,7 @@ class FilterWidget extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Sırala',
+                  AppLocalizations.of(context).getTranslate("sort"),
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -196,7 +210,7 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -210,7 +224,7 @@ class FilterWidget extends StatelessWidget {
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Filtrele',
+                child: Text(AppLocalizations.of(context).getTranslate("filter"),
                     style: TextStyle(
                       color: Colors.white,
                     )),
@@ -235,7 +249,7 @@ class FilterWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Sırala',
+                  AppLocalizations.of(context).getTranslate("sort"),
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -259,7 +273,9 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('En çok yorum'),
+                  title: Text(
+                    AppLocalizations.of(context).getTranslate("most_comments"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -267,7 +283,9 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('En çok beğeni'),
+                  title: Text(
+                    AppLocalizations.of(context).getTranslate("most_likes"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -275,7 +293,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Puanlama (artan)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("scoring_ascending"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -283,7 +304,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Puanlama (azalan)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("scoring_descending"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -291,7 +315,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Semte göre (A - Z)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_district_A-Z"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -299,7 +326,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Semte göre (Z - A)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_district_Z-A"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -332,7 +362,7 @@ void _showSortPopup2(BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Filtrele',
+                    AppLocalizations.of(context).getTranslate("filter"),
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,

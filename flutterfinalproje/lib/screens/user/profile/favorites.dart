@@ -5,6 +5,7 @@ import 'package:flutterfinalproje/desktopScreens/user/profile/desktopfavorites.d
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletfavorites.dart';
 
@@ -32,7 +33,10 @@ class _FavoritesState extends State<Favorites> {
           device: device,
         );
       case (Screen.desktop):
-        return DesktopFavoritesScreen(device: device, isSearching: isSearching, searchController: searchController);
+        return DesktopFavoritesScreen(
+            device: device,
+            isSearching: isSearching,
+            searchController: searchController);
     }
   }
 
@@ -40,7 +44,7 @@ class _FavoritesState extends State<Favorites> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title: "FAVORİLER",
+          title: AppLocalizations.of(context).getTranslate("Favorites"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -50,7 +54,8 @@ class _FavoritesState extends State<Favorites> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title: "FAVORİLER",
+          title: AppLocalizations.of(context).getTranslate("Favorites"),
+
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -60,7 +65,8 @@ class _FavoritesState extends State<Favorites> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title: "FAVORİLER",
+          title: AppLocalizations.of(context).getTranslate("Favorites"),
+
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -197,6 +203,7 @@ class favorilerSayfa extends StatelessWidget {
   }
 }
 
+
 class FilterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -207,7 +214,7 @@ class FilterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -221,7 +228,7 @@ class FilterWidget extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Sırala',
+                  AppLocalizations.of(context).getTranslate("sort"),
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -235,7 +242,7 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -249,7 +256,7 @@ class FilterWidget extends StatelessWidget {
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Filtrele',
+                child: Text(AppLocalizations.of(context).getTranslate("filter"),
                     style: TextStyle(
                       color: Colors.white,
                     )),
@@ -260,7 +267,6 @@ class FilterWidget extends StatelessWidget {
       ),
     );
   }
-
   // Function to show the custom sorting popup
   void _showSortPopup(BuildContext context) {
     showModalBottomSheet(
@@ -274,7 +280,7 @@ class FilterWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Sırala',
+                  AppLocalizations.of(context).getTranslate("sort"),
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -298,7 +304,9 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('En çok yorum'),
+                  title: Text(
+                    AppLocalizations.of(context).getTranslate("most_comments"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -306,7 +314,9 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('En çok beğeni'),
+                  title: Text(
+                    AppLocalizations.of(context).getTranslate("most_likes"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -314,7 +324,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Puanlama (artan)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("scoring_ascending"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -322,7 +335,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Puanlama (azalan)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("scoring_descending"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -330,7 +346,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Semte göre (A - Z)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_district_A-Z"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -338,7 +357,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Semte göre (Z - A)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_district_Z-A"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -371,7 +393,7 @@ void _showSortPopup2(BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Filtrele',
+                    AppLocalizations.of(context).getTranslate("filter"),
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,

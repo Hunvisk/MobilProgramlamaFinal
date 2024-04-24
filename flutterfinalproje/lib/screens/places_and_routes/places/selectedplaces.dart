@@ -5,6 +5,7 @@ import 'package:flutterfinalproje/desktopScreens/places_and_routes/places/deskto
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/places_and_routes/places/tabletselectedplaces.dart';
 import '../../product/Cart.dart';
@@ -12,6 +13,7 @@ import '../../product/Cart.dart';
 void main() {
   runApp(SelectedPlaces());
 }
+
 class SelectedPlaces extends StatefulWidget {
   const SelectedPlaces({Key? key}) : super(key: key);
 
@@ -21,62 +23,71 @@ class SelectedPlaces extends StatefulWidget {
 
 class _SelectedPlacesState extends State<SelectedPlaces> {
   Screen device = Screen.mobile;
-  
+
   set isSearching(bool isSearching) {}
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return   selectedPlac();
+        return selectedPlac();
       case (Screen.tablet):
-       return TabletSelectedPlacesScreen();
+        return TabletSelectedPlacesScreen();
       case (Screen.desktop):
-       return   DesktopSelectedPlacesScreen();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "SEÇİLEN MEKANLAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "SEÇİLEN MEKANLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "SEÇİLEN MEKANLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return DesktopSelectedPlacesScreen();
+    }
   }
-}
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("selected_places"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("selected_places"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("selected_places"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         appBar: drawAppar(),
@@ -88,7 +99,6 @@ drawBottom(){
     );
   }
 }
-
 
 class selectedPlac extends StatelessWidget {
   const selectedPlac({
@@ -188,14 +198,14 @@ class selectedPlac extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Açıklama",
+                AppLocalizations.of(context).getTranslate("explanation"),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
               Text(
-                "İstanbul’un biriciği Galata Kulesi; bazıları insan hayal gücünün eseri, bazıları da tarihi belgelerle kanıtlamış hikayeleriyle pek meşhur. İstanbul silüetine gizemli bir hava katan Galata Kulesi’nin hikayelerine, İhsan Oktay Anar’ın Puslu Kıtalar Atlası kitabından bir örnekle başlayalım. Kitapta, İstanbul’a ilk kez gelen denizci Cenevizlilere, ak martının karanlıkta yol gösterdiği anlatılır. İnançlarının bir tezahürü olarak martıyı Hz İsa ile özdeşleştiren Cenevizliler, onu yuvasına kadar takip ettikten sonra yakalar, pişirir ve yerler. Yuvasının bulunduğu yere de onun hatırası için Galata Kulesini inşa ederler.",
+                AppLocalizations.of(context).getTranslate("galata_kulesi_text"),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'poppions',
@@ -207,7 +217,7 @@ class selectedPlac extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Mekan",
+                    AppLocalizations.of(context).getTranslate("place"),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: 'poppions',
@@ -286,7 +296,7 @@ class selectedPlac extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 15),
               child: Text(
-                "Yorumlar",
+                AppLocalizations.of(context).getTranslate("comments"),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'poppions',
@@ -326,7 +336,8 @@ class selectedPlac extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Muhteşem yer mutlaka gitmelisiniz",
+                      AppLocalizations.of(context)
+                          .getTranslate("comment_content"),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',

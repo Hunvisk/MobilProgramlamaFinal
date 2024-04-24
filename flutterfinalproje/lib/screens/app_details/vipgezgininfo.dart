@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, deprecated_member_use, unused_local_variable, library_private_types_in_public_api, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import '../../core/responsive.dart';
@@ -35,7 +36,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title: "VIP GEZGİN",
+          title: AppLocalizations.of(context).getTranslate("vıp_traveler"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -45,7 +46,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title: "VIP GEZGİN",
+          title: AppLocalizations.of(context).getTranslate("vıp_traveler"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -55,7 +56,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title: "VIP GEZGİN",
+          title: AppLocalizations.of(context).getTranslate("vıp_traveler"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -169,8 +170,7 @@ class ContainerOfAllAdvantages extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Text(
-              "Favori Vip Gezgin Avantajları",
+            child: Text(AppLocalizations.of(context).getTranslate("favorite_vıp_traveler_advantages"),
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -183,15 +183,16 @@ class ContainerOfAllAdvantages extends StatelessWidget {
               children: [
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: "Özellik Başlık",
+                  title: AppLocalizations.of(context).getTranslate("feature_title"),
                   content:
-                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                      AppLocalizations.of(context).getTranslate("feature_content"),
+                      
                 ),
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: "Özellik Başlık",
+                  title: AppLocalizations.of(context).getTranslate("feature_title"),
                   content:
-                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                      AppLocalizations.of(context).getTranslate("feature_content"),
                 ),
               ],
             ),
@@ -203,15 +204,15 @@ class ContainerOfAllAdvantages extends StatelessWidget {
               children: [
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: "Özellik Başlık",
+                  title: AppLocalizations.of(context).getTranslate("feature_title"),
                   content:
-                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                     AppLocalizations.of(context).getTranslate("feature_content"),
                 ),
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: "Özellik Başlık",
+                  title: AppLocalizations.of(context).getTranslate("feature_title"),
                   content:
-                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                     AppLocalizations.of(context).getTranslate("feature_content"),
                 ),
               ],
             ),
@@ -223,16 +224,15 @@ class ContainerOfAllAdvantages extends StatelessWidget {
               children: [
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: "Özellik Başlık",
+                  title:AppLocalizations.of(context).getTranslate("feature_title"),
                   content:
-                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
+                      AppLocalizations.of(context).getTranslate("feature_content"),
                 ),
                 FavoriteVipGezginAdvantages(
                   imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: "Özellik Başlık",
+                  title:AppLocalizations.of(context).getTranslate("feature_title"),
                   content:
-                      "Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik. Özellik İçerik.",
-                ),
+                      AppLocalizations.of(context).getTranslate("feature_content"),)
               ],
             ),
           ),
@@ -260,15 +260,15 @@ class SubscriptionBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            "VİP ÜYELİK İLE DAHA FAZLA ÖZELLİK SENİNLE",
+            AppLocalizations.of(context).getTranslate("more_Features_with_vip_membership_together_with_you"),
           ),
           Column(
             children: [
               Text(
-                "Planlar aylık yalnızca 40,00₺",
+                AppLocalizations.of(context).getTranslate("plans_are_only"),
               ),
               Text(
-                "İstediğin zaman iptal et",
+                AppLocalizations.of(context).getTranslate("cancel_anytime_you_want"),
               ),
             ],
           ),
@@ -282,7 +282,7 @@ class SubscriptionBox extends StatelessWidget {
               ),
             ),
             child: Text(
-              "Abone Ol",
+              AppLocalizations.of(context).getTranslate("subscribe"),
               style: TextStyle(
                 color: Colors.white,
               ),

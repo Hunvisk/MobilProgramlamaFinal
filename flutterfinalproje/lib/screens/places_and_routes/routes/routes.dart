@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, camel_case_types
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/places_and_routes/routes/desktoproutes.dart';
@@ -7,6 +7,7 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/places_and_routes/routes/tabletroutes.dart';
 
@@ -32,7 +33,8 @@ class _RoutesScreenState extends State<RoutesScreen> {
             isSearching: isSearching, searchController: searchController);
 
       case (Screen.desktop):
-        return DesktopRoutesScreen(isSearching: isSearching, searchController: searchController);
+        return DesktopRoutesScreen(
+            isSearching: isSearching, searchController: searchController);
     }
   }
 
@@ -40,7 +42,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title: "ROTALAR",
+          title: AppLocalizations.of(context).getTranslate("routes"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -50,7 +52,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title: "ROTALAR",
+          title: AppLocalizations.of(context).getTranslate("routes"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -60,7 +62,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title: "ROTALAR",
+          title: AppLocalizations.of(context).getTranslate("routes"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
