@@ -18,5 +18,13 @@
     "night":"Night",
     "light":"Light",
     "language":"Language: ",
-    "profile": "Profile"
+    "profile": "Profile",
+
+    "change_lang_title": "CHANGE LANGUAGE",
+    "german":"German",
+    "english":"English",
+    "russian":"Russian",
+    "turkish":"Turkish",
+
+    "map_title": "MAPS"
 }

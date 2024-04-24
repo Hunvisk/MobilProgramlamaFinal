@@ -7,6 +7,8 @@ import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/localizations.dart';
+
 class Change_LanguageScreen extends StatefulWidget {
   const Change_LanguageScreen({Key? key});
 
@@ -40,19 +42,21 @@ class _Change_LanguageScreenState extends State<Change_LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(title: "Dil Değiştir"),
+      appBar: MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("change_lang_title"),
+      ),
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
               const Divider(),
-              LangItems(context, "Türkçe", "tr", "🇹🇷"),
+              LangItems(context, AppLocalizations.of(context).getTranslate("turkish"), "tr", "🇹🇷"),
               const Divider(),
-              LangItems(context, "İngilizce", "en", "🇬🇧"),
+              LangItems(context, AppLocalizations.of(context).getTranslate("english"), "en", "🇬🇧"),
               const Divider(),
-              LangItems(context, "Almanca", "de", "🇩🇪"),
+              LangItems(context, AppLocalizations.of(context).getTranslate("german"), "de", "🇩🇪"),
               const Divider(),
-              LangItems(context, "Rusça", "ru", "🇷🇺"),
+              LangItems(context, AppLocalizations.of(context).getTranslate("russian"), "ru", "🇷🇺"),
               const Divider(),
             ],
           ),

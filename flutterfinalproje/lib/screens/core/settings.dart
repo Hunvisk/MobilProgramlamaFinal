@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
 import '../../widgets/mybottomnavbar.dart';
 
@@ -54,7 +55,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(title: 'AYARLAR'),
+      appBar: MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("settings"),
+      ),
       body: SizedBox.expand(
         child: ListView(
           children: [

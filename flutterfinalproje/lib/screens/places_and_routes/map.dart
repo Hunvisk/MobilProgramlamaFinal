@@ -5,6 +5,7 @@ import 'package:flutterfinalproje/desktopScreens/places_and_routes/desktopmap.da
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
+import '../../core/localizations.dart';
 import '../../core/responsive.dart';
 import '../../tabletscreens.dart/places_and_routes/tabletmap.dart';
 
@@ -36,7 +37,8 @@ class _MyMapState extends State<MyMap> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "HARİTALAR",
+      return AppBarWithSearchIcon(
+        title: AppLocalizations.of(context).getTranslate("map_title"),
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {

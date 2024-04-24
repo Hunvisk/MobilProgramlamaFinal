@@ -18,7 +18,15 @@
     "night": "Ночь",
     "light": "Свет",
     "language": "Язык: ",
-    "profile": "Профиль"
+    "profile": "Профиль",
+
+    "change_lang_title": "ИЗМЕНЕНИЕ ЯЗЫКА",
+    "german":"Изменить язык",
+    "english":"английский",
+    "russian":"Изменить язык",
+    "turkish":"турецкий",
+
+    "map_title": "КАРТЫ"
 
 
 
