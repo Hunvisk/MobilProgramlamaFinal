@@ -19,16 +19,24 @@
     "light": "Свет",
     "language": "Язык: ",
     "profile": "Профиль",
-
     "change_lang_title": "ИЗМЕНЕНИЕ ЯЗЫКА",
-    "german":"Изменить язык",
-    "english":"английский",
-    "russian":"Изменить язык",
-    "turkish":"турецкий",
-
-    "map_title": "КАРТЫ"
-
-
-
-
+    "german": "Изменить язык",
+    "english": "английский",
+    "russian": "Изменить язык",
+    "turkish": "турецкий",
+    "map_title": "КАРТЫ",
+    "sign_in": "Войти",
+    "continue_app_description": "Войдите, чтобы продолжить использование приложения",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "forgot_password": "Забыли пароль",
+    "have_an_account": "Еще нет аккаунта?",
+    "register": "Регистрация",
+    "username": "Имя пользователя",
+    "password_again": "Повторите пароль",
+    "already_have_an_account": "Уже есть учетная запись",
+    "do_not_have_an_account": "Если у вас еще нет учетной записи, вы можете зарегистрироваться",
+    "venues": "Места",
+    "sort": "Сортировать",
+    "filter": "Фильтр"
 }

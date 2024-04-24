@@ -19,12 +19,24 @@
     "light": "Licht",
     "language": "Sprache: ",
     "profile": "Profil",
-
     "change_lang_title": "SPRACHE ÄNDERN",
-    "german":"Sprache ändern",
-    "english":"Englisch",
-    "russian":"Russisch",
-    "turkish":"Türkisch",
-
-    "map_title": "MAPS"
+    "german": "Sprache ändern",
+    "english": "Englisch",
+    "russian": "Russisch",
+    "turkish": "Türkisch",
+    "map_title": "MAPS",
+    "sign_in": "Anmelden",
+    "continue_app_description": "Melden Sie sich an, um die App weiterhin zu verwenden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "forgot_password": "Passwort vergessen",
+    "have_an_account": "Hast du noch keinen Account?",
+    "register": "Registrieren",
+    "username": "Benutzername",
+    "password_again": "Passwort erneut eingeben",
+    "already_have_an_account": "Bereits einen Account haben",
+    "do_not_have_an_account": "Wenn Sie noch keinen Account haben, können Sie sich registrieren",
+    "venues": "Veranstaltungsorte",
+    "sort": "Sortieren",
+    "filter": "Filter"
 }

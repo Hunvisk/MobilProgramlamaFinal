@@ -8,6 +8,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/localizations.dart';
 import '../../core/responsive.dart';
 import '../../tabletscreens.dart/user/tabletlogin.dart';
 
@@ -42,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title: "GİRİŞ YAP",
+          title: AppLocalizations.of(context).getTranslate("sign_in"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title: "GİRİŞ YAP",
+          title: AppLocalizations.of(context).getTranslate("sign_in"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title: "GİRİŞ YAP",
+          title: AppLocalizations.of(context).getTranslate("sign_in"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -123,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Oturum Aç",
+                AppLocalizations.of(context).getTranslate("sign_in"),
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -131,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Text(
-                "Uygulamayı Kullanmaya Devam Etmek İçin Giriş Yapın.",
+                AppLocalizations.of(context).getTranslate("continue_app_description"),
                 style: TextStyle(
                   color: Color.fromRGBO(207, 206, 206, 1),
                   fontSize: 13,
@@ -140,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Gap(20),
               Text(
-                "E-Mail",
+                AppLocalizations.of(context).getTranslate("email"),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -152,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'E-Mail',
+                    labelText: AppLocalizations.of(context).getTranslate("email"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -172,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Gap(6),
               Text(
-                "Şifre",
+                AppLocalizations.of(context).getTranslate("password"),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -187,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //backgroundColor: Color.fromRGBO(249, 249, 249, 1),
                       ),
                   decoration: InputDecoration(
-                    labelText: 'Şifre',
+                    labelText: AppLocalizations.of(context).getTranslate("password"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -301,7 +302,7 @@ Widget SignInLink(BuildContext context) {
         child: Padding(
           padding: const EdgeInsets.only(top: 1),
           child: Text(
-            'Şifremi Unuttum',
+            AppLocalizations.of(context).getTranslate("forgot_password"),
             style: TextStyle(
               color: Colors.blue,
               fontSize: 15,
@@ -323,7 +324,7 @@ Widget SignInButton(BuildContext context) {
         context.push('/Home');
       },
       child: Text(
-        'Giriş Yap',
+        AppLocalizations.of(context).getTranslate("sign_in"),
         style: Theme.of(context).textTheme.button!.copyWith(
             fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
       ),
@@ -345,7 +346,7 @@ Widget OtherSignInText(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Hala Hesabın Yok mu?',
+            AppLocalizations.of(context).getTranslate("have_an_account"),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -358,7 +359,7 @@ Widget OtherSignInText(BuildContext context) {
               context.push('/Register');
             },
             child: Text(
-              'Kayıt Ol',
+              AppLocalizations.of(context).getTranslate("register"),
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

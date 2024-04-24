@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors, sized_box_for_whitespace, deprecated_member_use, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, unused_element, dead_code, camel_case_types
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors, sized_box_for_whitespace, deprecated_member_use, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, unused_element, dead_code, camel_case_types, avoid_unnecessary_containers
 
 
 
@@ -9,6 +9,7 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/places_and_routes/places/tabletplaces.dart';
 
@@ -41,7 +42,7 @@ class _PlacesState extends State<Places> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "MEKANLAR",
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("venues"),
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
@@ -49,14 +50,14 @@ class _PlacesState extends State<Places> {
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("venues"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("venues"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -175,7 +176,7 @@ class FilterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -189,7 +190,7 @@ class FilterWidget extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Sırala',
+                  AppLocalizations.of(context).getTranslate("sort"),
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -203,7 +204,7 @@ class FilterWidget extends StatelessWidget {
               thickness: 4,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.30,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
@@ -217,7 +218,7 @@ class FilterWidget extends StatelessWidget {
                     fontSize: 21,
                   ),
                 ),
-                child: Text('Filtrele',
+                child: Text(AppLocalizations.of(context).getTranslate("filter"),
                     style: TextStyle(
                       color: Colors.white,
                     )),

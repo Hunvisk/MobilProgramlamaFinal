@@ -19,13 +19,30 @@
     "light":"Gündüz",
     "language":"Dil: ",
     "profile": "Profil",
-
     "change_lang_title": "DİL DEĞİŞTİR",
     "german":"Almanca",
     "english":"İngilizce",
     "russian":"Rusça",
     "turkish":"Türkçe",
+    "map_title": "HARİTALAR",
+    
+    "sign_in":"Oturum Aç",
+    "continue_app_description":"Uygulamayı Kullanmaya Devam Etmek İçin Giriş Yapın",
+    "email":"E-mail",
+    "password":"Şifre",
+    "forgot_password":"Şifremi Unuttum",
+    "have_an_account":"Hala bir hesabın yok mu ?",
+    "register":"Kayıt Ol",
+    "username":"Kullanıcı Adı",
+    "password_again":"Tekrar Şifre",
+    "already_have_an_account":"Zaten Bir Hesabım Var",
+    "do_not_have_an_account":"Hala Hesabınız Yoksa Kayıt Olabilirsiniz.",
+    "venues":"MEKANLAR",
+    "sort":"Sırala",
+    "filter":"Filtrele"
 
-    "map_title": "HARİTALAR"
+
+
+
     
 }

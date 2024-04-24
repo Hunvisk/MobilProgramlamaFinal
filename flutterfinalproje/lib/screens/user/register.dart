@@ -6,6 +6,7 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/localizations.dart';
 import '../../core/responsive.dart';
 import '../../tabletscreens.dart/user/tabletregister.dart';
 
@@ -38,7 +39,7 @@ class RegisterScreen extends StatefulWidget {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "KAYIT OL",
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("register"),
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
@@ -46,14 +47,14 @@ class RegisterScreen extends StatefulWidget {
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("register"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "KAYIT OL",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("register"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -96,14 +97,14 @@ class RegisterScreen extends StatefulWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Kayıt Ol",
+                AppLocalizations.of(context).getTranslate("register"),
                 style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(155, 154, 154, 1)),
               ),
               Text(
-                "Hala Hesabınız Yoksa Kayıt Olabilirsiniz.",
+                AppLocalizations.of(context).getTranslate("do_not_have_an_account"),
                 style: TextStyle(
                   color: Color.fromRGBO(207, 206, 206, 1),
                   fontSize: 13,
@@ -112,7 +113,7 @@ class RegisterScreen extends StatefulWidget {
               ),
               Gap(10),
               Text(
-                "Kullanıcı Adı",
+                AppLocalizations.of(context).getTranslate("username"),
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -123,7 +124,7 @@ class RegisterScreen extends StatefulWidget {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Kullanıcı Adı',
+                    labelText: AppLocalizations.of(context).getTranslate("username"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -144,7 +145,7 @@ class RegisterScreen extends StatefulWidget {
 
               Gap(2),
               Text(
-                "E-Mail",
+                AppLocalizations.of(context).getTranslate("email"),
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -157,7 +158,7 @@ class RegisterScreen extends StatefulWidget {
                   style: TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText: 'E-Mail',
+                    labelText: AppLocalizations.of(context).getTranslate("email"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -181,7 +182,7 @@ class RegisterScreen extends StatefulWidget {
 
               Gap(2),
               Text(
-                "Şifre",
+                AppLocalizations.of(context).getTranslate("password"),
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -194,7 +195,7 @@ class RegisterScreen extends StatefulWidget {
                   style: TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText: 'Şifre',
+                    labelText: AppLocalizations.of(context).getTranslate("password"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -222,7 +223,7 @@ class RegisterScreen extends StatefulWidget {
               ),
               Gap(2),
               Text(
-                " Tekrar Şifre",
+                AppLocalizations.of(context).getTranslate("password_again"),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -236,7 +237,7 @@ class RegisterScreen extends StatefulWidget {
                   style: TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText: ' Tekrar Şifre',
+                    labelText:AppLocalizations.of(context).getTranslate("password_again"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -302,7 +303,7 @@ Widget SignInButton(BuildContext context) {
             context.push('/');
           },
           child: Text(
-            'Kayıt Ol',
+            AppLocalizations.of(context).getTranslate("register"),
             style: Theme.of(context).textTheme.button!.copyWith(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
@@ -327,7 +328,7 @@ Widget OtherSignInText(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Zaten Bir Heabım Var ?',
+            AppLocalizations.of(context).getTranslate("already_have_an_account"),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -340,7 +341,7 @@ Widget OtherSignInText(
               context.push('/');
             },
             child: Text(
-              'Oturum Aç',
+              AppLocalizations.of(context).getTranslate("sign_in"),
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
