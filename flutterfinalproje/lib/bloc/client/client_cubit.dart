@@ -14,7 +14,7 @@ class ClientCubit extends Cubit<ClientState>{
     emit(newState);
   }
 
-  changeDarkMode(bool newValue, {required bool darkMode}) {
+  changeDarkMode({required bool darkMode}) {
     final newState = ClientState(
       language: state.language,
       darkMode: darkMode,

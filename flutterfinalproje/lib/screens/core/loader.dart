@@ -4,8 +4,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../bloc/client/client_cubit.dart';
 import '../../core/storage.dart';
 
 
@@ -17,6 +19,9 @@ class LoaderScreen extends StatefulWidget {
 }
 
 class _LoaderScreenState extends State<LoaderScreen> {
+
+  late ClientCubit clientCubit;
+  
   loadApp() async {
   final storage = Storage();
   final firstLaunch = await storage.isFirstLaunch();
@@ -32,13 +37,14 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
     GoRouter.of(context).replace("/Boarding");
   } else {
-    final config = await storage.setConfig();
+    final config = await storage.getConfig();
 
     final language = config?["language"] ?? getDeviceLanguage();
     final darkMode = config?["darkMode"] ?? (ThemeMode.system == ThemeMode.dark);
 
     await storage.setConfig(language: language, darkMode: darkMode);
-
+    clientCubit.changeLanguage(language: config["language"]);
+    clientCubit.changeDarkMode(darkMode:  config["darkMode"]);
     GoRouter.of(context).replace("/Home");
   }
 }
@@ -75,6 +81,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   void initState()
   {
     super.initState();
+    clientCubit = context.read<ClientCubit>();
     loadApp();
   }
 

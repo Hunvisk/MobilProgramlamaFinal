@@ -82,9 +82,24 @@
     "Comments": "YORUMLAR",
     "comments_text": "Çok güzel bir yerdi. Herkesin gitmesini öneririm.",
     "blogs": "BLOGLAR",                        
-    "blogs_text": " Caminin mimari açıdan en önemli özelliklerinden biri 18. yüzyıldan sonra özellikle Fransa ve İtalya saraylarında karşımıza çıkan Barok mimari tarzının kullanılması. Bu mimari tarzın bir özelliği olarak camiinin dış cephesi, muhteşem güzellikte taşlarla yapılmış oyma ve kabartma süslemeleriyle dikkat çekiyor. 19. yüzyıl camiilerinin genel özelliğinde olduğu gibi camii de ana ibadet bölümünün yanı sıra padişahların namaz kılması ve dinlenmesi için yapılan hünkâr kasrı bölümü de bulunur. Camii, geniş ve yüksek pencerelere sahiptir. Camii'nin iç duvarları kırmızı ve beyaz parlak çizgili, pembe renkli sıvalarla yapılmış, minberin mermer yapısıysa pembe renkli taşlarla süsleniyor.",
+    "blogs_text": "Caminin mimari açıdan en önemli özelliklerinden biri 18. yüzyıldan sonra özellikle Fransa ve İtalya saraylarında karşımıza çıkan Barok mimari tarzının kullanılması. Bu mimari tarzın bir özelliği olarak camiinin dış cephesi, muhteşem güzellikte taşlarla yapılmış oyma ve kabartma süslemeleriyle dikkat çekiyor. 19. yüzyıl camiilerinin genel özelliğinde olduğu gibi camii de ana ibadet bölümünün yanı sıra padişahların namaz kılması ve dinlenmesi için yapılan hünkâr kasrı bölümü de bulunur. Camii, geniş ve yüksek pencerelere sahiptir. Camii'nin iç duvarları kırmızı ve beyaz parlak çizgili, pembe renkli sıvalarla yapılmış, minberin mermer yapısıysa pembe renkli taşlarla süsleniyor.",
     "blogs_text1": "Sarıyer, İstanbul'un kuzeyinde yer alan güzide ilçelerimizden birisidir. Belgrad Ormanı ve Atatürk Arboretumu gibi huzurlu yemyeşil alanların yanı sıra, Emirgan Korusu ve Rumeli Hisarı gibi turistik merkezleriyle de burası İstanbulluların en sevdiği ilçeler arasında yer alıyor. Sarıyer, ayrıca kahvaltı yapılabilecek ve yemek yenebilecek mekanlarıyla da gurmelere hitap eden, her yönüyle gezip görülmesi gereken yemyeşil bir semt.",
-    "blogs_text2":       "Eminönü vapur iskelesinde ya da Eminönü tramvay durağında indiniz. Sırtınızı denize verip karşıya baktığınızda kalabalık bir meydan göreceksiniz. İşte burası Eminönü’ne giriş noktanız. Eminönü meydan neredeyse günün her saatinde iğne atsan yere düşmeyecek bir yer. Yani İstanbul'un özeti gibi."
-
+    "blogs_text2": "Eminönü vapur iskelesinde ya da Eminönü tramvay durağında indiniz. Sırtınızı denize verip karşıya baktığınızda kalabalık bir meydan göreceksiniz. İşte burası Eminönü’ne giriş noktanız. Eminönü meydan neredeyse günün her saatinde iğne atsan yere düşmeyecek bir yer. Yani İstanbul'un özeti gibi.",
+    
+    "boarding_title-1":"İstanbul'un Gizemli Sokaklarında Yolculuk",
+    "boarding_description-1":"Hoş geldiniz İstanbul'un Gizemli Sokaklarına ve Tarih Dolu Mekanlarına! İstanbul'un Kalbini Keşfetmek İçin Hazır Mısınız? Bizimle Bu Büyülü Şehri Adım Adım Gezin ve Unutulmaz Anılar Biriktirin.",
+    "boarding_title-2":"Pasaportunuzdaki Macera...",
+    "boarding_description-2":"Artık Pasaportunuzla Bu Eşsiz Şehri Keşfetmenin Zamanı Geldi.",
+    "boarding_title-3":"Harita",
+    "boarding_description-3":"Gözlerinizin önünde açılan dünya, yeni maceralar ve keşiflerle dolu olacak.",
+    "boarding_title-4":"Galata Kulesi",
+    "boarding_description-4":"Galata Kulesi, İstanbul'un tarih kokan semtlerinden birinde yükselen eşsiz bir yapıdır.",
+    "boarding_title-5":"Hoşgeldin",
+    "boarding_description-5":"Merhaba ve hoş geldin! Burada olduğun için çok mutluyuz. Keyifli zaman geçirmen dileğiyle!",
+    "finish":"Bitti",
+    "skip":"Geç",
+    "forgot_password_title":"Şifreni Mi Unuttun",
+    "forgot_password_description":"Olur Böyle Şeyler 😔 Yeni Şifre Oluşturmak İçin E-posta Adresinizi Girebilirsiniz.",
+    "reset_password":"Şifremi Sıfırla"
     
 }

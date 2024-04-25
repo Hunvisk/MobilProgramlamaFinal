@@ -24,57 +24,66 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Screen device = Screen.mobile;
 
-   Screen device = Screen.mobile;
-
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return   ;
+        return;
       case (Screen.tablet):
-       return  ;
+        return;
 
       case (Screen.desktop):
-       return  ;
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "MEKANLAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "MEKANLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return;
+    }
   }
-}
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: "MEKANLAR",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: "MEKANLAR",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: "MEKANLAR",
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
+
   final myitems = [
     RoutesContainerDesign(
       photo: "assets/images/routes/eminonu.jpeg",
@@ -187,15 +196,15 @@ drawBottom(){
                             context.push('/VipGezginInfo');
                           },
                           child: NavigatorBox(
-                            title:  AppLocalizations.of(context).getTranslate("become_a_VIP_traveler_now"),
+                            title: AppLocalizations.of(context)
+                                .getTranslate("become_a_VIP_traveler_now"),
                           )),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Theme.of(context).secondaryHeaderColor
-                          ),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Theme.of(context).secondaryHeaderColor),
                           width: double.infinity,
                           child: Column(
                             children: [
@@ -204,7 +213,8 @@ drawBottom(){
                                 child: Padding(
                                     padding: const EdgeInsets.all(5.0),
                                     child: Text(
-                                      AppLocalizations.of(context).getTranslate("popular_this_week"),
+                                      AppLocalizations.of(context)
+                                          .getTranslate("popular_this_week"),
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall,
@@ -257,7 +267,8 @@ drawBottom(){
                             context.push('/Home');
                           },
                           child: NavigatorBox(
-                            title: AppLocalizations.of(context).getTranslate("discover_traveler_products"),
+                            title: AppLocalizations.of(context)
+                                .getTranslate("discover_traveler_products"),
                           )),
                     ],
                   ),
@@ -304,16 +315,28 @@ drawBottom(){
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return AlertDialog(
-                              content: Container(
-                                width: MediaQuery.of(context).size.width * 0.6,
-                                height: MediaQuery.of(context).size.width *
-                                    0.6, // Genişlik ve yüksekliği isteğinize göre ayarlayın
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/logo/GR_Logo.png"), // Profil fotoğrafı
-                                    fit: BoxFit.cover,
+                            return Dialog(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: SizedBox(
+                                  width: 250,
+                                  height: 250,
+                                  child: Hero(
+                                    tag: "profilFoto",
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/logo/GR_Logo.png"), // Profil fotoğrafı
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -321,10 +344,26 @@ drawBottom(){
                           },
                         );
                       },
-                      child: CircleAvatar(
-                        radius: 45,
-                        backgroundImage:
-                            AssetImage("assets/images/logo/GR_Logo.png"),
+                      child: SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Hero(
+                          tag: "profilFoto",
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.grey.shade400, // Border rengi
+                                width: 4, // Border genişliği
+                              ),
+                            ),
+                            child: CircleAvatar(
+                              radius: 45,
+                              backgroundImage:
+                                  AssetImage("assets/images/logo/GR_Logo.png"),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -372,10 +411,12 @@ drawBottom(){
                           color: Theme.of(context).iconTheme.color,
                         ),
                         title: Text(
-                          AppLocalizations.of(context).getTranslate("mode")+
+                          AppLocalizations.of(context).getTranslate("mode") +
                               (context.read<ClientCubit>().state.darkMode
-                                  ? AppLocalizations.of(context).getTranslate("night")
-                                  : AppLocalizations.of(context).getTranslate("light")),
+                                  ? AppLocalizations.of(context)
+                                      .getTranslate("night")
+                                  : AppLocalizations.of(context)
+                                      .getTranslate("light")),
                         ),
                         trailing: Switch(
                           value: context.read<ClientCubit>().state.darkMode,
@@ -383,12 +424,12 @@ drawBottom(){
                             // Gece modu geçişini yapar
                             context
                                 .read<ClientCubit>()
-                                .changeDarkMode(newValue, darkMode: true);
+                                .changeDarkMode(darkMode: true);
                             // Gündüz modu geçişi için bir kontrol yapar
                             if (!newValue) {
                               context
                                   .read<ClientCubit>()
-                                  .changeDarkMode(newValue, darkMode: false);
+                                  .changeDarkMode(darkMode: false);
                             }
                           },
                         ),
@@ -396,7 +437,7 @@ drawBottom(){
                     ),
                     ListTileItem(
                       context,
-                      AppLocalizations.of(context).getTranslate("language")+
+                      AppLocalizations.of(context).getTranslate("language") +
                           context
                               .read<ClientCubit>()
                               .state
@@ -450,13 +491,15 @@ drawBottom(){
                             padding: const EdgeInsets.all(5.0),
                             child: Column(
                               children: [
-                                Text(AppLocalizations.of(context).getTranslate("having_trouble")),
+                                Text(AppLocalizations.of(context)
+                                    .getTranslate("having_trouble")),
                                 InkWell(
                                   onTap: () {
                                     context.push('/ChatBot');
                                   },
                                   child: Text(
-                                    AppLocalizations.of(context).getTranslate("help_for_you"),
+                                    AppLocalizations.of(context)
+                                        .getTranslate("help_for_you"),
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                     ),
@@ -505,9 +548,6 @@ class NavigatorBox extends StatelessWidget {
   }
 }
 
-
-
-
 class WeatherBox extends StatefulWidget {
   const WeatherBox({Key? key}) : super(key: key);
 
@@ -534,10 +574,13 @@ class _WeatherBoxState extends State<WeatherBox> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator(); // Veri yüklenirken gösterilecek widget
         } else if (snapshot.hasError) {
-          return Text('Hata: ${snapshot.error}'); // Hata durumunda gösterilecek widget
+          return Text(
+              'Hata: ${snapshot.error}'); // Hata durumunda gösterilecek widget
         } else {
-          final weatherData = snapshot.data!; // API'den gelen hava durumu verileri
-          return _buildWeatherBox(weatherData); // Hava durumu widget'ını oluştur
+          final weatherData =
+              snapshot.data!; // API'den gelen hava durumu verileri
+          return _buildWeatherBox(
+              weatherData); // Hava durumu widget'ını oluştur
         }
       },
     );
@@ -548,27 +591,31 @@ class _WeatherBoxState extends State<WeatherBox> {
       padding: const EdgeInsets.all(10.0),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
-        ),
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context)
+                .secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
+            ),
         height: 185,
         child: Row(
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  topLeft: Radius.circular(10),
-                ),
-                color: Theme.of(context).secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
-              ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    topLeft: Radius.circular(10),
+                  ),
+                  color: Theme.of(context)
+                      .secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
+                  ),
               alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Icon(
                   Icons.cloudy_snowing,
                   size: 100,
-                  color: Theme.of(context).colorScheme.primary, // Hava durumuna göre renk ayarlayabilirsiniz
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary, // Hava durumuna göre renk ayarlayabilirsiniz
                 ),
               ),
             ),
@@ -597,7 +644,8 @@ class _WeatherBoxState extends State<WeatherBox> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Theme.of(context).secondaryHeaderColor ,// Hava durumuna göre renk ayarlayabilirsiniz
+                        color: Theme.of(context)
+                            .secondaryHeaderColor, // Hava durumuna göre renk ayarlayabilirsiniz
                         borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(10),
                         ),
@@ -609,18 +657,22 @@ class _WeatherBoxState extends State<WeatherBox> {
                         children: [
                           WeatherInfo(
                             icon: Icons.water_drop_outlined,
-                            labelText: AppLocalizations.of(context).getTranslate("humidty"),
+                            labelText: AppLocalizations.of(context)
+                                .getTranslate("humidty"),
                             valueText: '${weatherData['main']['humidity']}%',
                           ),
                           WeatherInfo(
                             icon: Icons.air,
-                            labelText: AppLocalizations.of(context).getTranslate("wind"),
+                            labelText: AppLocalizations.of(context)
+                                .getTranslate("wind"),
                             valueText: '${weatherData['wind']['speed']}km/h',
                           ),
                           WeatherInfo(
                             icon: Icons.umbrella,
-                            labelText: AppLocalizations.of(context).getTranslate("rainfall"),
-                            valueText: '${weatherData['rain'] != null ? weatherData['rain']['1h'].toString() + 'mm' : '0mm'}',
+                            labelText: AppLocalizations.of(context)
+                                .getTranslate("rainfall"),
+                            valueText:
+                                '${weatherData['rain'] != null ? weatherData['rain']['1h'].toString() + 'mm' : '0mm'}',
                           ),
                         ],
                       ),
@@ -672,13 +724,11 @@ class WeatherInfo extends StatelessWidget {
   }
 }
 
-
 Widget ListTileItem(BuildContext context, String name, String screen,
     IconData iconData, Color iconColor) {
   return BlocBuilder<ClientCubit, ClientState>(
     builder: (context, state) {
-      bool isDarkMode =
-          state.darkMode; // Varsayılan olarak false kullanıyoruz
+      bool isDarkMode = state.darkMode; // Varsayılan olarak false kullanıyoruz
 
       return Padding(
         padding: const EdgeInsets.all(4.0),

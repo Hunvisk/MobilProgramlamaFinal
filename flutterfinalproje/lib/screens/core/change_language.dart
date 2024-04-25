@@ -30,13 +30,13 @@ class _Change_LanguageScreenState extends State<Change_LanguageScreen> {
   _loadSelectedLanguage() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      selectedLanguage = prefs.getString('selectedLanguage') ?? ''; // Kayıtlı dil bilgisini yükle, yoksa boş bir string kullan
+      selectedLanguage = prefs.getString('language') ?? ''; // Kayıtlı dil bilgisini yükle, yoksa boş bir string kullan
     });
   }
 
   // Seçilen dil bilgisini kaydeden fonksiyon
   _saveSelectedLanguage(String language) async {
-    await prefs.setString('selectedLanguage', language); // Seçilen dil bilgisini kaydet
+    await prefs.setString('language', language); // Seçilen dil bilgisini kaydet
   }
 
   @override

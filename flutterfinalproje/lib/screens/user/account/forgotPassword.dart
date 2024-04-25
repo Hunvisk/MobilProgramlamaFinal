@@ -1,12 +1,14 @@
-// ignore_for_file: sort_child_properties_last, deprecated_member_use, file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, camel_case_types
+// ignore_for_file: sort_child_properties_last, deprecated_member_use, camel_case_types, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/account/desktopforgotPassword.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+import 'package:flutterfinalproje/widgets/myappbar.dart';
+
 
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/account/tabletforgotpassword.dart';
 
@@ -16,67 +18,58 @@ class ForgotPassword extends StatefulWidget {
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
 }
+
 class _ForgotPasswordState extends State<ForgotPassword> {
-   TextEditingController searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
   bool isSearching = false;
 
-   Screen device = Screen.mobile;
+  Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return  passwordSayfa() ;
+        return passwordPage();
       case (Screen.tablet):
-       return TabletForgotPassword();
+        return TabletForgotPassword();
       case (Screen.desktop):
-       return DesktopForgotPassword();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "ŞİFREMİ UNUTTUM",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "ŞİFREMİ UNUTTUM",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "ŞİFREMİ UNUTTUM",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return DesktopForgotPassword();
+    }
   }
-}
+
+  drawAppar() {
+    switch (device) {
+      case (Screen.mobile):
+        return AppBar(
+          title: Text(AppLocalizations.of(context).getTranslate("forgot_password")),
+        );
+      case (Screen.tablet):
+        return AppBar(
+          title: Text(AppLocalizations.of(context).getTranslate("forgot_password")),
+        );
+      case (Screen.desktop):
+        return AppBar(
+          title: Text(AppLocalizations.of(context).getTranslate("forgot_password")),
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: drawAppar(),
+        appBar: MyAppBar(title: AppLocalizations.of(context).getTranslate("forgot_password"),),
         body: drawScreen(),
       ),
     );
   }
 }
 
-class passwordSayfa extends StatelessWidget {
-  const passwordSayfa({
+class passwordPage extends StatelessWidget {
+  const passwordPage({
     super.key,
   });
 
@@ -87,16 +80,16 @@ class passwordSayfa extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Şifreni mi Unuttun?',
+           Text(
+            AppLocalizations.of(context).getTranslate("forgot_password_title"),
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           const Gap(10),
-          const Text(
-            'Olur Böyle Şeyler 😔 Yeni Şifre Oluşturmak İçin E-posta Adresinizi Girebilirsiniz.  ',
+           Text(
+            AppLocalizations.of(context).getTranslate("forgot_password_description"),
             style: TextStyle(
               fontSize: 13,
             ),
@@ -104,22 +97,18 @@ class passwordSayfa extends StatelessWidget {
           ),
           const Gap(10),
           SizedBox(
-            height: 40, // TextField'ın yüksekliğini ayarını yaptım 
+            height: 40, // TextField'ın yüksekliğini ayarını yaptım
             child: TextField(
-              style: const  TextStyle(fontSize: 14), // Metin boyutunu küçültmek için bu satır eklendi
+              style: const TextStyle(fontSize: 14), // Metin boyutunu küçültmek için bu satır eklendi
               decoration: InputDecoration(
-                labelText: 'E-Mail',
+                labelText: AppLocalizations.of(context).getTranslate("email"),
                 filled: false,
                 fillColor: Theme.of(context).colorScheme.surface,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
                 contentPadding: const EdgeInsets.only(
-                  top: 10.0, 
-                  bottom: 10.0, 
-                  left: 10.0, 
-                  right: 5.0
-                ),
+                    top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(color: Colors.black),
@@ -136,13 +125,13 @@ class passwordSayfa extends StatelessWidget {
             onPressed: () {
               context.push('/');
             },
-            child:  Text(
-              'Şifremi Sıfırla ',
+            child: Text(
+              AppLocalizations.of(context).getTranslate("reset_password"),
               style: Theme.of(context).textTheme.button!.copyWith(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi

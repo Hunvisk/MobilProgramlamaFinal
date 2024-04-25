@@ -66,7 +66,7 @@
     "blog": "Blogs",
     "place_to_visit": "Orte zum Besuchen",
     "favorites":"Favoriten",
-    "Achievemets": "Erfolge",
+    "achievemets": "Erfolge",
     "Favorites":"FAVORITEN",
     "places_to_visit": "Orte zum Besuchen",
     "favorite_vıp_traveler_advantages": "Favorisierte VIP-Reisevorteile",
@@ -82,6 +82,22 @@
     "blogs": "BLOGS",
     "blogs_text": "Eines der wichtigsten architektonischen Merkmale der Moschee ist die Verwendung des barocken Baustils, den wir nach dem 18. Jahrhundert insbesondere in den Palästen Frankreichs und Italiens antrafen. Als Merkmal dieses Baustils fällt das Äußere der Moschee mit seinen geschnitzten und Reliefverzierungen aus wunderschönen Steinen auf. Wie es das allgemeine Merkmal von Moscheen aus dem 19. Jahrhundert ist, verfügt die Moschee zusätzlich zum Hauptgottesdienstbereich auch über einen Sultanpavillon, der für die Sultane zum Beten und Ausruhen errichtet wurde. Die Moschee hat große und hohe Fenster. Die Innenwände der Moschee bestehen aus rosafarbenem Putz mit roten und weißen hellen Streifen, und die Marmorstruktur der Kanzel ist mit rosafarbenen Steinen verziert.",
     "blogs_text1": "Sarıyer ist einer der renommierten Bezirke im Norden von Istanbul. Neben ruhigen grünen Gebieten wie dem Belgrad-Wald und dem Atatürk-Arboretum beherbergt es auch touristische Zentren wie den Emirgan-Hain und die Rumeli Hisarı, was es zu einem der beliebtesten Bezirke Istanbuls macht. Sarıyer spricht auch Gourmets mit seinen Frühstücks- und Essensmöglichkeiten an und ist damit ein grüner Bezirk, der in jeder Hinsicht erkundet werden sollte.",
-    "blogs_text2": "Sie sind am Eminönü-Fähranleger oder an der Straßenbahnhaltestelle Eminönü angekommen. Wenn Sie sich dem Meer zuwenden und auf die andere Seite schauen, sehen Sie einen belebten Platz. Das ist Ihr Eingangspunkt nach Eminönü. Der Eminönü-Platz ist ein Ort, an dem man fast zu jeder Tageszeit eine Nadel werfen könnte und sie nicht auf den Boden fallen würde. Mit anderen Worten, es ist wie eine Zusammenfassung von Istanbul."
+    "blogs_text2": "Sie sind am Eminönü-Fähranleger oder an der Straßenbahnhaltestelle Eminönü angekommen. Wenn Sie sich dem Meer zuwenden und auf die andere Seite schauen, sehen Sie einen belebten Platz. Das ist Ihr Eingangspunkt nach Eminönü. Der Eminönü-Platz ist ein Ort, an dem man fast zu jeder Tageszeit eine Nadel werfen könnte und sie nicht auf den Boden fallen würde. Mit anderen Worten, es ist wie eine Zusammenfassung von Istanbul.",
+    
+    "boarding_title-1":"Reise durch die geheimnisvollen Straßen Istanbuls",
+    "boarding_description-1":"Willkommen in den geheimnisvollen Straßen und geschichtsträchtigen Orten Istanbuls! Sind Sie bereit, das Herz von Istanbul zu erkunden? Begleiten Sie uns, während wir diese verzauberte Stadt Schritt für Schritt erkunden und unvergessliche Erinnerungen schaffen.",
+    "boarding_title-2":"Das Abenteuer in Ihrem Reisepass...",
+    "boarding_description-2":"etzt ist es Zeit, diese einzigartige Stadt mit Ihrem Reisepass zu erkunden.",
+    "boarding_title-3":"Karte",
+    "boarding_description-3":"Die Welt, die sich vor Ihren Augen entfaltet, wird voller neuer Abenteuer und Entdeckungen sein.",
+    "boarding_title-4":"Galataturm",
+    "boarding_description-4":"Die Galata-Turm ist ein einzigartiges Gebäude in einem der geschichtsträchtigen Viertel Istanbuls.",
+    "boarding_title-5":"Willkommen",
+    "boarding_description-5":"Hallo und herzlich willkommen! Wir freuen uns, dass du hier bist. Wir wünschen dir eine angenehme Zeit!",
+    "finish": "Fertig",
+    "skip": "Überspringen",
+    "forgot_password_title":"Passwort vergessen?",
+    "forgot_password_description": "Oops! 😔 Sie können Ihre E-Mail-Adresse eingeben, um ein neues Passwort zu erstellen.",
+    "reset_password": "Passwort zurücksetzen"
 
 }
