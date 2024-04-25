@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return  buildColumn(context) ;
+        return buildColumn(context);
       case (Screen.tablet):
         return TabletLogin();
       case (Screen.desktop):
@@ -96,16 +96,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: Center(
             child: SingleChildScrollView(
-              child:drawScreen(),
+              child: drawScreen(),
             ),
           ),
         ),
@@ -128,13 +129,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(155, 154, 154, 1),
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               Text(
-                AppLocalizations.of(context).getTranslate("continue_app_description"),
+                AppLocalizations.of(context)
+                    .getTranslate("continue_app_description"),
                 style: TextStyle(
-                  color: Color.fromRGBO(207, 206, 206, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
@@ -145,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(155, 154, 154, 1),
+                  color: Theme.of(context).colorScheme.primary
                 ),
               ),
               Gap(5),
@@ -153,9 +155,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).getTranslate("email"),
+                    labelText:
+                        AppLocalizations.of(context).getTranslate("email"),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surface,
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -163,10 +166,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
                   cursorColor: Colors.black, // Yazma imleci rengi
                 ),
@@ -177,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(155, 154, 154, 1),
+                  color: Theme.of(context).colorScheme.primary
                 ),
               ),
               Gap(5),
@@ -188,9 +191,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       //backgroundColor: Color.fromRGBO(249, 249, 249, 1),
                       ),
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).getTranslate("password"),
+                    labelText:
+                        AppLocalizations.of(context).getTranslate("password"),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surface,
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -198,15 +202,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
-                    labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                    labelStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary
+                        ),
                     suffixIcon: GestureDetector(
                       onTap: () {},
                       child: Icon(
                         Icons.visibility,
-                        color: Colors.grey.shade200,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -230,6 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SvgPicture.asset(
                         "assets/icons/instagram.svg",
                         height: 35,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -240,6 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SvgPicture.asset(
                         "assets/icons/apple.svg",
                         height: 35,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -250,6 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SvgPicture.asset(
                         "assets/icons/google.svg",
                         height: 35,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -260,6 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SvgPicture.asset(
                         "assets/icons/linkedin.svg",
                         height: 35,
+                        color:Theme.of(context).colorScheme.primary
                       ),
                     ),
                   ),
@@ -330,7 +339,7 @@ Widget SignInButton(BuildContext context) {
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor:
-            Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
+             Theme.of(context).colorScheme.primary, // Tema rengi, // Buton rengi
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -350,7 +359,7 @@ Widget OtherSignInText(BuildContext context) {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.grey, // Yazı rengi
+              color: Theme.of(context).colorScheme.primary // Yazı rengi
             ),
           ),
           Gap(5),
@@ -364,7 +373,6 @@ Widget OtherSignInText(BuildContext context) {
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
-                //color: Colors.blue,
               ),
             ),
           ),

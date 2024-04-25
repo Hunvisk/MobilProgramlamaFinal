@@ -72,6 +72,7 @@ class RegisterScreen extends StatefulWidget {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: drawScreen(),
         ),
       ),
@@ -101,12 +102,12 @@ class RegisterScreen extends StatefulWidget {
                 style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(155, 154, 154, 1)),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               Text(
                 AppLocalizations.of(context).getTranslate("do_not_have_an_account"),
                 style: TextStyle(
-                  color: Color.fromRGBO(207, 206, 206, 1),
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
@@ -117,7 +118,7 @@ class RegisterScreen extends StatefulWidget {
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(155, 154, 154, 1)),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               Gap(2),
               Padding(
@@ -134,10 +135,10 @@ class RegisterScreen extends StatefulWidget {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
                   cursorColor: Colors.black, // Yazma imleci rengi
                 ),
@@ -149,7 +150,7 @@ class RegisterScreen extends StatefulWidget {
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(155, 154, 154, 1)),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               Gap(5),
               Padding(
@@ -169,11 +170,11 @@ class RegisterScreen extends StatefulWidget {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
                   cursorColor: Colors.black,
                   obscureText: false,
@@ -186,7 +187,7 @@ class RegisterScreen extends StatefulWidget {
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(155, 154, 154, 1)),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               Gap(5),
               Padding(
@@ -205,15 +206,15 @@ class RegisterScreen extends StatefulWidget {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                     suffixIcon: GestureDetector(
                       onTap: () {},
                       child: Icon(
                         Icons.visibility,
-                        color: Color.fromRGBO(155, 154, 154, 1),
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -227,7 +228,7 @@ class RegisterScreen extends StatefulWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(155, 154, 154, 1),
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               Gap(5),
@@ -247,15 +248,15 @@ class RegisterScreen extends StatefulWidget {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                     suffixIcon: GestureDetector(
                       onTap: () {},
                       child: Icon(
                         Icons.visibility,
-                        color: Color.fromRGBO(155, 154, 154, 1),
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -332,7 +333,7 @@ Widget OtherSignInText(
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.grey, // Yazı rengi
+              color: Theme.of(context).colorScheme.primary, // Yazı rengi
             ),
           ),
           Gap(5),
