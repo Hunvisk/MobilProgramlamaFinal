@@ -24,6 +24,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   
   loadApp() async {
   final storage = Storage();
+  //await storage.clearStorage(); // Video için geçici olarak stroge sıfırladık.
   final firstLaunch = await storage.isFirstLaunch();
 
   if (firstLaunch) {

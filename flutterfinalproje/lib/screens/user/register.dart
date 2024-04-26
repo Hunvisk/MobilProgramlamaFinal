@@ -301,7 +301,7 @@ Widget SignInButton(BuildContext context) {
         margin: EdgeInsets.all(5),
         child: ElevatedButton(
           onPressed: () {
-            context.push('/');
+            context.push('/Login');
           },
           child: Text(
             AppLocalizations.of(context).getTranslate("register"),
@@ -339,7 +339,7 @@ Widget OtherSignInText(
           Gap(5),
           InkWell(
             onTap: () {
-              context.push('/');
+              context.push('/Login');
             },
             child: Text(
               AppLocalizations.of(context).getTranslate("sign_in"),

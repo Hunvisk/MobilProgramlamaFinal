@@ -702,9 +702,11 @@ class WeatherInfo extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              labelText,
-              style: TextStyle(fontSize: 14),
+            Expanded(
+              child: Text(
+                labelText,
+                style: TextStyle(fontSize: 14),
+              ),
             ),
             Text(
               valueText,
