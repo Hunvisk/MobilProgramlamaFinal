@@ -462,13 +462,6 @@ class _HomeState extends State<Home> {
                     ),
                     ListTileItem(
                       context,
-                      AppLocalizations.of(context).getTranslate("settings"),
-                      '/Settings',
-                      Icons.settings,
-                      Colors.black54,
-                    ),
-                    ListTileItem(
-                      context,
                       AppLocalizations.of(context).getTranslate("log_out"),
                       '/LogIn',
                       Icons.logout,

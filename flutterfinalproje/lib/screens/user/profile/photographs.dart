@@ -6,9 +6,9 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletphotographs.dart';
-
 
 class Photographs extends StatefulWidget {
   const Photographs({Key? key}) : super(key: key);
@@ -19,67 +19,76 @@ class Photographs extends StatefulWidget {
 
 class PhotographsState extends State<Photographs> {
   bool isSearching = false;
-Screen device = Screen.mobile;
+  Screen device = Screen.mobile;
 
- 
-
-drawScreen() {
+  drawScreen() {
     switch (device) {
       case (Screen.mobile):
         return FotografSayfa();
       case (Screen.tablet):
-        return TabletPhotographsScreen() ;
+        return TabletPhotographsScreen();
       case (Screen.desktop):
         return DesktopPhotographsScreen();
     }
   }
-drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "FOTOĞRAFLAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
-  
-drawBottom(){
-     switch (device) {
+
+  drawAppar() {
+    switch (device) {
       case (Screen.mobile):
-       return  MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("fotos"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.tablet):
-       return MyBottomNavBar();
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("fotos"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
       case (Screen.desktop):
-       return ;
-     }
-   }
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("fotos"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
+
+  drawBottom() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyBottomNavBar();
+      case (Screen.tablet):
+        return MyBottomNavBar();
+      case (Screen.desktop):
+        return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-      setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+    setState(() {
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: drawAppar(),
-        body: SingleChildScrollView(scrollDirection:Axis.vertical ,
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: drawScreen(),
         ),
       ),
@@ -88,47 +97,65 @@ drawBottom(){
 
   Column FotografSayfa() {
     return Column(
-          children: [
-            Divider(thickness: 3),
-            FilterWidget(),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("Kamera", "1.151", "assets/images/photographs/anlatan_meydanı.jpeg"),
-                  PhotoItem("Kolaj", "2.345", "assets/images/photographs/yalvac.jpg"),
-                  PhotoItem("Çiçekler", "3.789", "assets/images/photographs/isparta.jpg"),
-                ],
-              ),
-            ),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("Hayvanlar", "1.151", "assets/images/photographs/yalvac.jpg"),
-                  PhotoItem("Aile", "2.345", "assets/images/photographs/isparta.jpg"),
-                  PhotoItem("Facebook", "3.789", "assets/images/photographs/cinaralti.jpeg"),
-                ],
-              ),
-            ),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("WhatsApp", "1.151", "assets/images/photographs/pisidia.jpeg"),
-                  PhotoItem("Snapchat", "2.345", "assets/images/photographs/yalvac.jpg"),
-                  PhotoItem("Instagram", "3.789", "assets/images/photographs/isparta.jpg"),
-                ],
-              ),
-            ),
-            SingleChildScrollView(scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PhotoItem("ScreenShootlar", "1.151", "assets/images/photographs/isparta.jpg"),
-                  PhotoItem("Snapchat", "2.345", "assets/images/photographs/cinaralti.jpeg"),
-                  PhotoItem("Instagram", "3.789", "assets/images/photographs/yalvac.jpg"),
-                ],
-              ),
-            ),
-          ],
-        );
+      children: [
+        Divider(thickness: 3),
+        FilterWidget(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem(AppLocalizations.of(context).getTranslate("camera"),
+                  "1.151", "assets/images/photographs/anlatan_meydanı.jpeg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("collage"),
+                  "2.345", "assets/images/photographs/yalvac.jpg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("flowers"),
+                  "3.789", "assets/images/photographs/isparta.jpg"),
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem(AppLocalizations.of(context).getTranslate("animals"),
+                  "1.151", "assets/images/photographs/yalvac.jpg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("family"),
+                  "2.345", "assets/images/photographs/isparta.jpg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("facebook"),
+                  "3.789", "assets/images/photographs/cinaralti.jpeg"),
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem(AppLocalizations.of(context).getTranslate("whatsApp"),
+                  "1.151", "assets/images/photographs/pisidia.jpeg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("snapchat"),
+                  "2.345", "assets/images/photographs/yalvac.jpg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("instagram"),
+                  "3.789", "assets/images/photographs/isparta.jpg"),
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PhotoItem(AppLocalizations.of(context).getTranslate("camera"),
+                  "1.151", "assets/images/photographs/isparta.jpg"),
+              PhotoItem(AppLocalizations.of(context).getTranslate("snapchat"),
+                  "2.345", "assets/images/photographs/cinaralti.jpeg"),
+              PhotoItem(
+                  AppLocalizations.of(context).getTranslate("screen_shootlar"),
+                  "3.789",
+                  "assets/images/photographs/yalvac.jpg"),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   Widget PhotoItem(String title, String count, String photo) {
@@ -156,7 +183,8 @@ drawBottom(){
             title,
             style: TextStyle(
               color: Theme.of(context).textTheme.headlineMedium!.color,
-              fontWeight: Theme.of(context).textTheme.headlineMedium!.fontWeight,
+              fontWeight:
+                  Theme.of(context).textTheme.headlineMedium!.fontWeight,
             ),
           ),
           Text(
@@ -188,7 +216,7 @@ drawBottom(){
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Album',
+                      AppLocalizations.of(context).getTranslate("albums"),
                       style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
@@ -236,7 +264,7 @@ class FilterWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Albümler',
+                        AppLocalizations.of(context).getTranslate("albums"),
                         style: TextStyle(color: Colors.white),
                       ),
                       Icon(
@@ -260,7 +288,6 @@ class FilterWidget extends StatelessWidget {
                         // Arama ikonuna tıklandığında yapılacak işlemler
                       },
                     ),
-                    
                   ],
                 ),
               ),
@@ -283,7 +310,7 @@ class FilterWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Albüm',
+                  AppLocalizations.of(context).getTranslate("albums"),
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -291,7 +318,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Yıla Göre (En Eski)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_year_(oldest)"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -299,7 +329,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Yıla Göre (En Yeni)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_year_(newest)"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -307,7 +340,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Aya Göre (En Eski)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_month_(oldest)"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -315,7 +351,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Aya Göre (En Yeni)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_month_(newest)"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -323,7 +362,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Güne Göre (En Eski)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_day_(oldest)"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
@@ -331,7 +373,10 @@ class FilterWidget extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Güne Göre (En Yeni)'),
+                  title: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("by_day_(newest)"),
+                  ),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },

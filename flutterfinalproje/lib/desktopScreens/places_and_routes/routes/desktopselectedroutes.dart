@@ -86,7 +86,7 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
                     ),
                     Positioned(
                       bottom: 1,
-                      right: 70,
+                      right: 140,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -105,7 +105,7 @@ class DesktopSelectedRoutesScreen extends StatelessWidget {
                     ),
                     Positioned(
                       bottom: 1,
-                      right: 120,
+                      right: 250,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),

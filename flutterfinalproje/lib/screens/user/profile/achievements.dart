@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopachievements.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
@@ -35,7 +36,7 @@ class _AchievementsState extends State<Achievemets> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "BAŞARIMLAR",
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("Achievemets"),
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
@@ -43,14 +44,14 @@ class _AchievementsState extends State<Achievemets> {
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "BAŞARIMLAR",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("Achievemets"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "BAŞARIMLAR",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("Achievemets"),icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -102,83 +103,81 @@ class basarimlarSayfa extends StatelessWidget {
                 children: [
                   Gap(15),
                   AchievementsBox1(
-                      title: "İlk Gezim!",
-                      description: "İlk mekan gezini tamamladın."),
+                      title: AppLocalizations.of(context).getTranslate("my_first_trip"),
+                      description: AppLocalizations.of(context).getTranslate("you_completed_your_first_location_visit"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Seyahat Stajyeri",
-                      description: "25 mekan gezisi tamamladın."),
+                      title: AppLocalizations.of(context).getTranslate("travel_Intern"),
+                      description: AppLocalizations.of(context).getTranslate("completed_venue_visits"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Kıdemli Gezgin",
-                      description: "50 mekan gezisi tamamladın."),
+                      title: AppLocalizations.of(context).getTranslate("senior_traveler"),
+                      description: AppLocalizations.of(context).getTranslate("completed_venue"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Uzman Gezgin",
-                      description: "100 mekan gezisi tamamladın."),
+                      title: AppLocalizations.of(context).getTranslate("expert_traveler"),
+                      description: AppLocalizations.of(context).getTranslate("completed_visits")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Gezi Kaşifi",
-                      description: "200 mekan gezini tamamladın."),
+                      title: AppLocalizations.of(context).getTranslate("travel_explorer"),
+                      description: AppLocalizations.of(context).getTranslate("venue_tour"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Bu da Benim Yolum.",
-                      description: "İlk rotanı oluşturdun."),
+                      title: AppLocalizations.of(context).getTranslate("this_my_may"),
+                      description: AppLocalizations.of(context).getTranslate("you_created_your_first_route"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Tavsiye mi Lazım?",
-                      description: "İlk blog yazını yazdın."),
+                      title:AppLocalizations.of(context).getTranslate("do_you_need_advice"),
+                      description: 
+                      AppLocalizations.of(context).getTranslate("you_wrote_your_first_blog_post"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Blog Editörü",
-                      description: "5 adet blog yazısı yazdın."),
+                      title: AppLocalizations.of(context).getTranslate("blog_editor"),
+                      description: AppLocalizations.of(context).getTranslate("you_wrote_a_blog_post")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Sevilen Blog Yazarı",
-                      description: "Bir blog yazın 500 beğeniye ulaşsın."),
+                      title:AppLocalizations.of(context).getTranslate("beloved_blog_author"),
+                      description: AppLocalizations.of(context).getTranslate("write_a_blog")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Ben De Bir Gezginim.",
-                      description: "Üyeliği tamamla."),
+                      title: AppLocalizations.of(context).getTranslate("traveler"),
+                      description:AppLocalizations.of(context).getTranslate("membership")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Sanırım Yardıma İhtiyacım Var.",
-                      description: "ChatBot ile iletişim kur."),
+                      title: AppLocalizations.of(context).getTranslate("need_help"),
+                      description: AppLocalizations.of(context).getTranslate("chatbot_communication")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Gezmenin yarısı istemektir!",
-                      description:
-                          "Gezilmek istenilenler alanına kaydetti..."),
+                      title: AppLocalizations.of(context).getTranslate("half_of_the_journey_is_to_desire"),
+                      description:AppLocalizations.of(context).getTranslate("saved_to_the_list_of_places_to_visit")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Başarım Avcısı",
-                      description: "Tüm başarımları tamamladın."),
+                      title: AppLocalizations.of(context).getTranslate("achievement_hunter"),
+                      description: AppLocalizations.of(context).getTranslate("you_completed_all_achievements")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Bence...",
-                      description: "Bir mekan veya rota hakkında yorum..."),
+                      title: AppLocalizations.of(context).getTranslate("think"),
+                      description:AppLocalizations.of(context).getTranslate("place_or_route_comment")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Bir de benim gözümden",
-                      description: "Bir fotoğraf yükledin."),
+                      title: AppLocalizations.of(context).getTranslate("from_my_perspective"),
+                      description:AppLocalizations.of(context).getTranslate("you_uploaded_a_photo")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Gezgin Albümü",
-                      description: "50 fotoğraf yükedin."),
+                      title: AppLocalizations.of(context).getTranslate("traveler_album"),
+                      description: AppLocalizations.of(context).getTranslate("you_uploaded_photos"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Her türden biraz...",
-                      description:
-                          "Bütün kategorilerden en az bir mekan..."),
+                      title: AppLocalizations.of(context).getTranslate("a_little_bit_of_every_kind"),
+                      description: AppLocalizations.of(context).getTranslate("at_least_one_place_from_each_category")),
                   Gap(15),
                   AchievementsBox1(
-                      title: "Çok Yönlü Gezi",
-                      description:
-                          "En az 3 farklı kategoriden en az birer..."),
+                      title:AppLocalizations.of(context).getTranslate("versatile_travel"),
+                      description:AppLocalizations.of(context).getTranslate("different_category"),),
                   Gap(15),
                   AchievementsBox1(
-                      title: "İstanbul Gezgini",
-                      description: "İstanbul'un her semtinden birer mekan"),
+                      title: AppLocalizations.of(context).getTranslate("the_istanbul_wanderer"),
+                      description:AppLocalizations.of(context).getTranslate("a_place_from_every_district_of_istanbul"),),
                 ],
               ),
             ),
