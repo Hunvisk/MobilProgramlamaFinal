@@ -10,11 +10,15 @@ class AppLocalizations {
   static const List<String> _supportedLanguages = [
     'en',
     'tr',
+    'de',
+    'ru'
   ];
 
   static const Map<String, String> _supportedLanguages2 = {
     'en': "English",
     'tr': "Türkçe",
+    'de': 'German',
+    'ru': 'Russian'
   };
 
   AppLocalizations(this.locale);
