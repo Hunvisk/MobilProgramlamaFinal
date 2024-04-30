@@ -22,6 +22,11 @@ class _PlacesState extends State<Places> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
 
+  
+
+
+
+
   Screen device = Screen.mobile;
 
   drawScreen() {
