@@ -30,6 +30,34 @@ class TabletpasswordSayfa extends StatelessWidget {
     super.key,
   });
 
+  void _showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Şifre Değiştirme Talebi'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Şifre değiştirme talebiniz alındı.'),
+              SizedBox(height: 8),
+              Text('Mail hesabınızı kontrol ediniz.'),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                context.go('/Login');
+              },
+              child: Text('Giriş Yap'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -87,7 +115,7 @@ class TabletpasswordSayfa extends StatelessWidget {
           const Gap(10),
           ElevatedButton(
             onPressed: () {
-              context.push('/');
+              _showSuccessDialog(context);
             },
             child:  Text(
               'Şifremi Sıfırla ',

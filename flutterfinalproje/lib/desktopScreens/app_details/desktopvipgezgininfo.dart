@@ -46,7 +46,7 @@ class ComparisonBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.grey.shade200,
+        color: Theme.of(context).secondaryHeaderColor,
         height: 500,
         width: double.infinity,
         child: Column(
@@ -228,8 +228,7 @@ class SubscriptionBox extends StatelessWidget {
       height: 200,
       width: 800,
       decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          border: Border.all(color: Colors.grey.shade300, width: 1),
+          color: Theme.of(context).secondaryHeaderColor,
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -261,7 +260,7 @@ class SubscriptionBox extends StatelessWidget {
             child: Text(
               AppLocalizations.of(context).getTranslate("subscribe"),
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).secondaryHeaderColor,
               ),
             ),
           )
@@ -289,8 +288,7 @@ class FavoriteVipGezginAdvantages extends StatelessWidget {
       height: 220,
       width: 180,
       decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          border: Border.all(color: Colors.grey.shade300, width: 1),
+          color: Theme.of(context).secondaryHeaderColor,
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [

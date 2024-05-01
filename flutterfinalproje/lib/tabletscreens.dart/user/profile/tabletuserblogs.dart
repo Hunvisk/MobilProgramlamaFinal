@@ -5,22 +5,22 @@ import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
+
 class TabletUserBlogs extends StatelessWidget {
   const TabletUserBlogs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MyAppBar(
-        title: 'BLOGLAR',
+        title: AppLocalizations.of(context).getTranslate("blogs"),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Gap(20),
-            Text("BLOGLAR SAYFASI", textAlign: TextAlign.center),
-            Gap(20),
             TabletUserBlogsScreen(),
           ],
         ),
@@ -54,6 +54,7 @@ class TabletUserBlogsScreen extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
+                
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Stack(
@@ -114,7 +115,7 @@ class TabletUserBlogsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey[300]!,
+                    //color: Colors.grey[300]!,
                     spreadRadius: 3,
                     blurRadius: 5,
                     offset: Offset(0, 3),
@@ -206,7 +207,6 @@ Widget _buildBlogCard1() {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -225,7 +225,6 @@ Widget _buildBlogCard1() {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -249,7 +248,7 @@ Widget _buildBlogCard1() {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[300]!,
+                  //color: Colors.grey[300]!,
                   spreadRadius: 3,
                   blurRadius: 5,
                   offset: Offset(0, 3),
@@ -340,7 +339,6 @@ Widget _buildBlogCard2() {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -359,7 +357,6 @@ Widget _buildBlogCard2() {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),

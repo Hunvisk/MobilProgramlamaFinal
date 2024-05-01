@@ -96,6 +96,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
     });
     return Container(
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: drawAppar(),
         body: SafeArea(
             child: drawScreen()),
@@ -142,7 +143,10 @@ class ComparisonBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.grey.shade200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Theme.of(context).secondaryHeaderColor
+        ),
         height: 500,
         width: double.infinity,
         child: Column(
@@ -253,9 +257,9 @@ class SubscriptionBox extends StatelessWidget {
       height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          border: Border.all(color: Colors.grey.shade300, width: 1),
-          borderRadius: BorderRadius.circular(10)),
+          color: Theme.of(context).secondaryHeaderColor,
+          borderRadius: BorderRadius.circular(10)
+        ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -284,7 +288,7 @@ class SubscriptionBox extends StatelessWidget {
             child: Text(
               AppLocalizations.of(context).getTranslate("subscribe"),
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).secondaryHeaderColor,
               ),
             ),
           )
@@ -312,8 +316,7 @@ class FavoriteVipGezginAdvantages extends StatelessWidget {
       height: 220,
       width: 180,
       decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          border: Border.all(color: Colors.grey.shade300, width: 1),
+          color: Theme.of(context).secondaryHeaderColor,
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [

@@ -585,8 +585,7 @@ class _WeatherBoxState extends State<WeatherBox> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context)
-                .secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
+            color: Theme.of(context).secondaryHeaderColor // Hava durumuna göre renk ayarlayabilirsiniz
             ),
         height: 185,
         child: Row(

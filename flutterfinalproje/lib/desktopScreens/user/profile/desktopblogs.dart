@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
+
 class DesktopUserBlogs extends StatelessWidget {
   const DesktopUserBlogs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MyAppBar(
-        title: 'BLOGLAR',
+        title: AppLocalizations.of(context).getTranslate("blogs"),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Gap(20),
-            Text("BLOGLAR SAYFASI", textAlign: TextAlign.center),
-            Gap(20),
             DesktopUserBlogsScreen(),
           ],
         ),

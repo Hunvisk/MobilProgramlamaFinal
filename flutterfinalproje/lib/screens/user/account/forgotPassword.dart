@@ -1,13 +1,8 @@
-// ignore_for_file: sort_child_properties_last, deprecated_member_use, camel_case_types, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/account/desktopforgotPassword.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-
-
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/account/tabletforgotpassword.dart';
@@ -28,7 +23,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return passwordPage();
+        return PasswordPage();
       case (Screen.tablet):
         return TabletForgotPassword();
       case (Screen.desktop):
@@ -68,10 +63,38 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   }
 }
 
-class passwordPage extends StatelessWidget {
-  const passwordPage({
+class PasswordPage extends StatelessWidget {
+  const PasswordPage({
     super.key,
   });
+
+  void _showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Şifre Değiştirme Talebi'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Şifre değiştirme talebiniz alındı.'),
+              SizedBox(height: 8),
+              Text('Mail hesabınızı kontrol ediniz.'),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                context.go('/Login');
+              },
+              child: Text('Giriş Yap'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +103,7 @@ class passwordPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-           Text(
+          Text(
             AppLocalizations.of(context).getTranslate("forgot_password_title"),
             style: TextStyle(
               fontSize: 18,
@@ -88,7 +111,7 @@ class passwordPage extends StatelessWidget {
             ),
           ),
           const Gap(10),
-           Text(
+          Text(
             AppLocalizations.of(context).getTranslate("forgot_password_description"),
             style: TextStyle(
               fontSize: 13,
@@ -123,15 +146,15 @@ class passwordPage extends StatelessWidget {
           const Gap(10),
           ElevatedButton(
             onPressed: () {
-              context.push('/');
+              _showSuccessDialog(context);
             },
             child: Text(
               AppLocalizations.of(context).getTranslate("reset_password"),
               style: Theme.of(context).textTheme.button!.copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi

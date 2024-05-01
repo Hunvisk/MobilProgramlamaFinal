@@ -39,8 +39,8 @@ class _UserBlogState extends State<UserBlogs> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(          title: AppLocalizations.of(context).getTranslate("blogs"),
-
+      return AppBarWithSearchIcon(          
+        title: AppLocalizations.of(context).getTranslate("blogs"),
         icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
@@ -48,7 +48,9 @@ class _UserBlogState extends State<UserBlogs> {
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon( title: AppLocalizations.of(context).getTranslate("blogs"),icon: Icon(Icons.search),
+      return AppBarWithSearchIcon( 
+        title: AppLocalizations.of(context).getTranslate("blogs"),
+        icon: Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -81,6 +83,7 @@ drawBottom(){
       });
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: drawAppar(),
         body: SingleChildScrollView(
           child: drawScreen(),
@@ -122,7 +125,7 @@ class blogsScr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
+                      color: Theme.of(context).secondaryHeaderColor
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -141,7 +144,7 @@ class blogsScr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
+                      color: Theme.of(context).secondaryHeaderColor
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -159,8 +162,8 @@ class blogsScr extends StatelessWidget {
                   right: 30, // İkinci resmin yatay konumu
                   child: Container(
                     decoration: BoxDecoration(
+                      color: Theme.of(context).secondaryHeaderColor,
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -187,9 +190,10 @@ class blogsScr extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).secondaryHeaderColor,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey[300]!, // Gölge rengi
+                      //color: Colors.grey[300]!, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -281,7 +285,6 @@ class blogsScr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -300,7 +303,6 @@ class blogsScr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -326,10 +328,11 @@ class blogsScr extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
+                  color: Theme.of(context).secondaryHeaderColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey[300]!, // Gölge rengi
+                      //color: Colors.grey[300]!, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -414,7 +417,6 @@ class blogsScr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -433,7 +435,6 @@ class blogsScr extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
@@ -478,10 +479,11 @@ class blogsScr extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
+                  color: Theme.of(context).secondaryHeaderColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey[300]!, // Gölge rengi
+                      //color: Colors.grey[300]!, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
