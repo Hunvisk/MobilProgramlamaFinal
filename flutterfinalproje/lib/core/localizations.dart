@@ -11,14 +11,19 @@ class AppLocalizations {
     'en',
     'tr',
     'de',
-    'ru'
+    'ru',
+    'fr',
+    'es'
   ];
 
   static const Map<String, String> _supportedLanguages2 = {
     'en': "English",
     'tr': "Türkçe",
     'de': 'German',
-    'ru': 'Russian'
+    'ru': 'Russian',
+    'fr': "French",
+    'es': "Spanish"
+
   };
 
   AppLocalizations(this.locale);
@@ -67,6 +72,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
     'tr',
     'de',
     'ru',
+    'fr',
+    'es'
   ];
 
   const AppLocalizationsDelegate();
