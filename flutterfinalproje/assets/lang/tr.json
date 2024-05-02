@@ -17,7 +17,7 @@
     "mode":"Mod: ",
     "night":"Gece",
     "light":"Gündüz",
-    "language":"Dil: ",
+    "language":"Dil",
     "profile": "PROFİL",
     "change_lang_title": "DİL DEĞİŞTİR",
     "german":"Almanca",
@@ -31,7 +31,7 @@
     
     "sign_in":"Oturum Aç",
     "continue_app_description":"Uygulamayı Kullanmaya Devam Etmek İçin Giriş Yapın",
-    "email":"E-mail",
+    "email":"E-posta",
     "password":"Şifre",
     "forgot_password":"Şifremi Unuttum",
     "have_an_account":"Hala bir hesabın yok mu ?",
@@ -167,6 +167,14 @@
 
     "password_change_request_title": "Şifre Değiştirme Talebi",
     "password_change_request_has_been_received": "Şifre değiştirme talebiniz alındı.",
-    "check_your_mail_account": "Lütfen Mail hesabınızı kontrol ediniz."
+    "check_your_mail_account": "Lütfen Mail hesabınızı kontrol ediniz.",
+
+    "screen": "Ekran",
+    "permissions":  "İzinler",
+    "notifications": "Bildirimler",
+    "about_app": "Uygulama Hakkında",
+    "payment_methods": "Ödeme Yöntemleri",
+    "past_payments": "Geçmiş Ödemelerim",
+    "phone_number": "Telefon Numarası"
     
 }

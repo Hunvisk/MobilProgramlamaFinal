@@ -437,7 +437,7 @@ class _HomeState extends State<Home> {
                     ),
                     ListTileItem(
                       context,
-                      AppLocalizations.of(context).getTranslate("language") +
+                      AppLocalizations.of(context).getTranslate("language") + ": " + 
                           context
                               .read<ClientCubit>()
                               .state
@@ -618,7 +618,7 @@ class _WeatherBoxState extends State<WeatherBox> {
                       child: Container(
                         child: Text(
                           '${weatherData['name']}',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ),
@@ -627,7 +627,7 @@ class _WeatherBoxState extends State<WeatherBox> {
                       width: double.infinity,
                       child: Text(
                         '${weatherData['main']['temp']}°C',
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 30),
                       ),
                     ),
                     Container(
@@ -690,27 +690,30 @@ class WeatherInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
+            Icon(icon),
+            Container(
+              constraints: BoxConstraints(maxWidth: 50),
               child: Text(
                 labelText,
-                style: TextStyle(fontSize: 14),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text(
-                valueText,
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(fontSize: 14),
               ),
             ),
           ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Text(
+            valueText,
+            style: TextStyle(fontSize: 14),
+          ),
         ),
       ],
     );

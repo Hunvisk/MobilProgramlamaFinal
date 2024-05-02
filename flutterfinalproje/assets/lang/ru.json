@@ -17,7 +17,7 @@
     "mode": "Режим: ",
     "night": "Ночь",
     "light": "Свет",
-    "language": "Язык: ",
+    "language": "Язык",
     "profile": "Профиль",
     "change_lang_title": "ИЗМЕНЕНИЕ ЯЗЫКА",
     "german": "Изменить язык",
@@ -164,6 +164,14 @@
 
     "password_change_request_title": "Запрос на изменение пароля",
     "password_change_request_has_been_received": "Ваш запрос на изменение пароля получен.",
-    "check_your_mail_account": "Проверьте ваш почтовый аккаунт."
+    "check_your_mail_account": "Проверьте ваш почтовый аккаунт.",
+
+    "screen": "Экран",
+    "permissions": "Разрешения",
+    "notifications": "Уведомления",
+    "about_app": "О приложении",
+    "payment_methods": "Способы оплаты",
+    "past_payments": "Прошлые платежи",
+    "phone_number": "Номер телефона"
 
 }

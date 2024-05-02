@@ -17,10 +17,10 @@
     "mode": "Mod: ",
     "night": "Nacht",
     "light": "Licht",
-    "language": "Sprache: ",
+    "language": "Sprache",
     "profile": "Profil",
     "change_lang_title": "SPRACHE ÄNDERN",
-    "german": "Sprache ändern",
+    "german": "Deutsch",
     "english": "Englisch",
     "russian": "Russisch",
     "turkish": "Türkisch",
@@ -165,5 +165,13 @@
 
     "password_change_request_title": "Antrag auf Passwortänderung",
     "password_change_request_has_been_received": "Ihr Antrag auf Änderung des Passworts ist eingegangen.",
-    "check_your_mail_account": "Bitte überprüfen Sie Ihr E-Mail-Konto."
+    "check_your_mail_account": "Bitte überprüfen Sie Ihr E-Mail-Konto.",
+
+    "screen": "Bildschirm",
+    "permissions": "Berechtigungen",
+    "notifications": "Benachrichtigungen",
+    "about_app": "Über die App",
+    "payment_methods": "Zahlungsmethoden",
+    "past_payments": "Vergangene Zahlungen",
+    "phone_number": "Telefonnummer"
 }

@@ -275,22 +275,6 @@ class FilterWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        size: 30,
-                      ), // Arama ikonu
-                      onPressed: () {
-                        // Arama ikonuna tıklandığında yapılacak işlemler
-                      },
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),

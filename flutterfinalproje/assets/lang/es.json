@@ -17,7 +17,7 @@
     "mode": "Modo: ",
     "night": "Noche",
     "light": "Luz",
-    "language": "Idioma: ",
+    "language": "Idioma",
     "profile": "Perfil",
     "change_lang_title": "CAMBIAR IDIOMA",
     "german": "Alemán",
@@ -165,5 +165,13 @@
 
     "password_change_request_title": "Solicitud de cambio de contraseña",
     "password_change_request_has_been_received": "Se ha recibido su solicitud de cambio de contraseña.",
-    "check_your_mail_account": "Por favor, revise su cuenta de correo electrónico."
+    "check_your_mail_account": "Por favor, revise su cuenta de correo electrónico.",
+
+    "screen": "Pantalla",
+    "permissions": "Permisos",
+    "notifications": "Notificaciones",
+    "about_app": "Acerca de la aplicación",
+    "payment_methods": "Métodos de pago",
+    "past_payments": "Pagos anteriores",
+    "phone_number": "Número de teléfono"
 }

@@ -193,7 +193,7 @@ class blogsScr extends StatelessWidget {
                   color: Theme.of(context).secondaryHeaderColor,
                   boxShadow: [
                     BoxShadow(
-                      //color: Colors.grey[300]!, // Gölge rengi
+                      color: Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -332,7 +332,7 @@ class blogsScr extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      //color: Colors.grey[300]!, // Gölge rengi
+                      color: Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -357,8 +357,8 @@ class blogsScr extends StatelessWidget {
                     ),
                     Gap(20),
                     Text(
-                                   AppLocalizations.of(context)
-                        .getTranslate("blogs_text1"),                      style: TextStyle(fontSize: 16),
+                      AppLocalizations.of(context).getTranslate("blogs_text1"),                      
+                      style: TextStyle(fontSize: 16),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
@@ -483,7 +483,7 @@ class blogsScr extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      //color: Colors.grey[300]!, // Gölge rengi
+                      color: Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)

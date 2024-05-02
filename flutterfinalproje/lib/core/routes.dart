@@ -34,6 +34,13 @@ import '../screens/places_and_routes/places/places.dart';
 import '../screens/places_and_routes/places/selectedplaces.dart';
 import '../screens/places_and_routes/routes/routes.dart';
 import '../screens/places_and_routes/routes/selectedroutes.dart';
+import '../screens/settings_screens/about_app.dart';
+import '../screens/settings_screens/add_mail.dart';
+import '../screens/settings_screens/add_phone_number.dart';
+import '../screens/settings_screens/notifications.dart';
+import '../screens/settings_screens/past_payments.dart';
+import '../screens/settings_screens/permissions.dart';
+import '../screens/settings_screens/theme_mode.dart';
 import '../screens/shopping/product/products.dart';
 import '../screens/shopping/product/selectedproducts.dart';
 import '../screens/static/boarding.dart';
@@ -176,6 +183,36 @@ final routes = GoRouter(
     GoRoute(
       path: '/DesktopMap',
       builder: (context, state) => const DesktopMap(),
+    ),
+
+    // Settings Screens
+    GoRoute(
+      path: '/AboutApp',
+      builder: (context, state) => const AboutAppScreen(),
+    ),
+    GoRoute(
+      path: '/AddMail',
+      builder: (context, state) => const AddMailScreen(),
+    ),
+    GoRoute(
+      path: '/AddPhoneNumber',
+      builder: (context, state) => const AddPhoneNumberScreen(),
+    ),
+    GoRoute(
+      path: '/Notifications',
+      builder: (context, state) => const NotificationsScreen(),
+    ),
+    GoRoute(
+      path: '/PastPayments',
+      builder: (context, state) => const PastPaymentsScreen(),
+    ),
+    GoRoute(
+      path: '/Permissions',
+      builder: (context, state) => const PermissionsScreen(),
+    ),
+    GoRoute(
+      path: '/ThemeMode',
+      builder: (context, state) => const ThemeModeScreen(),
     ),
 
     // Shopping

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
@@ -14,89 +13,57 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String camResult = "";
-  String locationResult = "";
-
-  void controlPermission() async {
-    var cameraStatus = await Permission.camera.status;
-    var locationStatus = await Permission.location.status;
-
-    setState(() {
-      camResult = getStatusMessage(cameraStatus);
-      locationResult = getStatusMessage(locationStatus);
-    });
-  }
-
-  String getStatusMessage(PermissionStatus status) {
-    switch (status) {
-      case PermissionStatus.granted:
-        return "Yetki Alınmış";
-      case PermissionStatus.denied:
-        return "Yetki Verme Reddedildi";
-      case PermissionStatus.restricted:
-        return "Kısıtlanmış Yetki";
-      case PermissionStatus.limited:
-        return "Kullanıcı Tarafından Kısıtlanmış Yetki";
-      case PermissionStatus.permanentlyDenied:
-        return "Sonsuza Kadar Reddedilmiş Yetki";
-      case PermissionStatus.provisional:
-        return "Provisional";
-      default:
-        return "Bilinmeyen Durum";
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    controlPermission();
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
         title: AppLocalizations.of(context).getTranslate("settings"),
       ),
-      body: SizedBox.expand(
-        child: ListView(
-          children: [
-            ExpansionTile(
-              title: const Text("Camera permission"),
-              children: [
-                Text(camResult),
-                const Gap(20),
-                ElevatedButton(
-                  onPressed: () async {
-                    final status = await Permission.camera.request();
-                    setState(() {
-                      camResult = getStatusMessage(status);
-                    });
-                  },
-                  child: const Text("Yetki İste"),
-                ),
-              ],
-            ),
-            ExpansionTile(
-              title: const Text("Location permission"),
-              children: [
-                Text(locationResult),
-                const Gap(20),
-                ElevatedButton(
-                  onPressed: () async {
-                    final status = await Permission.location.request();
-                    setState(() {
-                      locationResult = getStatusMessage(status);
-                    });
-                  },
-                  child: const Text("Yetki İste"),
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          settingsItem(context, '/ThemeMode', 'screen'),
+          const Divider(),
+          settingsItem(context, '/Change_LanguageScreen', 'language'),
+          const Divider(),
+          settingsItem(context, '/Permissions', 'permissions'),
+          const Divider(),
+          settingsItem(context, '/Notifications', 'notifications'),
+          const Divider(),
+          settingsItem(context, '/AboutApp', 'about_app'),
+          const Divider(),
+          settingsItem(context, '/Home', 'payment_methods'), // Ödeme Yöntemleri sayfası yönlendirme eklenecek. ( İlknur'a not )
+          const Divider(),
+          settingsItem(context, '/PastPayments', 'past_payments'),
+          const Divider(),
+          settingsItem(context, '/AddMail', 'email'),
+          const Divider(),
+          settingsItem(context, '/AddPhoneNumber', 'phone_number'),
+          const Divider(),
+        ],
       ),
       bottomNavigationBar: MyBottomNavBar(),
     );
+  }
+
+  InkWell settingsItem(BuildContext context, String route, String title, ) {
+    return InkWell(
+          onTap: () {
+            context.push(route);
+          },
+          child: ListTile(
+          title: Text(
+            AppLocalizations.of(context).getTranslate(title),
+            style: const TextStyle(
+              fontFamily:'poppions', // Her iki yerde de aynı yazı tipini kullanmak için 'poppions' kullanıldı   
+            ),
+          ),
+          trailing:
+            const Icon(
+              Icons.arrow_forward_ios, 
+              color: Colors.grey
+            ),
+          ),
+        );
   }
 }
