@@ -25,9 +25,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
       ),
       title: Center(
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.headlineSmall
+        child: Expanded(
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+            style: Theme.of(context).textTheme.headlineSmall
+          ),
         ),
       ),
       centerTitle: true, // Center the title

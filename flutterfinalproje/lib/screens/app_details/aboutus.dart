@@ -23,15 +23,15 @@ class _AboutUsState extends State<AboutUs> {
    drawScreen(){
      switch (device) {
       case (Screen.mobile):
-       return  aboutMenu();
+       return  AboutMenu();
       case (Screen.tablet):
        return   Column(
-        children: [
+        children: const [
           Text("tablet modu"), 
         ],
        ) ;
       case (Screen.desktop):
-       return  Column(children: [
+       return  Column(children: const [
          Text("masaüstü modu"), 
         ],);
      }
@@ -90,8 +90,8 @@ drawBottom(){
   }
 }
 
-class aboutMenu extends StatelessWidget {
-  const aboutMenu({
+class AboutMenu extends StatelessWidget {
+  const AboutMenu({
     super.key,
   });
 

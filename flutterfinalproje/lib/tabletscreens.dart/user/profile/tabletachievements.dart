@@ -32,6 +32,8 @@ class TabletAchievemetsScreen extends StatelessWidget {
     {"title": "Blog Editörü", "description": "5 adet blog yazısı yazdın."},
   ];
 
+  TabletAchievemetsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

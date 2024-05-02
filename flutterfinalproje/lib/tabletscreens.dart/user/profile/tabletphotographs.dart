@@ -13,30 +13,32 @@ class TabletPhotographs extends StatelessWidget {
       appBar: MyAppBar(
         title: 'FOTOĞRAFLAR',
       ),
-      body: Text("FOTOĞRAFLAR SAYFASI"),
+      body: const Text("FOTOĞRAFLAR SAYFASI"),
       bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }
 
 class TabletPhotographsScreen extends StatelessWidget {
+  const TabletPhotographsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Divider(thickness: 3),
-        FilterWidget(),
+        const Divider(thickness: 3),
+        const FilterWidget(),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              PhotoItem("Kamera", "1.151",
+              photoItem("Kamera", "1.151",
                   "assets/images/photographs/anlatan_meydanı.jpeg", context),
-              PhotoItem("Kolaj", "2.345",
+              photoItem("Kolaj", "2.345",
                   "assets/images/photographs/yalvac.jpg", context),
-              PhotoItem("Çiçekler", "3.789",
+              photoItem("Çiçekler", "3.789",
                   "assets/images/photographs/isparta.jpg", context),
-              PhotoItem("Hayvanlar", "1.151",
+              photoItem("Hayvanlar", "1.151",
                   "assets/images/photographs/yalvac.jpg", context)
             ],
           ),
@@ -45,13 +47,13 @@ class TabletPhotographsScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              PhotoItem("Aile", "2.345",
+              photoItem("Aile", "2.345",
                   "assets/images/photographs/isparta.jpg", context),
-              PhotoItem("Facebook", "3.789",
+              photoItem("Facebook", "3.789",
                   "assets/images/photographs/cinaralti.jpeg", context),
-              PhotoItem("WhatsApp", "1.151",
+              photoItem("WhatsApp", "1.151",
                   "assets/images/photographs/pisidia.jpeg", context),
-              PhotoItem("Snapchat", "2.345",
+              photoItem("Snapchat", "2.345",
                   "assets/images/photographs/yalvac.jpg", context),
             ],
           ),
@@ -60,13 +62,13 @@ class TabletPhotographsScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              PhotoItem("Instagram", "3.789",
+              photoItem("Instagram", "3.789",
                   "assets/images/photographs/isparta.jpg", context),
-              PhotoItem("ScreenShootlar", "1.151",
+              photoItem("ScreenShootlar", "1.151",
                   "assets/images/photographs/isparta.jpg", context),
-              PhotoItem("Snapchat", "2.345",
+              photoItem("Snapchat", "2.345",
                   "assets/images/photographs/cinaralti.jpeg", context),
-              PhotoItem("Instagram", "3.789",
+              photoItem("Instagram", "3.789",
                   "assets/images/photographs/yalvac.jpg", context),
             ],
           ),
@@ -75,7 +77,7 @@ class TabletPhotographsScreen extends StatelessWidget {
     );
   }
 
-  Widget PhotoItem(
+  Widget photoItem(
       String title, String count, String photo, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
@@ -96,7 +98,7 @@ class TabletPhotographsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Gap(15),
+          const Gap(15),
           Text(
             title,
             style: TextStyle(
@@ -119,11 +121,13 @@ class TabletPhotographsScreen extends StatelessWidget {
 }
 
 class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(6.0),
@@ -140,12 +144,12 @@ class FilterWidget extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 21,
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -165,7 +169,7 @@ class FilterWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.search,
                         size: 30,
                       ), // Arama ikonu
@@ -190,67 +194,67 @@ class FilterWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   'Albüm',
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Yıla Göre (En Eski)'),
+                  title: const Text('Yıla Göre (En Eski)'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Yıla Göre (En Yeni)'),
+                  title: const Text('Yıla Göre (En Yeni)'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Aya Göre (En Eski)'),
+                  title: const Text('Aya Göre (En Eski)'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Aya Göre (En Yeni)'),
+                  title: const Text('Aya Göre (En Yeni)'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Güne Göre (En Eski)'),
+                  title: const Text('Güne Göre (En Eski)'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Güne Göre (En Yeni)'),
+                  title: const Text('Güne Göre (En Yeni)'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
               ],
             ),
           ),

@@ -160,8 +160,10 @@
     "by_month_(oldest)": "По месяцу (Самый старый)",
     "by_month_(newest)": "По месяцу (Самый новый)",
     "by_day_(oldest)": "По дню (Самый старый)",
-    "by_day_(newest)": "По дню (Самый новый)"
+    "by_day_(newest)": "По дню (Самый новый)",
 
-
+    "password_change_request_title": "Запрос на изменение пароля",
+    "password_change_request_has_been_received": "Ваш запрос на изменение пароля получен.",
+    "check_your_mail_account": "Проверьте ваш почтовый аккаунт."
 
 }

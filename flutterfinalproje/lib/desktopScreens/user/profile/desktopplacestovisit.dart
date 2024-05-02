@@ -296,7 +296,7 @@ void _showSortPopup2(BuildContext context) {
       return AlertDialog(
         contentPadding: EdgeInsets.zero,
         content: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(

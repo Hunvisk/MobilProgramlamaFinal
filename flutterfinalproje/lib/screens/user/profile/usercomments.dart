@@ -32,9 +32,9 @@ class _UserCommentsState extends State<UserComments> {
       case (Screen.mobile):
         return yorumSayfa();
       case (Screen.tablet):
-        return TabletUserCommentsScreen();
+        return tabletUserCommentsScreen();
       case (Screen.desktop):
-        return DesktopUserCommentsScreen();
+        return desktopUserCommentsScreen();
     }
   }
 

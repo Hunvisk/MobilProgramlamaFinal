@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 
 
@@ -17,21 +15,19 @@ class DesktopSelectedProductsState extends State<DesktopSelectedProducts> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        body: desktopSelectedProductsBody(),
-      )
+    return const Scaffold(
+      body: DesktopSelectedProductsBody(),
     );
   }
 }
 
-class desktopSelectedProductsBody extends StatelessWidget {
-  const desktopSelectedProductsBody({
+class DesktopSelectedProductsBody extends StatelessWidget {
+  const DesktopSelectedProductsBody({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text("routes page");
+    return const Text("routes page");
   }
 }

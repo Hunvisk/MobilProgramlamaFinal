@@ -26,7 +26,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return routesSayfa(
+        return RoutesSayfa(
             isSearching: isSearching, searchController: searchController);
       case (Screen.tablet):
         return TabletRoutesScreen(
@@ -99,8 +99,8 @@ class _RoutesScreenState extends State<RoutesScreen> {
   }
 }
 
-class routesSayfa extends StatelessWidget {
-  const routesSayfa({
+class RoutesSayfa extends StatelessWidget {
+  const RoutesSayfa({
     Key? key,
     required this.isSearching,
     required this.searchController,

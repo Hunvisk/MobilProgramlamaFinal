@@ -160,7 +160,11 @@
     "by_month_(oldest)": "By Month (Oldest)",
     "by_month_(newest)": "By Month (Newest)",
     "by_day_(oldest)": "By Day (Oldest)",
-    "by_day_(newest)": "By Day (Newest)"
+    "by_day_(newest)": "By Day (Newest)",
+
+    "password_change_request_title": "Password Change Request",
+    "password_change_request_has_been_received": "Your password change request has been received.",
+    "check_your_mail_account": "Please check your email account."
 }
 
     

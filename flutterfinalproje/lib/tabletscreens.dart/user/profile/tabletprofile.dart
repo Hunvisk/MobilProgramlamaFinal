@@ -15,7 +15,7 @@ class TabletProfile extends StatelessWidget {
       appBar: MyAppBar(
         title: 'PROFİL',
       ),
-      body: Center(
+      body: const Center(
         child: Text("PROFİL SAYFASI"),
       ),
       bottomNavigationBar: MyBottomNavBar(),
@@ -24,6 +24,8 @@ class TabletProfile extends StatelessWidget {
 }
 
 class TabletProfileScreen extends StatelessWidget {
+  const TabletProfileScreen({super.key});
+
   void _showImageOptionsDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -39,31 +41,31 @@ class TabletProfileScreen extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.camera_alt, size: 30),
+                    leading: const Icon(Icons.camera_alt, size: 30),
                     title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Galeri açılacak işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.photo, size: 30),
+                    leading: const Icon(Icons.photo, size: 30),
                     title: Text(AppLocalizations.of(context).getTranslate("select_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Galeri açılacak işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    leading: const Icon(Icons.delete, size: 30, color: Colors.red),
                     title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
-                        style: TextStyle(color: Colors.red)),
+                        style: const TextStyle(color: Colors.red)),
                   ),
                 ),
               ],
@@ -90,33 +92,33 @@ class TabletProfileScreen extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.camera_alt, size: 30),
+                    leading: const Icon(Icons.camera_alt, size: 30),
                                     title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
 
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Galeri açılacak işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.photo, size: 30),
+                    leading: const Icon(Icons.photo, size: 30),
                               title: Text(AppLocalizations.of(context).getTranslate("select_a_photo"),),
 
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Kapak fotoğrafını silme işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    leading: const Icon(Icons.delete, size: 30, color: Colors.red),
                      title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
-                        style: TextStyle(color: Colors.red)),
+                        style: const TextStyle(color: Colors.red)),
                   ),
                 ),
               ],
@@ -137,13 +139,13 @@ class TabletProfileScreen extends StatelessWidget {
   Column profileMenu(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 350, // Yükseklik artırıldı
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -163,7 +165,7 @@ class TabletProfileScreen extends StatelessWidget {
                   child: CircleAvatar(
                     backgroundColor: Colors.grey.withOpacity(0.6),
                     radius: 20,
-                    child: Icon(Icons.add_a_photo, color: Colors.white),
+                    child: const Icon(Icons.add_a_photo, color: Colors.white),
                   ),
                 ),
               ),
@@ -175,7 +177,7 @@ class TabletProfileScreen extends StatelessWidget {
                   onTap: () {
                     _showImageOptionsDialog(context);
                   },
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 70, // Daha büyük hale getirildi
                     backgroundImage:
                         AssetImage("assets/images/profile/profile.png"),
@@ -190,7 +192,7 @@ class TabletProfileScreen extends StatelessWidget {
                   crossAxisAlignment:
                       CrossAxisAlignment.center, // Yatayda ortala
                   children: [
-                    Text(
+                    const Text(
                       "İlknur Kavaklı",
                       style: TextStyle(
                         color: Colors.white,
@@ -201,7 +203,7 @@ class TabletProfileScreen extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)
                           .getTranslate("ultra_pro_traveler"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14, // Yazı boyutu artırıldı
                       ),
@@ -218,7 +220,7 @@ class TabletProfileScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Gap(18),
+                const Gap(18),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -228,90 +230,90 @@ class TabletProfileScreen extends StatelessWidget {
                           context.push('/Photographs');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.photo_camera, color: Colors.grey),
+                          leading: const Icon(Icons.photo_camera, color: Colors.grey),
                           title: Text(
                             AppLocalizations.of(context).getTranslate("photos"),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily:'poppions', // Her iki yerde de aynı yazı tipini kullanmak için 'poppions' kullanıldı
                               
                             ),
                           ),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserBlogs');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.save, color: Colors.grey),
+                          leading: const Icon(Icons.save, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("blog"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserComments');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.mode_comment, color: Colors.grey),
+                          leading: const Icon(Icons.mode_comment, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("comments"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/PlaceToVisit');
                         },
                         child: ListTile(
                           contentPadding:
-                              EdgeInsets.symmetric(horizontal: 16.0),
+                              const EdgeInsets.symmetric(horizontal: 16.0),
                           leading:
-                              Icon(Icons.location_city, color: Colors.grey),
+                              const Icon(Icons.location_city, color: Colors.grey),
                           title: Text(
                             AppLocalizations.of(context).getTranslate("place_to_visit"),
-                            style: TextStyle(fontFamily: 'poppions'),
+                            style: const TextStyle(fontFamily: 'poppions'),
                           ),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Favorites');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.favorite, color: Colors.grey),
+                          leading: const Icon(Icons.favorite, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("favorites"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Achievemets');
                         },
                         child: ListTile(
                           leading:
-                              Icon(Icons.military_tech, color: Colors.grey),
+                              const Icon(Icons.military_tech, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("achievemets"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                     ],
                   ),
                 ),

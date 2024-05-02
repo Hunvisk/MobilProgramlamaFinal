@@ -163,6 +163,10 @@
     "by_month_(oldest)": "Aya Göre (En Eski)",
     "by_month_(newest)": "Aya Göre (En Yeni)",
     "by_day_(oldest)": "Güne Göre (En Eski)",
-    "by_day_(newest)": "Güne Göre (En Yeni)"
+    "by_day_(newest)": "Güne Göre (En Yeni)",
+
+    "password_change_request_title": "Şifre Değiştirme Talebi",
+    "password_change_request_has_been_received": "Şifre değiştirme talebiniz alındı.",
+    "check_your_mail_account": "Lütfen Mail hesabınızı kontrol ediniz."
     
 }

@@ -161,5 +161,9 @@
     "by_month_(oldest)": "Por mes (más antiguo)",
     "by_month_(newest)": "Por mes (más reciente)",
     "by_day_(oldest)": "Por día (más antiguo)",
-    "by_day_(newest)": "Por día (más reciente)"
+    "by_day_(newest)": "Por día (más reciente)",
+
+    "password_change_request_title": "Solicitud de cambio de contraseña",
+    "password_change_request_has_been_received": "Se ha recibido su solicitud de cambio de contraseña.",
+    "check_your_mail_account": "Por favor, revise su cuenta de correo electrónico."
 }

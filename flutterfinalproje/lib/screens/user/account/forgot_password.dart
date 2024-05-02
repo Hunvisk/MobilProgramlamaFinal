@@ -23,11 +23,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return PasswordPage();
+        return const PasswordPage();
       case (Screen.tablet):
-        return TabletForgotPassword();
+        return const TabletForgotPassword();
       case (Screen.desktop):
-        return DesktopForgotPassword();
+        return const DesktopForgotPassword();
     }
   }
 
@@ -68,19 +68,27 @@ class PasswordPage extends StatelessWidget {
     super.key,
   });
 
+  // AppLocalizations.of(context).getTranslate(""),
+
   void _showSuccessDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Şifre Değiştirme Talebi'),
+          title: Text(
+            AppLocalizations.of(context).getTranslate("password_change_request_title"),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Şifre değiştirme talebiniz alındı.'),
-              SizedBox(height: 8),
-              Text('Mail hesabınızı kontrol ediniz.'),
+              Text(
+                AppLocalizations.of(context).getTranslate("password_change_request_has_been_received"),
+              ),
+              const Gap(8),
+              Text(
+                AppLocalizations.of(context).getTranslate("check_your_mail_account"),
+              ),
             ],
           ),
           actions: [
@@ -88,7 +96,9 @@ class PasswordPage extends StatelessWidget {
               onPressed: () {
                 context.go('/Login');
               },
-              child: Text('Giriş Yap'),
+              child: Text(
+                AppLocalizations.of(context).getTranslate("sign_in"),
+              ),
             ),
           ],
         );
@@ -105,7 +115,7 @@ class PasswordPage extends StatelessWidget {
         children: [
           Text(
             AppLocalizations.of(context).getTranslate("forgot_password_title"),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -113,7 +123,7 @@ class PasswordPage extends StatelessWidget {
           const Gap(10),
           Text(
             AppLocalizations.of(context).getTranslate("forgot_password_description"),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 13,
             ),
             textAlign: TextAlign.center,
@@ -148,18 +158,18 @@ class PasswordPage extends StatelessWidget {
             onPressed: () {
               _showSuccessDialog(context);
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
             child: Text(
               AppLocalizations.of(context).getTranslate("reset_password"),
               style: Theme.of(context).textTheme.button!.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
               ),
             ),
           ),

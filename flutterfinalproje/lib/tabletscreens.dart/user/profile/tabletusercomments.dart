@@ -21,7 +21,7 @@ class TabletUserComments extends StatelessWidget {
   }
 }
 
-Column TabletUserCommentsScreen() {
+Column tabletUserCommentsScreen() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [

@@ -36,10 +36,12 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       title: Center(
-        child: Text(
-          //widget.title,
-          //style: Theme.of(context).textTheme.headlineSmall,
-          AppLocalizations.of(context).getTranslate("home_title")
+        child: Expanded(
+          child: Text(
+            AppLocalizations.of(context).getTranslate("home_title"),
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+          ),
         ),
       ),
       actions: [

@@ -27,7 +27,7 @@ class TabletFavorites extends StatelessWidget {
 }
 
 class TabletFavoritesScreen extends StatelessWidget {
-  const TabletFavoritesScreen({
+  const TabletFavoritesScreen({super.key, 
     required this.device,
     required this.isSearching,
     required this.searchController,
@@ -102,7 +102,7 @@ class TabletFavoritesScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
-                children: [
+                children: const [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/sariyer.jpeg",
@@ -130,7 +130,7 @@ class TabletFavoritesScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
-                children: [
+                children: const [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/camlica.jpeg",
@@ -164,6 +164,8 @@ class TabletFavoritesScreen extends StatelessWidget {
 
 
 class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -342,7 +344,7 @@ void _showSortPopup2(BuildContext context) {
       return AlertDialog(
         contentPadding: EdgeInsets.zero,
         content: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(

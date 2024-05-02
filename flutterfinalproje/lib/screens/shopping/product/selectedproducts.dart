@@ -6,7 +6,7 @@ import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../../core/responsive.dart';
-import '../../../desktopScreens/shopping/product/desktopSelectedProducts.dart';
+import '../../../desktopScreens/shopping/product/desktop_selected_products.dart';
 
 class SelectedProducts extends StatefulWidget {
   const SelectedProducts({Key? key}) : super(key: key);
@@ -25,12 +25,12 @@ class _SelectedProductsState extends State<SelectedProducts> {
    drawScreen(){
      switch (device) {
       case (Screen.mobile):
-       return   selectedProducsBody();
+       return   SelectedProductsBody();
       case (Screen.tablet):
        return  ;
 
       case (Screen.desktop):
-       return desktopSelectedProductsBody() ;
+       return DesktopSelectedProductsBody() ;
      }
    }
 
@@ -78,14 +78,14 @@ drawBottom(){
       });
     return Container(
       child: Scaffold(
-        body: selectedProducsBody(),
+        body: SelectedProductsBody(),
       )
     );
   }
 }
 
-class selectedProducsBody extends StatelessWidget {
-  const selectedProducsBody({
+class SelectedProductsBody extends StatelessWidget {
+  const SelectedProductsBody({
     super.key,
   });
 

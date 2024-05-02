@@ -24,6 +24,8 @@ class TabletVipGezginInfo extends StatelessWidget {
 }
 
 class TabletVipGezginInfoScreen extends StatelessWidget {
+  const TabletVipGezginInfoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

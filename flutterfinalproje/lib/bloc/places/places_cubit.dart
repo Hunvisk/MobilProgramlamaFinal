@@ -21,7 +21,7 @@ class PlaceCubit extends Cubit<PlacesState> {
       final newState = PlacesState(favorites: currentFavorites);
       emit(newState);
 
-      print("eklendi");
+      //print("eklendi");
     }
   }
 

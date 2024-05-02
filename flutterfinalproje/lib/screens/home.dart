@@ -353,7 +353,7 @@ class _HomeState extends State<Home> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.grey.shade400, // Border rengi
+                                color: Theme.of(context).secondaryHeaderColor, // Border rengi
                                 width: 4, // Border genişliği
                               ),
                             ),
@@ -444,28 +444,24 @@ class _HomeState extends State<Home> {
                               .language, // assuming language is a state in your ClientCubit
                       '/Change_LanguageScreen',
                       Icons.language,
-                      Colors.black54,
                     ),
                     ListTileItem(
                       context,
                       AppLocalizations.of(context).getTranslate("settings"),
                       '/SettingsScreen',
                       Icons.settings,
-                      Colors.black54,
                     ),
                     ListTileItem(
                       context,
                       AppLocalizations.of(context).getTranslate("vip_traveler"),
                       '/VipGezginInfo',
                       Icons.star,
-                      Colors.black54,
                     ),
                     ListTileItem(
                       context,
                       AppLocalizations.of(context).getTranslate("log_out"),
                       '/LogIn',
                       Icons.logout,
-                      Colors.black54,
                     ),
                   ],
                 ),
@@ -707,9 +703,12 @@ class WeatherInfo extends StatelessWidget {
                 style: TextStyle(fontSize: 14),
               ),
             ),
-            Text(
-              valueText,
-              style: TextStyle(fontSize: 14),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Text(
+                valueText,
+                style: TextStyle(fontSize: 14),
+              ),
             ),
           ],
         ),
@@ -719,7 +718,7 @@ class WeatherInfo extends StatelessWidget {
 }
 
 Widget ListTileItem(BuildContext context, String name, String screen,
-    IconData iconData, Color iconColor) {
+    IconData iconData) {
   return BlocBuilder<ClientCubit, ClientState>(
     builder: (context, state) {
       bool isDarkMode = state.darkMode; // Varsayılan olarak false kullanıyoruz
@@ -741,7 +740,7 @@ Widget ListTileItem(BuildContext context, String name, String screen,
                       padding: const EdgeInsets.all(5.0),
                       child: Icon(
                         iconData,
-                        color: iconColor,
+                        //color: ,
                         size: 25,
                       ),
                     ),

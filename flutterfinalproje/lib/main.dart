@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ClientCubit, ClientState>(
         builder: (context, state) {
           return MaterialApp.router(
-            title: 'Flutter Final Proje',
+            title: 'Gezginin Rotası',
             debugShowCheckedModeBanner: false,
             routerConfig: routes,
             themeMode: state.darkMode ? ThemeMode.dark : ThemeMode.light,

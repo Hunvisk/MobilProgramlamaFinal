@@ -19,7 +19,7 @@ class DesktopPlaces extends StatelessWidget {
   }
 }
 class DesktopPlacesScreen extends StatelessWidget {
-  const DesktopPlacesScreen({
+  const DesktopPlacesScreen({super.key, 
     required this.device,
     required this.isSearching,
     required this.searchController,
@@ -198,6 +198,8 @@ class DesktopPlacesScreen extends StatelessWidget {
   }
 }
 class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -377,7 +379,7 @@ void _showSortPopup2(BuildContext context) {
       return AlertDialog(
         contentPadding: EdgeInsets.zero,
         content: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(

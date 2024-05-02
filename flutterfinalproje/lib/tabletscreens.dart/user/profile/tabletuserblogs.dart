@@ -20,7 +20,7 @@ class TabletUserBlogs extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+          children: const [
             TabletUserBlogsScreen(),
           ],
         ),
@@ -31,6 +31,8 @@ class TabletUserBlogs extends StatelessWidget {
 }
 
 class TabletUserBlogsScreen extends StatelessWidget {
+  const TabletUserBlogsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -113,7 +115,7 @@ class TabletUserBlogsScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     //color: Colors.grey[300]!,
                     spreadRadius: 3,
@@ -126,7 +128,7 @@ class TabletUserBlogsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.person,
                         size: 25,
@@ -246,7 +248,7 @@ Widget _buildBlogCard1() {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   //color: Colors.grey[300]!,
                   spreadRadius: 3,
@@ -259,7 +261,7 @@ Widget _buildBlogCard1() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.person,
                       size: 25,
@@ -391,7 +393,7 @@ Widget _buildBlogCard2() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.person,
                       size: 25,

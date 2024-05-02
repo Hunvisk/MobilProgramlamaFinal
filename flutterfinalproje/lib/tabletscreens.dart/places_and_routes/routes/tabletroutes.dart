@@ -99,7 +99,7 @@ class TabletRoutesScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
-                children: [
+                children: const [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/sariyer.jpeg",
@@ -127,7 +127,7 @@ class TabletRoutesScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
-                children: [
+                children: const [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/camlica.jpeg",

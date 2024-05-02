@@ -19,13 +19,13 @@ class _TabletProductsState extends State<TabletProducts> {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      body: tabletProduct(),
+      body: TabletProduct(),
     ));
   }
 }
 
-class tabletProduct extends StatelessWidget {
-  const tabletProduct({
+class TabletProduct extends StatelessWidget {
+  const TabletProduct({
     super.key,
   });
 

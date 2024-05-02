@@ -1,5 +1,3 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, sort_child_properties_last, empty_statements,  non_constant_identifier_names, deprecated_member_use, avoid_print, unused_import, use_build_context_synchronously
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfinalproje/desktopScreens/user/desktoplogin.dart';
@@ -13,7 +11,7 @@ import '../../core/responsive.dart';
 import '../../tabletscreens.dart/user/tabletlogin.dart';
 
 void main() {
-  runApp(LoginScreen());
+  runApp(const LoginScreen());
 }
 
 class LoginScreen extends StatefulWidget {
@@ -33,9 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
       case (Screen.mobile):
         return buildColumn(context);
       case (Screen.tablet):
-        return TabletLogin();
+        return const TabletLogin();
       case (Screen.desktop):
-        return DesktopLogin();
+        return const DesktopLogin();
     }
   }
 
@@ -44,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("sign_in"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -54,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
       case (Screen.tablet):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("sign_in"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -64,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
       case (Screen.desktop):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("sign_in"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -118,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Logo(),
+        logo(),
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Column(
@@ -126,6 +124,8 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Text(
                 AppLocalizations.of(context).getTranslate("sign_in"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -133,24 +133,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Text(
-                AppLocalizations.of(context)
-                    .getTranslate("continue_app_description"),
+                AppLocalizations.of(context).getTranslate("continue_app_description"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Gap(20),
+              const Gap(20),
               Text(
                 AppLocalizations.of(context).getTranslate("email"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.primary
                 ),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
@@ -162,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -174,20 +177,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   cursorColor: Colors.black, // Yazma imleci rengi
                 ),
               ),
-              Gap(6),
+              const Gap(6),
               Text(
                 AppLocalizations.of(context).getTranslate("password"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.primary
                 ),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       //backgroundColor: Color.fromRGBO(249, 249, 249, 1),
                       ),
                   decoration: InputDecoration(
@@ -198,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -220,11 +225,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       true, // Bu satır, şifrenin görünürlüğünü kontrol eder
                 ),
               ),
-              SignInLink(context), // "Şifremi Unuttum" linki
-              SignInButton(context),
-              Gap(10), // Boşluk ekledik
-              OtherSignInText(context), // "Diğer Giriş" metni
-              Gap(10), // Boşluk ekledik
+              signInLink(context), // "Şifremi Unuttum" linki
+              signInButton(context),
+              const Gap(10), // Boşluk ekledik
+              otherSignInText(context), // "Diğer Giriş" metni
+              const Gap(10), // Boşluk ekledik
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -281,7 +286,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget Logo() {
+  Widget logo() {
     return Align(
       alignment: Alignment.topCenter,
       child: Column(
@@ -299,7 +304,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-Widget SignInLink(BuildContext context) {
+Widget signInLink(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Align(
@@ -312,7 +317,9 @@ Widget SignInLink(BuildContext context) {
           padding: const EdgeInsets.only(top: 1),
           child: Text(
             AppLocalizations.of(context).getTranslate("forgot_password"),
-            style: TextStyle(
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+            style: const TextStyle(
               color: Colors.blue,
               fontSize: 15,
               fontWeight: FontWeight.bold,
@@ -324,19 +331,14 @@ Widget SignInLink(BuildContext context) {
   );
 }
 
-Widget SignInButton(BuildContext context) {
+Widget signInButton(BuildContext context) {
   return Container(
     width: double.infinity,
-    margin: EdgeInsets.all(5),
+    margin: const EdgeInsets.all(5),
     child: ElevatedButton(
       onPressed: () {
         context.push('/Home');
       },
-      child: Text(
-        AppLocalizations.of(context).getTranslate("sign_in"),
-        style: Theme.of(context).textTheme.button!.copyWith(
-            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-      ),
       style: ElevatedButton.styleFrom(
         backgroundColor:
              Theme.of(context).colorScheme.primary, // Tema rengi, // Buton rengi
@@ -344,11 +346,18 @@ Widget SignInButton(BuildContext context) {
           borderRadius: BorderRadius.circular(15),
         ),
       ),
+      child: Text(
+        AppLocalizations.of(context).getTranslate("sign_in"),
+        maxLines: 1,
+        overflow: TextOverflow.fade,
+        style: Theme.of(context).textTheme.button!.copyWith(
+            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
     ),
   );
 }
 
-Widget OtherSignInText(BuildContext context) {
+Widget otherSignInText(BuildContext context) {
   return Column(
     children: [
       Row(
@@ -356,20 +365,24 @@ Widget OtherSignInText(BuildContext context) {
         children: [
           Text(
             AppLocalizations.of(context).getTranslate("have_an_account"),
+            maxLines: 1,
+            overflow: TextOverflow.fade,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Theme.of(context).colorScheme.primary // Yazı rengi
             ),
           ),
-          Gap(5),
+          const Gap(5),
           InkWell(
             onTap: () {
               context.push('/Register');
             },
             child: Text(
               AppLocalizations.of(context).getTranslate("register"),
-              style: TextStyle(
+              maxLines: 1,
+              overflow: TextOverflow.fade,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,

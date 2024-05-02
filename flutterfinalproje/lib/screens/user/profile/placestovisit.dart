@@ -106,7 +106,7 @@ class _PlacesState extends State<PlaceToVisit> {
 }
 
 class gezilmekIstenenSayfa extends StatelessWidget {
-  const gezilmekIstenenSayfa({
+  const gezilmekIstenenSayfa({super.key, 
     required this.device,
     required this.isSearching,
     required this.searchController,
@@ -173,6 +173,8 @@ class gezilmekIstenenSayfa extends StatelessWidget {
 }
 
 class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -352,7 +354,7 @@ void _showSortPopup2(BuildContext context) {
       return AlertDialog(
         contentPadding: EdgeInsets.zero,
         content: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(

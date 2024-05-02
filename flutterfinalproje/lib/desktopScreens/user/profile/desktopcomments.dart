@@ -21,7 +21,7 @@ class DesktopUserComments extends StatelessWidget {
   }
 }
 
-Column DesktopUserCommentsScreen() {
+Column desktopUserCommentsScreen() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [

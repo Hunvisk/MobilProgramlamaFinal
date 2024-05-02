@@ -75,10 +75,9 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
               child: Text(
                 title,
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   color: Colors.white,
-                  overflow: TextOverflow.ellipsis,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),

@@ -161,6 +161,9 @@
     "by_month_(oldest)": "Nach Monat (Älteste)",
     "by_month_(newest)": "Nach Monat (Neueste)",
     "by_day_(oldest)": "Nach Tag (Älteste)",
-    "by_day_(newest)": "Nach Tag (Neueste)"
+    "by_day_(newest)": "Nach Tag (Neueste)",
 
+    "password_change_request_title": "Antrag auf Passwortänderung",
+    "password_change_request_has_been_received": "Ihr Antrag auf Änderung des Passworts ist eingegangen.",
+    "check_your_mail_account": "Bitte überprüfen Sie Ihr E-Mail-Konto."
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/localizations.dart';
+
 class TabletRegister extends StatefulWidget {
   const TabletRegister({Key? key}) : super(key: key);
 
@@ -73,14 +75,18 @@ class _TabletRegisterState extends State<TabletRegister> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Kayıt Ol",
+                AppLocalizations.of(context).getTranslate("register"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(155, 154, 154, 1)),
               ),
               Text(
-                "Hala Hesabınız Yoksa Kayıt Olabilirsiniz.",
+                AppLocalizations.of(context).getTranslate("do_not_have_an_account"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   color: Color.fromRGBO(207, 206, 206, 1),
                   fontSize: 13,
@@ -89,7 +95,9 @@ class _TabletRegisterState extends State<TabletRegister> {
               ),
               Gap(10),
               Text(
-                "Kullanıcı Adı",
+                AppLocalizations.of(context).getTranslate("username"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -100,7 +108,7 @@ class _TabletRegisterState extends State<TabletRegister> {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Kullanıcı Adı',
+                    labelText: AppLocalizations.of(context).getTranslate("username"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -113,7 +121,9 @@ class _TabletRegisterState extends State<TabletRegister> {
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(
+                          //color: Color.fromRGBO(155, 154, 154, 1)
+                        ),
                   ),
                   cursorColor: Colors.black, // Yazma imleci rengi
                 ),
@@ -121,7 +131,9 @@ class _TabletRegisterState extends State<TabletRegister> {
 
               Gap(2),
               Text(
-                "E-Mail",
+                AppLocalizations.of(context).getTranslate("email"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -134,7 +146,7 @@ class _TabletRegisterState extends State<TabletRegister> {
                   style: TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText: 'E-Mail',
+                    labelText: AppLocalizations.of(context).getTranslate("email"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -149,7 +161,9 @@ class _TabletRegisterState extends State<TabletRegister> {
                       ),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(
+                          
+                        ),
                   ),
                   cursorColor: Colors.black,
                   obscureText: false,
@@ -158,7 +172,9 @@ class _TabletRegisterState extends State<TabletRegister> {
 
               Gap(2),
               Text(
-                "Şifre",
+                AppLocalizations.of(context).getTranslate("password"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -171,7 +187,7 @@ class _TabletRegisterState extends State<TabletRegister> {
                   style: TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText: 'Şifre',
+                    labelText: AppLocalizations.of(context).getTranslate("password"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -199,7 +215,9 @@ class _TabletRegisterState extends State<TabletRegister> {
               ),
               Gap(2),
               Text(
-                " Tekrar Şifre",
+                AppLocalizations.of(context).getTranslate("password_again"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -213,7 +231,7 @@ class _TabletRegisterState extends State<TabletRegister> {
                   style: TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText: ' Tekrar Şifre',
+                    labelText: AppLocalizations.of(context).getTranslate("password_again"),
                     filled: true,
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -226,7 +244,9 @@ class _TabletRegisterState extends State<TabletRegister> {
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        TextStyle(
+                          
+                        ),
                     suffixIcon: GestureDetector(
                       onTap: () {},
                       child: Icon(
@@ -258,10 +278,12 @@ class _TabletRegisterState extends State<TabletRegister> {
           margin: EdgeInsets.all(5),
           child: ElevatedButton(
             onPressed: () {
-              context.push('/');
+              context.push('/Login');
             },
             child: Text(
-              'Kayıt Ol',
+              AppLocalizations.of(context).getTranslate("register"),
+               maxLines: 1,
+              overflow: TextOverflow.fade,
               style: Theme.of(context).textTheme.button!.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -289,7 +311,9 @@ class _TabletRegisterState extends State<TabletRegister> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Zaten Bir Heabım Var ?',
+              AppLocalizations.of(context).getTranslate("already_have_an_account"),
+              maxLines: 1,
+              overflow: TextOverflow.fade,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -299,10 +323,12 @@ class _TabletRegisterState extends State<TabletRegister> {
             Gap(5),
             InkWell(
               onTap: () {
-                context.push('/');
+                context.push('/Home');
               },
               child: Text(
-                'Oturum Aç',
+                AppLocalizations.of(context).getTranslate("sign_in"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

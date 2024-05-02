@@ -24,11 +24,11 @@ class _PlacesState extends State<Products> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return prooductBody();
+        return ProoductBody();
       case (Screen.tablet):
-        return tabletProduct();
+        return TabletProduct();
       case (Screen.desktop):
-        return desktopProduct();
+        return DesktopProduct();
     }
   }
 
@@ -92,8 +92,8 @@ class _PlacesState extends State<Products> {
   }
 }
 
-class prooductBody extends StatelessWidget {
-  const prooductBody({
+class ProoductBody extends StatelessWidget {
+  const ProoductBody({
     super.key,
   });
 

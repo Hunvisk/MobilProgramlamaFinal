@@ -99,6 +99,8 @@ class RegisterScreen extends StatefulWidget {
             children: [
               Text(
                 AppLocalizations.of(context).getTranslate("register"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -106,6 +108,8 @@ class RegisterScreen extends StatefulWidget {
               ),
               Text(
                 AppLocalizations.of(context).getTranslate("do_not_have_an_account"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 13,
@@ -115,6 +119,8 @@ class RegisterScreen extends StatefulWidget {
               Gap(10),
               Text(
                 AppLocalizations.of(context).getTranslate("username"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -147,6 +153,8 @@ class RegisterScreen extends StatefulWidget {
               Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("email"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -184,6 +192,8 @@ class RegisterScreen extends StatefulWidget {
               Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("password"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -225,6 +235,8 @@ class RegisterScreen extends StatefulWidget {
               Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("password_again"),
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -305,6 +317,8 @@ Widget SignInButton(BuildContext context) {
           },
           child: Text(
             AppLocalizations.of(context).getTranslate("register"),
+            maxLines: 1,
+            overflow: TextOverflow.fade,
             style: Theme.of(context).textTheme.button!.copyWith(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
@@ -330,6 +344,8 @@ Widget OtherSignInText(
         children: [
           Text(
             AppLocalizations.of(context).getTranslate("already_have_an_account"),
+            maxLines: 1,
+            overflow: TextOverflow.fade,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -343,6 +359,8 @@ Widget OtherSignInText(
             },
             child: Text(
               AppLocalizations.of(context).getTranslate("sign_in"),
+              maxLines: 1,
+              overflow: TextOverflow.fade,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

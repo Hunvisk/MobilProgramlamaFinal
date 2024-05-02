@@ -19,13 +19,13 @@ class _DesktopProductsState extends State<DesktopProducts> {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
-      body: desktopProduct(),
+      body: DesktopProduct(),
     ));
   }
 }
 
-class desktopProduct extends StatelessWidget {
-  const desktopProduct({
+class DesktopProduct extends StatelessWidget {
+  const DesktopProduct({
     super.key,
   });
 

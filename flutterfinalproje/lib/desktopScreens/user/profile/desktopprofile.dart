@@ -23,6 +23,8 @@ class DesktopProfile extends StatelessWidget {
 }
 
 class DesktopProfileScreen extends StatelessWidget {
+  const DesktopProfileScreen({super.key});
+
   void _showImageOptionsDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -133,7 +135,7 @@ class DesktopProfileScreen extends StatelessWidget {
   Column profileMenu(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 350, // Yükseklik artırıldı
           child: Stack(
