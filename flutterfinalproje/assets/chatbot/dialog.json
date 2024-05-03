@@ -1,0 +1,37 @@
+{
+    "conversation": [
+      {
+        "user": {
+          "message": "Merhaba, nasılsın?"
+        },
+        "chatbot": {
+          "message": "Ben bir yapay zeka olduğum için duygularım yok ama işlevlerim normal."
+        }
+      },
+      {
+        "user": {
+          "message": "İyi olmana sevindim. Benimle konuşmak nasıl bir duygu?"
+        },
+        "chatbot": {
+          "message": "Benim için oldukça normal. Size nasıl yardımcı olabilirim?"
+        }
+      },
+      {
+        "user": {
+          "message": "Teşekkürler. Ben de iyiyim. Bugün ne yaptın?"
+        },
+        "chatbot": {
+          "message": "Benim varoluş amacım sizinle iletişim kurmak ve size yardımcı olmak, bu yüzden size hizmet etmek için buradayım."
+        }
+      },
+      {
+        "user": {
+          "message": "Anladım, ne güzel. Seninle konuşmak gerçekten keyifli."
+        },
+        "chatbot": {
+          "message": "Ben de size yardımcı olmak için burada olduğum için mutluyum. Size nasıl yardımcı olabilirim?"
+        }
+      }
+    ]
+  }
+  

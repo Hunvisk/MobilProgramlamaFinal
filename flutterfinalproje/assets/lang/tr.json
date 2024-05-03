@@ -175,6 +175,8 @@
     "about_app": "Uygulama Hakkında",
     "payment_methods": "Ödeme Yöntemleri",
     "past_payments": "Geçmiş Ödemelerim",
-    "phone_number": "Telefon Numarası"
+    "phone_number": "Telefon Numarası",
+
+    "chatbot":"YARDIMCI ASİSTAN"
     
 }

@@ -172,7 +172,9 @@
         "about_app": "About the App",
         "payment_methods": "Payment Methods",
         "past_payments": "Past Payments",
-        "phone_number": "Phone Number"
+        "phone_number": "Phone Number",
+
+        "chatbot": "CHATBOT"
     
 }
 

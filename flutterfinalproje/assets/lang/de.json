@@ -173,5 +173,7 @@
     "about_app": "Über die App",
     "payment_methods": "Zahlungsmethoden",
     "past_payments": "Vergangene Zahlungen",
-    "phone_number": "Telefonnummer"
+    "phone_number": "Telefonnummer",
+
+    "chatbot": "CHATBOT"
 }

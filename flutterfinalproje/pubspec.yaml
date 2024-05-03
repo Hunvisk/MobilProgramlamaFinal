@@ -56,6 +56,9 @@ dependencies:
   url_launcher: ^6.2.4
   permission_handler: ^11.3.1
   dio: ^5.4.2+1
+  
+
+  
 
 
 dev_dependencies:
@@ -95,6 +98,7 @@ flutter:
     - assets/images/cards/
     - assets/images/photographs/
     - assets/lang/
+    - assets/chatbot/
     - assets/images/boarding/
     - assets/images/logo/
 

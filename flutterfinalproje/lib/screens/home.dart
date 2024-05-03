@@ -436,16 +436,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    ListTileItem(
-                      context,
-                      AppLocalizations.of(context).getTranslate("language") + ": " + 
-                          context
-                              .read<ClientCubit>()
-                              .state
-                              .language, // assuming language is a state in your ClientCubit
-                      '/Change_LanguageScreen',
-                      Icons.language,
-                    ),
+                    
                     ListTileItem(
                       context,
                       AppLocalizations.of(context).getTranslate("settings"),

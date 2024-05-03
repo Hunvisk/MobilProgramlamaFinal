@@ -1,10 +1,16 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, camel_case_types, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
-import '../../core/responsive.dart';
+import '../../core/localizations.dart';
+
+class ChatMessage {
+  final String text;
+  final DateTime time; // Eklenen alan: Mesajın gönderildiği zaman
+
+  ChatMessage({
+    required this.text,
+    required this.time,
+  });
+}
 
 class ChatBot extends StatefulWidget {
   const ChatBot({Key? key}) : super(key: key);
@@ -14,87 +20,124 @@ class ChatBot extends StatefulWidget {
 }
 
 class _ChatBotState extends State<ChatBot> {
+  final TextEditingController _chatController = TextEditingController();
+  final List<ChatMessage> _chatMessages = [];
 
-  TextEditingController searchController = TextEditingController();
-  bool isSearching = false;
+  void _sendMessage(String message) {
+    DateTime now = DateTime.now(); // Mesajın gönderildiği anın zamanını al
 
-   Screen device = Screen.mobile;
+    setState(() {
+      _chatMessages.add(ChatMessage(text: "Kullanıcı: $message", time: now));
+    });
 
-   drawScreen(){
-     switch (device) {
-      case (Screen.mobile):
-       return   chatBotMenu();
-      case (Screen.tablet):
-       return   Column(
+    // Burada chatbot'un yanıtını üretebilirsiniz.
+    String botReply = _generateBotReply(message);
+
+    setState(() {
+      _chatMessages.add(ChatMessage(text: "GezginBot: $botReply", time: now));
+    });
+  }
+
+  String _generateBotReply(String message) {
+    // Basit bir bot yanıtı üretme
+    if (message.toLowerCase().contains('selam')) {
+      return 'Merhaba!';
+    } else if (message.toLowerCase().contains('nasılsın')) {
+      return 'Ben bir botum, bu yüzden duygularım yok, ama teşekkür ederim! Siz nasılsınız?';
+    } else {
+      return 'Üzgünüm, anlayamadım. Başka bir şey deneyebilir misiniz?';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).getTranslate("chatbot")),
+      ),
+      body: Column(
         children: [
-          Text("tablet modu"), 
+          Expanded(
+            child: ListView.builder(
+  itemCount: _chatMessages.length,
+  itemBuilder: (BuildContext context, int index) {
+    final message = _chatMessages[index];
+    final isUserMessage = index % 2 == 0;
+
+    return Row(
+      mainAxisAlignment: isUserMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+          padding: const EdgeInsets.all(8.0),
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * 0.7, // Maksimum genişlik belirleniyor
+          ),
+          decoration: BoxDecoration(
+            color: isUserMessage ? Colors.blue[100] : Theme.of(context).colorScheme.tertiaryContainer,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                message.text,
+                style: TextStyle(
+                  color: isUserMessage ? Colors.black : Colors.white,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                "${message.time.hour}:${message.time.minute}",
+                style: TextStyle(
+                  color: isUserMessage ? Colors.black54 : Colors.white70,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  },
+),
+
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _chatController,
+                    decoration: const InputDecoration(
+                      hintText: "Mesajınızı buraya yazın...",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      contentPadding: EdgeInsets.only(
+                        top: 10.0,
+                        bottom: 10.0,
+                        left: 10.0,
+                        right: 5.0,
+                      ),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.send,
+                    color: Theme.of(context).iconTheme.color,
+                  ),
+                  onPressed: () {
+                    _sendMessage(_chatController.text);
+                    _chatController.clear();
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
-       ) ;
-      case (Screen.desktop):
-       return  Column(children: [
-         Text("masaüstü modu"), 
-        ],);
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: "CHATBOT",
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "CHATBOT",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "CHATBOT",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-  }
-}
-//drawBottom(){
-//     switch (device) {
-//      case (Screen.mobile):
-//       return  MyBottomNavBar();
-//      case (Screen.tablet):
-//       return MyBottomNavBar();
-//      case (Screen.desktop):
-//       return ;
-//     }
-//   }
-
-  @override
-  Widget build(BuildContext context) {
-     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
-    return Container(
-        child: Scaffold(
-      appBar:drawAppar(),
-      body: drawScreen(),
-      //bottomNavigationBar: drawBottom(),
-    ));
-  }
-}
-
-class chatBotMenu extends StatelessWidget {
-  const chatBotMenu({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text("CHATBOT SAYFASI");
+      ),
+    );
   }
 }
