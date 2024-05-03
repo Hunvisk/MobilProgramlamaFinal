@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopfavorites.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletfavorites.dart';
@@ -127,77 +126,8 @@ class favorilerSayfa extends StatelessWidget {
             ),
           ),
         FilterWidget(),
-        InkWell(
-          onTap: () {
-            GoRouter.of(context).push('/SelectedRoutes');
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: RoutesContainerDesign(
-              photo: "assets/images/routes/eminonu.jpeg",
-              title: "Eminönü",
-              puan: "5.0",
-              visualization: "2024",
-              comment: "32",
-              durak: "9", // Durak sayısı
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/ortakoy.jpeg",
-            title: "Ortaköy",
-            puan: "4.5",
-            visualization: "1500",
-            comment: "25",
-            durak: "6", // Durak sayısı
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/sariyer.jpeg",
-            title: "Sarıyer",
-            puan: "4.7",
-            visualization: "1800",
-            comment: "28",
-            durak: "12", // Durak sayısı
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/eminonu.jpeg",
-            title: "Eminönü",
-            puan: "5.0",
-            visualization: "2024",
-            comment: "32",
-            durak: "9", // Durak sayısı
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/camlica.jpeg",
-            title: "Çamlıca Tepesi",
-            puan: "4.2",
-            visualization: "3200",
-            comment: "78",
-            durak: "15", // Durak sayısı
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: RoutesContainerDesign(
-            photo: "assets/images/routes/kizKulesi.jpeg",
-            title: "Kız Kulesi",
-            puan: "3.9",
-            visualization: "1293",
-            comment: "22",
-            durak: "3", // Durak sayısı
-          ),
-        ),
+        
+        
       ],
     );
   }
@@ -214,7 +144,7 @@ class FilterWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.45,
+              width: MediaQuery.of(context).size.width * 0.43,
               height: MediaQuery.of(context).size.height * 0.05,
               child: ElevatedButton(
                 onPressed: () {

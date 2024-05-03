@@ -315,14 +315,15 @@ class _HomeState extends State<Home> {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return Dialog(
+                            return CircleAvatar(
+                              maxRadius: 50,
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).pop();
                                 },
                                 child: SizedBox(
-                                  width: 250,
-                                  height: 250,
+                                  width: 300,
+                                  height: 300,
                                   child: Hero(
                                     tag: "profilFoto",
                                     child: Container(
