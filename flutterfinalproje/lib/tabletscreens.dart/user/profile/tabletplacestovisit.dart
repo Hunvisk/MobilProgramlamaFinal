@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
@@ -18,7 +18,7 @@ class TabletPlaceToVisit extends StatelessWidget {
     title: 'GEZİLMEK İSTENİLENLER',
           ),
           body: const Text("'GEZİLMEK İSTENİLENLER SAYFASI"),
-          bottomNavigationBar: MyBottomNavBar(),
+          //bottomNavigationBar: MyBottomNavBar(),
         );
   }
 }

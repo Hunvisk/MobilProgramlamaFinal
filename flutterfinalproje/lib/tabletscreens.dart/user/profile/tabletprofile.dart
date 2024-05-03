@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,7 +18,7 @@ class TabletProfile extends StatelessWidget {
       body: const Center(
         child: Text("PROFİL SAYFASI"),
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

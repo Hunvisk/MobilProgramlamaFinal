@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import '../../core/responsive.dart';
 import '../../desktopScreens/app_details/desktopvipgezgininfo.dart';
 import '../../tabletscreens.dart/app_details/tabletvipgezgininfo.dart';
@@ -67,16 +67,16 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
     }
   }
 
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
+//  drawBottom() {
+//    switch (device) {
+//      case (Screen.mobile):
+//        return MyBottomNavBar();
+//      case (Screen.tablet):
+//        return MyBottomNavBar();
+//      case (Screen.desktop):
+//        return;
+//    }
+//  }
 
   @override
   void initState() {
@@ -100,7 +100,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
         appBar: drawAppar(),
         body: SafeArea(
             child: drawScreen()),
-        bottomNavigationBar: drawBottom(),
+        //bottomNavigationBar: drawBottom(),
       ),
     );
   }

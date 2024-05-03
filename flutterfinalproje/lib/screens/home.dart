@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutterfinalproje/widgets/myhomeappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:flutterfinalproje/widgets/routescontainerdesign.dart';
 
@@ -73,16 +73,16 @@ class _HomeState extends State<Home> {
     }
   }
 
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
+//  drawBottom() {
+//    switch (device) {
+//      case (Screen.mobile):
+//        return MyBottomNavBar();
+//      case (Screen.tablet):
+//        return MyBottomNavBar();
+//      case (Screen.desktop):
+//        return;
+//    }
+//  }
 
   final myitems = [
     RoutesContainerDesign(
@@ -277,14 +277,14 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Theme.of(context)
-                .colorScheme
-                .surface, // Tema rengine uygun alt menü arkaplan rengi
-          ),
-          child: MyBottomNavBar(),
-        ),
+        //bottomNavigationBar: Theme(
+        //  data: Theme.of(context).copyWith(
+        //    canvasColor: Theme.of(context)
+        //        .colorScheme
+        //        .surface, // Tema rengine uygun alt menü arkaplan rengi
+        //  ),
+        //  child: MyBottomNavBar(),
+        //),
       ),
     );
   }

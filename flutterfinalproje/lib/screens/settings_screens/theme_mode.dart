@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
-import '../../widgets/mybottomnavbar.dart';
+//import '../../widgets/mybottomnavbar.dart';
 
 class ThemeModeScreen extends StatefulWidget {
   const ThemeModeScreen({super.key});
@@ -21,7 +21,7 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
       body: const SafeArea(
         child: Text("Tema Modu Sayfası")
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopcomments.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
@@ -73,16 +73,16 @@ class _UserCommentsState extends State<UserComments> {
     }
   }
 
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
+  //drawBottom() {
+  //  switch (device) {
+  //    case (Screen.mobile):
+  //      return MyBottomNavBar();
+  //    case (Screen.tablet):
+  //      return MyBottomNavBar();
+  //    case (Screen.desktop):
+  //      return;
+  //  }
+  //}
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class _UserCommentsState extends State<UserComments> {
             child: drawScreen(),
           ),
         ),
-        bottomNavigationBar: drawBottom(),
+        //bottomNavigationBar: drawBottom(),
       ),
     );
   }

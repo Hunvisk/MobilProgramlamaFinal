@@ -28,19 +28,6 @@
     @override
     Widget build(BuildContext context) {
       return AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            size: 25,
-            color: Theme.of(context).primaryColor,
-          ),
-          onPressed: () {
-            //GoRouter.of(context).pop(); // Geri butonuna basıldığında önceki sayfaya dönme işlemi
-            //context.pop(context);
-            //GoRouter.of(context).;
-            Navigator.of(context).pop();
-          },
-        ),
         title: Center(
           child: Expanded(
             child: Text(

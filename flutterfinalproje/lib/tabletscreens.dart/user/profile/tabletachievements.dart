@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 class TabletAchievemets extends StatelessWidget {
   const TabletAchievemets({super.key});
@@ -15,7 +15,7 @@ class TabletAchievemets extends StatelessWidget {
         title: 'BAŞARIMLAR',
       ),
       body: Text("BAŞARIMLAR SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     ));
   }
 }

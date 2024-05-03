@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
@@ -27,7 +27,7 @@ class TabletSelectedRoutes extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

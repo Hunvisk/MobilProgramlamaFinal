@@ -5,7 +5,7 @@ import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
 //import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         appBar: drawAppBar(),
         body: drawScreen(),
-        bottomNavigationBar: drawBottom(),
+        //bottomNavigationBar: drawBottom(),
       ),
     );
   }
@@ -58,16 +58,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Widget drawBottom() {
-    switch (device) {
-      case Screen.mobile:
-        return MyBottomNavBar();
-      case Screen.tablet:
-        return MyBottomNavBar();
-      case Screen.desktop:
-        return Container();
-    }
-  }
+  //Widget drawBottom() {
+  //  switch (device) {
+  //    case Screen.mobile:
+  //      return MyBottomNavBar();
+  //    case Screen.tablet:
+  //      return MyBottomNavBar();
+  //    case Screen.desktop:
+  //      return Container();
+  //  }
+  //}
 
   // void _showEditDialog() {
   //   showDialog(

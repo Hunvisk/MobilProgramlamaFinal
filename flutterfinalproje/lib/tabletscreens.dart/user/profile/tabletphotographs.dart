@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +14,7 @@ class TabletPhotographs extends StatelessWidget {
         title: 'FOTOĞRAFLAR',
       ),
       body: const Text("FOTOĞRAFLAR SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

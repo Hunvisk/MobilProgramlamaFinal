@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopachievements.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletachievements.dart';
+import '../../../widgets/myappbar.dart';
 
 class Achievemets extends StatefulWidget {
   const Achievemets({Key? key}) : super(key: key);
@@ -36,39 +36,29 @@ class _AchievementsState extends State<Achievemets> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("Achievemets"),
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      return MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("Achievemets"),
+      );
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("Achievemets"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      return MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("Achievemets"),
+      );
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("Achievemets"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      return MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("Achievemets"),
+      );
   }
 }
-drawBottom(){
-     switch (device) {
-      case (Screen.mobile):
-       return  MyBottomNavBar();
-      case (Screen.tablet):
-       return MyBottomNavBar();
-      case (Screen.desktop):
-       return ;
-     }
-   }
+//drawBottom(){
+//     switch (device) {
+//      case (Screen.mobile):
+//       return  MyBottomNavBar();
+//      case (Screen.tablet):
+//       return MyBottomNavBar();
+//      case (Screen.desktop):
+//       return ;
+//     }
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +71,7 @@ drawBottom(){
       body: SafeArea(
         child: drawScreen(),
       ),
-      bottomNavigationBar: drawBottom(),
+      //bottomNavigationBar: drawBottom(),
     ));
   }
 }

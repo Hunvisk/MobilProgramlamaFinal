@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../core/responsive.dart';
 
@@ -63,16 +63,16 @@ class _ChatBotState extends State<ChatBot> {
         },);
   }
 }
-drawBottom(){
-     switch (device) {
-      case (Screen.mobile):
-       return  MyBottomNavBar();
-      case (Screen.tablet):
-       return MyBottomNavBar();
-      case (Screen.desktop):
-       return ;
-     }
-   }
+//drawBottom(){
+//     switch (device) {
+//      case (Screen.mobile):
+//       return  MyBottomNavBar();
+//      case (Screen.tablet):
+//       return MyBottomNavBar();
+//      case (Screen.desktop):
+//       return ;
+//     }
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ drawBottom(){
         child: Scaffold(
       appBar:drawAppar(),
       body: drawScreen(),
-      bottomNavigationBar: drawBottom(),
+      //bottomNavigationBar: drawBottom(),
     ));
   }
 }

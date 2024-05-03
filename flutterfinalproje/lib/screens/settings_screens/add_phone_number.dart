@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
-import '../../widgets/mybottomnavbar.dart';
+//import '../../widgets/mybottomnavbar.dart';
 
 class AddPhoneNumberScreen extends StatefulWidget {
   const AddPhoneNumberScreen({super.key});
@@ -21,7 +21,7 @@ class _AddPhoneNumberScreenState extends State<AddPhoneNumberScreen> {
       body: const SafeArea(
         child: Text("Telefon Numarası Sayfası")
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

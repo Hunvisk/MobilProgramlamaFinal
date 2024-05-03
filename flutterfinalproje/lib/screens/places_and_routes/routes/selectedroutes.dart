@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/places_and_routes/routes/desktopselectedroutes.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/places_and_routes/routes/tabletselectedroutes.dart';
-import '../../product/Cart.dart';
+import '../../../widgets/myappbar.dart';
 
 void main() {
   runApp(SelectedRoutes());
@@ -40,48 +40,30 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
   drawAppar() {
     switch (device) {
       case (Screen.mobile):
-        return AppBarWithSearchIcon(
+        return MyAppBar(
           title: AppLocalizations.of(context).getTranslate("selected_routes"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
         );
       case (Screen.tablet):
-        return AppBarWithSearchIcon(
+        return MyAppBar(
           title: AppLocalizations.of(context).getTranslate("selected_routes"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
         );
       case (Screen.desktop):
-        return AppBarWithSearchIcon(
+        return MyAppBar(
           title: AppLocalizations.of(context).getTranslate("selected_routes"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
         );
     }
   }
 
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
+  //drawBottom() {
+  //  switch (device) {
+  //    case (Screen.mobile):
+  //      return MyBottomNavBar();
+  //    case (Screen.tablet):
+  //      return MyBottomNavBar();
+  //    case (Screen.desktop):
+  //      return;
+  //  }
+  //}
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +76,7 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
         body: SingleChildScrollView(
           child: drawScreen(),
         ),
-        bottomNavigationBar: drawBottom(),
+        //bottomNavigationBar: drawBottom(),
       ),
     );
   }

@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopblogs.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletuserblogs.dart';
+import '../../../widgets/myappbar.dart';
 
 void main() {
   runApp(UserBlogs());
@@ -39,42 +39,29 @@ class _UserBlogState extends State<UserBlogs> {
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(          
+      return MyAppBar(          
         title: AppLocalizations.of(context).getTranslate("blogs"),
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      );
     case (Screen.tablet):
-      return AppBarWithSearchIcon( 
+      return MyAppBar(          
         title: AppLocalizations.of(context).getTranslate("blogs"),
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      );
     case (Screen.desktop):
-      return AppBarWithSearchIcon( title: AppLocalizations.of(context).getTranslate("blogs"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      return MyAppBar(          
+        title: AppLocalizations.of(context).getTranslate("blogs"),
+      );
   }
 }
-drawBottom(){
-     switch (device) {
-      case (Screen.mobile):
-       return  MyBottomNavBar();
-      case (Screen.tablet):
-       return MyBottomNavBar();
-      case (Screen.desktop):
-       return ;
-     }
-   }
+//drawBottom(){
+//     switch (device) {
+//      case (Screen.mobile):
+//       return  MyBottomNavBar();
+//      case (Screen.tablet):
+//       return MyBottomNavBar();
+//      case (Screen.desktop):
+//       return ;
+//     }
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +75,7 @@ drawBottom(){
         body: SingleChildScrollView(
           child: drawScreen(),
         ),
-        bottomNavigationBar: drawBottom(),
+        //bottomNavigationBar: drawBottom(),
       ),
     );
   }

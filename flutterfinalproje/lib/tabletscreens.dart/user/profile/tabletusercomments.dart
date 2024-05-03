@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 class TabletUserComments extends StatelessWidget {
@@ -16,7 +16,7 @@ class TabletUserComments extends StatelessWidget {
         title: 'YORUMLAR',
       ),
       body: Text("YORUMLAR SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     ));
   }
 }

@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
-import '../../widgets/mybottomnavbar.dart';
+//import '../../widgets/mybottomnavbar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(),
         ],
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 

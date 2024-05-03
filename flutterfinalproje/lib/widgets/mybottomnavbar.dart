@@ -3,8 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../core/localizations.dart';
+
 class MyBottomNavBar extends StatefulWidget {
-  MyBottomNavBar({Key? key, }) : super(key: key);
+  MyBottomNavBar({Key? key, required this.child}) : super(key: key);
+
+  final StatefulNavigationShell child;
 
   @override
   _MyBottomNavBarState createState() => _MyBottomNavBarState();
@@ -14,43 +18,40 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 20,
-      ),
-      child: Container(
-        height: 35,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              onPressed: () {
-                context.push('/Home');
-              },
-              icon: Icon(Icons.home),
-            ),
-            IconButton(
-              onPressed: () {
-                context.push('/Places');
-              },
-              icon: Icon(Icons.location_on_sharp),
-            ),
-            IconButton(
-              onPressed: () {
-                context.push('/Map');
-              },
-              icon: Icon(Icons.map),
-            ),
-            IconButton(
-              onPressed: () {
-                context.push('/Routes');
-              },
-              icon: Icon(Icons.route),
-            ),
-          ],
-        )
-      ),
+    return BottomNavigationBar(
+      currentIndex: widget.child.currentIndex,
+      onTap: ( value ) => _onItemTapped(value),
+      showUnselectedLabels: true,
+      items: [
+        BottomNavigationBarItem(
+          activeIcon: Icon(Icons.home),
+          icon: Icon(Icons.home),
+          label: AppLocalizations.of(context).getTranslate("home_title"),
+        ),
+        BottomNavigationBarItem(
+          activeIcon: Icon(Icons.place_sharp),
+          icon: Icon(Icons.place_sharp),
+          label: AppLocalizations.of(context).getTranslate("places"),
+        ),
+        BottomNavigationBarItem(
+          activeIcon: Icon(Icons.map),
+          icon: Icon(Icons.map),
+          label: AppLocalizations.of(context).getTranslate("map_title"),
+        ),
+        BottomNavigationBarItem(
+          activeIcon: Icon(Icons.route),
+          icon: Icon(Icons.route),
+          label: AppLocalizations.of(context).getTranslate("routes"),
+        ),
+      ],
     );
+  }
+
+  void _onItemTapped(int index) {
+    widget.child.goBranch(
+      index,
+      initialLocation: index == widget.child.currentIndex
+    );
+
   }
 }

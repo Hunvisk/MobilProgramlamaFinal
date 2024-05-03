@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../core/localizations.dart';
 
@@ -21,7 +21,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
       body: const SafeArea(
         child: Text("Uygulama Hakkında Sayfası")
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

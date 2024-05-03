@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/places_and_routes/places/desktopplaces.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
 import 'package:go_router/go_router.dart';
 
@@ -85,16 +85,16 @@ class _PlacesState extends State<Places> {
     }
   }
 
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
+  //drawBottom() {
+  //  switch (device) {
+  //    case (Screen.mobile):
+  //      return MyBottomNavBar();
+  //    case (Screen.tablet):
+  //      return MyBottomNavBar();
+  //    case (Screen.desktop):
+  //      return;
+  //  }
+  //}
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class _PlacesState extends State<Places> {
     });
     return Scaffold(
       appBar: drawAppar(),
-      bottomNavigationBar: drawBottom(),
+      //bottomNavigationBar: drawBottom(),
       body: SingleChildScrollView(
         child: drawScreen(),
       ),

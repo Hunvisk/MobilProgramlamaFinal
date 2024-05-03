@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopphotographs.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../tabletscreens.dart/user/profile/tabletphotographs.dart';
+import '../../../widgets/myappbar.dart';
 
 class Photographs extends StatefulWidget {
   const Photographs({Key? key}) : super(key: key);
@@ -35,48 +35,30 @@ class PhotographsState extends State<Photographs> {
   drawAppar() {
     switch (device) {
       case (Screen.mobile):
-        return AppBarWithSearchIcon(
+        return MyAppBar(
           title: AppLocalizations.of(context).getTranslate("fotos"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
         );
       case (Screen.tablet):
-        return AppBarWithSearchIcon(
+        return MyAppBar(
           title: AppLocalizations.of(context).getTranslate("fotos"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
         );
       case (Screen.desktop):
-        return AppBarWithSearchIcon(
+        return MyAppBar(
           title: AppLocalizations.of(context).getTranslate("fotos"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
         );
     }
   }
 
-  drawBottom() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyBottomNavBar();
-      case (Screen.tablet):
-        return MyBottomNavBar();
-      case (Screen.desktop):
-        return;
-    }
-  }
+  //drawBottom() {
+  //  switch (device) {
+  //    case (Screen.mobile):
+  //      return MyBottomNavBar();
+  //    case (Screen.tablet):
+  //      return MyBottomNavBar();
+  //    case (Screen.desktop):
+  //      return;
+  //  }
+  //}
 
   @override
   Widget build(BuildContext context) {

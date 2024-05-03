@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,7 +21,7 @@ class TabletFavorites extends StatelessWidget {
         title: 'FAVORİLER',
       ),
       body: Text("FAVORİLER SAYFASI"),
-      bottomNavigationBar: MyBottomNavBar(),
+      //bottomNavigationBar: MyBottomNavBar(),
     ));
   }
 }

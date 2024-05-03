@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../../core/responsive.dart';
 import '../../../desktopScreens/shopping/product/desktop_selected_products.dart';
@@ -60,16 +60,16 @@ class _SelectedProductsState extends State<SelectedProducts> {
         },);
   }
 }
-drawBottom(){
-     switch (device) {
-      case (Screen.mobile):
-       return  MyBottomNavBar();
-      case (Screen.tablet):
-       return MyBottomNavBar();
-      case (Screen.desktop):
-       return ;
-     }
-   }
+//drawBottom(){
+//     switch (device) {
+//      case (Screen.mobile):
+//       return  MyBottomNavBar();
+//      case (Screen.tablet):
+//       return MyBottomNavBar();
+//      case (Screen.desktop):
+//       return ;
+//     }
+//   }
 
   @override
   Widget build(BuildContext context) {
