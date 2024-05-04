@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
@@ -14,7 +15,28 @@ class ThemeModeScreen extends StatefulWidget {
 }
 
 class _ThemeModeScreenState extends State<ThemeModeScreen> {
-  bool isDarkMode = true; // Varsayılan olarak koyu moda başlayalım
+  late bool isDarkMode; // Varsayılan olarak koyu moda başlayalım
+  late SharedPreferences prefs; // SharedPreferences nesnesi
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedMode(); // Kayıtlı dil bilgisini yükle
+  }
+
+  // Kayıtlı dil bilgisini yükleyen fonksiyon
+  _loadSelectedMode() async {
+    prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isDarkMode = prefs.getBool('darkMode') ?? true; // Kayıtlı dil bilgisini yükle, yoksa false kullan
+    });
+  }
+
+  // Seçilen dil bilgisini kaydeden fonksiyon
+  _saveSelectedMode(bool darkMode) async {
+    await prefs.setBool('darkMode', darkMode); // Seçilen dil bilgisini kaydet
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +64,7 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
                   color: Theme.of(context).secondaryHeaderColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                height: 300,
+                height: 350,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
@@ -52,25 +74,27 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
                         context,
                         "light",
                         !isDarkMode, // Ters çevirdik
-                        (value) {
+                        () {
                           setState(() {
-                            isDarkMode = false; // Açık moda geçiş
+                            isDarkMode = false;
+                            _saveSelectedMode(false);
                             context.read<ClientCubit>().changeDarkMode(darkMode: false);
                           });
                         },
-                        Colors.white,
+                        "assets/images/thememodescreen/light_mode_example.jpg",
                       ),
                       themeModeItem(
                         context,
                         "dark",
                         isDarkMode, // Değişiklik yok
-                        (value) {
+                        () {
                           setState(() {
                             isDarkMode = true; // Koyu moda geçiş
+                            _saveSelectedMode(true);
                             context.read<ClientCubit>().changeDarkMode(darkMode: true);
                           });
                         },
-                        Colors.black,
+                        "assets/images/thememodescreen/dark_mode_example.jpg",
                       ),
                     ],
                   ),
@@ -83,17 +107,20 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
     );
   }
 
-  Widget themeModeItem(BuildContext context, String title, bool isChecked, void Function(bool?)? onChanged, Color color) {
+  Widget themeModeItem(BuildContext context, String title, bool isChecked, void Function()? onChanged, String image) {
     return Column(
       children: [
         Container(
           decoration: BoxDecoration(
-            color: color,
             borderRadius: BorderRadius.circular(10),
           ),
-          width: 100,
-          height: 200,
-        ),
+            height: 250,
+            width: 125,
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover,
+            ),
+          ),
         const Gap(5),
         Text(
           AppLocalizations.of(context).getTranslate(title),
@@ -101,7 +128,7 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
         const Gap(5),
         Checkbox(
           value: isChecked,
-          onChanged: onChanged,
+          onChanged: onChanged != null ? (bool? value) => onChanged() : null,
         ),
       ],
     );
