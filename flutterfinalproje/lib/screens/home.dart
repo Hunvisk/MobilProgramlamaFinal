@@ -402,41 +402,6 @@ class _HomeState extends State<Home> {
               children: [
                 Column(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        leading: Icon(
-                          context.read<ClientCubit>().state.darkMode
-                              ? Icons.nightlight
-                              : Icons.wb_sunny,
-                          color: Theme.of(context).iconTheme.color,
-                        ),
-                        title: Text(
-                          AppLocalizations.of(context).getTranslate("mode") +
-                              (context.read<ClientCubit>().state.darkMode
-                                  ? AppLocalizations.of(context)
-                                      .getTranslate("night")
-                                  : AppLocalizations.of(context)
-                                      .getTranslate("light")),
-                        ),
-                        trailing: Switch(
-                          value: context.read<ClientCubit>().state.darkMode,
-                          onChanged: (bool newValue) {
-                            // Gece modu geçişini yapar
-                            context
-                                .read<ClientCubit>()
-                                .changeDarkMode(darkMode: true);
-                            // Gündüz modu geçişi için bir kontrol yapar
-                            if (!newValue) {
-                              context
-                                  .read<ClientCubit>()
-                                  .changeDarkMode(darkMode: false);
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    
                     ListTileItem(
                       context,
                       AppLocalizations.of(context).getTranslate("settings"),
