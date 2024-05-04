@@ -92,16 +92,6 @@ final routes = GoRouter(
         // HOME
         StatefulShellBranch(
           routes: <RouteBase>[
-            // Loader
-            GoRoute(
-              path: '/',
-              builder: (context, state) => const LoaderScreen(),
-            ),
-            // Boarding
-            GoRoute(
-              path: '/Boarding',
-              builder: (context, state) => const BoardingScreen(),
-            ),
             // Home
             GoRoute(
               path: '/Home',
@@ -246,45 +236,6 @@ final routes = GoRouter(
               path: '/DesktopUserComments',
               builder: (context, state) => DesktopUserComments(),
             ),
-            // Login 
-            GoRoute(
-              path: '/Login',
-              builder: (context, state) => const LoginScreen(),
-            ),
-            GoRoute(
-              path: '/TabletLogin',
-              builder: (context, state) => TabletLogin(),
-            ),
-            GoRoute(
-              path: '/DesktopLogin',
-              builder: (context, state) => const DesktopLogin(),
-            ),
-            //Register
-            GoRoute(
-              path: '/Register',
-              builder: (context, state) => RegisterScreen(),
-            ),
-            GoRoute(
-              path: '/TabletRegister',
-              builder: (context, state) => TabletRegister(),
-            ),
-            GoRoute(
-              path: '/DesktopRegister',
-              builder: (context, state) => DesktopRegister(),
-            ),
-            // Forgot Password
-            GoRoute(
-              path: '/ForgotPassword',
-              builder: (context, state) => const ForgotPassword(),
-            ),
-            GoRoute(
-              path: '/TabletForgotPassword',
-              builder: (context, state) => const TabletForgotPassword(),
-            ),
-            GoRoute(
-              path: '/DesktopForgotPassword',
-              builder: (context, state) => const DesktopForgotPassword(),
-            ),
             // Product
             GoRoute(
               path: '/Products',
@@ -388,6 +339,57 @@ final routes = GoRouter(
           ],
         ),
       ], 
+    ),
+
+    // Loader
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const LoaderScreen(),
+    ),
+    // Boarding
+    GoRoute(
+      path: '/Boarding',
+      builder: (context, state) => const BoardingScreen(),
+    ),
+
+    // Login 
+    GoRoute(
+      path: '/Login',
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: '/TabletLogin',
+      builder: (context, state) => TabletLogin(),
+    ),
+    GoRoute(
+      path: '/DesktopLogin',
+      builder: (context, state) => const DesktopLogin(),
+    ),
+    //Register
+    GoRoute(
+      path: '/Register',
+      builder: (context, state) => RegisterScreen(),
+    ),
+    GoRoute(
+      path: '/TabletRegister',
+      builder: (context, state) => TabletRegister(),
+    ),
+    GoRoute(
+      path: '/DesktopRegister',
+      builder: (context, state) => DesktopRegister(),
+    ),
+    // Forgot Password
+    GoRoute(
+      path: '/ForgotPassword',
+      builder: (context, state) => const ForgotPassword(),
+    ),
+    GoRoute(
+      path: '/TabletForgotPassword',
+      builder: (context, state) => const TabletForgotPassword(),
+    ),
+    GoRoute(
+      path: '/DesktopForgotPassword',
+      builder: (context, state) => const DesktopForgotPassword(),
     ),
     
 
