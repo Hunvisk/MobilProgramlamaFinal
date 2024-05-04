@@ -97,7 +97,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(page == 4 ? "Bitir" : "Geç"),
+                  child: Text(page == 4 ?  AppLocalizations.of(context).getTranslate("finish") :  AppLocalizations.of(context).getTranslate("skip")),
                 ),
               )
             ],

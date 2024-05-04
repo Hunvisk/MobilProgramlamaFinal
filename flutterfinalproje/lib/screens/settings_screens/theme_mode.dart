@@ -108,19 +108,21 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
   }
 
   Widget themeModeItem(BuildContext context, String title, bool isChecked, void Function()? onChanged, String image) {
-    return Column(
+  return GestureDetector(
+    onTap: onChanged, // Resme tıklandığında onChanged fonksiyonunu çağır
+    child: Column(
       children: [
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
           ),
-            height: 250,
-            width: 125,
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
-            ),
+          height: 250,
+          width: 125,
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
           ),
+        ),
         const Gap(5),
         Text(
           AppLocalizations.of(context).getTranslate(title),
@@ -131,6 +133,7 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
           onChanged: onChanged != null ? (bool? value) => onChanged() : null,
         ),
       ],
-    );
-  }
+    ),
+  );
+}
 }

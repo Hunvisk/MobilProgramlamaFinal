@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:go_router/go_router.dart';
 
 import '../../bloc/client/client_cubit.dart';
@@ -22,10 +23,17 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
   late ClientCubit clientCubit;
   
+
+  
   loadApp() async {
   final storage = Storage();
   //await storage.clearStorage(); // Video için geçici olarak stroge sıfırladık.
   final firstLaunch = await storage.isFirstLaunch();
+      // Chatbot verilerini temizle
+  await storage.chatStorageClear();
+
+
+  
 
   if (firstLaunch) {
     // cihazın gece gündüz moduna erişmek
@@ -42,6 +50,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
     final language = config?["language"] ?? getDeviceLanguage();
     final darkMode = config?["darkMode"] ?? (ThemeMode.system == ThemeMode.dark);
+   
 
     await storage.setConfig(language: language, darkMode: darkMode);
     clientCubit.changeLanguage(language: config["language"]);

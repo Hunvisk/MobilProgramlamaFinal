@@ -43,4 +43,36 @@ class Storage {
     final SharedPreferences storage = await SharedPreferences.getInstance();
     await storage.clear();
   }
+
+  chatStorageClear() async {
+    final SharedPreferences messages = await SharedPreferences.getInstance();
+    await messages.clear();
+  }
+  
 }
+
+
+class ChatStorage {
+  static const _key = 'chat_messages';
+
+  static Future<List<String>> getMessages() async {
+    final prefs = await SharedPreferences.getInstance();
+    final messages = prefs.getStringList(_key);
+    return messages ?? [];
+  }
+
+  static Future<void> saveMessage(String message) async {
+    final prefs = await SharedPreferences.getInstance();
+    final messages = await getMessages();
+    messages.add(message);
+    await prefs.setStringList(_key, messages);
+  }
+
+   
+}
+  
+ 
+
+
+
+
