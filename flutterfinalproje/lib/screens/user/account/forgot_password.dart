@@ -96,7 +96,7 @@ class PasswordPage extends StatelessWidget {
           actions: [
             ElevatedButton(
               onPressed: () {
-                context.go('/Login');
+                context.push('/Login');
               },
               child: Text(
                 AppLocalizations.of(context).getTranslate("sign_in"),

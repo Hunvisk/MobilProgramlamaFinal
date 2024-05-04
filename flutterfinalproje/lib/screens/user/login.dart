@@ -340,7 +340,7 @@ Widget signInButton(BuildContext context) {
     margin: const EdgeInsets.all(5),
     child: ElevatedButton(
       onPressed: () {
-        context.push('/Home');
+        context.go('/Home');
       },
       style: ElevatedButton.styleFrom(
         backgroundColor:
