@@ -305,7 +305,7 @@ class SubscriptionBox extends StatelessWidget {
               ),
             ),
             child: Text(
-              "ödeme",
+              AppLocalizations.of(context).getTranslate("payment"),
               style: TextStyle(
                 color: Theme.of(context).secondaryHeaderColor,
               ),

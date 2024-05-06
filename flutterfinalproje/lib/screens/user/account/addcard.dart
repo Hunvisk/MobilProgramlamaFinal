@@ -18,20 +18,7 @@ import '../../../core/responsive.dart';
 import '../../../desktopScreens/user/account/desktopAddCard.dart';
 import '../../../tabletscreens.dart/user/account/tabletaddcard.dart';
 
-/*class CreditCardInfo {
-  String cardNumber = '';
-  String expiryDate = '';
-  String cardHolderName = '';
-  String cvvCode = '';
-  bool iscvvFocused = false;
 
-  CreditCardInfo({
-    required this.cardNumber,
-    required this.expiryDate,
-    required this.cardHolderName,
-    required this.cvvCode,
-  });
-}*/
 
 class AddCard extends StatefulWidget {
   const AddCard({Key? key}) : super(key: key);
@@ -121,7 +108,7 @@ class _AddCardState extends State<AddCard> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title: " YENİ KART EKLE",
+          title:  AppLocalizations.of(context).getTranslate("add_new_card"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -131,7 +118,7 @@ class _AddCardState extends State<AddCard> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title: "YENİ KART EKLE",
+          title:  AppLocalizations.of(context).getTranslate("add_new_card"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -141,7 +128,7 @@ class _AddCardState extends State<AddCard> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title: " YENİ KART EKLE",
+          title:  AppLocalizations.of(context).getTranslate("add_new_card"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -152,13 +139,7 @@ class _AddCardState extends State<AddCard> {
     }
   }
 
-  /*final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  CreditCardInfo _creditCardInfo = CreditCardInfo(
-    cardNumber: '',
-    expiryDate: '',
-    cardHolderName: '',
-    cvvCode: '',
-  );*/
+  
 
   showAddCard() {
     showDialog(
@@ -166,29 +147,29 @@ class _AddCardState extends State<AddCard> {
         builder: (context) {
           return StatefulBuilder(builder: (context, setState) {
             return AlertDialog(
-              title: const Text("Yeni Kart Tanımlama"),
+              title:  Text( AppLocalizations.of(context).getTranslate("add_new_card")),
               content: Column(
                 children: [
                   TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: "Kart Başlığı",
-                        labelText: "Kart Başlığı",
+                    decoration:  InputDecoration(
+                        hintText:  AppLocalizations.of(context).getTranslate("card_title"),
+                        labelText:  AppLocalizations.of(context).getTranslate("card_title"),
                         alignLabelWithHint: true),
                     controller: titleCnt,
                   ),
                   const Gap(5),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: "Ad Soyad",
-                      labelText: "Ad Soyad",
+                    decoration:  InputDecoration(
+                      hintText:  AppLocalizations.of(context).getTranslate("name_surname"),
+                      labelText:  AppLocalizations.of(context).getTranslate("name_surname"),
                     ),
                     controller: cardHolderCnt,
                   ),
                   const Gap(5),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: "Kart No",
-                      labelText: "Kart No",
+                    decoration:  InputDecoration(
+                      hintText:  AppLocalizations.of(context).getTranslate("card_number"),
+                      labelText:  AppLocalizations.of(context).getTranslate("card_number"),
                     ),
                     onChanged: (value) {
                       setState(() {});
@@ -223,9 +204,9 @@ class _AddCardState extends State<AddCard> {
                     children: [
                       Expanded(
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: "Cvv2",
-                            labelText: "Cvv2",
+                          decoration:  InputDecoration(
+                            hintText:  AppLocalizations.of(context).getTranslate("cvv"),
+                            labelText:  AppLocalizations.of(context).getTranslate("cvv"),
                           ),
                           obscureText: true,
                           controller: cvv2Cnt,
@@ -241,7 +222,8 @@ class _AddCardState extends State<AddCard> {
                       Expanded(
                         child: TextFormField(
                           decoration:
-                              const InputDecoration(hintText: " Bitiş Ay"),
+                               InputDecoration(hintText:  AppLocalizations.of(context).getTranslate("end_date"),
+                               labelText:  AppLocalizations.of(context).getTranslate("end_date")),
                           controller: expMonthCnt,
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
@@ -255,7 +237,8 @@ class _AddCardState extends State<AddCard> {
                       Expanded(
                         child: TextFormField(
                           decoration:
-                              const InputDecoration(hintText: " Bitiş Yıl"),
+                               InputDecoration(hintText:  AppLocalizations.of(context).getTranslate("end_year"),
+                               labelText:  AppLocalizations.of(context).getTranslate("end_year")),
                           controller: expYearCnt,
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
@@ -269,7 +252,7 @@ class _AddCardState extends State<AddCard> {
                     ],
                   ),
                   SwitchListTile(
-                      title: const Text("Kartı Kaydet"),
+                      title:  Text( AppLocalizations.of(context).getTranslate("saved")),
                       value: remember,
                       onChanged: (value) => setState(() {
                             remember = value;
@@ -281,7 +264,7 @@ class _AddCardState extends State<AddCard> {
                   Image.asset("assets/icons/${type}_card.png", height: 40),
                 OutlinedButton(
                   onPressed: saveCard,
-                  child: Text("Onayla"),
+                  child: Text( AppLocalizations.of(context).getTranslate("confirm")),
                 ),
               ],
             );
@@ -305,13 +288,13 @@ class _AddCardState extends State<AddCard> {
                   onPressed: showAddCard, icon: const Icon(Icons.add)),
             ),
           ],
-          title: Center(child: Text(AppLocalizations.of(context).getTranslate("addcard"))),
+          title: Center(child: Text(AppLocalizations.of(context).getTranslate("add_card"))),
         ),
         body: SafeArea(
          child : SizedBox.expand(
             //crossAxisAlignment: CrossAxisAlignment.start,
             //children: <Widget>[
-            child:   cards.isEmpty ? const Center(child:Text("No Card Found")):
+            child:   cards.isEmpty ?  Center(child:Text(AppLocalizations.of(context).getTranslate("not_found_card"))):
               ListView.builder(
                 itemCount: cards.length,
                 itemBuilder:(context, index) => AspectRatio(
@@ -331,7 +314,10 @@ class _AddCardState extends State<AddCard> {
                           child: cards[index].cardNo.startsWith("4") 
                            ? Image.asset("assets/icons/visa_card.png", height: 60,)
                            : cards[index].cardNo.startsWith("5")  ?Image.asset(
-                              "assets/icons/master_card.png", height: 60,): 
+                              "assets/icons/master_card.png", height: 60,):
+                              cards[index].cardNo.startsWith("6") 
+                           ? Image.asset("assets/icons/troy_card.png", height: 60,):
+                              
                               const SizedBox(),
 
                         ),
@@ -361,77 +347,12 @@ class _AddCardState extends State<AddCard> {
                 )),
               
               
-              /*CreditCardWidget(
-                cardNumber: _creditCardInfo.cardNumber,
-                expiryDate: _creditCardInfo.expiryDate,
-                cardHolderName: _creditCardInfo.cardHolderName,
-                cvvCode: _creditCardInfo.cvvCode,
-                obscureCardNumber: true,
-                obscureCardCvv: true,
-                showBackView: false,
-                cardBgColor: Theme.of(context).primaryColorLight,
-                onCreditCardWidgetChange: (CreditCardBrand) {},
-              ),
-              SizedBox(height: 20),
-              CreditCardForm(
-                formKey: _formKey,
-                onCreditCardModelChange: _onCreditCardModelChange,
-                cardNumber: '',
-                expiryDate: '',
-                cardHolderName: '',
-                cvvCode: '',
-              ),
-              SizedBox(height: 20),
-              Center(
-                child: Column(
-                  children: [
-                    ElevatedButton(
-                      onPressed: _saveCreditCard,
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50),
-                        backgroundColor: Theme.of(context)
-                            .primaryColor, // Buton rengini temaya uygun olarak ayarlama
-                      ),
-                      child: Text(
-                        'Kartı Kaydet',
-                        style: TextStyle(
-                          color: Colors
-                              .white, // Temaya uygun olarak metin rengini ayarlama
-                          fontWeight: FontWeight
-                              .bold, // Temaya uygun olarak font weight ayarlama
-                          fontSize: 20, // Metin boyutunu ayarlama
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),*/
-           // ],
+
           ),
         ),
       ),);
     
   }
 
-  /*void _onCreditCardModelChange(CreditCardModel data) {
-    setState(() {
-      _creditCardInfo.cardNumber = data.cardNumber;
-      _creditCardInfo.expiryDate = data.expiryDate;
-      _creditCardInfo.cardHolderName = data.cardHolderName;
-      _creditCardInfo.cvvCode = data.cvvCode;
-    });
-  }
-
-  void _saveCreditCard() {
-    if (_formKey.currentState!.validate()) {
-      context.push('/CardsInfo');
-      print('Kart bilgileri kaydedildi:');
-      print('Kart Numarası: ${_creditCardInfo.cardNumber}');
-      print('Son Kullanma Tarihi: ${_creditCardInfo.expiryDate}');
-      print('Kart Sahibi Adı: ${_creditCardInfo.cardHolderName}');
-      print('CVV Kodu: ${_creditCardInfo.cvvCode}');
-
-     
-    }
-  }*/
+  
 }
