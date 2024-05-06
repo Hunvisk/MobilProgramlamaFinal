@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
+import 'package:go_router/go_router.dart';
 //import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import '../../core/responsive.dart';
 import '../../desktopScreens/app_details/desktopvipgezgininfo.dart';
@@ -287,6 +288,24 @@ class SubscriptionBox extends StatelessWidget {
             ),
             child: Text(
               AppLocalizations.of(context).getTranslate("subscribe"),
+              style: TextStyle(
+                color: Theme.of(context).secondaryHeaderColor,
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              GoRouter.of(context).push("/AddCard");
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor,
+              textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 21,
+              ),
+            ),
+            child: Text(
+              "ödeme",
               style: TextStyle(
                 color: Theme.of(context).secondaryHeaderColor,
               ),

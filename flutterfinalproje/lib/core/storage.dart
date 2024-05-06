@@ -1,4 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/addcard_card.dart';
 
 class Storage {
   Future<bool> isFirstLaunch() async {
@@ -38,6 +43,39 @@ class Storage {
       "darkMode": storage.getBool("darkMode"),
     };
   }
+Future<List<AddCardPayment>> loadCards() async {
+     const storage =  FlutterSecureStorage();
+
+     final cards = await storage.read(key: "AddCardPayment");
+
+     if(cards != null) {
+      // ben kaydetmisim
+      final temp = jsonDecode(cards) ;
+      List<AddCardPayment> cardList = [];
+      for(var i = 0; i < temp.length; i++) {
+        cardList.add(AddCardPayment.fromJson(jsonDecode(temp[i])));
+      }
+
+      return cardList;
+     }
+     else {
+      return [];
+     }
+  }
+
+  saveCards(List<AddCardPayment> cards) async {
+    const storage =  FlutterSecureStorage();
+
+    List<String> cardsString = [];
+
+    for (var i = 0; i < cards.length; i++) {
+      cardsString.add(jsonEncode(cards[i].toJson()));
+    }
+    
+
+   await storage.write(key: "AddCardPayment", value: jsonEncode(cardsString));
+  }
+
 
   clearStorage() async {
     final SharedPreferences storage = await SharedPreferences.getInstance();
@@ -50,6 +88,15 @@ class Storage {
   }
   
 }
+  clearStorage() async {
+    final SharedPreferences storage = await SharedPreferences.getInstance();
+    await storage.clear();
+  }
+
+  chatStorageClear() async {
+    final SharedPreferences messages = await SharedPreferences.getInstance();
+    await messages.clear();
+  }
 
 
 class ChatStorage {

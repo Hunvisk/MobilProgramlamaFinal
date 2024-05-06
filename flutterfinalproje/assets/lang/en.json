@@ -175,7 +175,8 @@
         "past_payments": "Past Payments",
         "phone_number": "Phone Number",
 
-        "chatbot": "CHATBOT"
+        "chatbot": "CHATBOT",
+        "addcard" : "ADD CARD"
     
 }
 
