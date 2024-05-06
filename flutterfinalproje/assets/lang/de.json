@@ -177,5 +177,8 @@
     "phone_number": "Telefonnummer",
 
     "chatbot": "CHATBOT",
-    "addcard" : "KARTE HINZUFÜGEN"
+    "addcard" : "KARTE HINZUFÜGEN",
+    "saved": "Gerettet",
+    "savedPlaces": "Aufgezeichnete Orte",
+    "savedRoutes": "Gespeicherte Routen"
 }

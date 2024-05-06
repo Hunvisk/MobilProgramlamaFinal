@@ -1,113 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfinalproje/bloc/saved_routes/saved_routes_cubit.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/localizations.dart';
-import '../../../widgets/appbarwithsearchicon.dart';
+import '../../../../bloc/saved_places/saved_places_cubit.dart';
+import '../../../../core/localizations.dart';
+import '../../../../widgets/myappbar.dart';
 
-class RoutesScreen extends StatefulWidget {
-  const RoutesScreen({super.key});
+class SavedPlacesScreen extends StatefulWidget {
+  const SavedPlacesScreen({super.key});
 
   @override
-  State<RoutesScreen> createState() => _RoutesScreenState();
+  State<SavedPlacesScreen> createState() => _SavedPlacesScreenState();
 }
 
-class _RoutesScreenState extends State<RoutesScreen> {
-  bool isSearching = false;
-  var routes = [
-    {
-      "id": 1,
-      "imagePath": "assets/images/routes/eminonu.jpeg",
-      "title": "Eminönü",
-      "stop": "7",
-      "rating": "5.0",
-      "views": "4321",
-      "comments": "234"
-    },
-    {
-      "id": 2,
-      "imagePath": "assets/images/routes/sariyer.jpeg",
-      "title": "Sarıyer",
-      "stop": "11",
-      "rating": "7.0",
-      "views": "3895",
-      "comments": "554"
-    },
-    {
-      "id": 3,
-      "imagePath": "assets/images/routes/camlica.jpeg",
-      "title": "Çamlıca",
-      "stop": "6",
-      "rating": "6.5",
-      "views": "3621",
-      "comments": "145"
-    },
-    {
-      "id": 4,
-      "imagePath": "assets/images/routes/ortakoy.jpeg",
-      "title": "OrtaKöy",
-      "stop": "8",
-      "rating": "8.0",
-      "views": "4520",
-      "comments": "563"
-    },
-  ];
+class _SavedPlacesScreenState extends State<SavedPlacesScreen> {
 
-  late SavedRoutesCubit savedRoutesCubit;
+  late SavedPlacesCubit savedPlacesCubit;
 
   @override
   void initState() {
     super.initState();
-    savedRoutesCubit = context.read<SavedRoutesCubit>();
+    savedPlacesCubit = context.read<SavedPlacesCubit>();
   }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("places"),
-          icon: const Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        ),
-        body: BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
-          builder: (context, state) {
-            return Column( // Column ekliyorum
-              children: [
-                const FilterWidget(), // FilterWidget eklendi
-                Expanded( // ListView için genişlemiş alan
-                  child: ListView.builder(
-                    itemCount: routes.length,
-                    itemBuilder: (context, index) => Padding(
+    return Scaffold(
+      appBar: MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("savedPlaces"),
+      ),
+      body: BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              const FilterWidget(),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: state.savedPlaces.length,
+                  itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: routesContainerDesign(
+                      child: placesContainerDesign(
                         context,
-                        routes[index]["id"] as int,
-                        routes[index]["imagePath"].toString(), 
-                        routes[index]["title"].toString(), 
-                        routes[index]["stop"].toString(), 
-                        routes[index]["rating"].toString(), 
-                        routes[index]["views"].toString(), 
-                        routes[index]["comments"].toString(),
-                        routes[index]
+                        state.savedPlaces[index]["id"] as int,
+                        state.savedPlaces[index]["imagePath"].toString(), 
+                        state.savedPlaces[index]["title"].toString(), 
+                        state.savedPlaces[index]["rating"].toString(), 
+                        state.savedPlaces[index]["views"].toString(), 
+                        state.savedPlaces[index]["comments"].toString(),
+                        state.savedPlaces[index]
                       ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          }
-        ),
+                ), 
+              )
+            ],
+          );
+        }
       ),
     );
   }
-
-  Widget routesContainerDesign(BuildContext context, int id, String imagePath, String title, String stop, String rating, String views, String comments, index) {
+  Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
     return Stack(
       children: [
         ClipRRect(
@@ -126,71 +78,61 @@ class _RoutesScreenState extends State<RoutesScreen> {
           left: 0,
           right: 0,
           child: Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Text(
-                title,
-                maxLines: 1,
-                overflow: TextOverflow.fade,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if(savedPlacesCubit.isSavedPlaces(id))
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark,
+                      ),
+                      onPressed: () {
+                        savedPlacesCubit.removeFromSavedPlaces(id);
+                      },
+                    )
+                  else 
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark_outline,
+                      ),
+                      onPressed: () {
+                        savedPlacesCubit.addToSavedPlaces(index);
+                      },
+                    )
+                ],
               ),
             ),
-            if(savedRoutesCubit.isSavedRoutes(id))
-            IconButton(
-              icon: const Icon(
-                Icons.bookmark,
-              ),
-              onPressed: () {
-                savedRoutesCubit.removeFromSavedRoutes(id);
-              },
-            )
-            else 
-            IconButton(
-              icon: const Icon(
-                Icons.bookmark_outline,
-              ),
-              onPressed: () {
-                savedRoutesCubit.addToSavedRoutes(index);
-              },
-            )
-          ],
-        ),
-      ),
-    ),
+          )
         ),
         Positioned(
           bottom: 5,
           left: 10,
           right: 10,
-          child: infoColumns(
-            rating,
-            views,
-            comments,
-            stop,
-          ),
+          child: infoColumns(rating, views, comments),
         ),
       ],
     );
   }
 
-  Widget infoColumns(
-    String rating,
-    String views,
-    String comments,
-    String stop,
-  ) {
+  Widget infoColumns(String rating, String views, String comments) {
     return Container(
       width: 140,
       decoration: BoxDecoration(
@@ -201,35 +143,20 @@ class _RoutesScreenState extends State<RoutesScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              infoRow(
-                context,
-                Icons.directions_bus, // Durak ikonu
-                ": $stop", // Durak sayısı
-              ),
-              infoRow(
-                context,
-                Icons.star,
-                ": $rating",
-              ),
-            ],
+          infoRow(
+            context,
+             Icons.star,
+             ": $rating",
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              infoRow(
-                context,
-                Icons.remove_red_eye,
-                ": $views",
-              ),
-              infoRow(
-                context,
-                Icons.comment,
-                ": $comments",
-              ),
-            ],
+          infoRow(
+            context,
+            Icons.remove_red_eye,
+            ": $views",
+          ),
+          infoRow(
+            context,
+            Icons.comment,
+            ": $comments",
           ),
         ],
       ),
@@ -481,5 +408,6 @@ class FilterWidget extends StatelessWidget {
       },
     );
   }
+
 }
 

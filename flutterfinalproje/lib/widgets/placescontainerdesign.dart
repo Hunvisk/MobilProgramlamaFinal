@@ -93,7 +93,7 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
                   isBookmarked = !isBookmarked;
                   iconColor = isBookmarked ? Colors.white : Colors.white;
                   if (isBookmarked) {
-                    _showSavePopup(context); // favorilere kaydetme işlemi bu alana yazıladcak.
+                    
                   }
                 });
               },

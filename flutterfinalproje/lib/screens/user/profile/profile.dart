@@ -386,29 +386,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Divider(thickness: 3),
                       InkWell(
                         onTap: () {
-                          context.push('/PlaceToVisit');
+                          context.push('/Saved');
                         },
                         child: ListTile(
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 16.0),
-                          leading:
-                              Icon(Icons.location_city, color: Colors.grey),
-                          title: Text(
-                            AppLocalizations.of(context).getTranslate("place_to_visit"),
-                            style: TextStyle(fontFamily: 'poppions'),
-                          ),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
-                        ),
-                      ),
-                      Divider(thickness: 3),
-                      InkWell(
-                        onTap: () {
-                          context.push('/Favorites');
-                        },
-                        child: ListTile(
-                          leading: Icon(Icons.favorite, color: Colors.grey),
-                          title: Text(AppLocalizations.of(context).getTranslate("favorites"),
+                          leading: Icon(Icons.bookmark, color: Colors.grey),
+                          title: Text(AppLocalizations.of(context).getTranslate("saved"),
                               style: TextStyle(fontFamily: 'poppions')),
                           trailing:
                               Icon(Icons.arrow_forward_ios, color: Colors.grey),

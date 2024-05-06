@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use, prefer_interpolation_to_compose_strings, library_private_types_in_public_api, prefer_const_declarations, unnecessary_string_interpolations
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import '../services/api.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
@@ -24,67 +22,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Screen device = Screen.mobile;
-
-  drawScreen() {
-    switch (device) {
-      case (Screen.mobile):
-        return;
-      case (Screen.tablet):
-        return;
-
-      case (Screen.desktop):
-        return;
-    }
-  }
-
-  drawAppar() {
-    switch (device) {
-      case (Screen.mobile):
-        return AppBarWithSearchIcon(
-          title: "MEKANLAR",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.tablet):
-        return AppBarWithSearchIcon(
-          title: "MEKANLAR",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.desktop):
-        return AppBarWithSearchIcon(
-          title: "MEKANLAR",
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-    }
-  }
-
-//  drawBottom() {
-//    switch (device) {
-//      case (Screen.mobile):
-//        return MyBottomNavBar();
-//      case (Screen.tablet):
-//        return MyBottomNavBar();
-//      case (Screen.desktop):
-//        return;
-//    }
-//  }
-
-  final myitems = [
+    final myitems = [
     RoutesContainerDesign(
       photo: "assets/images/routes/eminonu.jpeg",
       title: "Eminönü",
@@ -151,7 +89,6 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: MyHomeAppBar(
-          //title: 'Ana Sayfa',
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -277,14 +214,6 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        //bottomNavigationBar: Theme(
-        //  data: Theme.of(context).copyWith(
-        //    canvasColor: Theme.of(context)
-        //        .colorScheme
-        //        .surface, // Tema rengine uygun alt menü arkaplan rengi
-        //  ),
-        //  child: MyBottomNavBar(),
-        //),
       ),
     );
   }

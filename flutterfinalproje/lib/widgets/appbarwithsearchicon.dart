@@ -32,8 +32,6 @@
           child: Expanded(
             child: Text(
               widget.title + (isSearching ? "" : ""),
-              maxLines: 1,
-              overflow: TextOverflow.fade,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           )

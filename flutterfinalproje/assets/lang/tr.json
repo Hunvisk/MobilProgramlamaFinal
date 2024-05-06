@@ -179,6 +179,9 @@
     "phone_number": "Telefon Numarası",
 
     "chatbot":"YARDIMCI ASİSTAN",
-    "addcard" : "KART EKLE"
+    "addcard" : "KART EKLE",
+    "saved": "Kaydedilenler",
+    "savedPlaces": "Kaydedilen Mekanlar",
+    "savedRoutes": "Kaydedilen Rotalar"
     
 }

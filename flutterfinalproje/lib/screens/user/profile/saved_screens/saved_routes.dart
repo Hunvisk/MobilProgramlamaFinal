@@ -4,56 +4,17 @@ import 'package:flutterfinalproje/bloc/saved_routes/saved_routes_cubit.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/localizations.dart';
-import '../../../widgets/appbarwithsearchicon.dart';
+import '../../../../core/localizations.dart';
+import '../../../../widgets/myappbar.dart';
 
-class RoutesScreen extends StatefulWidget {
-  const RoutesScreen({super.key});
+class SavedRoutesScreen extends StatefulWidget {
+  const SavedRoutesScreen({super.key});
 
   @override
-  State<RoutesScreen> createState() => _RoutesScreenState();
+  State<SavedRoutesScreen> createState() => _SavedRoutesScreenState();
 }
 
-class _RoutesScreenState extends State<RoutesScreen> {
-  bool isSearching = false;
-  var routes = [
-    {
-      "id": 1,
-      "imagePath": "assets/images/routes/eminonu.jpeg",
-      "title": "Eminönü",
-      "stop": "7",
-      "rating": "5.0",
-      "views": "4321",
-      "comments": "234"
-    },
-    {
-      "id": 2,
-      "imagePath": "assets/images/routes/sariyer.jpeg",
-      "title": "Sarıyer",
-      "stop": "11",
-      "rating": "7.0",
-      "views": "3895",
-      "comments": "554"
-    },
-    {
-      "id": 3,
-      "imagePath": "assets/images/routes/camlica.jpeg",
-      "title": "Çamlıca",
-      "stop": "6",
-      "rating": "6.5",
-      "views": "3621",
-      "comments": "145"
-    },
-    {
-      "id": 4,
-      "imagePath": "assets/images/routes/ortakoy.jpeg",
-      "title": "OrtaKöy",
-      "stop": "8",
-      "rating": "8.0",
-      "views": "4520",
-      "comments": "563"
-    },
-  ];
+class _SavedRoutesScreenState extends State<SavedRoutesScreen> {
 
   late SavedRoutesCubit savedRoutesCubit;
 
@@ -62,47 +23,40 @@ class _RoutesScreenState extends State<RoutesScreen> {
     super.initState();
     savedRoutesCubit = context.read<SavedRoutesCubit>();
   }
+  
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("places"),
-          icon: const Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        ),
-        body: BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
-          builder: (context, state) {
-            return Column( // Column ekliyorum
-              children: [
-                const FilterWidget(), // FilterWidget eklendi
-                Expanded( // ListView için genişlemiş alan
-                  child: ListView.builder(
-                    itemCount: routes.length,
-                    itemBuilder: (context, index) => Padding(
+    return Scaffold(
+      appBar: MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("savedRoutes"),
+      ),
+      body: BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              const FilterWidget(),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: state.savedRoutes.length,
+                  itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: routesContainerDesign(
                         context,
-                        routes[index]["id"] as int,
-                        routes[index]["imagePath"].toString(), 
-                        routes[index]["title"].toString(), 
-                        routes[index]["stop"].toString(), 
-                        routes[index]["rating"].toString(), 
-                        routes[index]["views"].toString(), 
-                        routes[index]["comments"].toString(),
-                        routes[index]
+                        state.savedRoutes[index]["id"] as int,
+                        state.savedRoutes[index]["imagePath"].toString(), 
+                        state.savedRoutes[index]["title"].toString(), 
+                        state.savedRoutes[index]["stop"].toString(), 
+                        state.savedRoutes[index]["rating"].toString(), 
+                        state.savedRoutes[index]["views"].toString(), 
+                        state.savedRoutes[index]["comments"].toString(),
+                        state.savedRoutes[index]
                       ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          }
-        ),
+                ), 
+              )
+            ],
+          );
+        }
       ),
     );
   }
@@ -148,23 +102,23 @@ class _RoutesScreenState extends State<RoutesScreen> {
               ),
             ),
             if(savedRoutesCubit.isSavedRoutes(id))
-            IconButton(
-              icon: const Icon(
-                Icons.bookmark,
-              ),
-              onPressed: () {
-                savedRoutesCubit.removeFromSavedRoutes(id);
-              },
-            )
-            else 
-            IconButton(
-              icon: const Icon(
-                Icons.bookmark_outline,
-              ),
-              onPressed: () {
-                savedRoutesCubit.addToSavedRoutes(index);
-              },
-            )
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark,
+                      ),
+                      onPressed: () {
+                        savedRoutesCubit.removeFromSavedRoutes(id);
+                      },
+                    )
+                  else 
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark_outline,
+                      ),
+                      onPressed: () {
+                        savedRoutesCubit.addToSavedRoutes(index);
+                      },
+                    )
           ],
         ),
       ),
@@ -236,6 +190,10 @@ class _RoutesScreenState extends State<RoutesScreen> {
     );
   }
 
+  
+
+
+  
   Widget infoRow(BuildContext context, IconData icon, String text) {
     return Padding(
       padding: const EdgeInsets.all(2.0),

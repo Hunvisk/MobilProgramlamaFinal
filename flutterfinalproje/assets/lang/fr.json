@@ -177,6 +177,10 @@
     "phone_number": "Numéro de téléphone",
 
     "chatbot": "ASSISTANT D'AIDE",
-    "addcard" : "AJOUTER UNE CARTE"
+    "addcard" : "AJOUTER UNE CARTE",
+
+    "saved": "Sauvegardé",
+    "savedPlaces": "Lieux enregistrés",
+    "savedRoutes": "Itinéraires enregistrés"
 
 }

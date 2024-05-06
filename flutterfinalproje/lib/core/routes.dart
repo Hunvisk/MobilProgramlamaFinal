@@ -51,10 +51,12 @@ import '../screens/user/account/forgot_password.dart';
 //import '../screens/user/account/useraccount.dart';
 import '../screens/user/Login.dart';
 import '../screens/user/profile/achievements.dart';
-import '../screens/user/profile/favorites.dart';
+import '../screens/user/profile/saved.dart';
 import '../screens/user/profile/photographs.dart';
 import '../screens/user/profile/placestovisit.dart';
 import '../screens/user/profile/profile.dart';
+import '../screens/user/profile/saved_screens/saved_places.dart';
+import '../screens/user/profile/saved_screens/saved_routes.dart';
 import '../screens/user/profile/userblogs.dart';
 import '../screens/user/profile/usercomments.dart';
 import '../screens/user/register.dart';
@@ -95,7 +97,7 @@ final routes = GoRouter(
             // Home
             GoRoute(
               path: '/Home',
-              builder: (context, state) => Home(),
+              builder: (context, state) => const Home(),
             ),
             // Drawer
             GoRoute(
@@ -176,9 +178,18 @@ final routes = GoRouter(
               path: '/DesktopAchievemets',
               builder: (context, state) => const DesktopAchievemets(),
             ),
+            // Saved Screens
             GoRoute(
-              path: '/Favorites',
-              builder: (context, state) => const Favorites(),
+              path: '/SavedPlaces',
+              builder: (context, state) => const SavedPlacesScreen(),
+            ),
+            GoRoute(
+              path: '/SavedRoutes',
+              builder: (context, state) => const SavedRoutesScreen(),
+            ),
+            GoRoute(
+              path: '/Saved',
+              builder: (context, state) => const SavedScreen(),
             ),
             GoRoute(
               path: '/TabletFavorites',
@@ -268,7 +279,7 @@ final routes = GoRouter(
           routes: <RouteBase>[
             GoRoute(
               path: '/Places',
-              builder: (context, state) => const Places(),
+              builder: (context, state) => const PlacesScreen(),
             ),
             GoRoute(
               path: '/TabletPlaces',

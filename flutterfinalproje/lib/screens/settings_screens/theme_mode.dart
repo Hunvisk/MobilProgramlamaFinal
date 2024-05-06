@@ -24,15 +24,15 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
     _loadSelectedMode(); // Kayıtlı dil bilgisini yükle
   }
 
-  // Kayıtlı dil bilgisini yükleyen fonksiyon
+  // Kayıtlı mod bilgisini yükleyen fonksiyon
   _loadSelectedMode() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      isDarkMode = prefs.getBool('darkMode') ?? true; // Kayıtlı dil bilgisini yükle, yoksa false kullan
+      isDarkMode = prefs.getBool('darkMode') ?? true; // Kayıtlı mod bilgisini yükle, yoksa false kullan
     });
   }
 
-  // Seçilen dil bilgisini kaydeden fonksiyon
+  // Seçilen mod bilgisini kaydeden fonksiyon
   _saveSelectedMode(bool darkMode) async {
     await prefs.setBool('darkMode', darkMode); // Seçilen dil bilgisini kaydet
   }

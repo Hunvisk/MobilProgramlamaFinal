@@ -177,10 +177,9 @@
     "phone_number": "Número de teléfono",
 
     "chatbot": "ASISTENTE DE AYUDA",
-    "addcard" : "AGREGAR TARJETA"
-
-
-
-
-
+    "addcard" : "AGREGAR TARJETA",
+    
+    "saved": "Guardado",
+    "savedPlaces": "Lugares registrados",
+    "savedRoutes": "Rutas guardadas"
 }

@@ -1,249 +1,292 @@
-// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors, sized_box_for_whitespace, deprecated_member_use, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, unused_element, dead_code, camel_case_types, avoid_unnecessary_containers
+
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/places_and_routes/places/desktopplaces.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
-import 'package:flutterfinalproje/widgets/placescontainerdesign.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfinalproje/bloc/saved_places/saved_places_cubit.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
-import '../../../core/responsive.dart';
-import '../../../tabletscreens.dart/places_and_routes/places/tabletplaces.dart';
+import '../../../widgets/appbarwithsearchicon.dart';
 
-class Places extends StatefulWidget {
-  const Places({Key? key}) : super(key: key);
-
-  @override
-  State<Places> createState() => _PlacesState();
-}
-
-class _PlacesState extends State<Places> {
-  TextEditingController searchController = TextEditingController();
-  bool isSearching = false;
-
+class PlacesScreen extends StatefulWidget {
+  const PlacesScreen({super.key});
   
 
+  @override
+  State<PlacesScreen> createState() => _PlacesScreenState();
+}
 
+class _PlacesScreenState extends State<PlacesScreen> {
+  bool isSearching = false;
+  var places = [
+    {
+      "id": 1,
+      "imagePath": "assets/images/places/galata.jpg",
+      "title": "Galata Kulesi",
+      "rating": "8.5",
+      "views": "1500",
+      "comments": "45",
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/places/kız.png",
+      "title": "Kız Kulesi",
+      "rating": "9.0",
+      "views": "2000",
+      "comments": "60",
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/places/dolmabahçe.jpg",
+      "title": "Dolmabahçe Sarayı",
+      "rating": "4.0",
+      "views": "3000",
+      "comments": "45",
+    },
+  ];
 
+  late SavedPlacesCubit savedPlacesCubit;
 
-  Screen device = Screen.mobile;
-
-  drawScreen() {
-    switch (device) {
-      case (Screen.mobile):
-        return placesScr(
-            device: device,
-            isSearching: isSearching,
-            searchController: searchController);
-      case (Screen.tablet):
-        return TabletPlacesScreen(
-            device: device,
-            isSearching: isSearching,
-            searchController: searchController);
-
-      case (Screen.desktop):
-        return DesktopPlacesScreen(
-            device: device,
-            isSearching: isSearching,
-            searchController: searchController);
-    }
+  @override
+  void initState() {
+    super.initState();
+    savedPlacesCubit = context.read<SavedPlacesCubit>();
   }
-
-  drawAppar() {
-    switch (device) {
-      case (Screen.mobile):
-        return AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("places"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.tablet):
-        return AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("places"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.desktop):
-        return AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("places"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-    }
-  }
-
-  //drawBottom() {
-  //  switch (device) {
-  //    case (Screen.mobile):
-  //      return MyBottomNavBar();
-  //    case (Screen.tablet):
-  //      return MyBottomNavBar();
-  //    case (Screen.desktop):
-  //      return;
-  //  }
-  //}
 
   @override
   Widget build(BuildContext context) {
-    // final screenSize =  MediaQuery.of(context).size;
-    // final ScreenOrientation = MediaQuery.of(context).orientation;
-    setState(() {
-      device = detectScreen(MediaQuery.of(context).size);
-    });
-    return Scaffold(
-      appBar: drawAppar(),
-      //bottomNavigationBar: drawBottom(),
-      body: SingleChildScrollView(
-        child: drawScreen(),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("places"),
+          icon: const Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        ),
+        body: BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+          builder: (context, state) {
+            return Column( // Column ekliyorum
+              children: [
+                const FilterWidget(), // FilterWidget eklendi
+                Expanded( // ListView için genişlemiş alan
+                  child: ListView.builder(
+                    itemCount: places.length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: placesContainerDesign(
+                        context,
+                        places[index]["id"] as int,
+                        places[index]["imagePath"].toString(), 
+                        places[index]["title"].toString(), 
+                        places[index]["rating"].toString(), 
+                        places[index]["views"].toString(), 
+                        places[index]["comments"].toString(),
+                        places[index]
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+        ),
+      ),
+    );
+  }
+
+  Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
+    return Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: SizedBox(
+            height: 250,
+            width: double.infinity,
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 10,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if(savedPlacesCubit.isSavedPlaces(id))
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark,
+                      ),
+                      onPressed: () {
+                        savedPlacesCubit.removeFromSavedPlaces(id);
+                      },
+                    )
+                  else 
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark_outline,
+                      ),
+                      onPressed: () {
+                        savedPlacesCubit.addToSavedPlaces(index);
+                      },
+                    )
+                ],
+              ),
+            ),
+          )
+        ),
+        Positioned(
+          bottom: 5,
+          left: 10,
+          right: 10,
+          child: infoColumns(rating, views, comments),
+        ),
+      ],
+    );
+  }
+
+  Widget infoColumns(String rating, String views, String comments) {
+    return Container(
+      width: 140,
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          infoRow(
+            context,
+             Icons.star,
+             ": $rating",
+          ),
+          infoRow(
+            context,
+            Icons.remove_red_eye,
+            ": $views",
+          ),
+          infoRow(
+            context,
+            Icons.comment,
+            ": $comments",
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget infoRow(BuildContext context, IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 20,
+          ),
+          const Gap(5),
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class placesScr extends StatelessWidget {
-  const placesScr({
-    required this.device,
-    required this.isSearching,
-    required this.searchController,
-  });
-
-  final Screen device;
-  final bool isSearching;
-  final TextEditingController searchController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        if (isSearching)
-          Container(
-            height: 32,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: TextField(
-              controller: searchController,
-              onChanged: (value) {},
-              onSubmitted: (value) {},
-              decoration: InputDecoration(
-                hintText: "Ara...",
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.all(4.0),
-              ),
-            ),
-          ),
-        FilterWidget(),
-        InkWell(
-          onTap: () {
-            GoRouter.of(context).push('/SelectedPlaces');
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: PlacesContainerDesign(
-              imagePath: "assets/images/places/galata.jpg",
-              title: "Galata Kulesi",
-              rating: "8.5",
-              views: "1500",
-              comments: "45",
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: PlacesContainerDesign(
-            imagePath: "assets/images/places/kız.png",
-            title: "Kız Kulesi",
-            rating: "9.0",
-            views: "2000",
-            comments: "60",
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: PlacesContainerDesign(
-            imagePath: "assets/images/places/dolmabahçe.jpg",
-            title: "Dolmabahçe Sarayı",
-            rating: "4.0",
-            views: "3000",
-            comments: "45",
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.43,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: ElevatedButton(
-                onPressed: () {
-                  _showSortPopup(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
-                  ),
-                ),
-                child: Text(
-                  AppLocalizations.of(context).getTranslate("sort"),
-                  style: TextStyle(color: Colors.white),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.43,
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: ElevatedButton(
+              onPressed: () {
+                _showSortPopup(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).secondaryHeaderColor,
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21,
                 ),
               ),
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.43,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Show the custom sorting popup
-                  _showSortPopup2(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
-                  ),
-                ),
-                child: Text(AppLocalizations.of(context).getTranslate("filter"),
-                    style: TextStyle(
-                      color: Colors.white,
-                    )),
+              child: Text(
+                AppLocalizations.of(context).getTranslate("sort"),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
-          ],
-        ),
+          ),
+          const VerticalDivider(
+            color: Color.fromRGBO(0, 0, 0, 1),
+            thickness: 4,
+          ),
+          const VerticalDivider(
+            color: Color.fromRGBO(0, 0, 0, 1),
+            thickness: 4,
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.43,
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: ElevatedButton(
+              onPressed: () {
+                // Show the custom sorting popup
+                _showSortPopup2(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).secondaryHeaderColor,
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21,
+                ),
+              ),
+              child: Text(AppLocalizations.of(context).getTranslate("filter"),
+                  style: const TextStyle(
+                    color: Colors.white,
+                  )),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -255,35 +298,35 @@ class FilterWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   AppLocalizations.of(context).getTranslate("sort"),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('A - Z'),
+                  title: const Text('A - Z'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Z- A'),
+                  title: const Text('Z- A'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context).getTranslate("most_comments"),
@@ -291,9 +334,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context).getTranslate("most_likes"),
@@ -301,9 +344,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -312,9 +355,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -323,9 +366,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -334,9 +377,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -345,9 +388,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
               ],
             ),
           ),
@@ -355,54 +398,54 @@ class FilterWidget extends StatelessWidget {
       },
     );
   }
-}
 
-void _showSortPopup2(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        contentPadding: EdgeInsets.zero,
-        content: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    AppLocalizations.of(context).getTranslate("filter"),
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
+  void _showSortPopup2(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          content: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      AppLocalizations.of(context).getTranslate("filter"),
+                      style: const TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                Divider(),
-                ListTile(
-                  title: Text('Z - A'),
-                  onTap: () {
-                    GoRouter.of(context).pop();
-                  },
-                  trailing: Icon(Icons.chevron_right),
-                ),
-                Divider(),
-                ListTile(
-                  title: Text('A - Z'),
-                  onTap: () {
-                    GoRouter.of(context).pop();
-                  },
-                  trailing: Icon(Icons.chevron_right),
-                ),
-                Divider(),
-              ],
+                  const Divider(),
+                  ListTile(
+                    title: const Text('Z - A'),
+                    onTap: () {
+                      GoRouter.of(context).pop();
+                    },
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                  const Divider(),
+                  ListTile(
+                    title: const Text('A - Z'),
+                    onTap: () {
+                      GoRouter.of(context).pop();
+                    },
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                  const Divider(),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    },
-  );
+        );
+      },
+    );
+  }
 }
