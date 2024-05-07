@@ -182,5 +182,21 @@
     "not_found_card": "Carte non trouvée",
     "saved": "Sauvegardé",
     "savedPlaces": "Lieux enregistrés",
-    "savedRoutes": "Itinéraires enregistrés"
+    "savedRoutes": "Itinéraires enregistrés",
+
+
+
+    "location_permission": "Autorisations de localisation",
+    "media_permission": "Autorisations multimédias",
+    "photos_permission": "Autorisations de photos",
+    "notifications_permission": "Autorisations de notifications",
+    "authorized": "Autorisé",
+    "authorization_denied": "Autorisation refusée",
+    "restricted_authority": "Autorité restreinte",
+    "user_restricted_authorization": "Autorisation restreinte par l'utilisateur",
+    "forever_denied_authority": "Autorité refusée à jamais",
+    "provisional": "Provisoire",
+    "unknown_status": "Statut inconnu",
+    "request_authorization": "Demander une autorisation"
+
 }

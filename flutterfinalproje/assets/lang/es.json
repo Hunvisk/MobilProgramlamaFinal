@@ -182,5 +182,28 @@
     "not_found_card": "Tarjeta no encontrada",
     "saved": "Guardado",
     "savedPlaces": "Lugares registrados",
-    "savedRoutes": "Rutas guardadas"
+    "savedRoutes": "Rutas guardadas",
+
+
+
+    "location_permission": "Permisos de ubicación",
+    "media_permission": "Permisos de medios",
+    "photos_permission": "Permisos de fotos",
+    "notifications_permission": "Permisos de notificaciones",
+    "authorized": "Autorizado",
+    "authorization_denied": "Autorización denegada",
+    "restricted_authority": "Autoridad restringida",
+    "user_restricted_authorization": "Autorización restringida por el usuario",
+    "forever_denied_authority": "Autoridad denegada para siempre",
+    "provisional": "Provisional",
+    "unknown_status": "Estado desconocido",
+    "request_authorization": "Solicitar autorización"
+
+
+
+
+
+
+
+
 }

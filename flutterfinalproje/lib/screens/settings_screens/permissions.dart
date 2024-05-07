@@ -14,35 +14,49 @@ class PermissionsScreen extends StatefulWidget {
 }
 
 class _PermissionsScreenState extends State<PermissionsScreen> {
-  String camResult = "";
   String locationResult = "";
+  String notificationsResult = "";
+  String mediaLibraryResult = "";
+  String photosResult = "";
 
   void controlPermission() async {
-    var cameraStatus = await Permission.camera.status;
     var locationStatus = await Permission.location.status;
+    var notificationsStatus = await Permission.notification.status;
+    var mediaLibraryStatus = await Permission.mediaLibrary.status;
+    var photosStatus = await Permission.photos.status;
 
     setState(() {
-      camResult = getStatusMessage(cameraStatus);
+      
       locationResult = getStatusMessage(locationStatus);
+      notificationsResult = getStatusMessage(notificationsStatus);
+      mediaLibraryResult = getStatusMessage(mediaLibraryStatus);
+      photosResult = getStatusMessage(photosStatus);
     });
   }
 
   String getStatusMessage(PermissionStatus status) {
     switch (status) {
       case PermissionStatus.granted:
-        return "Yetki Alınmış";
+        return AppLocalizations.of(context)
+                                .getTranslate("authorized");
       case PermissionStatus.denied:
-        return "Yetki Verme Reddedildi";
+        return AppLocalizations.of(context)
+                                .getTranslate("authorization_denied");
       case PermissionStatus.restricted:
-        return "Kısıtlanmış Yetki";
+        return AppLocalizations.of(context)
+                                .getTranslate("restricted_authority");
       case PermissionStatus.limited:
-        return "Kullanıcı Tarafından Kısıtlanmış Yetki";
+        return AppLocalizations.of(context)
+                                .getTranslate("user_restricted_authorization");
       case PermissionStatus.permanentlyDenied:
-        return "Sonsuza Kadar Reddedilmiş Yetki";
+        return AppLocalizations.of(context)
+                                .getTranslate("forever_denied_authority");
       case PermissionStatus.provisional:
-        return "Provisional";
+        return AppLocalizations.of(context)
+                                .getTranslate("provisional");
       default:
-        return "Bilinmeyen Durum";
+        return AppLocalizations.of(context)
+                                .getTranslate("unknown_status");
     }
   }
 
@@ -63,24 +77,9 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
         child: SizedBox.expand(
         child: ListView(
           children: [
+            
             ExpansionTile(
-              title: const Text("Camera permission"),
-              children: [
-                Text(camResult),
-                const Gap(20),
-                ElevatedButton(
-                  onPressed: () async {
-                    final status = await Permission.camera.request();
-                    setState(() {
-                      camResult = getStatusMessage(status);
-                    });
-                  },
-                  child: const Text("Yetki İste"),
-                ),
-              ],
-            ),
-            ExpansionTile(
-              title: const Text("Location permission"),
+              title:  Text(AppLocalizations.of(context).getTranslate("location_permission")),
               children: [
                 Text(locationResult),
                 const Gap(20),
@@ -91,7 +90,55 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                       locationResult = getStatusMessage(status);
                     });
                   },
-                  child: const Text("Yetki İste"),
+                  child:  Text(AppLocalizations.of(context).getTranslate("request_authorization")),
+                ),
+              ],
+            ),
+            ExpansionTile(
+              title:  Text(AppLocalizations.of(context).getTranslate("media_permission")),
+              children: [
+                Text(mediaLibraryResult),
+                const Gap(20),
+                ElevatedButton(
+                  onPressed: () async {
+                    final status = await Permission.mediaLibrary.request();
+                    setState(() {
+                      mediaLibraryResult = getStatusMessage(status);
+                    });
+                  },
+                  child:  Text(AppLocalizations.of(context).getTranslate("request_authorization")),
+                ),
+              ],
+            ),
+            ExpansionTile(
+              title:  Text(AppLocalizations.of(context).getTranslate("photos_permission")),
+              children: [
+                Text(photosResult),
+                const Gap(20),
+                ElevatedButton(
+                  onPressed: () async {
+                    final status = await Permission.photos.request();
+                    setState(() {
+                      photosResult = getStatusMessage(status);
+                    });
+                  },
+                  child:  Text(AppLocalizations.of(context).getTranslate("request_authorization")),
+                ),
+              ],
+            ),
+            ExpansionTile(
+              title:  Text(AppLocalizations.of(context).getTranslate("notifications_permission")),
+              children: [
+                Text(notificationsResult),
+                const Gap(20),
+                ElevatedButton(
+                  onPressed: () async {
+                    final status = await Permission.notification.request();
+                    setState(() {
+                      notificationsResult = getStatusMessage(status);
+                    });
+                  },
+                  child:  Text(AppLocalizations.of(context).getTranslate("request_authorization")),
                 ),
               ],
             ),

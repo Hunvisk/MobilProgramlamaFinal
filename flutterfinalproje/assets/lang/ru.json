@@ -182,5 +182,21 @@
     "payment": "Оплата",
     "saved": "Сохранено",
     "savedPlaces": "Сохраненные места",
-    "savedRoutes": "Сохраненные маршруты"
+    "savedRoutes": "Сохраненные маршруты",
+
+
+    "location_permission": "Разрешения на местоположение",
+    "media_permission": "Разрешения на медиа",
+    "photos_permission": "Разрешения на фотографии",
+    "notifications_permission": "Разрешения на уведомления",
+    "authorized": "Авторизованный",
+    "authorization_denied": "Отказ в авторизации",
+    "restricted_authority": "Ограниченная власть",
+    "user_restricted_authorization": "Пользовательское ограниченное разрешение",
+    "forever_denied_authority": "Вечно отказана в полномочиях",
+    "provisional": "Временный",
+    "unknown_status": "Неизвестный статус",
+    "request_authorization": "Запросить авторизацию"
+
+
 }

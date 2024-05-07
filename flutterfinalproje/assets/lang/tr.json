@@ -182,5 +182,20 @@
     "payment": "Ödeme",
     "saved": "Kaydedilenler",
     "savedPlaces": "Kaydedilen Mekanlar",
-    "savedRoutes": "Kaydedilen Rotalar"
+    "savedRoutes": "Kaydedilen Rotalar",
+    
+    "location_permission":"Konum İzinleri",
+    "media_permission":"Medya İzinleri",
+    "photos_permission":"Fotoğraf İzinleri",
+    "notifications_permission":"Bildirim İzinleri",
+    "authorized":"Yetki Alınmış",
+    "authorization_denied":"Yetki Verme Reddedildi",
+    "restricted_authority":"Kısıtlanmış Yetki",
+    "user_restricted_authorization":"Kullanıcı Tarafından Kısıtlanmış Yetki",
+    "forever_denied_authority":"Sonsuza Kadar Reddedilmiş Yetki",
+    "provisional":"Geçici",
+    "unknown_status":"Bilinmeyen Durum",
+    "request_authorization":"Yetki İste"
+
+
 }

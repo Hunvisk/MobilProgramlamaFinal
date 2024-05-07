@@ -30,7 +30,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   //await storage.clearStorage(); // Video için geçici olarak stroge sıfırladık.
   final firstLaunch = await storage.isFirstLaunch();
       // Chatbot verilerini temizle
-  await storage.chatStorageClear();
+  //await storage.chatStorageClear();
 
 
   

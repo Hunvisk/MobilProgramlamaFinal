@@ -182,5 +182,20 @@
     "not_found_card": "Karte nicht gefunden",
     "saved": "Gerettet",
     "savedPlaces": "Aufgezeichnete Orte",
-    "savedRoutes": "Gespeicherte Routen"
+    "savedRoutes": "Gespeicherte Routen",
+
+
+    "location_permission": "Standortberechtigungen",
+    "media_permission": "Medienberechtigungen",
+    "photos_permission": "Fotoberechtigungen",
+    "notifications_permission": "Benachrichtigungsberechtigungen",
+    "authorized": "Autorisiert",
+    "authorization_denied": "Autorisierung verweigert",
+    "restricted_authority": "Eingeschränkte Berechtigung",
+    "user_restricted_authorization": "Benutzerbeschränkte Autorisierung",
+    "forever_denied_authority": "Für immer verweigerte Autorität",
+    "provisional": "Vorläufig",
+    "unknown_status": "Unbekannter Status",
+    "request_authorization": "Autorisierung anfordern"
+
 }

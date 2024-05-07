@@ -182,5 +182,19 @@
     "chatbot": "CHATBOT",
     "saved": "Saved",
     "savedPlaces": "Saved Places",
-    "savedRoutes": "Saved Routes"
+    "savedRoutes": "Saved Routes",
+
+
+    "location_permission":"Location Permission",
+    "media_permission":"Media Permission",
+    "photos_permission":"Photos Permission",
+    "notifications_permission":"Notifications Permission",
+    "authorized": "Authorized",
+    "authorization_denied": "Authorization Denied",
+    "restricted_authority": "Restricted Authority",
+    "user_restricted_authorization": "User Restricted Authorization",
+    "forever_denied_authority": "Forever Denied Authority",
+    "provisional": "Provisional",
+    "unknown_status": "Unknown Status",
+    "request_authorization": "Request Authorization"  
 }
