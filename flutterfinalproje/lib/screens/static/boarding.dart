@@ -17,31 +17,17 @@ class BoardingScreen extends StatefulWidget {
 
 class _BoardingScreenState extends State<BoardingScreen> {
   int page = 0;
-  bool isLoading = true; 
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
-      setState(() {
-        isLoading = false; // Yükleme tamamlandığında isLoading değeri false 
-      });
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: isLoading
-            ? Center(
-                child: Image.asset(
-                  'assets/images/logo/GR_Logo.png', 
-                  width: 110, 
-                  height: 110,
-                ),
-              )
-            : PreloadPageView(
+        child: PreloadPageView(
                 preloadPagesCount: 3,
                 onPageChanged: (value) {
                   setState(() {
@@ -89,9 +75,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 ],
               ),
       ),
-      bottomNavigationBar: isLoading
-          ? null // Yükleme sırasında bottomNavigationBar gösterme
-          : Container(
+      bottomNavigationBar: Container(
               height: 70,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 28.0),
@@ -125,7 +109,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(page == 4 ? AppLocalizations.of(context).getTranslate("finish") : AppLocalizations.of(context).getTranslate("skip")),
+                        child: Text(page == 4 ? "Bitir" : "Geç"),
                       ),
                     )
                   ],

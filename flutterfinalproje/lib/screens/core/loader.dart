@@ -98,10 +98,20 @@ class _LoaderScreenState extends State<LoaderScreen> {
   @override
   Widget build(BuildContext context)
   {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: SizedBox(
+            width: 110, 
+            height: 110,
+            child: Image.asset(
+                    'assets/images/logo/GR_Logo.png', 
+                    width: 110, 
+                    height: 110,
+                  ),
+          ),
+              )
+        ),
+      );
   }
 }
