@@ -103,6 +103,7 @@ class _SavedPlacesScreenState extends State<SavedPlacesScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.bookmark,
+                        color: Colors.white,
                       ),
                       onPressed: () {
                         savedPlacesCubit.removeFromSavedPlaces(id);
@@ -112,6 +113,7 @@ class _SavedPlacesScreenState extends State<SavedPlacesScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.bookmark_outline,
+                        color: Colors.white,
                       ),
                       onPressed: () {
                         savedPlacesCubit.addToSavedPlaces(index);

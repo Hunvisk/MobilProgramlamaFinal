@@ -29,8 +29,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   final storage = Storage();
   //await storage.clearStorage(); // Video için geçici olarak stroge sıfırladık.
   final firstLaunch = await storage.isFirstLaunch();
-      // Chatbot verilerini temizle
-  //await storage.chatStorageClear();
+
 
 
   
@@ -44,7 +43,9 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
     await storage.setConfig(language: language, darkMode: darkMode);
 
-    GoRouter.of(context).replace("/Boarding");
+    Future.delayed(const Duration(seconds: 2), () {
+      GoRouter.of(context).replace("/Boarding");
+    });
   } else {
     final config = await storage.getConfig();
 
@@ -55,7 +56,13 @@ class _LoaderScreenState extends State<LoaderScreen> {
     await storage.setConfig(language: language, darkMode: darkMode);
     clientCubit.changeLanguage(language: config["language"]);
     clientCubit.changeDarkMode(darkMode:  config["darkMode"]);
-    GoRouter.of(context).replace("/Home");
+
+    // Chatbot verilerini temizle
+    await storage.chatStorageClear();
+
+    Future.delayed(const Duration(seconds: 2), () {
+      GoRouter.of(context).replace("/Home");
+    });
   }
 }
 
@@ -100,17 +107,17 @@ class _LoaderScreenState extends State<LoaderScreen> {
   {
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: SizedBox(
-            width: 110, 
-            height: 110,
-            child: Image.asset(
-                    'assets/images/logo/GR_Logo.png', 
-                    width: 110, 
-                    height: 110,
+        body: Stack(
+          children: [
+            Center(
+              child: Image.asset(
+                      'assets/images/logo/GR_Logo.png', 
+                      width: 110, 
+                      height: 110,
+                    ),
                   ),
-          ),
-              )
+          ],
+        )
         ),
       );
   }

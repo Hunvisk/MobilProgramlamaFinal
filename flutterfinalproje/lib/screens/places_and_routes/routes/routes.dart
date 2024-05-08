@@ -151,6 +151,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
             IconButton(
               icon: const Icon(
                 Icons.bookmark,
+                color: Colors.white,
               ),
               onPressed: () {
                 savedRoutesCubit.removeFromSavedRoutes(id);
@@ -160,6 +161,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
             IconButton(
               icon: const Icon(
                 Icons.bookmark_outline,
+                color: Colors.white,
               ),
               onPressed: () {
                 savedRoutesCubit.addToSavedRoutes(index);

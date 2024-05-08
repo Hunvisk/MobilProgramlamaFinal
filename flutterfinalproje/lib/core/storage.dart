@@ -43,24 +43,24 @@ class Storage {
       "darkMode": storage.getBool("darkMode"),
     };
   }
-Future<List<AddCardPayment>> loadCards() async {
-     const storage =  FlutterSecureStorage();
+  Future<List<AddCardPayment>> loadCards() async {
+    const storage =  FlutterSecureStorage();
 
-     final cards = await storage.read(key: "AddCardPayment");
+    final cards = await storage.read(key: "AddCardPayment");
 
-     if(cards != null) {
-      // ben kaydetmisim
-      final temp = jsonDecode(cards) ;
-      List<AddCardPayment> cardList = [];
-      for(var i = 0; i < temp.length; i++) {
-        cardList.add(AddCardPayment.fromJson(jsonDecode(temp[i])));
-      }
+    if(cards != null) {
+    // ben kaydetmisim
+    final temp = jsonDecode(cards) ;
+    List<AddCardPayment> cardList = [];
+    for(var i = 0; i < temp.length; i++) {
+      cardList.add(AddCardPayment.fromJson(jsonDecode(temp[i])));
+    }
 
-      return cardList;
-     }
-     else {
+    return cardList;
+    }
+    else {
       return [];
-     }
+    }
   }
 
   saveCards(List<AddCardPayment> cards) async {
