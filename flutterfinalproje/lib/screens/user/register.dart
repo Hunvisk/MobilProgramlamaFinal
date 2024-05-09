@@ -133,7 +133,7 @@ class RegisterScreen extends StatefulWidget {
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).getTranslate("username"),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surface,
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -165,11 +165,11 @@ class RegisterScreen extends StatefulWidget {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   style: TextStyle(
-                      backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
+                      ),
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).getTranslate("email"),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surface,
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -204,11 +204,11 @@ class RegisterScreen extends StatefulWidget {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   style: TextStyle(
-                      backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
+                      ),
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).getTranslate("password"),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surface,
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -252,7 +252,7 @@ class RegisterScreen extends StatefulWidget {
                   decoration: InputDecoration(
                     labelText:AppLocalizations.of(context).getTranslate("password_again"),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surface,
+                    fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
