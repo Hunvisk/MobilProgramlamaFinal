@@ -32,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(),
           settingsItem(context, '/AboutApp', 'about_app'),
           const Divider(),
-          settingsItem(context, '/Home', 'payment_methods'), // Ödeme Yöntemleri sayfası yönlendirme eklenecek. ( İlknur'a not )
+          settingsItem(context, '/AddCard', 'payment_methods'), // Ödeme Yöntemleri sayfası yönlendirme eklenecek. ( İlknur'a not )
           const Divider(),
           settingsItem(context, '/PastPayments', 'past_payments'),
           const Divider(),

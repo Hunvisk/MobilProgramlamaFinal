@@ -14,9 +14,9 @@ import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/responsive.dart';
-import '../../../desktopScreens/user/account/desktopAddCard.dart';
-import '../../../tabletscreens.dart/user/account/tabletaddcard.dart';
+import '../../core/responsive.dart';
+import '../../desktopScreens/user/account/desktopAddCard.dart';
+import '../../tabletscreens.dart/user/account/tabletaddcard.dart';
 
 
 

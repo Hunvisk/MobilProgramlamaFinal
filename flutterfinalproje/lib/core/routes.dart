@@ -45,7 +45,7 @@ import '../screens/settings_screens/theme_mode.dart';
 import '../screens/shopping/product/products.dart';
 import '../screens/shopping/product/selectedproducts.dart';
 import '../screens/static/boarding.dart';
-import '../screens/user/account/addcard.dart';
+import '../screens/settings_screens/addcard.dart';
 import '../screens/user/account/cardsinfo.dart';
 import '../screens/user/account/forgot_password.dart';
 import '../screens/user/Login.dart';

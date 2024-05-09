@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, deprecated_member_use, unused_local_variable, library_private_types_in_public_api, camel_case_types
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:go_router/go_router.dart';
 //import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import '../../core/responsive.dart';
 import '../../desktopScreens/app_details/desktopvipgezgininfo.dart';
@@ -25,9 +25,9 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return vipGezginSayfa();
+        return const VipGezginSayfa();
       case (Screen.tablet):
-        return TabletVipGezginInfoScreen();
+        return const TabletVipGezginInfoScreen();
       case (Screen.desktop):
         return DesktopVipGezginInfoScreen();
     }
@@ -38,7 +38,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("vıp_traveler"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -48,7 +48,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
       case (Screen.tablet):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("vıp_traveler"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -58,7 +58,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
       case (Screen.desktop):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("vıp_traveler"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -83,7 +83,6 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
   void initState() {
     super.initState();
     searchController = TextEditingController();
-     Screen device = Screen.mobile;
   }
 
   
@@ -95,38 +94,36 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
     setState(() {
       device = detectScreen(MediaQuery.of(context).size);
     });
-    return Container(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: drawAppar(),
-        body: SafeArea(
-            child: drawScreen()),
-        //bottomNavigationBar: drawBottom(),
-      ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: drawAppar(),
+      body: SafeArea(
+          child: drawScreen()),
+      //bottomNavigationBar: drawBottom(),
     );
   }
 }
 
-class vipGezginSayfa extends StatelessWidget {
-  const vipGezginSayfa({
+class VipGezginSayfa extends StatelessWidget {
+  const VipGezginSayfa({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
           children: [
     Expanded(
         child: SingleChildScrollView(
             child: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.0),
           child: SubscriptionBox(),
         ),
         ContainerOfAllAdvantages(),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.0),
           //child: ComparisonBox(),
         ),
       ],
@@ -150,7 +147,7 @@ class ComparisonBox extends StatelessWidget {
         ),
         height: 500,
         width: double.infinity,
-        child: Column(
+        child: const Column(
           children: [
             Text(
               "abc",
@@ -170,79 +167,77 @@ class ContainerOfAllAdvantages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(AppLocalizations.of(context).getTranslate("favorite_vıp_traveler_advantages"),
-              style: TextStyle(
-                fontSize: 20,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(AppLocalizations.of(context).getTranslate("favorite_vıp_traveler_advantages"),
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FavoriteVipGezginAdvantages(
+                imagePath: "assets/images/carouselslider/image8.jpeg",
+                title: AppLocalizations.of(context).getTranslate("feature_title"),
+                content:
+                    AppLocalizations.of(context).getTranslate("feature_content"),
+                    
               ),
-            ),
+              FavoriteVipGezginAdvantages(
+                imagePath: "assets/images/carouselslider/image8.jpeg",
+                title: AppLocalizations.of(context).getTranslate("feature_title"),
+                content:
+                    AppLocalizations.of(context).getTranslate("feature_content"),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FavoriteVipGezginAdvantages(
-                  imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: AppLocalizations.of(context).getTranslate("feature_title"),
-                  content:
-                      AppLocalizations.of(context).getTranslate("feature_content"),
-                      
-                ),
-                FavoriteVipGezginAdvantages(
-                  imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: AppLocalizations.of(context).getTranslate("feature_title"),
-                  content:
-                      AppLocalizations.of(context).getTranslate("feature_content"),
-                ),
-              ],
-            ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FavoriteVipGezginAdvantages(
+                imagePath: "assets/images/carouselslider/image8.jpeg",
+                title: AppLocalizations.of(context).getTranslate("feature_title"),
+                content:
+                   AppLocalizations.of(context).getTranslate("feature_content"),
+              ),
+              FavoriteVipGezginAdvantages(
+                imagePath: "assets/images/carouselslider/image8.jpeg",
+                title: AppLocalizations.of(context).getTranslate("feature_title"),
+                content:
+                   AppLocalizations.of(context).getTranslate("feature_content"),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FavoriteVipGezginAdvantages(
-                  imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: AppLocalizations.of(context).getTranslate("feature_title"),
-                  content:
-                     AppLocalizations.of(context).getTranslate("feature_content"),
-                ),
-                FavoriteVipGezginAdvantages(
-                  imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title: AppLocalizations.of(context).getTranslate("feature_title"),
-                  content:
-                     AppLocalizations.of(context).getTranslate("feature_content"),
-                ),
-              ],
-            ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FavoriteVipGezginAdvantages(
+                imagePath: "assets/images/carouselslider/image8.jpeg",
+                title:AppLocalizations.of(context).getTranslate("feature_title"),
+                content:
+                    AppLocalizations.of(context).getTranslate("feature_content"),
+              ),
+              FavoriteVipGezginAdvantages(
+                imagePath: "assets/images/carouselslider/image8.jpeg",
+                title:AppLocalizations.of(context).getTranslate("feature_title"),
+                content:
+                    AppLocalizations.of(context).getTranslate("feature_content"),)
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FavoriteVipGezginAdvantages(
-                  imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title:AppLocalizations.of(context).getTranslate("feature_title"),
-                  content:
-                      AppLocalizations.of(context).getTranslate("feature_content"),
-                ),
-                FavoriteVipGezginAdvantages(
-                  imagePath: "assets/images/carouselslider/image8.jpeg",
-                  title:AppLocalizations.of(context).getTranslate("feature_title"),
-                  content:
-                      AppLocalizations.of(context).getTranslate("feature_content"),)
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -281,7 +276,7 @@ class SubscriptionBox extends StatelessWidget {
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor,
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 21,
               ),
@@ -293,24 +288,7 @@ class SubscriptionBox extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              GoRouter.of(context).push("/AddCard");
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor,
-              textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 21,
-              ),
-            ),
-            child: Text(
-              AppLocalizations.of(context).getTranslate("payment"),
-              style: TextStyle(
-                color: Theme.of(context).secondaryHeaderColor,
-              ),
-            ),
-          )
+          
         ],
       ),
     );
@@ -348,7 +326,7 @@ class FavoriteVipGezginAdvantages extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15,
               ),
             ),
