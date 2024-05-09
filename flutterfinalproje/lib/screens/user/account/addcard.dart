@@ -260,7 +260,7 @@ class _AddCardState extends State<AddCard> {
                 ],
               ),
               actions: [
-                if (type.isEmpty)
+                if (type.isNotEmpty)
                   Image.asset("assets/icons/${type}_card.png", height: 40),
                 OutlinedButton(
                   onPressed: saveCard,
