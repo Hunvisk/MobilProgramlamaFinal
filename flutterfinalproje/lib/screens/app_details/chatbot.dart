@@ -162,17 +162,20 @@ class _ChatBotState extends State<ChatBot> {
             child: Row(
               children: [
                 Expanded(
-                  child: TextField(
-                    controller: _chatController,
-                    decoration: const InputDecoration(
-                      hintText: "Mesajınızı buraya yazın...",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      contentPadding: EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 10.0,
-                        left: 10.0,
-                        right: 5.0,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical:35.0),
+                    child: TextField(
+                      controller: _chatController,
+                      decoration: const InputDecoration(
+                        hintText: "Mesajınızı buraya yazın...",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        contentPadding: EdgeInsets.only(
+                          top: 10.0,
+                          bottom: 10.0,
+                          left: 10.0,
+                          right: 5.0,
+                        ),
                       ),
                     ),
                   ),
