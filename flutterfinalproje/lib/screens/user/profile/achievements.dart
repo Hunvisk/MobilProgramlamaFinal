@@ -191,12 +191,13 @@ class AchievementsBox1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      width: double.infinity,
+      height: 125,
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: Theme.of(context).secondaryHeaderColor,
         border: Border.all(
           width: 1,
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
         ),
         borderRadius: BorderRadius.circular(10),
       ),
@@ -215,16 +216,21 @@ class AchievementsBox1 extends StatelessWidget {
                 children: [
                   Text(
                     title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: Colors.black,
                       fontWeight: FontWeight.normal,
-                      fontSize: 17,
+                      fontSize: 15,
                     ),
                   ),
+                  Gap(5),
                   Text(
                     description,
+                    maxLines: 2,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: Colors.black,
+                      fontSize: 12,
                       fontWeight: FontWeight.normal,
                     ),
                   ),

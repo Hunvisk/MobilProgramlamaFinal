@@ -77,15 +77,20 @@ class _PlacesScreenState extends State<PlacesScreen> {
                     itemCount: places.length,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: placesContainerDesign(
-                        context,
-                        places[index]["id"] as int,
-                        places[index]["imagePath"].toString(), 
-                        places[index]["title"].toString(), 
-                        places[index]["rating"].toString(), 
-                        places[index]["views"].toString(), 
-                        places[index]["comments"].toString(),
-                        places[index]
+                      child: GestureDetector(
+                        onTap: () {
+                          context.push("/SelectedPlaces");
+                        },
+                        child: placesContainerDesign(
+                          context,
+                          places[index]["id"] as int,
+                          places[index]["imagePath"].toString(), 
+                          places[index]["title"].toString(), 
+                          places[index]["rating"].toString(), 
+                          places[index]["views"].toString(), 
+                          places[index]["comments"].toString(),
+                          places[index]
+                        ),
                       ),
                     ),
                   ),

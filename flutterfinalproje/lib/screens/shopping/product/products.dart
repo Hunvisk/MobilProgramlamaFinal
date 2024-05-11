@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
@@ -24,11 +23,11 @@ class _PlacesState extends State<Products> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return ProoductBody();
+        return const ProoductBody();
       case (Screen.tablet):
-        return TabletProduct();
+        return const TabletProduct();
       case (Screen.desktop):
-        return DesktopProduct();
+        return const DesktopProduct();
     }
   }
 
@@ -37,7 +36,7 @@ class _PlacesState extends State<Products> {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
           title: "HARİTALAR",
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -47,7 +46,7 @@ class _PlacesState extends State<Products> {
       case (Screen.tablet):
         return AppBarWithSearchIcon(
           title: "HARİTALAR",
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -57,7 +56,7 @@ class _PlacesState extends State<Products> {
       case (Screen.desktop):
         return AppBarWithSearchIcon(
           title: "HARİTALAR",
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -67,28 +66,16 @@ class _PlacesState extends State<Products> {
     }
   }
 
-  //drawBottom() {
-  //  switch (device) {
-  //    case (Screen.mobile):
-  //      return MyBottomNavBar();
-  //    case (Screen.tablet):
-  //      return MyBottomNavBar();
-  //    case (Screen.desktop):
-  //      return;
-  //  }
-  //}
-
   @override
   Widget build(BuildContext context) {
     setState(() {
       device = detectScreen(MediaQuery.of(context).size);
     });
-    return Container(
-        child: Scaffold(
-      appBar: drawAppar(),
-      body: drawScreen(),
-      //bottomNavigationBar: drawBottom(),
-    ));
+    return Scaffold(
+          appBar: drawAppar(),
+          body: drawScreen(),
+          //bottomNavigationBar: drawBottom(),
+        );
   }
 }
 
@@ -99,6 +86,6 @@ class ProoductBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("GEZGİN ÜRÜN SAYFASI");
+    return const Text("GEZGİN ÜRÜN SAYFASI");
   }
 }

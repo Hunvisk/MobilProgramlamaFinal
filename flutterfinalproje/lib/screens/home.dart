@@ -345,6 +345,13 @@ class _HomeState extends State<Home> {
                     ),
                     ListTileItem(
                       context,
+                      "Ürünler",
+                      //AppLocalizations.of(context).getTranslate("products"),
+                      '/Products',
+                      Icons.shopping_cart,
+                    ),
+                    ListTileItem(
+                      context,
                       AppLocalizations.of(context).getTranslate("log_out"),
                       '/LogIn',
                       Icons.logout,

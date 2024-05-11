@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "imagePath": "assets/images/places/galata.jpg",
+        "title": "Galata Kulesi",
+        "rating": "8.5",
+        "views": "1500",
+        "comments": "45"
+      },
+      {
+        "id": 2,
+        "imagePath": "assets/images/places/kız.png",
+        "title": "Kız Kulesi",
+        "rating": "9.0",
+        "views": "2000",
+        "comments": "60"
+      },
+      {
+        "id": 3,
+        "imagePath": "assets/images/places/dolmabahçe.jpg",
+        "title": "Dolmabahçe Sarayı",
+        "rating": "4.0",
+        "views": "3000",
+        "comments": "45"
+      }
+]
