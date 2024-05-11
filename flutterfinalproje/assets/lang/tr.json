@@ -176,6 +176,7 @@
     "cvv": "Cvv2",
     "end_date": "Bitiş Tarihi",
     "end_year": "Bitiş Yıl",
+    "end_month": "Bitiş Ayı",
     "saved_card": "Kartı Kaydet",
     "confirm":"Onayla",
     "not_found_card":"Kart Bulunamadı",

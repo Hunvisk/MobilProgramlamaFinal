@@ -177,6 +177,7 @@
     "cvv": "CVV",
     "end_date": "Enddatum",
     "end_year": "Endjahr",
+    "end_month": "Ablaufmonat",
     "saved_card": "Karte speichern",
     "confirm": "Bestätigen",
     "not_found_card": "Karte nicht gefunden",

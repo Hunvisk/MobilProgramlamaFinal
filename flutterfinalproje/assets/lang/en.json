@@ -175,6 +175,7 @@
     "cvv": "CVV",
     "end_date": "End Date",
     "end_year": "End Year",
+    "end_month": "End Month",
     "saved_card": "Save Card",
     "confirm": "Confirm",
     "not_found_card": "Card not found",

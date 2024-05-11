@@ -177,6 +177,7 @@
     "cvv": "CVV",
     "end_date": "Fecha de finalización",
     "end_year": "Año de finalización",
+    "end_month": "Mes de vencimiento",
     "saved_card": "Guardar tarjeta",
     "confirm": "Confirmar",
     "not_found_card": "Tarjeta no encontrada",

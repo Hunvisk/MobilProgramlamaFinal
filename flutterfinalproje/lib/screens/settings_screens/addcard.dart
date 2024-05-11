@@ -18,8 +18,6 @@ import '../../core/responsive.dart';
 import '../../desktopScreens/user/account/desktopAddCard.dart';
 import '../../tabletscreens.dart/user/account/tabletaddcard.dart';
 
-
-
 class AddCard extends StatefulWidget {
   const AddCard({Key? key}) : super(key: key);
 
@@ -108,7 +106,7 @@ class _AddCardState extends State<AddCard> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title:  AppLocalizations.of(context).getTranslate("add_new_card"),
+          title: AppLocalizations.of(context).getTranslate("add_new_card"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -118,7 +116,7 @@ class _AddCardState extends State<AddCard> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title:  AppLocalizations.of(context).getTranslate("add_new_card"),
+          title: AppLocalizations.of(context).getTranslate("add_new_card"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -128,7 +126,7 @@ class _AddCardState extends State<AddCard> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title:  AppLocalizations.of(context).getTranslate("add_new_card"),
+          title: AppLocalizations.of(context).getTranslate("add_new_card"),
           icon: Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -139,37 +137,38 @@ class _AddCardState extends State<AddCard> {
     }
   }
 
-  
-
   showAddCard() {
     showDialog(
         context: context,
         builder: (context) {
           return StatefulBuilder(builder: (context, setState) {
             return AlertDialog(
-              title:  Text( AppLocalizations.of(context).getTranslate("add_new_card")),
+              title: Text(
+                AppLocalizations.of(context).getTranslate("add_new_card"),
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
               content: Column(
                 children: [
                   TextFormField(
-                    decoration:  InputDecoration(
-                        hintText:  AppLocalizations.of(context).getTranslate("card_title"),
-                        labelText:  AppLocalizations.of(context).getTranslate("card_title"),
+                    decoration: InputDecoration(
+                        hintText: AppLocalizations.of(context).getTranslate("card_title"),
+                        labelText: AppLocalizations.of(context).getTranslate("card_title"),
                         alignLabelWithHint: true),
                     controller: titleCnt,
                   ),
-                  const Gap(5),
+                  const Gap(10),
                   TextFormField(
-                    decoration:  InputDecoration(
-                      hintText:  AppLocalizations.of(context).getTranslate("name_surname"),
-                      labelText:  AppLocalizations.of(context).getTranslate("name_surname"),
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context).getTranslate("name_surname"),
+                      labelText: AppLocalizations.of(context).getTranslate("name_surname"),
                     ),
                     controller: cardHolderCnt,
                   ),
-                  const Gap(5),
+                  const Gap(10),
                   TextFormField(
-                    decoration:  InputDecoration(
-                      hintText:  AppLocalizations.of(context).getTranslate("card_number"),
-                      labelText:  AppLocalizations.of(context).getTranslate("card_number"),
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context).getTranslate("card_number"),
+                      labelText: AppLocalizations.of(context).getTranslate("card_number"),
                     ),
                     onChanged: (value) {
                       setState(() {});
@@ -195,18 +194,19 @@ class _AddCardState extends State<AddCard> {
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly,
-                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      LengthLimitingTextInputFormatter(16),
+                      _CardNumberInputFormatter(),
                     ],
-                    maxLength: 16,
+                    maxLength: 19,
                   ),
-                  const Gap(5),
+                  const Gap(15),
                   Row(
                     children: [
                       Expanded(
                         child: TextFormField(
-                          decoration:  InputDecoration(
-                            hintText:  AppLocalizations.of(context).getTranslate("cvv"),
-                            labelText:  AppLocalizations.of(context).getTranslate("cvv"),
+                          decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context).getTranslate("cvv"),
+                            labelText: AppLocalizations.of(context).getTranslate("cvv"),
                           ),
                           obscureText: true,
                           controller: cvv2Cnt,
@@ -216,14 +216,20 @@ class _AddCardState extends State<AddCard> {
                             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                           ],
                           maxLength: 3,
+                         onChanged: (value) {
+                          if (value.length == 3) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                        },
                         ),
                       ),
                       const Gap(5),
                       Expanded(
                         child: TextFormField(
-                          decoration:
-                               InputDecoration(hintText:  AppLocalizations.of(context).getTranslate("end_date"),
-                               labelText:  AppLocalizations.of(context).getTranslate("end_date")),
+                          decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context).getTranslate("end_month"),
+                            labelText: AppLocalizations.of(context).getTranslate("end_month"),
+                          ),
                           controller: expMonthCnt,
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
@@ -231,14 +237,22 @@ class _AddCardState extends State<AddCard> {
                             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                           ],
                           maxLength: 2,
+                          onChanged: (value) {
+                          if (value.length == 2) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                        },
                         ),
                       ),
                       const Gap(5),
                       Expanded(
                         child: TextFormField(
-                          decoration:
-                               InputDecoration(hintText:  AppLocalizations.of(context).getTranslate("end_year"),
-                               labelText:  AppLocalizations.of(context).getTranslate("end_year")),
+                          decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context)
+                                .getTranslate("end_year"),
+                            labelText: AppLocalizations.of(context)
+                                .getTranslate("end_year"),
+                          ),
                           controller: expYearCnt,
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
@@ -248,13 +262,14 @@ class _AddCardState extends State<AddCard> {
                           maxLength: 4,
                         ),
                       ),
-                      const Gap(5),
+                      const Gap(9),
                     ],
                   ),
                   SwitchListTile(
-                      title:  Text( AppLocalizations.of(context).getTranslate("saved")),
-                      value: remember,
-                      onChanged: (value) => setState(() {
+                      title: Text(
+                          AppLocalizations.of(context).getTranslate("saved")),
+                          value: remember,
+                          onChanged: (value) => setState(() {
                             remember = value;
                           }))
                 ],
@@ -264,7 +279,8 @@ class _AddCardState extends State<AddCard> {
                   Image.asset("assets/icons/${type}_card.png", height: 40),
                 OutlinedButton(
                   onPressed: saveCard,
-                  child: Text( AppLocalizations.of(context).getTranslate("confirm")),
+                  child: Text(
+                      AppLocalizations.of(context).getTranslate("confirm")),
                 ),
               ],
             );
@@ -283,76 +299,111 @@ class _AddCardState extends State<AddCard> {
         appBar: AppBar(
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 19.0, top: 20 ),
+              padding: const EdgeInsets.only(right: 19.0, top: 20),
               child: IconButton(
                   onPressed: showAddCard, icon: const Icon(Icons.add)),
             ),
           ],
-          title: Center(child: Text(AppLocalizations.of(context).getTranslate("add_card"))),
+          title: Center(
+              child: Text(
+            AppLocalizations.of(context).getTranslate("add_card"),
+            style: Theme.of(context).textTheme.headlineSmall,
+          )),
         ),
         body: SafeArea(
-         child : SizedBox.expand(
-            //crossAxisAlignment: CrossAxisAlignment.start,
-            //children: <Widget>[
-            child:   cards.isEmpty ?  Center(child:Text(AppLocalizations.of(context).getTranslate("not_found_card"))):
-              ListView.builder(
-                itemCount: cards.length,
-                itemBuilder:(context, index) => AspectRatio(
-                  aspectRatio: 1.586,
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Theme.of(context).secondaryHeaderColor,
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 10,
-                          right: 10,
-                          child: cards[index].cardNo.startsWith("4") 
-                           ? Image.asset("assets/icons/visa_card.png", height: 60,)
-                           : cards[index].cardNo.startsWith("5")  ?Image.asset(
-                              "assets/icons/master_card.png", height: 60,):
-                              cards[index].cardNo.startsWith("6") 
-                           ? Image.asset("assets/icons/troy_card.png", height: 60,):
-                              
-                              const SizedBox(),
-
-                        ),
-                        Positioned(
-                          top: 20,
-                          left: 20,
-                          child: Text(cards[index].title)),
-                        Positioned(
-                          left: 20,
-                          top:50,
-                          child: Text(cards[index].cardNo)),
-                        Positioned(
-                          left: 20,
-                          bottom: 20,
-                          child: Text(cards[index].cardHolder)),
-                        Positioned(
-                          right: 20,
-                          bottom: 20,
-                          child: Text(cards[index].expMonth.toString() + 
-                          "/" + 
-                          cards[index].expYear.toString()),
-                        ),
-                        
-                      ],
-                    ),
-                  ),
-                )),
-              
-              
-
+          child: SizedBox.expand(
+            child: cards.isEmpty
+                ? Center(
+                    child: Text(
+                    AppLocalizations.of(context).getTranslate("not_found_card"),
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ))
+                : ListView.builder(
+                    itemCount: cards.length,
+                    itemBuilder: (context, index) => AspectRatio(
+                          aspectRatio: 1.586,
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            margin: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Theme.of(context).secondaryHeaderColor,
+                            ),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  top: 10,
+                                  right: 10,
+                                  child: cards[index].cardNo.startsWith("4")
+                                      ? Image.asset(
+                                          "assets/icons/visa_card.png",
+                                          height: 60,
+                                        )
+                                      : cards[index].cardNo.startsWith("5")
+                                          ? Image.asset(
+                                              "assets/icons/master_card.png",
+                                              height: 60,
+                                            )
+                                          : cards[index].cardNo.startsWith("6")
+                                              ? Image.asset(
+                                                  "assets/icons/troy_card.png",
+                                                  height: 60,
+                                                )
+                                              : const SizedBox(),
+                                ),
+                                Positioned(
+                                    top: 20,
+                                    left: 20,
+                                    child: Text(cards[index].title)),
+                                Positioned(
+                                    left: 20,
+                                    top: 50,
+                                    child: Text(cards[index].cardNo)),
+                                Positioned(
+                                    left: 20,
+                                    bottom: 20,
+                                    child: Text(cards[index].cardHolder)),
+                                Positioned(
+                                  right: 20,
+                                  bottom: 20,
+                                  child: Text(cards[index].expMonth.toString() +
+                                      "/" +
+                                      cards[index].expYear.toString()),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )),
           ),
         ),
-      ),);
-    
+      ),
+    );
   }
+}
 
-  
+class _CardNumberInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    String formattedText = newValue.text.replaceAll(RegExp(r'\s'), '');
+    if (formattedText.length > 4) {
+      formattedText = formattedText.substring(0, 4) +
+          ' ' +
+          formattedText.substring(4, formattedText.length);
+    }
+    if (formattedText.length > 9) {
+      formattedText = formattedText.substring(0, 9) +
+          ' ' +
+          formattedText.substring(9, formattedText.length);
+    }
+    if (formattedText.length > 14) {
+      formattedText = formattedText.substring(0, 14) +
+          ' ' +
+          formattedText.substring(14, formattedText.length);
+    }
+    return TextEditingValue(
+      text: formattedText,
+      selection: TextSelection.collapsed(offset: formattedText.length),
+    );
+  }
 }
