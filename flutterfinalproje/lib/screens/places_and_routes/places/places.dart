@@ -252,7 +252,7 @@ class FilterWidget extends StatelessWidget {
                 _showSortPopup(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).secondaryHeaderColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 textStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 21,
@@ -273,7 +273,7 @@ class FilterWidget extends StatelessWidget {
             thickness: 4,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.43,
+            width: MediaQuery.of(context).size.width * 0.45,
             height: MediaQuery.of(context).size.height * 0.05,
             child: ElevatedButton(
               onPressed: () {
@@ -281,7 +281,7 @@ class FilterWidget extends StatelessWidget {
                 _showSortPopup2(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).secondaryHeaderColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 textStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 21,
@@ -297,7 +297,6 @@ class FilterWidget extends StatelessWidget {
       ),
     );
   }
-
   // Function to show the custom sorting popup
   void _showSortPopup(BuildContext context) {
     showModalBottomSheet(
@@ -406,49 +405,43 @@ class FilterWidget extends StatelessWidget {
     );
   }
 
+    // Function to show the custom sorting popup
   void _showSortPopup2(BuildContext context) {
-    showDialog(
+    showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          contentPadding: EdgeInsets.zero,
-          content: SingleChildScrollView(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      AppLocalizations.of(context).getTranslate("filter"),
-                      style: const TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+        return SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  AppLocalizations.of(context).getTranslate("filter"),
+                  style: const TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text('Z - A'),
-                    onTap: () {
-                      GoRouter.of(context).pop();
-                    },
-                    trailing: const Icon(Icons.chevron_right),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text('A - Z'),
-                    onTap: () {
-                      GoRouter.of(context).pop();
-                    },
-                    trailing: const Icon(Icons.chevron_right),
-                  ),
-                  const Divider(),
-                ],
-              ),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text('A - Z'),
+                  onTap: () {
+                    GoRouter.of(context).pop();
+                  },
+                  trailing: const Icon(Icons.chevron_right),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text('Z- A'),
+                  onTap: () {
+                    GoRouter.of(context).pop();
+                  },
+                  trailing: const Icon(Icons.chevron_right),
+                ),
+                const Divider(),
+              ],
             ),
           ),
         );

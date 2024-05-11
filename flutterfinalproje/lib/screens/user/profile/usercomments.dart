@@ -23,66 +23,41 @@ class UserComments extends StatefulWidget {
 
 class _UserCommentsState extends State<UserComments> {
   Screen device = Screen.mobile;
-  final double boxWidth = 300; // Kutu genişliği
-  final double boxHeight = 180;
+  bool isVisible = false;
 
-  set isSearching(bool isSearching) {} // Azaltılmış kutu yüksekliği
+  @override
+  void initState() {
+    super.initState();
+    // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        isVisible = true;
+      });
+    });
+  }
+
   drawScreen() {
     switch (device) {
-      case (Screen.mobile):
+      case Screen.mobile:
         return yorumSayfa();
-      case (Screen.tablet):
+      case Screen.tablet:
         return tabletUserCommentsScreen();
-      case (Screen.desktop):
+      case Screen.desktop:
         return desktopUserCommentsScreen();
     }
   }
 
-  drawAppar() {
-    switch (device) {
-      case (Screen.mobile):
-        return AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("Comments"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.tablet):
-        return AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("Comments"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-      case (Screen.desktop):
-        return AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("Comments"),
-          icon: Icon(Icons.search),
-          onSearchChanged: (isSearching) {
-            setState(() {
-              this.isSearching = isSearching;
-            });
-          },
-        );
-    }
+  drawAppBar() {
+    return AppBarWithSearchIcon(
+      title: AppLocalizations.of(context).getTranslate("Comments"),
+      icon: Icon(Icons.search),
+      onSearchChanged: (isSearching) {
+        setState(() {
+          // Handle search state changes here
+        });
+      },
+    );
   }
-
-  //drawBottom() {
-  //  switch (device) {
-  //    case (Screen.mobile):
-  //      return MyBottomNavBar();
-  //    case (Screen.tablet):
-  //      return MyBottomNavBar();
-  //    case (Screen.desktop):
-  //      return;
-  //  }
-  //}
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +66,30 @@ class _UserCommentsState extends State<UserComments> {
     });
     return SafeArea(
       child: Scaffold(
-        appBar: drawAppar(),
+        appBar: drawAppBar(),
         body: SafeArea(
           child: SingleChildScrollView(
-            child: drawScreen(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Gap(10),
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 500),
+                  opacity: isVisible ? 0.0 : 1.0, // Silik hali
+                ),
+                Gap(10),
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 500),
+                  opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                  child:
+                      yorumSayfa(), // Doğrudan yorumSayfa metodu kullanılıyor
+                ),
+                Gap(10),
+              ],
+            ),
           ),
         ),
-        //bottomNavigationBar: drawBottom(),
+        // bottomNavigationBar: drawBottom(),
       ),
     );
   }
@@ -108,106 +100,193 @@ class _UserCommentsState extends State<UserComments> {
       children: [
         Gap(10),
         buildColoredBox(
-          Color.fromARGB(255, 255, 229, 170),
-          'Eda Aydın',
-          AppLocalizations.of(context).getTranslate("comments_text"),
-          'Beşiktaş',
-          '12/02/2023',
+          color: Colors.grey.shade300,
+          title: 'Eda Aydın',
+          content: AppLocalizations.of(context).getTranslate("comments_text"),
+          location: 'Beşiktaş',
+          date: '12/02/2023',
         ),
         Gap(10),
         buildColoredBox(
-          Color.fromARGB(255, 255, 229, 170),
-          'Eda Aydın',
-          AppLocalizations.of(context).getTranslate("comments_text"),
-          'Kız Kulesi',
-          '11/04/2023',
+          color: Colors.grey.shade300,
+          title: 'Eda Aydın',
+          content: AppLocalizations.of(context).getTranslate("comments_text"),
+          location: 'Kız Kulesi',
+          date: '11/04/2023',
         ),
         Gap(10),
         buildColoredBox(
-          Color.fromARGB(255, 255, 229, 170),
-          'Eda Aydın',
-          AppLocalizations.of(context).getTranslate("comments_text"),
-          'Sarıyer',
-          '09/09/2023',
+          color: Colors.grey.shade300,
+          title: 'Eda Aydın',
+          content: AppLocalizations.of(context).getTranslate("comments_text"),
+          location: 'Sarıyer',
+          date: '09/09/2023',
         ),
         Gap(10),
         buildColoredBox(
-          Color.fromARGB(255, 255, 229, 170),
-          'Eda Aydın',
-          AppLocalizations.of(context).getTranslate("comments_text"),
-          'Kadıköy',
-          '14/08/2023',
+          color: Colors.grey.shade300,
+          title: 'Eda Aydın',
+          content: AppLocalizations.of(context).getTranslate("comments_text"),
+          location: 'Kadıköy',
+          date: '14/08/2023',
         ),
         Gap(10),
         buildColoredBox(
-          Color.fromARGB(255, 255, 229, 170),
-          'Eda Aydın',
-          AppLocalizations.of(context).getTranslate("comments_text"),
-          'Galata Kulesi',
-          '14/06/2023',
+          color: Colors.grey.shade300,
+          title: 'Eda Aydın',
+          content: AppLocalizations.of(context).getTranslate("comments_text"),
+          location: 'Galata Kulesi',
+          date: '14/06/2023',
         ),
         Gap(10),
         buildColoredBox(
-          Color.fromARGB(255, 255, 229, 170),
-          'Eda Aydın',
-          AppLocalizations.of(context).getTranslate("comments_text"),
-          'İstinye',
-          '12/05/2023',
+          color: Colors.grey.shade300,
+          title: 'Eda Aydın',
+          content: AppLocalizations.of(context).getTranslate("comments_text"),
+          location: 'İstinye',
+          date: '12/05/2023',
         ),
         Gap(10),
       ],
     );
   }
+}
 
-  Widget buildColoredBox(
-    Color color,
-    String title,
-    String content,
-    String location,
-    String date,
-  ) {
+class buildColoredBox extends StatefulWidget {
+  final String title;
+  final String location;
+  final Color color;
+  final String content;
+  final String date;
+
+  const buildColoredBox({
+    required this.title,
+    required this.location,
+    required this.color,
+    required this.content,
+    required this.date,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<buildColoredBox> createState() => _buildColoredBoxState();
+}
+
+class _buildColoredBoxState extends State<buildColoredBox> {
+  bool isVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        isVisible = true;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade300,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      padding: EdgeInsets.all(15.0), // İçeriğin kenarlardan uzaklığı
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      height: 150,
+      child: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.account_circle),
-                  Gap(5),
-                  Text(
-                    title,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 500),
+            opacity: isVisible ? 0.0 : 1.0, // Silik hali
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: widget.color.withOpacity(0.5),
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.grey.shade300,
                   ),
-                ],
-              ),
-            ],
-          ),
-          Gap(5),
-          Text(content),
-          Gap(10),
-          Gap(10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                location,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              Text(
-                date,
+            ),
+          ),
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 500),
+            opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.grey.shade300,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsets.all(15.0), // İçeriğin kenarlardan uzaklığı
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.account_circle,),
+                                Gap(5),
+                                Text(
+                                  widget.title,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors
+                                        .black, // Metin rengini siyah olarak ayarla
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Gap(5),
+                        Text(
+                          widget.content,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors
+                                .black, // Metin rengini siyah olarak ayarla
+                          ),
+                        ),
+                        Gap(5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.location,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors
+                                    .black, // Metin rengini siyah olarak ayarla
+                              ),
+                            ),
+                            Text(
+                              widget.date,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors
+                                    .black, // Metin rengini siyah olarak ayarla
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ],
+            ),
           ),
         ],
       ),

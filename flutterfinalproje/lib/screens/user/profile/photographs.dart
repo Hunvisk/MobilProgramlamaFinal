@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopphotographs.dart';
+import 'package:gap/gap.dart';
 //import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,6 +21,19 @@ class Photographs extends StatefulWidget {
 class PhotographsState extends State<Photographs> {
   bool isSearching = false;
   Screen device = Screen.mobile;
+  bool isVisible = false;
+  
+@override
+void initState() {
+  super.initState();
+  // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
+  Future.delayed(const Duration(milliseconds: 500), () {
+    setState(() {
+      isVisible = true;
+    });
+  });
+}
+
 
   drawScreen() {
     switch (device) {
@@ -77,109 +91,199 @@ class PhotographsState extends State<Photographs> {
     );
   }
 
-  Column FotografSayfa() {
-    return Column(
-      children: [
-        Divider(thickness: 3),
-        FilterWidget(),
-        SingleChildScrollView(
+Column FotografSayfa() {
+  return Column(
+    children: [
+      Divider(thickness: 3),
+      FilterWidget(),
+      AnimatedOpacity(
+        duration: const Duration(milliseconds: 500),
+        opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+        child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              PhotoItem(AppLocalizations.of(context).getTranslate("camera"),
-                  "1.151", "assets/images/photographs/anlatan_meydanı.jpeg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("collage"),
-                  "2.345", "assets/images/photographs/yalvac.jpg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("flowers"),
-                  "3.789", "assets/images/photographs/isparta.jpg"),
-            ],
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              PhotoItem(AppLocalizations.of(context).getTranslate("animals"),
-                  "1.151", "assets/images/photographs/yalvac.jpg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("family"),
-                  "2.345", "assets/images/photographs/isparta.jpg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("facebook"),
-                  "3.789", "assets/images/photographs/cinaralti.jpeg"),
-            ],
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              PhotoItem(AppLocalizations.of(context).getTranslate("whatsApp"),
-                  "1.151", "assets/images/photographs/pisidia.jpeg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("snapchat"),
-                  "2.345", "assets/images/photographs/yalvac.jpg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("instagram"),
-                  "3.789", "assets/images/photographs/isparta.jpg"),
-            ],
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              PhotoItem(AppLocalizations.of(context).getTranslate("camera"),
-                  "1.151", "assets/images/photographs/isparta.jpg"),
-              PhotoItem(AppLocalizations.of(context).getTranslate("snapchat"),
-                  "2.345", "assets/images/photographs/cinaralti.jpeg"),
-              PhotoItem(
-                  AppLocalizations.of(context).getTranslate("screen_shootlar"),
-                  "3.789",
-                  "assets/images/photographs/yalvac.jpg"),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget PhotoItem(String title, String count, String photo) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        children: [
-          Container(
-            width: 130,
-            height: 130,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                photo,
-                fit: BoxFit.cover,
+              // İlk sütun
+              Column(
+                children: [
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("camera"),
+                      "1.151",
+                      "assets/images/photographs/anlatan_meydanı.jpeg",
+                    ),
+                  ),
+                 Gap(10),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("collage"),
+                      "2.345",
+                      "assets/images/photographs/yalvac.jpg",
+                    ),
+                  ),
+                 Gap(10),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("flowers"),
+                      "3.789",
+                      "assets/images/photographs/isparta.jpg",
+                    ),
+                  ),
+                ],
               ),
-            ),
+              Gap(10),
+              // İkinci sütun
+              Column(
+                children: [
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("animals"),
+                      "1.151",
+                      "assets/images/photographs/yalvac.jpg",
+                    ),
+                  ),
+                 Gap(10),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("family"),
+                      "2.345",
+                      "assets/images/photographs/isparta.jpg",
+                    ),
+                  ),
+                 Gap(10),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("facebook"),
+                      "3.789",
+                      "assets/images/photographs/cinaralti.jpeg",
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: 10), // Boşluk ekleyebilirsiniz
+              // Üçüncü sütun
+              Column(
+                children: [
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("whatsApp"),
+                      "1.151",
+                      "assets/images/photographs/pisidia.jpeg",
+                    ),
+                  ),
+                 Gap(10),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("snapchat"),
+                      "2.345",
+                      "assets/images/photographs/yalvac.jpg",
+                    ),
+                  ),
+                 Gap(10),
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 500),
+                    opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                    child: PhotoItem(
+                      AppLocalizations.of(context).getTranslate("instagram"),
+                      "3.789",
+                      "assets/images/photographs/isparta.jpg",
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-          SizedBox(height: 8),
-          Text(
+        ),
+      ),
+    ],
+  );
+}
+
+
+Widget PhotoItem(String title, String count, String photo) {
+  return Padding(
+    padding: const EdgeInsets.all(10.0),
+    child: Column(
+      children: [
+        FutureBuilder(
+          future: Future.delayed(Duration(milliseconds: 500)), // 0.5 saniye bekleyecek
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Container(
+                width: 130,
+                height: 130,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              );
+            } else {
+              return AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      photo,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
+            }
+          },
+        ),
+        SizedBox(height: 8),
+        AnimatedOpacity(
+          duration: const Duration(milliseconds: 500),
+          opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+          child: Text(
             title,
             style: TextStyle(
               color: Theme.of(context).textTheme.headlineMedium!.color,
-              fontWeight:
-                  Theme.of(context).textTheme.headlineMedium!.fontWeight,
+              fontWeight: Theme.of(context).textTheme.headlineMedium!.fontWeight,
             ),
           ),
-          Text(
+        ),
+        AnimatedOpacity(
+          duration: const Duration(milliseconds: 500),
+          opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+          child: Text(
             count,
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.bodySmall!.fontSize,
               fontWeight: Theme.of(context).textTheme.bodySmall!.fontWeight,
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 
   void _showAlbumPopup(BuildContext context) {
     showDialog(
