@@ -82,21 +82,12 @@ class Storage {
     await storage.clear();
   }
 
-  chatStorageClear() async {
-    final SharedPreferences messages = await SharedPreferences.getInstance();
-    await messages.clear();
-  }
+  
   
 }
-  clearStorage() async {
-    final SharedPreferences storage = await SharedPreferences.getInstance();
-    await storage.clear();
-  }
+ 
 
-  chatStorageClear() async {
-    final SharedPreferences messages = await SharedPreferences.getInstance();
-    await messages.clear();
-  }
+ 
 
 
 class ChatStorage {

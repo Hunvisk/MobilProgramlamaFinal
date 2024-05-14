@@ -15,20 +15,24 @@ class ThemeModeScreen extends StatefulWidget {
 }
 
 class _ThemeModeScreenState extends State<ThemeModeScreen> {
-  late bool isDarkMode; // Varsayılan olarak koyu moda başlayalım
+  bool isDarkMode = ThemeMode.system == ThemeMode.light ? false : true; // Varsayılan olarak koyu moda başlayalım
   late SharedPreferences prefs; // SharedPreferences nesnesi
+  late final ClientCubit clientCubit; 
 
   @override
   void initState() {
+    clientCubit = context.read<ClientCubit>();
     super.initState();
-    _loadSelectedMode(); // Kayıtlı dil bilgisini yükle
+    
+    _loadSelectedMode();
+     
   }
 
   // Kayıtlı mod bilgisini yükleyen fonksiyon
   _loadSelectedMode() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
-      isDarkMode = prefs.getBool('darkMode') ?? true; // Kayıtlı mod bilgisini yükle, yoksa false kullan
+      isDarkMode = clientCubit.state.darkMode;// Kayıtlı mod bilgisini yükle, yoksa false kullan
     });
   }
 
@@ -91,7 +95,7 @@ class _ThemeModeScreenState extends State<ThemeModeScreen> {
                           setState(() {
                             isDarkMode = true; // Koyu moda geçiş
                             _saveSelectedMode(true);
-                            context.read<ClientCubit>().changeDarkMode(darkMode: true);
+                            clientCubit.changeDarkMode(darkMode: true);
                           });
                         },
                         "assets/images/thememodescreen/dark_mode_example.jpg",

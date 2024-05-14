@@ -50,7 +50,7 @@ class _ChatBotState extends State<ChatBot> {
     DateTime now = DateTime.now(); // Mesajın gönderildiği anın zamanını al
 
     setState(() {
-      _chatMessages.add(ChatMessage(text: "Kullanıcı: $message", time: now));
+      _chatMessages.add(ChatMessage(text: "Kullanıcı: $message", time: now, ));
     });
 
     await ChatStorage.saveMessage("Kullanıcı: $message");
@@ -133,10 +133,13 @@ class _ChatBotState extends State<ChatBot> {
                                       color: Colors.white,
                                     ),
                                     child: AnimatedTextKit(
+                                      // repeatForever: false,
+                                      totalRepeatCount: 1,
                                       animatedTexts: [
                                         TypewriterAnimatedText(
                                           message.text,
-                                          speed: const Duration(milliseconds: 100),
+
+                                          speed: const Duration(milliseconds: 35),
                                         ),
                                       ],
                                     ),

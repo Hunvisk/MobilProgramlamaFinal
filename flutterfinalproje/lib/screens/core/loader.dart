@@ -37,7 +37,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   if (firstLaunch) {
     // cihazın gece gündüz moduna erişmek
     const darkMode = ThemeMode.system == ThemeMode.dark;
-
+    
     // cihazın varsayılan diline erişmek
     final language = getDeviceLanguage();
 
@@ -58,7 +58,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
     clientCubit.changeDarkMode(darkMode:  config["darkMode"]);
 
     // Chatbot verilerini temizle
-    await storage.chatStorageClear();
+    // await storage.chatStorageClear();
 
     Future.delayed(const Duration(seconds: 2), () {
       GoRouter.of(context).replace("/Home");
