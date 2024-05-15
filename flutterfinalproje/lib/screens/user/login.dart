@@ -1,4 +1,3 @@
-
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
@@ -27,6 +26,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
+  bool obscureText = true;
   Screen device = Screen.mobile;
 
   drawScreen() {
@@ -136,7 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Text(
-                AppLocalizations.of(context).getTranslate("continue_app_description"),
+                AppLocalizations.of(context)
+                    .getTranslate("continue_app_description"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
                 style: TextStyle(
@@ -151,10 +152,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 maxLines: 1,
                 overflow: TextOverflow.fade,
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary
-                ),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary),
               ),
               const Gap(5),
               Padding(
@@ -172,7 +172,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
@@ -186,18 +187,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 maxLines: 1,
                 overflow: TextOverflow.fade,
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary
-                ),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary),
               ),
               const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: const TextStyle(
-                      //backgroundColor: Color.fromRGBO(249, 249, 249, 1),
-                      ),
+                  style: const TextStyle(),
                   decoration: InputDecoration(
                     labelText:
                         AppLocalizations.of(context).getTranslate("password"),
@@ -210,24 +208,30 @@ class _LoginScreenState extends State<LoginScreen> {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
-                    labelStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.primary
-                        ),
+                    labelStyle:
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                     suffixIcon: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          // Şifrenin görünürlüğünü tersine çevirme
+                          obscureText = !obscureText;
+                        });
+                      },
                       child: Icon(
-                        Icons.visibility,
+                        // Şifre görünürse göz simgesini görünmez yap
+                        obscureText ? Icons.visibility : Icons.visibility_off,
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
                   cursorColor: Colors.black, // Yazma imleci rengi
-                  obscureText:
-                      true, // Bu satır, şifrenin görünürlüğünü kontrol eder
+                  obscureText: obscureText, // Şifrenin görünürlüğü
                 ),
               ),
+
               signInLink(context), // "Şifremi Unuttum" linki
               signInButton(context),
               const Gap(10), // Boşluk ekledik
@@ -273,11 +277,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: InkWell(
                       onTap: linkedin,
-                      child: SvgPicture.asset(
-                        "assets/icons/linkedin.svg",
-                        height: 35,
-                        color:Theme.of(context).colorScheme.primary
-                      ),
+                      child: SvgPicture.asset("assets/icons/linkedin.svg",
+                          height: 35,
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
                 ],
@@ -344,7 +346,7 @@ Widget signInButton(BuildContext context) {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor:
-             Theme.of(context).colorScheme.primary, // Tema rengi, // Buton rengi
+            Theme.of(context).colorScheme.primary, // Tema rengi, // Buton rengi
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -371,10 +373,10 @@ Widget otherSignInText(BuildContext context) {
             maxLines: 1,
             overflow: TextOverflow.fade,
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary // Yazı rengi
-            ),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary // Yazı rengi
+                ),
           ),
           const Gap(5),
           InkWell(

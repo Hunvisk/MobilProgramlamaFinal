@@ -198,6 +198,18 @@
     "forever_denied_authority": "Autorité refusée à jamais",
     "provisional": "Provisoire",
     "unknown_status": "Statut inconnu",
-    "request_authorization": "Demander une autorisation"
+    "request_authorization": "Demander une autorisation",
 
+    "user_message": "Comment puis-je changer mon mot de passe ?",
+    "chatbot_message": "Pour changer votre mot de passe, connectez-vous à votre compte, puis accédez aux paramètres du compte ou à votre page de profil. Vous pouvez mettre à jour votre mot de passe à partir de là.",
+    
+    "user_message1": "Comment puis-je réinitialiser mon mot de passe ?",
+    "chatbot_message1": "Pour réinitialiser votre mot de passe, cliquez sur le lien 'Mot de passe oublié' sur la page de connexion et suivez les instructions pour réinitialiser votre mot de passe.",
+    
+    "user_message2": "Comment puis-je m'abonner ?",
+    "chatbot_message2": "Pour vous abonner, cliquez sur le bouton 'S'abonner' sur la page du voyageur VIP et suivez le processus d'abonnement.",
+    
+    "user_message3": "Quelles fonctionnalités puis-je utiliser après m'être abonné(e) ?",
+    "chatbot_message3": "Après vous être abonné(e), vous pouvez profiter de nombreux avantages. Je vous recommande de consulter la page du voyageur VIP pour en savoir plus en détail."
 }
+

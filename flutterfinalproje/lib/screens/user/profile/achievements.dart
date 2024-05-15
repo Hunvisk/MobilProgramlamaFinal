@@ -240,104 +240,102 @@ class AchievementsBox1 extends StatefulWidget {
 class _AchievementsBox1State extends State<AchievementsBox1> {
   bool isVisible = false;
 
-@override
-void initState() {
-  super.initState();
-  // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
-  Future.delayed(const Duration(milliseconds: 500), () {
-    setState(() {
-      isVisible = true;
+  @override
+  void initState() {
+    super.initState();
+    // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
+    Future.delayed(const Duration(milliseconds: 150), () {
+      setState(() {
+        isVisible = true;
+      });
     });
-  });
-}
+  }
 
-@override
-Widget build(BuildContext context) {
-  return Container(
-    width: double.infinity,
-    height: 125,
-    decoration: BoxDecoration(
-      color: Theme.of(context).secondaryHeaderColor,
-      border: Border.all(
-        width: 1,
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 125,
+      decoration: BoxDecoration(
         color: Theme.of(context).secondaryHeaderColor,
+        border: Border.all(
+          width: 1,
+          color: Theme.of(context).secondaryHeaderColor,
+        ),
+        borderRadius: BorderRadius.circular(10),
       ),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Stack(
-      children: [
-        // Silik konteyner
-        AnimatedOpacity(
-          duration: const Duration(milliseconds: 500),
-          opacity: isVisible ? 0.0 : 1.0, // Silik hali
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-        // Resim ve metin
-        AnimatedOpacity(
-          duration: const Duration(milliseconds: 500),
-          opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 5.0,
-                      bottom: 5.0,
-                      left: 5.0,
-                      right: 8.0,
-                    ),
-                    child: Image.asset("assets/images/achievements/rozet.jpeg"),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15,
-                          ),
-                        ),
-                        Gap(5),
-                        Text(
-                          widget.description,
-                          maxLines: 2,
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+      child: Stack(
+        children: [
+          // Silik konteyner
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 50),
+            opacity: isVisible ? 0.0 : 1.0, // Silik hali
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+          // Resim ve metin
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 500),
+            opacity: isVisible ? 1.0 : 0.0, // Görünür hali
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 5.0,
+                        bottom: 5.0,
+                        left: 5.0,
+                        right: 8.0,
+                      ),
+                      child:
+                          Image.asset("assets/images/achievements/rozet.png"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 15,
+                            ),
+                          ),
+                          Gap(5),
+                          Text(
+                            widget.description,
+                            maxLines: 2,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

@@ -197,5 +197,17 @@
     "forever_denied_authority": "Forever Denied Authority",
     "provisional": "Provisional",
     "unknown_status": "Unknown Status",
-    "request_authorization": "Request Authorization"  
+    "request_authorization": "Request Authorization",
+
+    "user_message": "How can I change my password?",
+    "chatbot_message": "To change your password, log in to your account, then go to account settings or your profile page. You can update your password from there.",
+    
+    "user_message1": "How can I reset my password?",
+    "chatbot_message1": "To reset your password, click on the 'forgot my password' link on the login page and follow the instructions to reset your password.",
+    
+    "user_message2": "How can I subscribe?",
+    "chatbot_message2": "To subscribe, click on the subscribe button on the VIP Traveler page and follow the subscription process.",
+    
+    "user_message3": "What features can I use after subscribing?",
+    "chatbot_message3": "After subscribing, you can enjoy many advantages. I recommend checking out the VIP Traveler page to learn more in detail."
 }

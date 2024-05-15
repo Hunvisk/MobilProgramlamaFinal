@@ -198,7 +198,19 @@
     "forever_denied_authority": "Autoridad denegada para siempre",
     "provisional": "Provisional",
     "unknown_status": "Estado desconocido",
-    "request_authorization": "Solicitar autorización"
+    "request_authorization": "Solicitar autorización",
+
+    "user_message": "¿Cómo puedo cambiar mi contraseña?",
+    "chatbot_message": "Para cambiar tu contraseña, inicia sesión en tu cuenta, luego ve a la configuración de la cuenta o tu página de perfil. Puedes actualizar tu contraseña desde allí.",
+    
+    "user_message1": "¿Cómo puedo restablecer mi contraseña?",
+    "chatbot_message1": "Para restablecer tu contraseña, haz clic en el enlace '¿Olvidaste tu contraseña?' en la página de inicio de sesión y sigue las instrucciones para restablecer tu contraseña.",
+    
+    "user_message2": "¿Cómo puedo suscribirme?",
+    "chatbot_message2": "Para suscribirte, haz clic en el botón 'Suscribirse' en la página del viajero VIP y sigue el proceso de suscripción.",
+    
+    "user_message3": "¿Qué características puedo usar después de suscribirme?",
+    "chatbot_message3": "Después de suscribirte, puedes disfrutar de muchas ventajas. Te recomiendo que consultes la página del viajero VIP para obtener más detalles."
 
 
 

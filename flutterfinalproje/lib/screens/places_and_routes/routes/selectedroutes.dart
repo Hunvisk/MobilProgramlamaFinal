@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types
+// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/places_and_routes/routes/desktopselectedroutes.dart';

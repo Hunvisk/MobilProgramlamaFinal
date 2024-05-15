@@ -1,37 +1,36 @@
 {
-    "conversation": [
-      {
-        "user": {
-          "message": "Merhaba, nasılsın?"
-        },
-        "chatbot": {
-          "message": "Ben bir yapay zeka olduğum için duygularım yok ama işlevlerim normal."
-        }
+  "conversation": [
+    {
+      "user": {
+        "message": "Şifremi nasıl değiştirebilirim ?"
       },
-      {
-        "user": {
-          "message": "İyi olmana sevindim. Benimle konuşmak nasıl bir duygu?"
-        },
-        "chatbot": {
-          "message": "Benim için oldukça normal. Size nasıl yardımcı olabilirim?"
-        }
-      },
-      {
-        "user": {
-          "message": "Teşekkürler. Ben de iyiyim. Bugün ne yaptın?"
-        },
-        "chatbot": {
-          "message": "Benim varoluş amacım sizinle iletişim kurmak ve size yardımcı olmak, bu yüzden size hizmet etmek için buradayım."
-        }
-      },
-      {
-        "user": {
-          "message": "Anladım, ne güzel. Seninle konuşmak gerçekten keyifli."
-        },
-        "chatbot": {
-          "message": "Ben de size yardımcı olmak için burada olduğum için mutluyum. Size nasıl yardımcı olabilirim?"
-        }
+      "chatbot": {
+        "message": "Şifrenizi değiştirmek için hesabınıza giriş yapın, ardından hesap ayarlarına veya profil sayfanıza gidin. Buradan şifrenizi güncelleyebilirsiniz."
       }
-    ]
-  }
-  
+    },
+    {
+      "user": {
+        "message": "Şifremi nasıl sıfırlarım ?"
+      },
+      "chatbot": {
+        "message": "Şifrenizi sıfırlamak için oturum açma sayfasında bulununan şifremi unuttum linkine tıklayarak şifrenizi sıfırlama işlemini sürdürebilirisniz."
+      }
+    },
+    {
+      "user": {
+        "message": "Nasıl abone olabilirim ?"
+      },
+      "chatbot": {
+        "message": "Abone olmak için VIP Gezgin ol sayfasındaki abone ol butonuna tıklayarak abone olma işlemlerini sürdürebilirsiniz."
+      }
+    },
+    {
+      "user": {
+        "message": "Abone olduktan sonra hangi özellikleri kullanabilirim ?"
+      },
+      "chatbot": {
+        "message": "Abone olduktan sonra birçok avantajdan faydalanabilirsiniz, detaylıca öğrenmek için VIP Gezgin sayfasına göz atmanızı tavsiye ederim. "
+      }
+    }
+  ]
+}

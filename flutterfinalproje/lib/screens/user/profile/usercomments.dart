@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
+// ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/user/profile/desktopcomments.dart';
@@ -29,7 +29,7 @@ class _UserCommentsState extends State<UserComments> {
   void initState() {
     super.initState();
     // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 150), () {
       setState(() {
         isVisible = true;
       });
@@ -100,7 +100,7 @@ class _UserCommentsState extends State<UserComments> {
       children: [
         Gap(10),
         buildColoredBox(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
           title: 'Eda Aydın',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Beşiktaş',
@@ -108,7 +108,7 @@ class _UserCommentsState extends State<UserComments> {
         ),
         Gap(10),
         buildColoredBox(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
           title: 'Eda Aydın',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kız Kulesi',
@@ -116,7 +116,7 @@ class _UserCommentsState extends State<UserComments> {
         ),
         Gap(10),
         buildColoredBox(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
           title: 'Eda Aydın',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Sarıyer',
@@ -124,7 +124,7 @@ class _UserCommentsState extends State<UserComments> {
         ),
         Gap(10),
         buildColoredBox(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
           title: 'Eda Aydın',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kadıköy',
@@ -132,7 +132,7 @@ class _UserCommentsState extends State<UserComments> {
         ),
         Gap(10),
         buildColoredBox(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
           title: 'Eda Aydın',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Galata Kulesi',
@@ -140,7 +140,7 @@ class _UserCommentsState extends State<UserComments> {
         ),
         Gap(10),
         buildColoredBox(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).secondaryHeaderColor,
           title: 'Eda Aydın',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'İstinye',
@@ -202,7 +202,7 @@ class _buildColoredBoxState extends State<buildColoredBox> {
                   color: widget.color.withOpacity(0.5),
                   border: Border.all(
                     width: 1,
-                    color: Colors.grey.shade300,
+                    color: Theme.of(context).secondaryHeaderColor,
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -216,10 +216,10 @@ class _buildColoredBoxState extends State<buildColoredBox> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: Theme.of(context).secondaryHeaderColor,
                   border: Border.all(
                     width: 1,
-                    color: Colors.grey.shade300,
+                    color: Theme.of(context).secondaryHeaderColor,
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),

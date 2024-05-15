@@ -17,57 +17,66 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-  class _RegisterScreenState extends State<RegisterScreen> {
-
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController searchController = TextEditingController();
   bool isSearching = false;
+  bool obscureTextPassword = true;
+  bool obscureTextPasswordAgain = true;
 
-   Screen device = Screen.mobile;
+  Screen device = Screen.mobile;
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return  RegisterScreen(context) ;
+        return RegisterScreen(context);
       case (Screen.tablet):
-       return  TabletRegister();
+        return TabletRegister();
 
       case (Screen.desktop):
-       return  DesktopRegister();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("register"),
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.tablet):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("register"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
-    case (Screen.desktop):
-      return AppBarWithSearchIcon(title: AppLocalizations.of(context).getTranslate("register"),icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+        return DesktopRegister();
+    }
   }
-}
+
+  drawAppar() {
+    switch (device) {
+      case (Screen.mobile):
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("register"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.tablet):
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("register"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+      case (Screen.desktop):
+        return AppBarWithSearchIcon(
+          title: AppLocalizations.of(context).getTranslate("register"),
+          icon: Icon(Icons.search),
+          onSearchChanged: (isSearching) {
+            setState(() {
+              this.isSearching = isSearching;
+            });
+          },
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
@@ -81,10 +90,10 @@ class RegisterScreen extends StatefulWidget {
 
   Center RegisterScreen(BuildContext context) {
     return Center(
-          child: SingleChildScrollView(
-            child: buildColumn(context),
-          ),
-        );
+      child: SingleChildScrollView(
+        child: buildColumn(context),
+      ),
+    );
   }
 
   Widget buildColumn(BuildContext context) {
@@ -107,7 +116,8 @@ class RegisterScreen extends StatefulWidget {
                     color: Theme.of(context).colorScheme.primary),
               ),
               Text(
-                AppLocalizations.of(context).getTranslate("do_not_have_an_account"),
+                AppLocalizations.of(context)
+                    .getTranslate("do_not_have_an_account"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
                 style: TextStyle(
@@ -131,7 +141,8 @@ class RegisterScreen extends StatefulWidget {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).getTranslate("username"),
+                    labelText:
+                        AppLocalizations.of(context).getTranslate("username"),
                     filled: true,
                     fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
@@ -141,7 +152,8 @@ class RegisterScreen extends StatefulWidget {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
@@ -164,10 +176,10 @@ class RegisterScreen extends StatefulWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
-                      ),
+                  style: TextStyle(),
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).getTranslate("email"),
+                    labelText:
+                        AppLocalizations.of(context).getTranslate("email"),
                     filled: true,
                     fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
@@ -203,35 +215,45 @@ class RegisterScreen extends StatefulWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
-                      ),
+                  style: const TextStyle(),
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).getTranslate("password"),
+                    labelText:
+                        AppLocalizations.of(context).getTranslate("password"),
                     filled: true,
                     fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                     suffixIcon: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          // Şifrenin görünürlüğünü tersine çevirme
+                          obscureTextPassword = !obscureTextPassword;
+                        });
+                      },
                       child: Icon(
-                        Icons.visibility,
+                        // Şifre görünürse göz simgesini görünmez yap
+                        obscureTextPassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
-                  cursorColor: Colors.black,
-                  obscureText: true,
+                  cursorColor: Colors.black, // Yazma imleci rengi
+                  obscureText: obscureTextPassword, // Şifrenin görünürlüğü
                 ),
               ),
+
               Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("password_again"),
@@ -247,10 +269,9 @@ class RegisterScreen extends StatefulWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
-                      backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
-                    labelText:AppLocalizations.of(context).getTranslate("password_again"),
+                    labelText: AppLocalizations.of(context)
+                        .getTranslate("password_again"),
                     filled: true,
                     fillColor: Theme.of(context).secondaryHeaderColor,
                     border: OutlineInputBorder(
@@ -260,22 +281,32 @@ class RegisterScreen extends StatefulWidget {
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     labelStyle:
                         TextStyle(color: Theme.of(context).colorScheme.primary),
                     suffixIcon: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          // Şifrenin görünürlüğünü tersine çevirme
+                          obscureTextPasswordAgain = !obscureTextPasswordAgain;
+                        });
+                      },
                       child: Icon(
-                        Icons.visibility,
+                        // Şifre görünürse göz simgesini görünmez yap
+                        obscureTextPasswordAgain
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
-                  cursorColor: Colors.black,
-                  obscureText: true,
+                  cursorColor: Colors.black, // Yazma imleci rengi
+                  obscureText: obscureTextPasswordAgain,
                 ),
               ),
+
               SignInButton(context),
               Gap(2), // Boşluk ekledik
               OtherSignInText(context),
@@ -323,7 +354,8 @@ Widget SignInButton(BuildContext context) {
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
+            backgroundColor:
+                Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
@@ -343,7 +375,8 @@ Widget OtherSignInText(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            AppLocalizations.of(context).getTranslate("already_have_an_account"),
+            AppLocalizations.of(context)
+                .getTranslate("already_have_an_account"),
             maxLines: 1,
             overflow: TextOverflow.fade,
             style: TextStyle(

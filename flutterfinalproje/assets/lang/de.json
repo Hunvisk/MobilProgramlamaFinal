@@ -197,6 +197,19 @@
     "forever_denied_authority": "Für immer verweigerte Autorität",
     "provisional": "Vorläufig",
     "unknown_status": "Unbekannter Status",
-    "request_authorization": "Autorisierung anfordern"
+    "request_authorization": "Autorisierung anfordern",
+
+    "user_message": "Wie kann ich mein Passwort ändern?",
+    "chatbot_message": "Um Ihr Passwort zu ändern, melden Sie sich bei Ihrem Konto an und gehen Sie dann zu den Kontoeinstellungen oder Ihrer Profilseite. Dort können Sie Ihr Passwort aktualisieren.",
+    
+    "user_message1": "Wie kann ich mein Passwort zurücksetzen?",
+    "chatbot_message1": "Um Ihr Passwort zurückzusetzen, klicken Sie auf den Link 'Passwort vergessen' auf der Anmeldeseite und befolgen Sie die Anweisungen, um Ihr Passwort zurückzusetzen.",
+    
+    "user_message2": "Wie kann ich abonnieren?",
+    "chatbot_message2": "Um zu abonnieren, klicken Sie auf die Schaltfläche 'Abonnieren' auf der VIP-Reiseseite und folgen Sie dem Abonnementprozess.",
+    
+    "user_message3": "Welche Funktionen kann ich nach dem Abonnieren nutzen?",
+    "chatbot_message3": "Nach dem Abonnieren können Sie viele Vorteile genießen. Ich empfehle Ihnen, die VIP-Reiseseite zu besuchen, um mehr Details zu erfahren."
+
 
 }

@@ -196,7 +196,18 @@
     "forever_denied_authority":"Sonsuza Kadar Reddedilmiş Yetki",
     "provisional":"Geçici",
     "unknown_status":"Bilinmeyen Durum",
-    "request_authorization":"Yetki İste"
-
+    "request_authorization":"Yetki İste",
+    
+    "user_message":"Şifremi nasıl değiştirebilirim ?",
+    "chatbot_message":"Şifrenizi değiştirmek için hesabınıza giriş yapın, ardından hesap ayarlarına veya profil sayfanıza gidin. Buradan şifrenizi güncelleyebilirsiniz.",
+    
+    "user_message1":"Şifremi nasıl sıfırlarım ?",
+    "chatbot_message1":"Şifrenizi sıfırlamak için oturum açma sayfasında bulununan şifremi unuttum linkine tıklayarak şifrenizi sıfırlama işlemini sürdürebilirisniz.",
+    
+    "user_message2":"Nasıl abone olabilirim ?",
+    "chatbot_message2":"Abone olmak için VIP Gezgin ol sayfasındaki abone ol butonuna tıklayarak abone olma işlemlerini sürdürebilirsiniz.",
+    
+    "user_message3":"Abone olduktan sonra hangi özellikleri kullanabilirim ?",
+    "chatbot_message3": "Abone olduktan sonra birçok avantajdan faydalanabilirsiniz, detaylıca öğrenmek için VIP Gezgin sayfasına göz atmanızı tavsiye ederim. "
 
 }
