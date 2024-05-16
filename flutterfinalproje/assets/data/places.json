@@ -158,5 +158,156 @@
       "assets/images/places/ataturk_arboretum2.jpeg",
       "assets/images/places/ataturk_arboretum3.jpeg"
     ]
+  },
+  {
+    "id": 11,
+    "title": "hagia_irene",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "hagia_irene_description",
+      "hagia_irene_description1",
+      "hagia_irene_description2"
+    ],
+    "images": [
+      "assets/images/places/hagia_irene.jpeg",
+      "assets/images/places/hagia_irene1.jpg"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "ahmed_fethi_pasha_mansion",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "ahmed_fethi_pasha_mansion_description",
+      "ahmed_fethi_pasha_mansion_description1"
+    ],
+    "images": [
+      "assets/images/places/ahmed_fethi_pasha_mansion.jpg",
+      "assets/images/places/ahmed_fethi_pasha_mansion1.jpg"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "istanbul_archaeology_museum",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "istanbul_archaeology_museum_description"
+    ],
+    "images": [
+      "assets/images/places/istanbul_archaeology_museum.jpg"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "museum_of_ancient_oriental_art",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "museum_of_ancient_oriental_art_description"
+    ],
+    "images": [
+      "assets/images/places/museum_of_ancient_oriental_art.jpg"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "tiled_pavilion",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "tiled_pavilion_description",
+      "tiled_pavilion_description1"
+    ],
+    "images": [
+      "assets/images/places/tiled_pavilion.jpg"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "beylerbeyi_palace",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "beylerbeyi_palace_description"
+    ],
+    "images": [
+      "assets/images/places/beylerbeyi_palace.jpg",
+      "assets/images/places/beylerbeyi_palace1.jpg"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "binbirdirek_cistern",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "binbirdirek_cistern_description",
+      "binbirdirek_cistern_description1",
+      "binbirdirek_cistern_description2",
+      "binbirdirek_cistern_description3"
+    ],
+    "images": [
+      "assets/images/places/binbirdirek_cistern.jpg",
+      "assets/images/places/binbirdirek_cistern1.jpeg",
+      "assets/images/places/binbirdirek_cistern2.png"
+    ]
+  },
+  {
+    "id": 18,
+    "title": "basilica_cistern",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "basilica_cistern_description",
+      "basilica_cistern_description1",
+      "basilica_cistern_description2",
+      "basilica_cistern_description3"
+    ],
+    "images": [
+      "assets/images/places/yerebatan_sarnici.jpg"
+    ]
+  },
+  {
+    "id": 19,
+    "title": "maiden_tower",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "maiden_tower_description",
+      "maiden_tower_description1",
+      "maiden_tower_description2"
+    ],
+    "images": [
+      "assets/images/places/kiz_kulesi.png",
+      "assets/images/places/kiz_kulesi1.jpg",
+      "assets/images/places/kiz_kulesi2.jpg"
+    ]
+  },
+  {
+    "id": 20,
+    "title": "galata_tower",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "galata_tower_description"
+    ],
+    "images": [
+      "assets/images/places/galata_kulesi.jpg",
+      "assets/images/places/galata_kulesi1.jpg",
+      "assets/images/places/galata_kulesi2.jpg"
+    ]
   }
 ]
