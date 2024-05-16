@@ -1,367 +1,372 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types, library_private_types_in_public_api
 
-import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/places_and_routes/routes/desktopselectedroutes.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
-import 'package:gap/gap.dart';
+import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../bloc/saved_places/saved_places_cubit.dart';
 import '../../../core/localizations.dart';
-import '../../../core/responsive.dart';
-import '../../../tabletscreens.dart/places_and_routes/routes/tabletselectedroutes.dart';
 import '../../../widgets/myappbar.dart';
 
-void main() {
-  runApp(SelectedRoutes());
-}
-
 class SelectedRoutes extends StatefulWidget {
-  const SelectedRoutes({Key? key}) : super(key: key);
+  final Map<String, dynamic> route;
+
+  SelectedRoutes({Key? key, required this.route}) : super(key: key);
 
   @override
   _SelectedRoutesState createState() => _SelectedRoutesState();
 }
 
 class _SelectedRoutesState extends State<SelectedRoutes> {
-  Screen device = Screen.mobile;
+  late List<dynamic> places = [];
+  late List<dynamic> routes = [];
+  int routesPlaceslength = 0;
+  late SavedPlacesCubit savedPlacesCubit;
 
-  set isSearching(bool isSearching) {}
-
-  drawScreen() {
-    switch (device) {
-      case (Screen.mobile):
-        return selectedRoute();
-      case (Screen.tablet):
-        return TabletSelectedRoutesScreen();
-      case (Screen.desktop):
-        return DesktopSelectedRoutesScreen();
-    }
+  @override
+  void initState() {
+    super.initState();
+    savedPlacesCubit = context.read<SavedPlacesCubit>();
+    loadPlaces();
+    loadRoutes();
   }
 
-  drawAppar() {
-    switch (device) {
-      case (Screen.mobile):
-        return MyAppBar(
-          title: AppLocalizations.of(context).getTranslate("selected_routes"),
-        );
-      case (Screen.tablet):
-        return MyAppBar(
-          title: AppLocalizations.of(context).getTranslate("selected_routes"),
-        );
-      case (Screen.desktop):
-        return MyAppBar(
-          title: AppLocalizations.of(context).getTranslate("selected_routes"),
-        );
-    }
+  Future<void> loadPlaces() async {
+    // JSON dosyasını oku
+    String jsonString = await rootBundle.loadString('assets/data/places.json');
+    // JSON verisini parse et
+    List<dynamic> jsonList = json.decode(jsonString);
+    // State'i güncelle ve verileri atama
+    setState(() {
+      places = jsonList;
+    });
   }
 
-  //drawBottom() {
-  //  switch (device) {
-  //    case (Screen.mobile):
-  //      return MyBottomNavBar();
-  //    case (Screen.tablet):
-  //      return MyBottomNavBar();
-  //    case (Screen.desktop):
-  //      return;
-  //  }
-  //}
+  Future<void> loadRoutes() async {
+    // JSON dosyasını oku
+    String jsonString = await rootBundle.loadString('assets/data/routes.json');
+    // JSON verisini parse et
+    List<dynamic> jsonList = json.decode(jsonString);
+    // State'i güncelle ve verileri atama
+    setState(() {
+      routes = jsonList;
+      routesPlaceslength = widget.route["places"].length ;
+    });
+  }
+
+  var comments = [
+    {
+      "id": 1,
+      "name": "Emirhan Ceylan",
+      "photo": "assets/images/logo/GR_Logo.png",
+      "comment": "Müthiş bir yer! Kesinlikle ziyaret etmelisiniz.",
+    },
+    {
+      "id": 2,
+      "name": "Gülseren Zirek",
+      "photo": "assets/images/logo/GR_Logo.png",
+      "comment": "Müthiş bir yer! Kesinlikle ziyaret etmelisiniz.",
+    },
+    {
+      "id": 3,
+      "name": "İlknur Kavaklı",
+      "photo": "assets/images/logo/GR_Logo.png",
+      "comment": "Müthiş bir yer! Kesinlikle ziyaret etmelisiniz.",
+    },
+    {
+      "id": 4,
+      "name": "Talha Pamukcu",
+      "photo": "assets/images/logo/GR_Logo.png",
+      "comment": "Müthiş bir yer! Kesinlikle ziyaret etmelisiniz.",
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      device = detectScreen(MediaQuery.of(context).size);
-    });
-    return SafeArea(
-      child: Scaffold(
-        appBar: drawAppar(),
-        body: SingleChildScrollView(
-          child: drawScreen(),
-        ),
-        //bottomNavigationBar: drawBottom(),
+    return Scaffold(
+      appBar: MyAppBar(
+        title: "Selected Routes"
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).secondaryHeaderColor,
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: Center(
+                  child: Text("Harita Eklenecek"),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                AppLocalizations.of(context).getTranslate(widget.route["title"]),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "Rota Açıklamaları",
+              ),
+            ),
+            const Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                infoRow(
+                  context,
+                  Icons.star,
+                  widget.route["rating"],
+                ),
+                infoRow(
+                  context,
+                  Icons.remove_red_eye,
+                  widget.route["views"],
+                ),
+                infoRow(
+                  context,
+                  Icons.comment,
+                  widget.route["comments"],
+                ),
+              ],
+            ),
+            const Divider(),
+            ExpansionTile(
+              title: Text(AppLocalizations.of(context).getTranslate("routes")),
+              children: [
+                SizedBox(
+                  height: 300, // ExpansionTile içinde ListView.builder'ın düzgün çalışması için sabit yükseklik verildi
+                  child: ListView.builder(
+                    itemCount: routesPlaceslength,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          context.push(
+                            "/SelectedPlaces", extra: places[index]);
+                        },
+                        child: placesContainerDesign(
+                          context,
+                          places[index]["id"] as int,
+                          places[index]["images"][0].toString(), 
+                          places[index]["title"].toString(), 
+                          places[index]["rating"].toString(), 
+                          places[index]["views"].toString(), 
+                          places[index]["comments"].toString(),
+                          places[index]
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Divider(),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  AppLocalizations.of(context).getTranslate("comments"),
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: comments.length,
+                  itemBuilder: (context, index) => commentsBox(
+                    context,
+                    comments[index]["photo"].toString(),
+                    comments[index]["name"].toString(),
+                    comments[index]["comment"].toString(),
+                  ),
+                ),
+              ),
+          ],
+        )
       ),
     );
   }
-}
-
-class selectedRoute extends StatelessWidget {
-  const selectedRoute({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
+    return Stack(
       children: [
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Stack(
-            children: [
-              Container(
-                height: 350,
-                width: double.infinity,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50),
-                    topLeft: Radius.circular(6),
-                    topRight: Radius.circular(6),
-                    bottomRight: Radius.circular(50),
-                  ), // Kenarların ovalleşme miktarını belirleyin
-                  child: Image.asset(
-                    'assets/images/routes/eminonu.jpeg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 10, // İkinci resmin yükseklik konumu
-                right: 30, // İkinci resmin yatay konumu
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'assets/images/routes/eminonu.jpeg',
-                      fit: BoxFit.cover,
-                      width: 100, // İkinci resmin genişliği
-                      height: 90, // İkinci resmin yüksekliği
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 120,
-                right: 30,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'assets/images/routes/eminonu.jpeg',
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 90,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 240,
-                right: 30,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'assets/images/routes/eminonu.jpeg',
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 90,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(13.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                AppLocalizations.of(context).getTranslate("explanation"),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              Text(
-                AppLocalizations.of(context).getTranslate("eminonu_text"),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'poppions',
-                  fontSize: 13,
-                ),
-              ),
-              Gap(5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context).getTranslate("place"),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'poppions',
-                      fontSize: 15,
-                    ),
-                  ),
-                  Text(
-                    "Fatih",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'poppions',
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.remove_red_eye_outlined,
-                        size: 15,
-                      ),
-                      Gap(3),
-                      Text(
-                        "5.600",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'poppions',
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 10,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 10,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 10,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 10,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 10,
-                      ),
-                      Text(
-                        "5.0",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'poppions',
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Text(
-                AppLocalizations.of(context).getTranslate("comments"),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'poppions',
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Gap(6),
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.person,
-                      size: 22,
-                    ),
-                    Text(
-                      "İlknur Kavaklı",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'poppions',
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
-                ),
-                Gap(5),
-                Row(
-                  children: [
-                    Text(
-                      AppLocalizations.of(context).getTranslate("comment_content"),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'poppions',
-                        fontSize: 13,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "50",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'poppions',
-                        fontSize: 15,
-                      ),
-                    ),
-                    Icon(
-                      Icons.mode_comment,
-                      size: 18,
-                    ),
-                    Gap(7),
-                    Text(
-                      "50",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'poppions',
-                        fontSize: 15,
-                      ),
-                    ),
-                    Icon(
-                      Icons.favorite_border,
-                      size: 18,
-                    ),
-                  ],
-                )
-              ],
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: SizedBox(
+            height: 250,
+            width: double.infinity,
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
             ),
           ),
+        ),
+        Positioned(
+          top: 10,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(context).getTranslate(title),
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if(savedPlacesCubit.isSavedPlaces(id))
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        savedPlacesCubit.removeFromSavedPlaces(id);
+                      },
+                    )
+                  else 
+                    IconButton(
+                      icon: const Icon(
+                        Icons.bookmark_outline,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        savedPlacesCubit.addToSavedPlaces(index);
+                      },
+                    )
+                ],
+              ),
+            ),
+          )
+        ),
+        Positioned(
+          bottom: 5,
+          left: 10,
+          right: 10,
+          child: infoColumns(rating, views, comments),
         ),
       ],
+    );
+  }
+
+  Widget infoColumns(String rating, String views, String comments) {
+    return Container(
+      width: 140,
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          infoRow(
+            context,
+             Icons.star,
+             ": $rating",
+          ),
+          infoRow(
+            context,
+            Icons.remove_red_eye,
+            ": $views",
+          ),
+          infoRow(
+            context,
+            Icons.comment,
+            ": $comments",
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget infoRow(BuildContext context, IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 15,
+          ),
+          const Gap(5),
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget commentsBox(BuildContext context, String photo, String name, String comment) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // Düzenleme: iç ve dış boşluklar
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).secondaryHeaderColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: CircleAvatar(
+                  child: Image.asset(photo),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const Gap(4),
+                    Text(
+                      comment,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

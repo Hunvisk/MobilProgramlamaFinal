@@ -64,16 +64,21 @@ class _RoutesScreenState extends State<RoutesScreen> {
                     itemCount: routes.length,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: routesContainerDesign(
-                        context,
-                        routes[index]["id"] as int,
-                        routes[index]["imagePath"].toString(), 
-                        routes[index]["title"].toString(), 
-                        routes[index]["stop"].toString(), 
-                        routes[index]["rating"].toString(), 
-                        routes[index]["views"].toString(), 
-                        routes[index]["comments"].toString(),
-                        routes[index]
+                      child: GestureDetector(
+                        onTap: () {
+                          context.push("/SelectedRoutes", extra: routes[index]);
+                        },
+                        child: routesContainerDesign(
+                          context,
+                          routes[index]["id"] as int,
+                          routes[index]["imagePath"].toString(), 
+                          routes[index]["title"].toString(), 
+                          routes[index]["stop"].toString(), 
+                          routes[index]["rating"].toString(), 
+                          routes[index]["views"].toString(), 
+                          routes[index]["comments"].toString(),
+                          routes[index]
+                        ),
                       ),
                     ),
                   ),

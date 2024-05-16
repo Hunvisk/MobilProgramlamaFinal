@@ -363,7 +363,7 @@ final routes = GoRouter(
             ),
             GoRoute(
               path: '/SelectedRoutes',
-              builder: (context, state) => const SelectedRoutes(),
+              builder: (context, state) => SelectedRoutes(route: state.extra as Map<String, dynamic>,),
             ),
             GoRoute(
               path: '/TabletSelectedRoutes',
