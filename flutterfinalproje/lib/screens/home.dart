@@ -1,4 +1,5 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, avoid_unnecessary_containers, deprecated_member_use, prefer_interpolation_to_compose_strings, library_private_types_in_public_api, prefer_const_declarations, unnecessary_string_interpolations
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'dart:convert';
 
@@ -13,7 +14,6 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutterfinalproje/widgets/myhomeappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../core/localizations.dart';
 
@@ -65,15 +65,15 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background, 
       appBar: MyHomeAppBar(
-        icon: Icon(Icons.search),
+        icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },
-        actions: [],
+        actions: const [],
       ),
-      drawer: MyDrawer(context),
+      drawer: myDrawer(context),
       body: BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
         builder: (context, state) {
           return SafeArea(
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                 if (isSearching)
                   Container(
                     height: 32, // Arama çubuğu yüksekliği,,,,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       controller: searchController,
                       onChanged: (value) {
@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
                       onSubmitted: (value) {
                         // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: "Ara...",
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
@@ -102,10 +102,10 @@ class _HomeState extends State<Home> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
-                        WeatherBox(),
+                        const WeatherBox(),
                         GestureDetector(
                             onTap: () {
                               context.push('/VipGezginInfo');
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
                                             .headlineSmall,
                                       )),
                                 ),
-                                Divider(),
+                                const Divider(),
                                 Padding(
                                   padding: const EdgeInsets.all(5.0),
                                   child: CarouselSlider(
@@ -208,13 +208,13 @@ class _HomeState extends State<Home> {
 
   
 
-  Drawer MyDrawer(BuildContext context) {
+  Drawer myDrawer(BuildContext context) {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.background,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          Container(
+          SizedBox(
             height: 250,
             child: DrawerHeader(
               child: Column(
@@ -241,7 +241,7 @@ class _HomeState extends State<Home> {
                                       width: MediaQuery.of(context).size.width,
                                       height:
                                           MediaQuery.of(context).size.height,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
                                               "assets/images/logo/GR_Logo.png"), // Profil fotoğrafı
@@ -269,7 +269,7 @@ class _HomeState extends State<Home> {
                                 width: 4, // Border genişliği
                               ),
                             ),
-                            child: CircleAvatar(
+                            child: const CircleAvatar(
                               radius: 45,
                               backgroundImage:
                                   AssetImage("assets/images/logo/GR_Logo.png"),
@@ -279,8 +279,8 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
+                  const Padding(
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       "Name",
                       style: TextStyle(
@@ -307,78 +307,76 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: <Widget>[
-                    ListTileItem(
-                      context,
-                      AppLocalizations.of(context).getTranslate("settings"),
-                      '/SettingsScreen',
-                      Icons.settings,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: <Widget>[
+                  listTileItem(
+                    context,
+                    AppLocalizations.of(context).getTranslate("settings"),
+                    '/SettingsScreen',
+                    Icons.settings,
+                  ),
+                  listTileItem(
+                    context,
+                    AppLocalizations.of(context).getTranslate("vip_traveler"),
+                    '/VipGezginInfo',
+                    Icons.star,
+                  ),
+                  listTileItem(
+                    context,
+                    "Ürünler",
+                    //AppLocalizations.of(context).getTranslate("products"),
+                    '/Products',
+                    Icons.shopping_cart,
+                  ),
+                  listTileItem(
+                    context,
+                    AppLocalizations.of(context).getTranslate("log_out"),
+                    '/LogIn',
+                    Icons.logout,
+                  ),
+                ],
+              ),
+              Container(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Icon(Icons.help),
                     ),
-                    ListTileItem(
-                      context,
-                      AppLocalizations.of(context).getTranslate("vip_traveler"),
-                      '/VipGezginInfo',
-                      Icons.star,
-                    ),
-                    ListTileItem(
-                      context,
-                      "Ürünler",
-                      //AppLocalizations.of(context).getTranslate("products"),
-                      '/Products',
-                      Icons.shopping_cart,
-                    ),
-                    ListTileItem(
-                      context,
-                      AppLocalizations.of(context).getTranslate("log_out"),
-                      '/LogIn',
-                      Icons.logout,
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Column(
+                            children: [
+                              Text(AppLocalizations.of(context)
+                                  .getTranslate("having_trouble")),
+                              InkWell(
+                                onTap: () {
+                                  context.push('/ChatBot');
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .getTranslate("help_for_you"),
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Icon(Icons.help),
-                      ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Column(
-                              children: [
-                                Text(AppLocalizations.of(context)
-                                    .getTranslate("having_trouble")),
-                                InkWell(
-                                  onTap: () {
-                                    context.push('/ChatBot');
-                                  },
-                                  child: Text(
-                                    AppLocalizations.of(context)
-                                        .getTranslate("help_for_you"),
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -554,7 +552,7 @@ class _WeatherBoxState extends State<WeatherBox> {
   @override
   void initState() {
     super.initState();
-    final apiKey = '2a209ebdc173950d2a371516a733bc95';
+    const apiKey = '2a209ebdc173950d2a371516a733bc95';
     final weatherAPI = WeatherAPI(apiKey);
     _weatherFuture = weatherAPI.getWeather('İstanbul');
   }
@@ -565,7 +563,7 @@ class _WeatherBoxState extends State<WeatherBox> {
       future: _weatherFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         } else if (snapshot.hasError) {
           return Text('Hata: ${snapshot.error}');
         } else {
@@ -588,7 +586,7 @@ class _WeatherBoxState extends State<WeatherBox> {
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   topLeft: Radius.circular(10),
                 ),
@@ -605,63 +603,59 @@ class _WeatherBoxState extends State<WeatherBox> {
               ),
             ),
             Expanded(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Container(
-                        child: Text(
-                          '${weatherData['name']}',
-                          style: TextStyle(fontSize: 20),
-                        ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      '${weatherData['name']}',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 65,
+                    width: double.infinity,
+                    child: Text(
+                      '${weatherData['main']['temp']}°C',
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).secondaryHeaderColor,
+                      borderRadius: const BorderRadius.only(
+                        bottomRight: Radius.circular(10),
                       ),
                     ),
-                    Container(
-                      height: 65,
-                      width: double.infinity,
-                      child: Text(
-                        '${weatherData['main']['temp']}°C',
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).secondaryHeaderColor,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(10),
+                    height: 65,
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        WeatherInfo(
+                          icon: Icons.water_drop_outlined,
+                          labelText: AppLocalizations.of(context)
+                              .getTranslate("humidty"),
+                          valueText: '${weatherData['main']['humidity']}%',
                         ),
-                      ),
-                      height: 65,
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          WeatherInfo(
-                            icon: Icons.water_drop_outlined,
-                            labelText: AppLocalizations.of(context)
-                                .getTranslate("humidty"),
-                            valueText: '${weatherData['main']['humidity']}%',
-                          ),
-                          WeatherInfo(
-                            icon: Icons.air,
-                            labelText: AppLocalizations.of(context)
-                                .getTranslate("wind"),
-                            valueText: '${weatherData['wind']['speed']}km/h',
-                          ),
-                          WeatherInfo(
-                            icon: Icons.umbrella,
-                            labelText: AppLocalizations.of(context)
-                                .getTranslate("rainfall"),
-                            valueText: '${weatherData['rain'] != null ? weatherData['rain']['1h'].toString() + 'mm' : '0mm'}',
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                        WeatherInfo(
+                          icon: Icons.air,
+                          labelText: AppLocalizations.of(context)
+                              .getTranslate("wind"),
+                          valueText: '${weatherData['wind']['speed']}km/h',
+                        ),
+                        WeatherInfo(
+                          icon: Icons.umbrella,
+                          labelText: AppLocalizations.of(context)
+                              .getTranslate("rainfall"),
+                          valueText: weatherData['rain'] != null ? '${weatherData['rain']['1h']}mm' : '0mm',
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           ],
@@ -693,12 +687,12 @@ class WeatherInfo extends StatelessWidget {
           children: [
             Icon(icon),
             Container(
-              constraints: BoxConstraints(maxWidth: 50),
+              constraints: const BoxConstraints(maxWidth: 50),
               child: Text(
                 labelText,
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: 14),
               ),
             ),
           ],
@@ -707,7 +701,7 @@ class WeatherInfo extends StatelessWidget {
           padding: const EdgeInsets.all(5.0),
           child: Text(
             valueText,
-            style: TextStyle(fontSize: 14),
+            style: const TextStyle(fontSize: 14),
           ),
         ),
       ],
@@ -715,7 +709,7 @@ class WeatherInfo extends StatelessWidget {
   }
 }
 
-Widget ListTileItem(BuildContext context, String name, String screen,
+Widget listTileItem(BuildContext context, String name, String screen,
     IconData iconData) {
   return BlocBuilder<ClientCubit, ClientState>(
     builder: (context, state) {
@@ -724,37 +718,35 @@ Widget ListTileItem(BuildContext context, String name, String screen,
       return Padding(
         padding: const EdgeInsets.all(4.0),
         child: ClipRRect(
-          child: Container(
-            child: InkWell(
-              onTap: () {
-                context.push(screen);
-              },
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Icon(
-                        iconData,
-                        //color: ,
-                        size: 25,
-                      ),
+          child: InkWell(
+            onTap: () {
+              context.push(screen);
+            },
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Icon(
+                      iconData,
+                      //color: ,
+                      size: 25,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(
-                        name,
-                        style: TextStyle(
-                            color: isDarkMode ? Colors.white : Colors.black87,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15,
-                            fontFamily: ('Poppins')),
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      name,
+                      style: TextStyle(
+                          color: isDarkMode ? Colors.white : Colors.black87,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15,
+                          fontFamily: ('Poppins')),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

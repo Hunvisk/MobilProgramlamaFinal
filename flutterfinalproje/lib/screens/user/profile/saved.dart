@@ -1,40 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../bloc/saved_places/saved_places_cubit.dart';
+import '../../../bloc/saved_routes/saved_routes_cubit.dart';
 import '../../../core/localizations.dart';
 import '../../../widgets/myappbar.dart';
 
 class SavedScreen extends StatefulWidget {
   const SavedScreen({super.key});
-  
 
   @override
   State<SavedScreen> createState() => _SavedScreenState();
 }
 
 class _SavedScreenState extends State<SavedScreen> {
-  
+  late SavedPlacesCubit savedPlacesCubit;
+  late SavedRoutesCubit savedRoutesCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    savedPlacesCubit = context.read<SavedPlacesCubit>();
+    savedRoutesCubit = context.read<SavedRoutesCubit>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
         title: AppLocalizations.of(context).getTranslate("saved"),
       ),
-      body: const Expanded(
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<SavedPlacesCubit, SavedPlacesState>(
+            listener: (context, state) {},
+          ),
+          BlocListener<SavedRoutesCubit, SavedRoutesState>(
+            listener: (context, state) {},
+          ),
+        ],
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SavedBox(
+              const SavedBox(
                 path: "/PlaceToVisit",
                 title: "place_to_visit",
               ),
-              SavedBox(
-                path: "/SavedPlaces",
-                title: "savedPlaces",
-              ),
-              SavedBox(
-                path: "/SavedRoutes",
-                title: "savedRoutes",
+              BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+                builder: (context, savedPlacesState) {
+                  return BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
+                    builder: (context, savedRoutesState) {
+                      return Column(
+                        children: [
+                          SavedBox(
+                            path: "/SavedPlaces",
+                            title: "savedPlaces",
+                            backgroundImage: savedPlacesState.savedPlaces.isNotEmpty
+                                ? savedPlacesState.savedPlaces[0]["images"][0].toString()
+                                : null,
+                          ),
+                          SavedBox(
+                            path: "/SavedRoutes",
+                            title: "savedRoutes",
+                            backgroundImage: savedRoutesState.savedRoutes.isNotEmpty
+                                ? savedRoutesState.savedRoutes[0]["imagePath"].toString()
+                                : null,
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
@@ -49,10 +86,12 @@ class SavedBox extends StatelessWidget {
     super.key,
     required this.path,
     required this.title,
+    this.backgroundImage,
   });
 
   final String path;
   final String title;
+  final String? backgroundImage;
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +103,16 @@ class SavedBox extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Theme.of(context).secondaryHeaderColor,
-            borderRadius: BorderRadius.circular(10)
+            image: backgroundImage != null
+                ? DecorationImage(
+                    image: AssetImage(backgroundImage!),
+                    fit: BoxFit.cover,
+                  )
+                : null,
+            color: backgroundImage == null
+                ? Theme.of(context).secondaryHeaderColor
+                : null,
+            borderRadius: BorderRadius.circular(10),
           ),
           height: 175,
           child: Column(
@@ -73,43 +120,24 @@ class SavedBox extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      color: Colors.amber,
-                      height: 100,
-                      width: 85,
+                child: Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Container(
-                      color: Colors.green,
-                      height: 100,
-                      width: 85,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        AppLocalizations.of(context).getTranslate(title),
+                        style: const TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
                     ),
-                    Container(
-                      color: Colors.purple,
-                      height: 100,
-                      width: 85,
-                    ),
-                    Container(
-                      color: Colors.red,
-                      height: 100,
-                      width: 85,
-                    ),
-                  ],
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Center(
-                  child: Text(
-                    AppLocalizations.of(context).getTranslate(title),
-                    style: const TextStyle(
-                      fontSize: 25,
-                    ),
-                  )
-                ),
-              )
             ],
           ),
         ),
@@ -117,4 +145,3 @@ class SavedBox extends StatelessWidget {
     );
   }
 }
-

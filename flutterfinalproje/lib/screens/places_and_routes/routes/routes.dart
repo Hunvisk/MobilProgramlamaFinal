@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfinalproje/bloc/saved_routes/saved_routes_cubit.dart';
 import 'package:gap/gap.dart';
@@ -16,44 +19,7 @@ class RoutesScreen extends StatefulWidget {
 
 class _RoutesScreenState extends State<RoutesScreen> {
   bool isSearching = false;
-  var routes = [
-    {
-      "id": 1,
-      "imagePath": "assets/images/routes/eminonu.jpeg",
-      "title": "Eminönü",
-      "stop": "7",
-      "rating": "5.0",
-      "views": "4321",
-      "comments": "234"
-    },
-    {
-      "id": 2,
-      "imagePath": "assets/images/routes/sariyer.jpeg",
-      "title": "Sarıyer",
-      "stop": "11",
-      "rating": "7.0",
-      "views": "3895",
-      "comments": "554"
-    },
-    {
-      "id": 3,
-      "imagePath": "assets/images/routes/camlica.jpeg",
-      "title": "Çamlıca",
-      "stop": "6",
-      "rating": "6.5",
-      "views": "3621",
-      "comments": "145"
-    },
-    {
-      "id": 4,
-      "imagePath": "assets/images/routes/ortakoy.jpeg",
-      "title": "OrtaKöy",
-      "stop": "8",
-      "rating": "8.0",
-      "views": "4520",
-      "comments": "563"
-    },
-  ];
+  late List<dynamic> routes = [];
 
   late SavedRoutesCubit savedRoutesCubit;
 
@@ -61,13 +27,26 @@ class _RoutesScreenState extends State<RoutesScreen> {
   void initState() {
     super.initState();
     savedRoutesCubit = context.read<SavedRoutesCubit>();
+    loadRoutes();
   }
+
+  Future<void> loadRoutes() async {
+    // JSON dosyasını oku
+    String jsonString = await rootBundle.loadString('assets/data/routes.json');
+    // JSON verisini parse et
+    List<dynamic> jsonList = json.decode(jsonString);
+    // State'i güncelle ve verileri atama
+    setState(() {
+      routes = jsonList;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBarWithSearchIcon(
-          title: AppLocalizations.of(context).getTranslate("places"),
+          title: AppLocalizations.of(context).getTranslate("routes"),
           icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {

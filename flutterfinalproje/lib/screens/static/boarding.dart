@@ -1,4 +1,5 @@
-// ignore_for_file: use_build_context_synchronously, sized_box_for_whitespace, prefer_const_constructors, use_key_in_widget_constructors, unnecessary_string_escapes
+
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import '../../core/localizations.dart';
 import '../../core/storage.dart';
 
 class BoardingScreen extends StatefulWidget {
-  const BoardingScreen({Key? key});
+  const BoardingScreen({Key? key}) : super(key: key);
 
   @override
   State<BoardingScreen> createState() => _BoardingScreenState();
@@ -36,21 +37,21 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 },
                 children: [
                   BoardingItem(
-                      image: AssetImage(
+                      image: const AssetImage(
                           'assets/images/boarding/boarding-1.jpg'), 
                       title: AppLocalizations.of(context)
                           .getTranslate("boarding_title-1"),
                       description: AppLocalizations.of(context)
                           .getTranslate("boarding_description-1")),
                   BoardingItem(
-                      image: AssetImage(
+                      image: const AssetImage(
                           'assets/images/boarding/boarding-2.jpg'), 
                       title: AppLocalizations.of(context)
                           .getTranslate("boarding_title-2"),
                       description: AppLocalizations.of(context)
                           .getTranslate("boarding_description-2")),
                   BoardingItem(
-                    image: AssetImage(
+                    image: const AssetImage(
                         'assets/images/boarding/boarding-3.jpg'), 
                     title: AppLocalizations.of(context)
                         .getTranslate("boarding_title-3"),
@@ -58,7 +59,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                         .getTranslate("boarding_description-3"),
                   ),
                   BoardingItem(
-                    image: AssetImage(
+                    image: const AssetImage(
                         'assets/images/boarding/boarding-4.jpg'), 
                     title: AppLocalizations.of(context)
                         .getTranslate("boarding_title-4"),
@@ -66,7 +67,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                         .getTranslate("boarding_description-4"),
                   ),
                   BoardingItem(
-                      image: AssetImage(
+                      image: const AssetImage(
                           'assets/images/logo/GR_Logo.png'), 
                       title: AppLocalizations.of(context)
                           .getTranslate("boarding_title-5"),
@@ -75,7 +76,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 ],
               ),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
               height: 70,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 28.0),
