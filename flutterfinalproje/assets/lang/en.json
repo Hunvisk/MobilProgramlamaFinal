@@ -197,7 +197,6 @@
     "forever_denied_authority": "Forever Denied Authority",
     "provisional": "Provisional",
     "unknown_status": "Unknown Status",
-    "request_authorization": "Request Authorization",
 
     "user_message": "How can I change my password?",
     "chatbot_message": "To change your password, log in to your account, then go to account settings or your profile page. You can update your password from there.",
@@ -209,5 +208,54 @@
     "chatbot_message2": "To subscribe, click on the subscribe button on the VIP Traveler page and follow the subscription process.",
     
     "user_message3": "What features can I use after subscribing?",
-    "chatbot_message3": "After subscribing, you can enjoy many advantages. I recommend checking out the VIP Traveler page to learn more in detail."
+    "chatbot_message3": "After subscribing, you can enjoy many advantages. I recommend checking out the VIP Traveler page to learn more in detail.",
+    "request_authorization": "Request Authorization" ,
+    
+    "hagia_sophia": "Hagia Sophia",
+    "hagia_sophia_description": "Hagia Sophia, formerly known as the Church of Holy Wisdom and the Hagia Sophia Museum or now officially known as Hagia Sophia-i Kebîr Câmi-i Şerîfi (Holy Great Hagia Sophia Mosque), is a mosque and former basilica, cathedral and museum in Istanbul.",
+    "hagia_sophia_description1": "It was a basilica-planned patriarchal cathedral built by the Byzantine Emperor Justinian I between 532-537 in the old city center on the historical peninsula of Istanbul. ",
+    "hagia_sophia_description2": "In 1453, after the conquest of Istanbul by the Ottomans, it was converted into a mosque by Mehmed II.",
+    "hagia_sophia_description3": "It was taken into renovation work with the decree issued by Mustafa Kemal Atatürk in 1934, it was decided to be converted into a museum with the decision of the Council of Ministers in 1935, it was converted into a museum, excavation and renovation works were started and it served as a museum from 1935 to 2020. ",
+    "hagia_sophia_description4": "In 2020, the museum status was canceled and the mosque status was given.",
+
+    "monastery_of_st_yorgi": "Monastery of St. Yorgi",
+    "monastery_of_st_yorgi_description": "Aya Yorgi Monastery is a monastery in Büyükada.",
+    "monastery_of_st_yorgi_description1": "According to the information obtained from the Patriarchate records, the Monastery of Aya Yorgi was built in 1751. The small church, chapel and place of prayer built on this date is known as the old church and is a small two-story, tile-covered building. The church on the hill behind the bell tower, built of cut stone, is the new Aya Yorgi Church, built in 1905 and opened in 1909.",
+
+    "haseki_hamam": "Haseki Hamam",
+    "haseki_hamam_description": "Haseki Hamam is a historical Turkish bath located between Hagia Sophia and Blue Mosque in Istanbul. The bath was built by Hürrem Sultan, wife of Suleiman I, between 1556-1557 by Mimar Sinan. The ruins of the Zeuksippos Baths were previously located where the bath was built.",
+    "haseki_hamam_description1": "Used until 1910, the bathhouse remained closed for many years. From time to time it was used as a prison, paper warehouse and gasoline depot. Repaired in 1957-1958, the bathhouse was used as a carpet sales store in 2008.",
+    "haseki_hamam_description2": "The building in the style of classical period Ottoman baths is in the form of a double bath and is 75 meters long. In this bath, the women's and men's sections were built on the same axis for the first time as an innovation in Turkish bath architecture.",
+
+    "st_mahmut_hudayi_mosque": "St. Mahmut Hudayi Mosque",
+    "st_mahmut_hudayi_mosque_description": "Aziz Mahmud Hüdayi Mosque is a historical mosque from the Ottoman Period, located in the Aziz Mahmud Hüdayi Neighborhood of Üsküdar district of Istanbul. It was built by Asiye Humaşah Sultan, the granddaughter of Suleiman the Magnificent, on behalf of her third husband Aziz Mahmud Hüdayi. The construction of the mosque started in 1589 and it was opened for worship in 1595 after 6 years of construction. The mosque architecturally reflects the Ottoman inspirations.",
+    "st_mahmut_hudayi_mosque_description1": "The mosque, which was dilapidated over time, was repaired by Sultan Abdülmecid in 1855. Later in 1910, the minaret, which collapsed as a result of a lightning strike, was repaired. In 1912, it was renovated under the leadership of Princess Fatma, daughter of Khedive Ismail Pasha, and in 1975 under the leadership of the General Directorate of Foundations. The mosque is currently undergoing a comprehensive renovation.",
+    "st_mahmut_hudayi_mosque_description2": "It was originally built as a tekke. Later, a mosque, imaret, tomb, library, hünkâr mahfeli, fountain, dervish cells, sheikh's house, bakery and bathhouse were built. The area where the mosque is located was known as Gülfem Hatun Neighborhood until 2008. The mosque is very close to the Ahmet Çelebi Mosque, one of the Bektâşî sects of Alevis. The founder of the masjid, Aziz Mahmud Hüdayi, who was of Alevi-Bektâşî and Turkmen origin, is buried in his tomb and Bektâşî Turkmen tekke in the garden of the complex.",
+
+    "anadolu_hisari": "Anadolu Hisari",
+    "anadolu_hisari_mosque_description": "Anadolu Hisarı, also known as Anadolu Hisarı Castle or Güzelce Hisarı, is an Ottoman castle located in the Anadoluhisarı neighborhood of the Beykoz district of Istanbul, where the Göksu Stream flows into the Bosphorus.",
+    "anadolu_hisari_mosque_description1": "The Anatolian fortress was built on an area of 7,000 square meters, 660 meters from the narrowest point of the Bosphorus, in 1395 by Yildirim Bayezid.",
+    "anadolu_hisari_mosque_description2": "Anadolu Hisarı consists of the inner and outer castles and the walls of these castles. The inner castle is a rectangular four-storey tower. When it was first built, since it did not have an entrance gate, the tower was entered from a suspension bridge extending to the inner castle walls. The upper floors were accessed by wooden stairs from inside.",
+    "anadolu_hisari_mosque_description3": "The inner fortress walls connect the northeast and northwest corners of the outer fortress. These walls are three meters thick. There are many arches on the outer fortress walls that join the inner walls and three towers built to protect the walls. The walls of the main castle extend 65 meters in the east-west direction and 80 meters in the north-south direction. The thickness of the walls is 2.5 meters. There are culverts on the outer walls where cannons were placed. Block stones filled with mortar were used in the main castle and inner walls of Anadolu Hisarı.",
+
+    "german_fountain": "German Fountain",
+    "german_fountain_description": "The German Fountain is a fountain located in Sultanahmet Square in Istanbul, opposite the Tomb of Sultan Ahmed I. It is a gift of the German Emperor Wilhelm II to Sultan Abdülhamid II and Istanbul. It was made in Germany and installed in its place in Istanbul. It is a fountain in Neo-Byzantine style; it is decorated with gold mosaic from the inside.",
+
+    "aya_triada_greek_orthodox_church": "Aya Triada Greek Orthodox Church",
+    "aya_triada_greek_orthodox_church_description": "Hagia Triada is a Greek Orthodox church in Beyoğlu, Istanbul. Located southwest of Taksim Square at the intersection of Meşelik Street, İstiklal Street and Sıraselviler Street, the church is one of the largest Greek Orthodox temples in Istanbul. It is still actively used by the Greek community.",
+    "aya_triada_greek_orthodox_church_description1": "On the land where the church is located, there was previously an old Greek Orthodox cemetery and a wooden church attributed to Aya Yorgi. It was decided to demolish the church together with the cemetery and replace it with a more magnificent church on the grounds that it could not meet the needs of the Greek Orthodox community of the time. Based on the drawings of the Greek architect Potesaros, Vasilakis Ioannidis Efendi continued the construction of the building, and with the permission granted during the reign of Sultan Abdülaziz, the foundations were laid on August 13, 1876 and the building was officially inaugurated on Sunday, September 14, 1880, which coincided with the Feast of the Cross. The cemetery was transferred to the Pangaltı neighborhood in 1876.",
+
+    "ahmet_III_fountain": "Ahmet III Fountain",
+    "ahmet_III_fountain_description": "Ahmet III Fountain is a fountain built by Ahmed III at the suggestion of Nevşehirli Damat İbrahim Pasha between the entrance gate of Topkapı Palace and Hagia Sophia in Istanbul, replacing a Byzantine fountain named Perayton. The fountain, one of the most beautiful examples of Turkish rococo style, was built in 1728. It was built by the architect Ahmet Aga.",
+    "ahmet_III_fountain_description1": "The fountain has a rectangular plan with softened corners. The fountain with fountains at the corners is covered with a roof with wooden eaves. The domes that can be seen from the outside on the upper cover were made only for appearance purposes. A fourteen stanza ode by the poet Seyyit Hüseyin Vehbi bin Ahmet, the qadi of Kayseri and Aleppo, was written in ta'lik calligraphy on the fountains and the fountains on each side. There is a muqarnas band at the top and a tile band above it. These tiles contain both classical motifs and European motifs such as tulips and acanthus leaves. The floral motifs in the vase began to be seen in Ottoman decoration with westernization. The library of Ahmed III also has decorations similar to those in this fountain.",
+
+    "adile_sultan_pavilion": "Adile Sultan Pavilion",
+    "adile_sultan_pavilion_description": "Adile Sultan Pavilion (Validebağ Pavilion or Validebağ Palace) is a historical building located in Validebağ Grove in Üsküdar district of Istanbul.",
+    "adile_sultan_pavilion_description1": "Built by the Ottoman sultan Sultan Abdülaziz, the palace was gifted to the sultan's younger sister Adile Sultan as a summer palace in 1863. Its architect is thought to be Nigoğos Balyan. It was used as a children's preventorium from the first years of the Republic; today it is used as a teacher's house.",
+    "adile_sultan_pavilion_description2": "Since the first movie series of the Hababam Class were shot here in the 1970s, it is important for the history of Turkish cinema. One of its rooms was organized as the Hababam Class Museum in 2014.",
+
+    "ataturk_arboretum": "Ataturk Arboretum",
+    "ataturk_arboretum_description": "Atatürk Arboretum is a large green area where trees and woody plants are exhibited in the Sarıyer district of Istanbul, on the Kemerburgaz-Bahçeköy road.",
+    "ataturk_arboretum_description1": "Established in the natural vegetation of the Belgrade Forest, the arboretum is a management chiefdom under the Bahçeköy Forest Management Directorate within the Istanbul Regional Directorate of Forestry, owned and financed by the General Directorate of Forestry.",
+    "ataturk_arboretum_description2": "In 1949, Hayrettin Kayacık, a faculty member at the Faculty of Forestry, suggested to the General Directorate of Forestry that an arboretum be established on a 38-hectare area near the Büyükdere-Bahçeköy-Kemerburgaz asphalt. Camille Guine, one of the inspectors of the Botanical Garden of Sorbon University, was invited to Istanbul to prepare the project of the arboretum. The project work, which lasted between 1959 and 1961, was left unfinished due to lack of funds, but the infrastructure and planting work continued until 1982. In 1982, the Arboretum was renamed Atatürk Arboretum due to the celebrations of Atatürk's 100th birth anniversary and gained the status of the Ministry of Forestry Management Directorate."
 }

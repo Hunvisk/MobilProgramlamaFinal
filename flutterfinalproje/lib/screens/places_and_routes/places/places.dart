@@ -1,6 +1,7 @@
-
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfinalproje/bloc/saved_places/saved_places_cubit.dart';
 import 'package:gap/gap.dart';
@@ -19,32 +20,8 @@ class PlacesScreen extends StatefulWidget {
 
 class _PlacesScreenState extends State<PlacesScreen> {
   bool isSearching = false;
-  var places = [
-    {
-      "id": 1,
-      "imagePath": "assets/images/places/galata.jpg",
-      "title": "Galata Kulesi",
-      "rating": "8.5",
-      "views": "1500",
-      "comments": "45",
-    },
-    {
-      "id": 2,
-      "imagePath": "assets/images/places/kız.png",
-      "title": "Kız Kulesi",
-      "rating": "9.0",
-      "views": "2000",
-      "comments": "60",
-    },
-    {
-      "id": 3,
-      "imagePath": "assets/images/places/dolmabahçe.jpg",
-      "title": "Dolmabahçe Sarayı",
-      "rating": "4.0",
-      "views": "3000",
-      "comments": "45",
-    },
-  ];
+  late List<dynamic> places = [];
+  
 
   late SavedPlacesCubit savedPlacesCubit;
 
@@ -52,6 +29,18 @@ class _PlacesScreenState extends State<PlacesScreen> {
   void initState() {
     super.initState();
     savedPlacesCubit = context.read<SavedPlacesCubit>();
+    loadPlaces();
+  }
+
+  Future<void> loadPlaces() async {
+    // JSON dosyasını oku
+    String jsonString = await rootBundle.loadString('assets/data/places.json');
+    // JSON verisini parse et
+    List<dynamic> jsonList = json.decode(jsonString);
+    // State'i güncelle ve verileri atama
+    setState(() {
+      places = jsonList;
+    });
   }
 
   @override
@@ -79,12 +68,13 @@ class _PlacesScreenState extends State<PlacesScreen> {
                       padding: const EdgeInsets.all(10.0),
                       child: GestureDetector(
                         onTap: () {
-                          context.push("/SelectedPlaces");
+                          context.push(
+                            "/SelectedPlaces", extra: places[index]);
                         },
                         child: placesContainerDesign(
                           context,
                           places[index]["id"] as int,
-                          places[index]["imagePath"].toString(), 
+                          places[index]["images"][0].toString(), 
                           places[index]["title"].toString(), 
                           places[index]["rating"].toString(), 
                           places[index]["views"].toString(), 
@@ -133,7 +123,7 @@ class _PlacesScreenState extends State<PlacesScreen> {
                 children: [
                   Expanded(
                     child: Text(
-                      title,
+                      AppLocalizations.of(context).getTranslate(title),
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                       style: const TextStyle(

@@ -208,6 +208,53 @@
     "chatbot_message2":"Abone olmak için VIP Gezgin ol sayfasındaki abone ol butonuna tıklayarak abone olma işlemlerini sürdürebilirsiniz.",
     
     "user_message3":"Abone olduktan sonra hangi özellikleri kullanabilirim ?",
-    "chatbot_message3": "Abone olduktan sonra birçok avantajdan faydalanabilirsiniz, detaylıca öğrenmek için VIP Gezgin sayfasına göz atmanızı tavsiye ederim. "
+    "chatbot_message3": "Abone olduktan sonra birçok avantajdan faydalanabilirsiniz, detaylıca öğrenmek için VIP Gezgin sayfasına göz atmanızı tavsiye ederim. ",
 
+    "hagia_sophia": "Ayasofya",
+    "hagia_sophia_description": "Ayasofya, eski adıyla Kutsal Bilgelik Kilisesi ve Ayasofya Müzesi veya günümüzdeki resmî adıyla Ayasofya-i Kebîr Câmi-i Şerîfi (Kutsal Büyük Ayasofya Camii), İstanbul'da yer alan bir cami ve eski bazilika, katedral ve müzedir.",
+    "hagia_sophia_description1": "Bizans İmparatoru I. Justinianus tarafından, 532-537 yılları arasında İstanbul'un tarihî yarımadasındaki eski şehir merkezine inşa ettirilmiş bazilika planlı bir patrik katedrali olmuştur.",
+    "hagia_sophia_description2": "1453 yılında İstanbul'un Osmanlılar tarafından fethedilmesinden sonra II. Mehmed tarafından camiye dönüştürülmüştür. ",
+    "hagia_sophia_description3": "Mustafa Kemal Atatürk tarafından 1934 yılında yayımlanan kararname ile tadilat çalışmasına alınmış, 1935 yılında bakanlar kurulu kararı ile müzeye dönüştürülme kararı alınıp müzeye dönüştürülmüş, kazı ve tadilat çalışmaları başlatılmış ve 1935'ten 2020'ye kadar müze olarak hizmet vermiştir.",
+    "hagia_sophia_description4": "2020 yılında ise müze statüsü iptal edilerek cami statüsü verilmiştir.",
+
+    "monastery_of_st_yorgi": "Aya Yorgi Manastırı",
+    "monastery_of_st_yorgi_description": "Aya Yorgi Manastırı, Büyükada'da yer alan manastır.",
+    "monastery_of_st_yorgi_description1": "Patrikhane kayıtlarından elde edilen bilgilere göre Aya Yorgi Manastırı'nın inşa ediliş tarihi 1751'dir. Bu tarihte inşa edilmiş olan küçük kilise, şapel ve dua yeri eski kilise olarak bilinir ve iki katlı, kiremit örtülü küçük bir yapıdır. Tepede çan kulesinin arkasındaki kesme taştan yapılmış olan kilise ise yeni Aya Yorgi Kilisesi'dir ve 1905 yılında inşa edilmiş, 1909 yılında kullanıma açılmıştır.",
+
+    "haseki_hamam": "Haseki Hamamı",
+    "haseki_hamam_description": "Haseki Hamamı, İstanbul'da Ayasofya ile Sultanahmet Camii arasında yer alan tarihi Türk hamamı. Hamam, I. Süleyman'ın eşi Hürrem Sultan tarafından, 1556-1557 yılları arasında, Mimar Sinan'a yaptırılmıştır. Hamamın inşa edildiği yerde daha öncesinde Zeuksippos Banyoları'nın harabeleri bulunmaktaydı.",
+    "haseki_hamam_description1": "1910 yılına kadar kullanılan hamam, uzun yıllar kapalı kalmıştır. Zaman zaman cezaevi, kâğıt deposu ve benzin deposu olarak kullanılmıştır. 1957 – 1958 yıllarında onarılan hamam, 2008 halı satış mağazası olarak kullanılmıştır.",
+    "haseki_hamam_description2": "Klasik devir Osmanlı hamamları üslubundaki yapı, çifte hamam şeklinde ve 75 m uzunluğundadır. Bu hamamda, Türk hamam mimarisinde bir yenilik olmak üzere ilk defa kadınlar ve erkekler kısmı aynı eksen üzerinde yapılmıştır.",
+
+    "st_mahmut_hudayi_mosque": "Aziz Mahmut Hudayi Camii",
+    "st_mahmut_hudayi_mosque_description": "Aziz Mahmud Hüdayi Camii, İstanbul'un Üsküdar ilçesinin Aziz Mahmud Hüdayi Mahallesi'nde yer alan, Osmanlı Dönemi'nden kalma tarihi bir camidir. Kanuni Sultan Süleyman'ın torunu olan Asiye Hümaşah Sultan tarafından, üçüncü eşi Aziz Mahmud Hüdayi adına yaptırılmıştır. Yapımına 1589 yılında başlanan cami, 6 yıllık inşaat sürecinden sonra 1595 yılında ibadete açılmıştır. Cami mimari olarak Osmanlı esintilerini yansıtmaktadır.",
+    "st_mahmut_hudayi_mosque_description1": "Zamanla harap olan cami, 1855 yılında Sultan Abdülmecid tarafından onarılmıştır. Daha sonra 1910 yılında yıldırım düşmesi sonucu yıkılan minaresi onarılmıştır. 1912 yılında Hıdiv İsmail Paşa'nın kızı Prenses Fatma öncülüğünde ve 1975 yılında Vakıflar Genel Müdürlüğü öncülüğünde tadilat geçirmiştir. Cami şu an kapsamlı bir onarım sürecinden geçmektedir.",
+    "st_mahmut_hudayi_mosque_description2": "Özgün planda bir tekke olarak inşa edilmiştir. Daha sonra camisi, imareti, türbesi, kütüphanesi, hünkâr mahfeli, çeşmesi, derviş hücreleri, şeyh evi, fırını ve hamamı yapılmıştır. Caminin bulunduğu bölge 2008 yılındaki düzenlemelere değin Gülfem Hatun Mahallesi olarak anılıyordu. Mescid, Alevîlerin Bektâşî tarikatlarından olan Ahmet Çelebi Camii'ye çok yakındır. Mescidin banisi, Alevî-Bektâşî ve Türkmen kökenli olan Aziz Mahmud Hüdayi, külliyenin bahçesindeki türbesi ve Bektâşî Türkmen tekkesi medfundur.",
+
+    "anadolu_hisari": "Anadolu Hisarı",
+    "anadolu_hisari_mosque_description": "Anadolu Hisarı, Anadolu Hisarı Kalesi veya diğer adıyla Güzelce Hisarı, İstanbul'un Beykoz ilçesinin Anadoluhisarı semtinde, Göksu Deresi'nin İstanbul Boğazı'na döküldüğü yerde yer alan bir Osmanlı kalesi.",
+    "anadolu_hisari_mosque_description1": "Anadolu hisarı, 7.000 metrekarelik bir alan üzerine, Boğazın en dar noktası olan 660 metre mesafedeki bölgesine 1395 yılında, Yıldırım Bayezid tarafından inşa edilmiştir.",
+    "anadolu_hisari_mosque_description2": "Anadolu Hisarı, iç ve dış kale ile bu kalelerin surlarından oluşur. İç kale, dikdörtgen biçimindeki dört katlı bir kuledir. İlk yapıldığında, bir giriş kapısı bulunmadığı için, kuleye iç kale surlarına uzanan bir asma köprüden giriliyordu. Üst katlarına da içerideki ahşap merdivenlerle çıkılıyordu.",
+    "anadolu_hisari_mosque_description3": "İç kale surları, dış kalenin kuzeydoğu ve kuzeybatı köşelerini birleştirir. Bu surlar üç metre kalınlığındadır. İç surlarla birleşen dış kale surlarının üzerinde birçok kemer ve surları korumak için yapılmış üç kule bulunur. Asıl kalenin surları doğu-batı yönünde 65 metre; kuzey-güney yönünde 80 metre boyunca uzanır. Surların kalınlığı 2.5 metredir. Dış surlarda topların yerleştirildiği menfezler bulunur. Anadolu Hisarı'nın asıl kalesinde ve iç surlarında, araları harçla doldurulmuş blok taşlar kullanılmıştır.",
+
+    "german_fountain": "Alman Çeşmesi",
+    "german_fountain_description": "Alman Çeşmesi, İstanbul'daki Sultanahmet Meydanı'nda, Sultan I. Ahmed Türbesi'nin karşısında yer alan çeşme. Alman İmparatoru II. Wilhelm'in Sultan II. Abdülhamid'e ve İstanbul'a hediyesidir. Almanya'da yapılıp İstanbul’daki yerine monte edilmiştir. Neo-Bizanten üslubunda bir çeşmedir; içeriden altın mozaikle süslüdür.",
+
+    "aya_triada_greek_orthodox_church": "Aya Triada Rum Ortodoks Kilisesi",
+    "aya_triada_greek_orthodox_church_description": "Aya Triada İstanbul, Beyoğlu'nda bulunan Rum Ortodoks kilisesidir. Taksim Meydanı'nın güneybatısında; Meşelik Sokağı, İstiklal Caddesi ve Sıraselviler Caddesi'nin kesişiminde bulunan kilise, İstanbul'daki en büyük Rum Ortodoks mabetlerinden biridir. Halen Rum cemaati tarafından aktif olarak kullanılmaktadır.",
+    "aya_triada_greek_orthodox_church_description1": "Kilisenin bulunduğu arazide daha önceleri eski bir Rum Ortodoks mezarlığı ve Aya Yorgi’ye atfedilmiş ahşap bir kilise bulunmaktaydı. Dönemin Rum Ortodoks cemaatinin ihtiyaçlarına karşılık veremediği gerekçesiyle kilisenin mezarlıkla birlikte yıkılıp yerine daha görkemli bir kilisenin yapılması kararlaştırıldı. Rum mimar Potesaros’un çizimlerine dayanarak Vasilakis İoannidis Efendi‘nin inşaatını sürdürdüğü binanın, Sultan Abdülaziz döneminde verilen izinle 13 Ağustos 1876’da temelleri atılmış ve Haç Yortusu'na denk gelen 14 Eylül 1880 Pazar gününde de resmi açılışı gerçekleştirilmiştir. Mezarlığın nakli, 1876 yılında Pangaltı semtine yapılmıştır.",
+
+    "ahmet_III_fountain": "III. Ahmed Çeşmesi",
+    "ahmet_III_fountain_description": "III. Ahmet Çeşmesi, İstanbul'da Topkapı Sarayı'nın giriş kapısı ile Ayasofya arasında Nevşehirli Damat İbrahim Paşa'nın önerisiyle III. Ahmed tarafından Perayton isimli bir Bizans çeşmesinin yerine inşa ettirilen çeşmedir. Türk rokoko tarzının en güzel örneklerinden olan çeşmenin yapım tarihi 1728'dir. Mimar Ahmet Ağa tarafından yapılmıştır.",
+    "ahmet_III_fountain_description1": "Çeşme köşeleri yumuşatılmış dikdörtgen bir plandadır. Köşelerde sebiller bulunan çeşme üzeri ahşap saçaklı bir çatı ile kapatılmıştır. Üst örtüde dıştan görülebilen kubbeler sadece görünüm amacı ile yapılmıştır. On dört kıtalık Kayseri ve Halep kadısı şair Seyyit Hüseyin Vehbi bin Ahmet'e ait kaside, sebillerin ve her kenarda bulunan çeşmelerin üzerine ta'lik hatla yazılmıştır. Üstte mukarnaslı bir kuşak, onun üzerinde de çini bir kuşak yer alır. Bu çiniler hem klasik motifleri hem de lale ve akantüs yaprakları gibi Avrupai motifleri ihtiva eder. Vazo içindeki çiçek motifleri batılılaşma ile Osmanlı bezemesinde görülmeye başlamıştır. III. Ahmed kütüphanesinde de bu çeşmedekine benzer süslemeler yer almaktadır.",
+
+    "adile_sultan_pavilion": "Adile Sultan Kasrı",
+    "adile_sultan_pavilion_description": "Adile Sultan Kasrı (Validebağ Kasrı veya Validebağ Sarayı), İstanbul'un Üsküdar ilçesinde, Validebağ Korusu içinde yer alan tarihi bina.",
+    "adile_sultan_pavilion_description1": "Osmanlı padişahı Sultan Abdülaziz tarafından yaptırılan saray, 1863'te padişahın küçük kız kardeşi Adile Sultan'a yazlık saray olarak hediye edilmiştir. Mimarının Nigoğos Balyan olduğu düşünülür. Cumhuriyetin ilk yıllarından itibaren çocuk preventoryumu olarak kullanılmıştır; günümüzde öğretmen evi olarak kullanılmaktadır.",
+    "adile_sultan_pavilion_description2": "1970'li yıllarda Hababam Sınıfı'nın ilk film serileri burada çekilmiş olduğundan Türk sinema tarihi açısından önem taşır. Odalarından biri, 2014 yılında Hababam Sınıfı Müzesi olarak düzenlenmiştir.",
+
+    "ataturk_arboretum": "Atatürk Arboretumu",
+    "ataturk_arboretum_description": "Atatürk Arboretumu, İstanbul'un Sarıyer ilçesinde, Kemerburgaz-Bahçeköy yolu üzerinde, ağaç ve odunsu bitkilerin sergilendiği geniş yeşillik alandır.",
+    "ataturk_arboretum_description1": "Belgrad Ormanı'nın doğal bitki örtüsü içinde kurulmuş olan arboretum, İstanbul Orman Bölge Müdürlüğü içerisindeki Bahçeköy Orman İşletme Müdürlüğü'ne bağlı bir işletme şefliğidir; mülkiyeti ve finansmanı Orman Genel Müdürlüğü'ne aittir.",
+    "ataturk_arboretum_description2": "1949'da Orman Fakültesi öğretim üyelerinden Hayrettin Kayacık'ın Orman Genel Müdürlüğü'ne önerisiyle Büyükdere-Bahçeköy-Kemerburgaz asfaltı kenarındaki 38 hektarlık bir alanda arboretum kurma çalışmaları başladı. Arboretumun projesini hazırlaması için Sorbon Üniversitesi Botanik Bahçesi enspektörlerinden Camille Guine İstanbul'a davet edildi. 1959-1961 arasında süren ancak süren proje çalışmaları ödenek yokluğu nedeniyle yarım kaldı ancak alt yapı ve dikim çalışmaları 1982 yılına kadar devam etti. 1982'de Atatürk'ün 100. doğum yılı kutlamaları nedeniyle Atatürk Arboretumu adını aldı ve Orman Bakanlığı İşletme Şefliği statüsü kazandı."
 }

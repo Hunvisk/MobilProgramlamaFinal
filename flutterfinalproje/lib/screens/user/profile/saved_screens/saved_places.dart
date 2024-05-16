@@ -43,7 +43,7 @@ class _SavedPlacesScreenState extends State<SavedPlacesScreen> {
                       child: placesContainerDesign(
                         context,
                         state.savedPlaces[index]["id"] as int,
-                        state.savedPlaces[index]["imagePath"].toString(), 
+                        state.savedPlaces[index]["images"][0].toString(), 
                         state.savedPlaces[index]["title"].toString(), 
                         state.savedPlaces[index]["rating"].toString(), 
                         state.savedPlaces[index]["views"].toString(), 

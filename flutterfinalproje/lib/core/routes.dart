@@ -351,7 +351,7 @@ final routes = GoRouter(
             ),
             GoRoute(
               path: '/SelectedPlaces',
-              builder: (context, state) => const SelectedPlaces(),
+              builder: (context, state) => SelectedPlaces(place: state.extra as Map<String, dynamic>,),
             ),
             GoRoute(
               path: '/TabletSelectedPlaces',

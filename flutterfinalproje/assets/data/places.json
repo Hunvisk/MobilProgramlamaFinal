@@ -1,26 +1,162 @@
 [
-    {
-        "id": 1,
-        "imagePath": "assets/images/places/galata.jpg",
-        "title": "Galata Kulesi",
-        "rating": "8.5",
-        "views": "1500",
-        "comments": "45"
-      },
-      {
-        "id": 2,
-        "imagePath": "assets/images/places/kız.png",
-        "title": "Kız Kulesi",
-        "rating": "9.0",
-        "views": "2000",
-        "comments": "60"
-      },
-      {
-        "id": 3,
-        "imagePath": "assets/images/places/dolmabahçe.jpg",
-        "title": "Dolmabahçe Sarayı",
-        "rating": "4.0",
-        "views": "3000",
-        "comments": "45"
-      }
+  {
+    "id": 1,
+    "title": "hagia_sophia",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "hagia_sophia_description",
+      "hagia_sophia_description1",
+      "hagia_sophia_description2",
+      "hagia_sophia_description3",
+      "hagia_sophia_description4"
+    ],
+    "images": [
+      "assets/images/places/ayasofya_camii.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "monastery_of_st_yorgi",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "monastery_of_st_yorgi_description",
+      "monastery_of_st_yorgi_description1"
+    ],
+    "images": [
+      "assets/images/places/monastery_of_st_yorgi.jpg",
+      "assets/images/places/monastery_of_st_yorgi1.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "haseki_hamam",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "haseki_hamam_description",
+      "haseki_hamam_description1",
+      "haseki_hamam_description2"
+    ],
+    "images": [
+      "assets/images/places/haseki_hamam.jpg",
+      "assets/images/places/haseki_hamam1.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "st_mahmut_hudayi_mosque",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "st_mahmut_hudayi_mosque_description",
+      "st_mahmut_hudayi_mosque_description1",
+      "st_mahmut_hudayi_mosque_description2"
+    ],
+    "images": [
+      "assets/images/places/st_mahmut_hudayi_mosque.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "anadolu_hisari",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "anadolu_hisari_mosque_description",
+      "anadolu_hisari_mosque_description1",
+      "anadolu_hisari_mosque_description2",
+      "anadolu_hisari_mosque_description3"
+    ],
+    "images": [
+      "assets/images/places/anadolu_hisari.jpg",
+      "assets/images/places/anadolu_hisari1.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "german_fountain",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "german_fountain_description"
+    ],
+    "images": [
+      "assets/images/places/german_fountain.jpg",
+      "assets/images/places/german_fountain1.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "aya_triada_greek_orthodox_church",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "aya_triada_greek_orthodox_church_description",
+      "aya_triada_greek_orthodox_church_description1"
+    ],
+    "images": [
+      "assets/images/places/aya_triada_greek_orthodox_church.jpg",
+      "assets/images/places/aya_triada_greek_orthodox_church1.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "ahmet_III_fountain",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "ahmet_III_fountain_description",
+      "ahmet_III_fountain_description1"
+    ],
+    "images": [
+      "assets/images/places/ahmet_III_fountain.jpeg",
+      "assets/images/places/ahmet_III_fountain1.jpg",
+      "assets/images/places/ahmet_III_fountain2.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "adile_sultan_pavilion",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "adile_sultan_pavilion_description",
+      "adile_sultan_pavilion_description1",
+      "adile_sultan_pavilion_description2"
+    ],
+    "images": [
+      "assets/images/places/adile_sultan_pavilion.jpg",
+      "assets/images/places/adile_sultan_pavilion1.jpg",
+      "assets/images/places/adile_sultan_pavilion2.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "ataturk_arboretum",
+    "rating": "7.5",
+    "views": "3280",
+    "comments": "37",
+    "description": [
+      "ataturk_arboretum_description",
+      "ataturk_arboretum_description1",
+      "ataturk_arboretum_description2"
+    ],
+    "images": [
+      "assets/images/places/ataturk_arboretum.jpg",
+      "assets/images/places/ataturk_arboretum1.jpg",
+      "assets/images/places/ataturk_arboretum2.jpeg",
+      "assets/images/places/ataturk_arboretum3.jpeg"
+    ]
+  }
 ]
