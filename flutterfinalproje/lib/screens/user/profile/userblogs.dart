@@ -13,6 +13,7 @@ import '../../../widgets/myappbar.dart';
 void main() {
   runApp(UserBlogs());
 }
+
 class UserBlogs extends StatefulWidget {
   const UserBlogs({Key? key}) : super(key: key);
 
@@ -22,36 +23,36 @@ class UserBlogs extends StatefulWidget {
 
 class _UserBlogState extends State<UserBlogs> {
   Screen device = Screen.mobile;
-  
+
   set isSearching(bool isSearching) {}
 
-   drawScreen(){
-     switch (device) {
+  drawScreen() {
+    switch (device) {
       case (Screen.mobile):
-       return   blogsScr();
+        return blogsScr();
       case (Screen.tablet):
-       return TabletUserBlogsScreen();
+        return TabletUserBlogsScreen();
       case (Screen.desktop):
-       return   DesktopUserBlogsScreen();
-     }
-   }
-
-   drawAppar() {
-  switch (device) {
-    case (Screen.mobile):
-      return MyAppBar(          
-        title: AppLocalizations.of(context).getTranslate("blogs"),
-      );
-    case (Screen.tablet):
-      return MyAppBar(          
-        title: AppLocalizations.of(context).getTranslate("blogs"),
-      );
-    case (Screen.desktop):
-      return MyAppBar(          
-        title: AppLocalizations.of(context).getTranslate("blogs"),
-      );
+        return DesktopUserBlogsScreen();
+    }
   }
-}
+
+  drawAppar() {
+    switch (device) {
+      case (Screen.mobile):
+        return MyAppBar(
+          title: AppLocalizations.of(context).getTranslate("blogs"),
+        );
+      case (Screen.tablet):
+        return MyAppBar(
+          title: AppLocalizations.of(context).getTranslate("blogs"),
+        );
+      case (Screen.desktop):
+        return MyAppBar(
+          title: AppLocalizations.of(context).getTranslate("blogs"),
+        );
+    }
+  }
 //drawBottom(){
 //     switch (device) {
 //      case (Screen.mobile):
@@ -66,8 +67,8 @@ class _UserBlogState extends State<UserBlogs> {
   @override
   Widget build(BuildContext context) {
     setState(() {
-        device = detectScreen(MediaQuery.of(context).size);
-      });
+      device = detectScreen(MediaQuery.of(context).size);
+    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -111,9 +112,8 @@ class blogsScr extends StatelessWidget {
                   right: 30, // İkinci resmin yatay konumu
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).secondaryHeaderColor
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Theme.of(context).secondaryHeaderColor),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.asset(
@@ -130,9 +130,8 @@ class blogsScr extends StatelessWidget {
                   right: 30, // İkinci resmin yatay konumu
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).secondaryHeaderColor
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Theme.of(context).secondaryHeaderColor),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.asset(
@@ -180,7 +179,8 @@ class blogsScr extends StatelessWidget {
                   color: Theme.of(context).secondaryHeaderColor,
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).secondaryHeaderColor, // Gölge rengi
+                      color:
+                          Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -191,15 +191,60 @@ class blogsScr extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.person,
-                          size: 25,
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              size: 25,
+                            ),
+                            Gap(5),
+                            Text(
+                              "Hüseyin Çakal",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
                         ),
-                        Gap(5),
-                        Text(
-                          "Eda Aydın",
-                          style: TextStyle(fontSize: 20),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            // Düzenleme işlemi için bir diyalog göster
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Düzenle"),
+                                  content: TextField(
+                                    controller:
+                                        TextEditingController(), // Metni kontrol etmek için bir TextEditingController kullanılıyor
+                                    maxLines:
+                                        null, // TextField'in birden fazla satıra otomatik olarak genişlemesini sağlar
+                                    decoration: InputDecoration(
+                                      hintText: "Blog Yazınızı Buraya Girin",
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Diyalogu kapat
+                                      },
+                                      child: Text("İptal"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        // Düzenleme işlemlerini burada gerçekleştir
+                                        Navigator.of(context)
+                                            .pop(); // Diyalogu kapat
+                                      },
+                                      child: Text("Tamam"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -207,15 +252,14 @@ class blogsScr extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                            AppLocalizations.of(context)
-                        .getTranslate("blogs_text"),
+                          AppLocalizations.of(context)
+                              .getTranslate("blogs_text"),
                           style: TextStyle(fontSize: 16),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(15),
                           child: Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
@@ -319,7 +363,8 @@ class blogsScr extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).secondaryHeaderColor, // Gölge rengi
+                      color:
+                          Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -330,21 +375,66 @@ class blogsScr extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.person,
-                          size: 25,
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              size: 25,
+                            ),
+                            Gap(5),
+                            Text(
+                              "Hüseyin Çakal",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
                         ),
-                        Gap(5),
-                        Text(
-                          "Eda Aydın",
-                          style: TextStyle(fontSize: 20),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            // Düzenleme işlemi için bir diyalog göster
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Düzenle"),
+                                  content: TextField(
+                                    controller:
+                                        TextEditingController(), // Metni kontrol etmek için bir TextEditingController kullanılıyor
+                                    maxLines:
+                                        null, // TextField'in birden fazla satıra otomatik olarak genişlemesini sağlar
+                                    decoration: InputDecoration(
+                                      hintText: "Blog Yazınızı Buraya Girin",
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Diyalogu kapat
+                                      },
+                                      child: Text("İptal"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        // Düzenleme işlemlerini burada gerçekleştir
+                                        Navigator.of(context)
+                                            .pop(); // Diyalogu kapat
+                                      },
+                                      child: Text("Tamam"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),
                     Gap(20),
                     Text(
-                      AppLocalizations.of(context).getTranslate("blogs_text1"),                      
+                      AppLocalizations.of(context).getTranslate("blogs_text1"),
                       style: TextStyle(fontSize: 16),
                     ),
                     Padding(
@@ -470,7 +560,8 @@ class blogsScr extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).secondaryHeaderColor, // Gölge rengi
+                      color:
+                          Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
                       offset: Offset(0, 3), // Gölgenin konumu (x, y)
@@ -480,22 +571,66 @@ class blogsScr extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.person,
-                          size: 25,
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              size: 25,
+                            ),
+                            Gap(5),
+                            Text(
+                              "Hüseyin Çakal",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
                         ),
-                        Gap(5),
-                        Text(
-                          "Eda Aydın",
-                          style: TextStyle(fontSize: 20),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            // Düzenleme işlemi için bir diyalog göster
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Düzenle"),
+                                  content: TextField(
+                                    controller:
+                                        TextEditingController(), // Metni kontrol etmek için bir TextEditingController kullanılıyor
+                                    maxLines:
+                                        null, // TextField'in birden fazla satıra otomatik olarak genişlemesini sağlar
+                                    decoration: InputDecoration(
+                                      hintText: "Blog Yazınızı Buraya Girin",
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Diyalogu kapat
+                                      },
+                                      child: Text("İptal"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        // Düzenleme işlemlerini burada gerçekleştir
+                                        Navigator.of(context)
+                                            .pop(); // Diyalogu kapat
+                                      },
+                                      child: Text("Tamam"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),
                     Gap(20),
                     Text(
-                           AppLocalizations.of(context)
-                        .getTranslate("blogs_text2"),   
+                      AppLocalizations.of(context).getTranslate("blogs_text2"),
                       style: TextStyle(fontSize: 16),
                     ),
                     Padding(

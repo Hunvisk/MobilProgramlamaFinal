@@ -101,7 +101,7 @@ class _UserCommentsState extends State<UserComments> {
         Gap(10),
         buildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
-          title: 'Eda Aydın',
+          title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Beşiktaş',
           date: '12/02/2023',
@@ -109,7 +109,7 @@ class _UserCommentsState extends State<UserComments> {
         Gap(10),
         buildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
-          title: 'Eda Aydın',
+          title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kız Kulesi',
           date: '11/04/2023',
@@ -117,7 +117,7 @@ class _UserCommentsState extends State<UserComments> {
         Gap(10),
         buildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
-          title: 'Eda Aydın',
+          title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Sarıyer',
           date: '09/09/2023',
@@ -125,7 +125,7 @@ class _UserCommentsState extends State<UserComments> {
         Gap(10),
         buildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
-          title: 'Eda Aydın',
+          title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kadıköy',
           date: '14/08/2023',
@@ -133,7 +133,7 @@ class _UserCommentsState extends State<UserComments> {
         Gap(10),
         buildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
-          title: 'Eda Aydın',
+          title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Galata Kulesi',
           date: '14/06/2023',
@@ -141,7 +141,7 @@ class _UserCommentsState extends State<UserComments> {
         Gap(10),
         buildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
-          title: 'Eda Aydın',
+          title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'İstinye',
           date: '12/05/2023',
