@@ -300,5 +300,38 @@
     "maiden_tower_description2": "Der Turm, der zum Symbol von Üsküdar geworden ist, ist das einzige noch erhaltene byzantinische Bauwerk in Üsküdar. Seine Geschichte reicht bis ins Jahr 24 v. Chr. zurück.",
 
     "galata_tower": "Galata-Turm",
-    "galata_tower_description": "Der Galata-Turm oder das Galata-Turm-Museum, wie er genannt wurde, nachdem er als Museum genutzt wurde, ist ein Turm im Stadtteil Beyoğlu in Istanbul. Seinen Namen hat er von dem Viertel Galata, in dem er steht. Der Turm, der als Wachturm innerhalb der Galata-Mauern errichtet wurde, dient seit 2020 als Ausstellungsort und Museum, nachdem er in verschiedenen Epochen für unterschiedliche Zwecke genutzt wurde. Er ist eines der symbolträchtigsten Gebäude sowohl von Beyoğlu als auch von Istanbul."
+    "galata_tower_description": "Der Galata-Turm oder das Galata-Turm-Museum, wie er genannt wurde, nachdem er als Museum genutzt wurde, ist ein Turm im Stadtteil Beyoğlu in Istanbul. Seinen Namen hat er von dem Viertel Galata, in dem er steht. Der Turm, der als Wachturm innerhalb der Galata-Mauern errichtet wurde, dient seit 2020 als Ausstellungsort und Museum, nachdem er in verschiedenen Epochen für unterschiedliche Zwecke genutzt wurde. Er ist eines der symbolträchtigsten Gebäude sowohl von Beyoğlu als auch von Istanbul.",
+    
+    "app_name": "Gezginin Rotası",
+    "general_description": "Allgemeine Beschreibung:",
+    "explanation_of_general_definition": "'Gezginin Rotası' ist eine mobile Anwendung, die ein benutzerfreundliches und professionelles Reisehandbuch für Reisebegeisterte bietet. Auf der Startseite finden sich Funktionen wie Wetterinformationen, interessante Orte und Benutzerprofile, während das Drawer-Menü Optionen wie Kontoverwaltung und VIP-Vorteile bietet. Mit der Bottom Navigation Bar wird die Navigation erleichtert, und Benutzer können auf der Profilseite Fotos teilen und ihre Reiseerlebnisse weitergeben. Auf den Seiten Orte und Routen finden sich detaillierte Informationen und Benutzerbewertungen.",
+    "about_app_title_1": "Funktionen der 'Gezginin Rotası' Mobilanwendung:",
+    "description_about_app_1": "Die besten Touristenattraktionen, Routen und mehr anzeigen.",
+    "description_about_app_2": "Die besten Orte mit Empfehlungen von Reiseeditoren und Reisenden entdecken.",
+    "description_about_app_3": "Möglichkeit, tägliche Reisepläne direkt in der Anwendung zu erstellen.",
+    "about_app_title_2": "Unterstützung und Kontakt:",
+    "description_about_app_4": "Das Support-Team hilft Benutzern bei Problemen oder Feedback.",
+    "description_about_app_5": "Hilfeseite: help.gezginin.rotasi.com",
+    "description_about_app_6": "Kontakt: Team@travel.gezginin.rotasi.com",
+    "about_app_title_3": "Rechtliche Informationen:",
+    "description_about_app_7": "Informationen zu den Allgemeinen Geschäftsbedingungen und der Endbenutzer-Lizenzvereinbarung werden bereitgestellt.",
+
+    "notifications_title1": "Neue Orte entdecken",
+    "notifications_description1": "Entdecken Sie neue Restaurants in Istanbul!",
+    "notifications_title2": "Spezielle Angebote",
+    "notifications_description2": "Spezielle Rabatte warten auf Sie in Ihren Lieblingsorten!",
+    "notifications_title3": "Verkehrsinfo",
+    "notifications_description3": "Es wird erwartet, dass es heute im Bezirk Beşiktaş Verkehrsprobleme gibt.",
+    "notifications_title4": "Änderungen an Ihren Favoriten",
+    "notifications_description4": "In Ihrem Lieblingsort gibt es eine neue Veranstaltung!",
+    "notifications_title5": "Allgemeine Benachrichtigungen",
+    "notifications_description5": "Die App wurde aktualisiert. Entdecken Sie die neuen Funktionen!",
+    "notifications_inform_me": "Benachrichtigen Sie mich",
+    "all_new_messages": "Alle neuen Nachrichten",
+    "all_new_messages_description": "Benachrichtigen Sie alle im Kanal über neue Nachrichten",
+    "mentioned_only": "Nur Erwähnte",
+    "mentioned_only_description": "Benachrichtigen Sie mich nur, wenn mich jemand erwähnt",
+    "nothing": "Nichts",
+    "nothing_description": "Benachrichtigen Sie mich über nichts"
+    
 }

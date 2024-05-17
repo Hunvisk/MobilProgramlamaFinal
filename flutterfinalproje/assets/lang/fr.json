@@ -302,5 +302,40 @@
     "maiden_tower_description2": "La tour, qui est devenue le symbole d'Üsküdar, est le seul monument byzantin qui subsiste à Üsküdar. Son histoire remonte à 24 av.",
 
     "galata_tower": "Tour de Galata",
-    "galata_tower_description": "La tour de Galata ou le musée de la tour de Galata, comme elle a été appelée après avoir commencé à être utilisée comme musée, est une tour située dans le district de Beyoğlu à Istanbul. Elle tire son nom du quartier de Galata où elle est située. La tour, qui a été construite comme tour de guet à l'intérieur des murs de Galata, sert de lieu d'exposition et de musée depuis 2020, après avoir été utilisée à différentes fins à différentes périodes. C'est l'un des bâtiments symboliques de Beyoğlu et d'Istanbul."
+    "galata_tower_description": "La tour de Galata ou le musée de la tour de Galata, comme elle a été appelée après avoir commencé à être utilisée comme musée, est une tour située dans le district de Beyoğlu à Istanbul. Elle tire son nom du quartier de Galata où elle est située. La tour, qui a été construite comme tour de guet à l'intérieur des murs de Galata, sert de lieu d'exposition et de musée depuis 2020, après avoir été utilisée à différentes fins à différentes périodes. C'est l'un des bâtiments symboliques de Beyoğlu et d'Istanbul.",
+    
+    "app_name": "Gezginin Rotası",
+    "general_description": "Description Générale:",
+    "explanation_of_general_definition": "'Gezginin Rotası' est une application mobile qui propose un guide de voyage convivial et professionnel pour les passionnés de voyages. La page d'accueil présente des informations météorologiques, des points d'intérêt et des profils d'utilisateurs, tandis que le menu Drawer offre des options telles que la gestion de compte et les avantages VIP. La barre de navigation inférieure facilite la navigation, et les utilisateurs peuvent partager des photos et leurs expériences de voyage sur la page de profil. Les pages Lieux et Itinéraires contiennent des informations détaillées et des avis d'utilisateurs.",
+    "about_app_title_1": "Caractéristiques de l'Application Mobile 'Gezginin Rotası':",
+    "description_about_app_1": "Consultez les meilleures attractions touristiques, itinéraires et plus encore.",
+    "description_about_app_2": "Découvrez les meilleurs endroits avec des recommandations d'éditeurs de voyages et de voyageurs.",
+    "description_about_app_3": "Créez des plans de voyage quotidiens directement dans l'application.",
+    "about_app_title_2": "Support et Contact:",
+    "description_about_app_4": "L'équipe de support aide les utilisateurs avec les problèmes ou les commentaires.",
+    "description_about_app_5": "Page d'aide : help.gezginin.rotasi.com",
+    "description_about_app_6": "Contact : Team@travel.gezginin.rotasi.com",
+    "about_app_title_3": "Informations Légales:",
+    "description_about_app_7": "Des informations sur les Conditions Générales et l'Accord de Licence pour l'Utilisateur Final sont fournies.",
+
+    "notifications_title1": "Nouveaux Endroits Ouverts",
+"notifications_description1": "Découvrez les nouveaux restaurants ouverts à Istanbul !",
+"notifications_title2": "Offres Spéciales",
+"notifications_description2": "Des réductions exclusives vous attendent dans vos endroits préférés !",
+"notifications_title3": "Mise à Jour des Transports",
+"notifications_description3": "Des congestions de trafic sont prévues dans la région de Beşiktaş aujourd'hui.",
+"notifications_title4": "Changements dans les Lieux Favoris",
+"notifications_description4": "Il y a un nouvel événement dans votre lieu favori !",
+"notifications_title5": "Notifications Générales",
+"notifications_description5": "L'application a été mise à jour. Explorez les nouvelles fonctionnalités !",
+"notifications_inform_me": "Notifier Moi",
+"all_new_messages": "Tous les Nouveaux Messages",
+"all_new_messages_description": "Notifier tout le monde dans le canal des nouveaux messages",
+"mentioned_only": "Mentionné Seulement",
+"mentioned_only_description": "Me notifier seulement quand quelqu'un me mentionne",
+"nothing": "Rien",
+"nothing_description": "Ne me notifier de rien"
+
+
+
 }

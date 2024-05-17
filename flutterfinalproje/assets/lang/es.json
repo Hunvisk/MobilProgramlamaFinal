@@ -300,5 +300,40 @@
     "maiden_tower_description2": "La torre, que se ha convertido en el símbolo de Üsküdar, es el único monumento bizantino que queda en Üsküdar. Su historia se remonta al año 24 a.C.",
 
     "galata_tower": "Torre Gálata",
-    "galata_tower_description": "La Torre de Gálata o Museo de la Torre de Gálata, como se llamó después de que empezara a utilizarse como museo, es una torre situada en el distrito de Beyoğlu de Estambul. Toma su nombre del barrio de Gálata donde se encuentra. La torre, que se construyó como torre de vigilancia dentro de las Murallas de Gálata, sirve como lugar de exposiciones y museo desde 2020, después de haber sido utilizada para diferentes fines en distintas épocas. Es uno de los edificios simbólicos tanto de Beyoğlu como de Estambul."
+    "galata_tower_description": "La Torre de Gálata o Museo de la Torre de Gálata, como se llamó después de que empezara a utilizarse como museo, es una torre situada en el distrito de Beyoğlu de Estambul. Toma su nombre del barrio de Gálata donde se encuentra. La torre, que se construyó como torre de vigilancia dentro de las Murallas de Gálata, sirve como lugar de exposiciones y museo desde 2020, después de haber sido utilizada para diferentes fines en distintas épocas. Es uno de los edificios simbólicos tanto de Beyoğlu como de Estambul.",
+ 
+    "app_name": "Gezginin Rotası",
+    "general_description": "Descripción General:",
+    "explanation_of_general_definition": "'Gezginin Rotası' es una aplicación móvil que ofrece una guía de viaje profesional y fácil de usar para los entusiastas de los viajes. En la página de inicio se encuentran información sobre el clima, puntos de interés y perfiles de usuarios, mientras que el menú Drawer ofrece opciones como gestión de cuentas y beneficios VIP. La Barra de Navegación Inferior facilita la navegación, y los usuarios pueden compartir fotos y sus experiencias de viaje en la página de perfil. Las páginas Lugares y Rutas contienen información detallada y reseñas de usuarios.",
+    "about_app_title_1": "Características de la Aplicación Móvil 'Gezginin Rotası':",
+    "description_about_app_1": "Ver las mejores atracciones turísticas, rutas y más.",
+    "description_about_app_2": "Descubrir los mejores lugares con recomendaciones de editores de viajes y viajeros.",
+    "description_about_app_3": "Crear planes de viaje diarios directamente en la aplicación.",
+    "about_app_title_2": "Soporte y Contacto:",
+    "description_about_app_4": "El equipo de soporte ayuda a los usuarios con problemas o comentarios.",
+    "description_about_app_5": "Página de ayuda: help.gezginin.rotasi.com",
+    "description_about_app_6": "Contacto: Team@travel.gezginin.rotasi.com",
+    "about_app_title_3": "Información Legal:",
+    "description_about_app_7": "Se proporciona información sobre los Términos y el Acuerdo de Licencia para el Usuario Final.",
+
+
+"notifications_title1": "Nuevos Lugares Abiertos",
+"notifications_description1": "¡Descubre restaurantes recién abiertos en Estambul!",
+"notifications_title2": "Ofertas Especiales",
+"notifications_description2": "¡Descuentos exclusivos te esperan en tus lugares favoritos!",
+"notifications_title3": "Actualización de Transporte",
+"notifications_description3": "Se espera congestión de tráfico en el área de Beşiktaş hoy.",
+"notifications_title4": "Cambios en Lugares Favoritos",
+"notifications_description4": "¡Hay un nuevo evento en tu lugar favorito!",
+"notifications_title5": "Notificaciones Generales",
+"notifications_description5": "¡La aplicación ha sido actualizada! ¡Explora las nuevas funciones!",
+"notifications_inform_me": "Notifícame",
+"all_new_messages": "Todos los Nuevos Mensajes",
+"all_new_messages_description": "Notificar a todos en el canal sobre nuevos mensajes",
+"mentioned_only": "Solo Mencionados",
+"mentioned_only_description": "Solo notificarme cuando alguien me mencione",
+"nothing": "Nada",
+"nothing_description": "No me notifiques sobre nada"
+
+
 }

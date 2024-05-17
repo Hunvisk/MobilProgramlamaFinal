@@ -299,5 +299,41 @@
     "maiden_tower_description2": "The tower, which has become the symbol of Üsküdar, is the only remaining Byzantine monument in Üsküdar. It has a history dating back to 24 BC.",
 
     "galata_tower": "Galata Tower",
-    "galata_tower_description": "Galata Tower, or Galata Tower Museum, as it was called after it started to be used as a museum, is a tower in the Beyoğlu district of Istanbul. It takes its name from the Galata neighborhood where it is located. The tower, which was built as a watchtower within the Galata Walls, has been serving as an exhibition space and museum since 2020, after being used for different purposes in different periods. It is one of the symbolic buildings of both Beyoğlu and Istanbul."
+    "galata_tower_description": "Galata Tower, or Galata Tower Museum, as it was called after it started to be used as a museum, is a tower in the Beyoğlu district of Istanbul. It takes its name from the Galata neighborhood where it is located. The tower, which was built as a watchtower within the Galata Walls, has been serving as an exhibition space and museum since 2020, after being used for different purposes in different periods. It is one of the symbolic buildings of both Beyoğlu and Istanbul.",
+    
+    "app_name": "Gezginin Rotası",
+    "general_description": "General Description:",
+    "explanation_of_general_definition": "'Gezginin Rotası' is a mobile application that offers a user-friendly and professional travel guide for travel enthusiasts. The home page features weather information, points of interest, and user profiles, while the Drawer menu provides options such as account management and VIP benefits. The Bottom Navigation Bar facilitates easy navigation, and users can share photos and share their travel experiences on the profile page. The Places and Routes pages contain detailed information and user reviews.",
+    "about_app_title_1": "Features of the 'Gezginin Rotası' Mobile Application:",
+    "description_about_app_1": "View the best tourist attractions, routes, and more.",
+    "description_about_app_2": "Discover the best places with recommendations from travel editors and travelers.",
+    "description_about_app_3": "Create daily travel plans directly on the app.",
+    "about_app_title_2": "Support and Contact:",
+    "description_about_app_4": "The support team assists users with issues or feedback.",
+    "description_about_app_5": "Help page: help.gezginin.rotasi.com",
+    "description_about_app_6": "Contact: Team@travel.gezginin.rotasi.com",
+    "about_app_title_3": "Legal Information:",
+    "description_about_app_7": "Information about the Terms and End User License Agreement is provided.",
+
+    "notifications_title1": "Newly Opened Places",
+"notifications_description1": "Discover newly opened restaurants in Istanbul!",
+"notifications_title2": "Special Offers",
+"notifications_description2": "Exclusive discounts await you at your favorite places!",
+"notifications_title3": "Transportation Update",
+"notifications_description3": "Traffic congestion is expected in the Beşiktaş area today.",
+"notifications_title4": "Changes in Favorite Places",
+"notifications_description4": "There's a new event at your favorite venue!",
+"notifications_title5": "General Notifications",
+"notifications_description5": "The app has been updated. Explore the new features!",
+"notifications_inform_me": "Notify Me",
+"all_new_messages": "All New Messages",
+"all_new_messages_description": "Notify everyone in the channel about new messages",
+"mentioned_only": "Mentioned Only",
+"mentioned_only_description": "Only notify me when someone mentions me",
+"nothing": "Nothing",
+"nothing_description": "Don't notify me about anything"
+
+
+    
+
 }
