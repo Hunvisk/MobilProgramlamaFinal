@@ -1,15 +1,16 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, library_private_types_in_public_api, sized_box_for_whitespace, use_build_context_synchronously, avoid_print
 
-// ignore_for_file: library_private_types_in_public_api
-
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutterfinalproje/core/localizations.dart';
+import 'package:flutterfinalproje/core/responsive.dart';
+import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 
-import '../../../core/localizations.dart';
-import '../../../core/responsive.dart';
 import '../../../desktopScreens/user/profile/desktopprofile.dart';
 import '../../../tabletscreens.dart/user/profile/tabletprofile.dart';
-import '../../../widgets/myappbar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -19,16 +20,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   Screen device = Screen.mobile;
-
-  set isSearching(bool isSearching) {}
+  File? file;
+  File? coverPhoto;
+  
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      device = detectScreen(MediaQuery.of(context).size);
-    });
+    device = detectScreen(MediaQuery.of(context).size);
+
     return SafeArea(
       child: Scaffold(
         appBar: drawAppBar(),
@@ -48,52 +48,90 @@ class _ProfileScreenState extends State<ProfileScreen> {
       case Screen.mobile:
         return profileMenu(context);
       case Screen.tablet:
-        return const TabletProfileScreen();
+        return TabletProfileScreen();
       case Screen.desktop:
-        return const DesktopProfileScreen();
+        return DesktopProfileScreen();
     }
   }
+
+  Future<void> profilePhotoUpdate() async {
+    try {
+      ImagePicker picker = ImagePicker();
+      XFile? selectedFile = await picker.pickImage(source: ImageSource.gallery);
+      if (selectedFile != null) {
+        setState(() {
+          file = File(selectedFile.path);
+        });
+      }
+    } catch (e) {
+      print("Hata Oluştu: $e");
+    }
+  }
+
+  Future<void> coverPhotoUpdate() async {
+    try {
+      ImagePicker picker = ImagePicker();
+      XFile? selectedCoverPhotoFile =
+          await picker.pickImage(source: ImageSource.gallery);
+      if (selectedCoverPhotoFile != null) {
+        setState(() {
+          coverPhoto = File(selectedCoverPhotoFile.path);
+        });
+      }
+    } catch (e) {
+      print("Hata Oluştu: $e");
+    }
+  }
+
+  void deleteProfilePhoto() {
+    setState(() {
+      file = null;
+    });
+  }
+
+  void deleteCoverPhoto() {
+  setState(() {
+    coverPhoto = null;
+  });
+}
+
 
   void _showImageOptionsDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context).getTranslate("change_profile_photo")),
+          title: Text(AppLocalizations.of(context)
+              .getTranslate("change_profile_photo")),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
+                
+                Gap(20),
                 GestureDetector(
-                  onTap: () {
-                    // Kamera açılacak işlemleri buraya ekleyin
-                    Navigator.of(context).pop();
+                  onTap: () async {
+                    await profilePhotoUpdate();
+                    Navigator.of(context)
+                        .pop(); // Close the dialog after the operation
                   },
                   child: ListTile(
-                    leading: const Icon(Icons.camera_alt, size: 30),
-                    title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
+                    leading: Icon(Icons.photo, size: 30),
+                    title: Text(AppLocalizations.of(context)
+                        .getTranslate("select_a_photo")),
                   ),
                 ),
-                const Gap(20),
+                Gap(20),
                 GestureDetector(
                   onTap: () {
-                    // Galeri açılacak işlemleri buraya ekleyin
+                    deleteProfilePhoto();
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: const Icon(Icons.photo, size: 30),
-                    title: Text(AppLocalizations.of(context).getTranslate("select_a_photo")),
-                  ),
-                ),
-                const Gap(20),
-                GestureDetector(
-                  onTap: () {
-                    // Galeri açılacak işlemleri buraya ekleyin
-                    Navigator.of(context).pop();
-                  },
-                  child: ListTile(
-                    leading: const Icon(Icons.delete, size: 30, color: Colors.red),
-                    title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
-                        style: const TextStyle(color: Colors.red)),
+                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    title: Text(
+                        AppLocalizations.of(context)
+                            .getTranslate("delete_the_photo"),
+                        style: TextStyle(color: Colors.red)),
                   ),
                 ),
               ],
@@ -109,41 +147,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context).getTranslate("change_cover_photo")),
+          title: Text(
+              AppLocalizations.of(context).getTranslate("change_cover_photo")),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
+                Gap(20),
                 GestureDetector(
-                  onTap: () {
-                    // Kamera açılacak işlemleri buraya ekleyin
-                    Navigator.of(context).pop();
+                  onTap: () async {
+                    await coverPhotoUpdate(); // Galeriden fotoğraf seçme işlemi
+                    Navigator.of(context).pop(); // Dialogu kapat
                   },
                   child: ListTile(
-                    leading: const Icon(Icons.camera_alt, size: 30),
-                    title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
+                    leading: Icon(Icons.photo, size: 30),
+                    title: Text(AppLocalizations.of(context)
+                        .getTranslate("select_a_photo")),
                   ),
                 ),
-                const Gap(20),
+                Gap(20),
                 GestureDetector(
                   onTap: () {
-                    // Galeri açılacak işlemleri buraya ekleyin
+                    deleteCoverPhoto();
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: const Icon(Icons.photo, size: 30),
-                    title: Text(AppLocalizations.of(context).getTranslate("select_a_photo"),),
-                  ),
-                ),
-                const Gap(20),
-                GestureDetector(
-                  onTap: () {
-                    // Kapak fotoğrafını silme işlemleri buraya ekleyin
-                    Navigator.of(context).pop();
-                  },
-                  child: ListTile(
-                    leading: const Icon(Icons.delete, size: 30, color: Colors.red),
-                    title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
-                        style: const TextStyle(color: Colors.red)),
+                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    title: Text(
+                        AppLocalizations.of(context)
+                            .getTranslate("delete_the_photo"),
+                        style: TextStyle(color: Colors.red)),
                   ),
                 ),
               ],
@@ -157,23 +189,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Column profileMenu(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        Container(
           width: double.infinity,
           height: 230,
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-                child: Image.asset(
-                  "assets/images/profile/travell.jpeg",
-                  width: double.infinity,
-                  height: 300, // Sabit yükseklik
-                  fit: BoxFit.cover,
-                ),
-              ),
+  borderRadius: BorderRadius.only(
+    bottomLeft: Radius.circular(20),
+    bottomRight: Radius.circular(20),
+  ),
+  child: coverPhoto != null
+      ? Image.file(
+          coverPhoto!,
+          width: double.infinity,
+          height: 300, // Sabit yükseklik
+          fit: BoxFit.cover,
+        )
+      : Container(
+          color: Colors.grey, // Arka plan rengi
+          width: double.infinity,
+          height: 300, // Sabit yükseklik
+        ),
+),
+
               Positioned(
                 bottom: 10,
                 right: 10,
@@ -182,9 +221,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     _showCoverPhotoOptionsDialog();
                   },
                   child: CircleAvatar(
-                    backgroundColor: Colors.grey.withOpacity(0.6),
                     radius: 20,
-                    child: const Icon(Icons.add_a_photo, color: Colors.white),
+                    child: Icon(Icons.add_a_photo, color: Colors.white),
                   ),
                 ),
               ),
@@ -196,21 +234,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {
                       _showImageOptionsDialog();
                     },
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 45,
-                      backgroundImage:
-                          AssetImage("assets/images/profile/profile.png"),
+                      backgroundImage: file != null
+                          ? FileImage(file!)
+                          : null, 
+                      child: file == null
+                          ? Icon(Icons.person, size: 50, color: Colors.white)
+                          : null,
                     ),
                   ),
                 ),
               ),
+                  
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.17,
                 left: MediaQuery.of(context).size.width * 0.33,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       "İlknur Kavaklı",
                       style: TextStyle(
                         color: Colors.white,
@@ -221,7 +264,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Text(
                       AppLocalizations.of(context)
                           .getTranslate("ultra_pro_traveler"),
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),
@@ -238,7 +281,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Gap(18),
+                Gap(18),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -248,72 +291,78 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context.push('/Photographs');
                         },
                         child: ListTile(
-                          leading: const Icon(Icons.photo_camera, color: Colors.grey),
+                          leading: Icon(Icons.photo_camera, color: Colors.grey),
                           title: Text(
                             AppLocalizations.of(context).getTranslate("photos"),
-                            style: const TextStyle(
-                              fontFamily:'poppions', // Her iki yerde de aynı yazı tipini kullanmak için 'poppions' kullanıldı
-                              
+                            style: TextStyle(
+                              fontFamily: 'poppions',
                             ),
                           ),
                           trailing:
-                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      const Divider(thickness: 3),
+                      Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserBlogs');
                         },
                         child: ListTile(
-                          leading: const Icon(Icons.save, color: Colors.grey),
-                          title: Text(AppLocalizations.of(context).getTranslate("blog"),
-                              style: const TextStyle(fontFamily: 'poppions')),
+                          leading: Icon(Icons.save, color: Colors.grey),
+                          title: Text(
+                              AppLocalizations.of(context).getTranslate("blog"),
+                              style: TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      const Divider(thickness: 3),
+                      Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserComments');
                         },
                         child: ListTile(
-                          leading: const Icon(Icons.mode_comment, color: Colors.grey),
-                          title: Text(AppLocalizations.of(context).getTranslate("comments"),
-                              style: const TextStyle(fontFamily: 'poppions')),
+                          leading: Icon(Icons.mode_comment, color: Colors.grey),
+                          title: Text(
+                              AppLocalizations.of(context)
+                                  .getTranslate("comments"),
+                              style: TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      const Divider(thickness: 3),
+                      Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Saved');
                         },
                         child: ListTile(
-                          leading: const Icon(Icons.bookmark, color: Colors.grey),
-                          title: Text(AppLocalizations.of(context).getTranslate("saved"),
-                              style: const TextStyle(fontFamily: 'poppions')),
+                          leading: Icon(Icons.bookmark, color: Colors.grey),
+                          title: Text(
+                              AppLocalizations.of(context)
+                                  .getTranslate("saved"),
+                              style: TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      const Divider(thickness: 3),
+                      Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Achievemets');
                         },
                         child: ListTile(
                           leading:
-                              const Icon(Icons.military_tech, color: Colors.grey),
-                          title: Text(AppLocalizations.of(context).getTranslate("achievemets"),
-                              style: const TextStyle(fontFamily: 'poppions')),
+                              Icon(Icons.military_tech, color: Colors.grey),
+                          title: Text(
+                              AppLocalizations.of(context)
+                                  .getTranslate("achievemets"),
+                              style: TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      const Divider(thickness: 3),
+                      Divider(thickness: 3),
                     ],
                   ),
                 ),

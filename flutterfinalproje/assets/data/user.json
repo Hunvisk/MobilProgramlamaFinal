@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "Talha",
+        "surname": "Pamukcu",
+        "tag":"Ultra Mega Gezgin",
+        "e-mail": "talhapamukcu@hotmail.com",
+        "phone": "0532-332-3228",
+        "images": [
+            "assets/images/places/ayasofya_camii.jpg"
+        ]
+    }
+]
