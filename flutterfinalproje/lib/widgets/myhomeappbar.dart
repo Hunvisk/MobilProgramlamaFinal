@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/localizations.dart';
-//import 'package:flutterfinalproje/core/localizations.dart';
+
+import '../core/localizations.dart';
 
 class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   //final String title;
@@ -25,7 +26,7 @@ class MyHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   _MyHomeAppBarState createState() => _MyHomeAppBarState();
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _MyHomeAppBarState extends State<MyHomeAppBar> {
@@ -53,8 +54,8 @@ class _MyHomeAppBarState extends State<MyHomeAppBar> {
             
           },
           autoFocus: true,
-          prefixIcon: Icon(Icons.search),
-          suffixIcon: Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search),
+          suffixIcon: const Icon(Icons.search),
           helpText: "Search...",
           closeSearchOnSuffixTap: false,
           rtl: true,

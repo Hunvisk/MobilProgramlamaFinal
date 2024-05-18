@@ -1,13 +1,14 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/account/desktopforgotPassword.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
+import '../../../desktopScreens/user/account/desktopforgotPassword.dart';
 import '../../../tabletscreens.dart/user/account/tabletforgotpassword.dart';
+import '../../../widgets/myappbar.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);

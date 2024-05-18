@@ -4,7 +4,6 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
-//import '../../widgets/mybottomnavbar.dart';
 
 class PermissionsScreen extends StatefulWidget {
   const PermissionsScreen({super.key});
@@ -147,7 +146,6 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
       ),
 
       ),
-      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

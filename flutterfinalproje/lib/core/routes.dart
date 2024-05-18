@@ -23,7 +23,6 @@ import '../desktopScreens/user/profile/desktopfavorites.dart';
 import '../desktopScreens/user/profile/desktopphotographs.dart';
 import '../desktopScreens/user/profile/desktopplacestovisit.dart';
 import '../desktopScreens/user/profile/desktopprofile.dart';
-import '../screens/app_details/aboutus.dart';
 import '../screens/app_details/chatbot.dart';
 import '../screens/app_details/vipgezgininfo.dart';
 import '../screens/Home.dart';
@@ -308,8 +307,8 @@ final routes = GoRouter(
             ),
             // Settings Screens
             GoRoute(
-              path: '/Change_LanguageScreen',
-              builder: (context, state) => const Change_LanguageScreen(),
+              path: '/ChangeLanguageScreen',
+              builder: (context, state) => const ChangeLanguageScreen(),
             ),
             GoRoute(
               path: '/AboutApp',
@@ -425,10 +424,7 @@ final routes = GoRouter(
     ),
     
 
-    GoRoute(
-      path: '/Aboutus',
-      builder: (context, state) => const AboutUs(),
-    ),
+    
     GoRoute(
       path: '/CardsInfo',
       builder: (context, state) => const CardsInfo(),

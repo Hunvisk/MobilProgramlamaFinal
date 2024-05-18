@@ -1,14 +1,13 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutterfinalproje/bloc/saved_routes/saved_routes_cubit.dart';
 import 'package:flutterfinalproje/core/localizations.dart';
+
 import 'bloc/client/client_cubit.dart';
 import 'bloc/saved_places/saved_places_cubit.dart';
+import 'bloc/saved_routes/saved_routes_cubit.dart';
 import 'core/routes.dart';
-import 'package:flutterfinalproje/core/theme.dart';
+import 'core/theme.dart';
 
 
 void main() {

@@ -1,11 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
+import '../../../core/responsive.dart';
 import '../../../desktopScreens/shopping/product/desktopproducs.dart';
 import '../../../tabletscreens.dart/shopping/product/tabletproducs.dart';
+import '../../../widgets/appbarwithsearchicon.dart';
 
 class Products extends StatefulWidget {
   const Products({Key? key}) : super(key: key);
@@ -74,7 +73,6 @@ class _PlacesState extends State<Products> {
     return Scaffold(
           appBar: drawAppar(),
           body: drawScreen(),
-          //bottomNavigationBar: drawBottom(),
         );
   }
 }

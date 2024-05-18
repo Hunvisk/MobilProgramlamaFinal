@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfinalproje/bloc/saved_places/saved_places_cubit.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../bloc/saved_places/saved_places_cubit.dart';
 import '../../../core/localizations.dart';
 import '../../../widgets/appbarwithsearchicon.dart';
 

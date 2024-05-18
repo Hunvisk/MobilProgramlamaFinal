@@ -81,14 +81,7 @@ class Storage {
     final SharedPreferences storage = await SharedPreferences.getInstance();
     await storage.clear();
   }
-
-  
-  
 }
- 
-
- 
-
 
 class ChatStorage {
   static const _key = 'chat_messages';
@@ -105,8 +98,6 @@ class ChatStorage {
     messages.add(message);
     await prefs.setStringList(_key, messages);
   }
-
-   
 }
   
  

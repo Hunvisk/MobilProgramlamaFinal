@@ -1,16 +1,15 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, library_private_types_in_public_api, sized_box_for_whitespace
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/localizations.dart';
-import 'package:flutterfinalproje/core/responsive.dart';
-//import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/localizations.dart';
+import '../../../core/responsive.dart';
 import '../../../desktopScreens/user/profile/desktopprofile.dart';
 import '../../../tabletscreens.dart/user/profile/tabletprofile.dart';
+import '../../../widgets/myappbar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -20,8 +19,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  //String _aboutText = ''; // Başlangıç metni
-  //TextEditingController _textEditingController = TextEditingController();
 
   Screen device = Screen.mobile;
 
@@ -36,7 +33,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         appBar: drawAppBar(),
         body: drawScreen(),
-        //bottomNavigationBar: drawBottom(),
       ),
     );
   }
@@ -52,58 +48,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       case Screen.mobile:
         return profileMenu(context);
       case Screen.tablet:
-        return TabletProfileScreen();
+        return const TabletProfileScreen();
       case Screen.desktop:
-        return DesktopProfileScreen();
+        return const DesktopProfileScreen();
     }
   }
-
-  //Widget drawBottom() {
-  //  switch (device) {
-  //    case Screen.mobile:
-  //      return MyBottomNavBar();
-  //    case Screen.tablet:
-  //      return MyBottomNavBar();
-  //    case Screen.desktop:
-  //      return Container();
-  //  }
-  //}
-
-  // void _showEditDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return AlertDialog(
-  //         title: Text('Hakkımda Düzenle'),
-  //         content: TextField(
-  //           controller: _textEditingController,
-  //           maxLength: 100,
-  //           maxLines: null,
-  //           decoration: const InputDecoration(
-  //             hintText: 'Hakkımda...',
-  //           ),
-  //         ),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () {
-  //               GoRouter.of(context).pop();
-  //             },
-  //             child: Text('İptal'),
-  //           ),
-  //           // TextButton(
-  //           //   onPressed: () {
-  //           //     setState(() {
-  //           //       _aboutText = _textEditingController.text;
-  //           //     });
-  //           //     GoRouter.of(context).pop();
-  //           //   },
-  //           //   child: Text('Kaydet'),
-  //           // ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   void _showImageOptionsDialog() {
     showDialog(
@@ -120,31 +69,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.camera_alt, size: 30),
+                    leading: const Icon(Icons.camera_alt, size: 30),
                     title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Galeri açılacak işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.photo, size: 30),
+                    leading: const Icon(Icons.photo, size: 30),
                     title: Text(AppLocalizations.of(context).getTranslate("select_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Galeri açılacak işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    leading: const Icon(Icons.delete, size: 30, color: Colors.red),
                     title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
-                        style: TextStyle(color: Colors.red)),
+                        style: const TextStyle(color: Colors.red)),
                   ),
                 ),
               ],
@@ -170,31 +119,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.camera_alt, size: 30),
+                    leading: const Icon(Icons.camera_alt, size: 30),
                     title: Text(AppLocalizations.of(context).getTranslate("take_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Galeri açılacak işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.photo, size: 30),
+                    leading: const Icon(Icons.photo, size: 30),
                     title: Text(AppLocalizations.of(context).getTranslate("select_a_photo"),),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     // Kapak fotoğrafını silme işlemleri buraya ekleyin
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    leading: const Icon(Icons.delete, size: 30, color: Colors.red),
                     title: Text(AppLocalizations.of(context).getTranslate("delete_the_photo"),
-                        style: TextStyle(color: Colors.red)),
+                        style: const TextStyle(color: Colors.red)),
                   ),
                 ),
               ],
@@ -208,13 +157,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Column profileMenu(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 230,
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -235,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: CircleAvatar(
                     backgroundColor: Colors.grey.withOpacity(0.6),
                     radius: 20,
-                    child: Icon(Icons.add_a_photo, color: Colors.white),
+                    child: const Icon(Icons.add_a_photo, color: Colors.white),
                   ),
                 ),
               ),
@@ -247,7 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {
                       _showImageOptionsDialog();
                     },
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 45,
                       backgroundImage:
                           AssetImage("assets/images/profile/profile.png"),
@@ -261,7 +210,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "İlknur Kavaklı",
                       style: TextStyle(
                         color: Colors.white,
@@ -272,7 +221,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Text(
                       AppLocalizations.of(context)
                           .getTranslate("ultra_pro_traveler"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),
@@ -289,53 +238,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: Container(
-                //     width: 400,
-                //     height: 165,
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(11),
-                //       border: Border.all(
-                //           width: 1, color: const Color.fromARGB(42, 0, 0, 0)),
-                //     ),
-                //     child: Padding(
-                //       padding: const EdgeInsets.all(8.0),
-                //       child: Column(
-                //         crossAxisAlignment: CrossAxisAlignment.start,
-                //         children: [
-                //           Row(
-                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //             children: [
-                //               Text(
-                //                 'Hakkımda...',
-                //                 style: TextStyle(
-                //                   color: Colors.black,
-                //                   fontSize: 16,
-                //                   fontFamily: 'poppions',
-                //                 ),
-                //               ),
-                //               IconButton(
-                //                 onPressed: _showEditDialog,
-                //                 icon: Icon(Icons.edit, color: Colors.grey),
-                //               ),
-                //             ],
-                //           ),
-                //           Divider(thickness: 2),
-                //           Text(
-                //             _aboutText,
-                //             style: TextStyle(
-                //               color: Colors.grey,
-                //               fontSize: 14,
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-
-                Gap(18),
+                const Gap(18),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -345,72 +248,72 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context.push('/Photographs');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.photo_camera, color: Colors.grey),
+                          leading: const Icon(Icons.photo_camera, color: Colors.grey),
                           title: Text(
                             AppLocalizations.of(context).getTranslate("photos"),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily:'poppions', // Her iki yerde de aynı yazı tipini kullanmak için 'poppions' kullanıldı
                               
                             ),
                           ),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserBlogs');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.save, color: Colors.grey),
+                          leading: const Icon(Icons.save, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("blog"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserComments');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.mode_comment, color: Colors.grey),
+                          leading: const Icon(Icons.mode_comment, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("comments"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Saved');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.bookmark, color: Colors.grey),
+                          leading: const Icon(Icons.bookmark, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("saved"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Achievemets');
                         },
                         child: ListTile(
                           leading:
-                              Icon(Icons.military_tech, color: Colors.grey),
+                              const Icon(Icons.military_tech, color: Colors.grey),
                           title: Text(AppLocalizations.of(context).getTranslate("achievemets"),
-                              style: TextStyle(fontFamily: 'poppions')),
+                              style: const TextStyle(fontFamily: 'poppions')),
                           trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                              const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                     ],
                   ),
                 ),

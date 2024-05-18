@@ -1,11 +1,10 @@
-// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types, library_private_types_in_public_api
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +16,7 @@ import '../../../widgets/myappbar.dart';
 class SelectedRoutes extends StatefulWidget {
   final Map<String, dynamic> route;
 
-  SelectedRoutes({Key? key, required this.route}) : super(key: key);
+  const SelectedRoutes({Key? key, required this.route}) : super(key: key);
 
   @override
   _SelectedRoutesState createState() => _SelectedRoutesState();
@@ -91,7 +90,7 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: "Selected Routes"
+        title: AppLocalizations.of(context).getTranslate(widget.route["title"]),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -105,7 +104,7 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
                   color: Theme.of(context).secondaryHeaderColor,
                   borderRadius: BorderRadius.circular(10)
                 ),
-                child: Center(
+                child: const Center(
                   child: Text("Harita Eklenecek"),
                 ),
               ),
@@ -116,8 +115,8 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
                 AppLocalizations.of(context).getTranslate(widget.route["title"]),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Text(
                 "Rota Açıklamaları",
               ),
@@ -145,7 +144,7 @@ class _SelectedRoutesState extends State<SelectedRoutes> {
             ),
             const Divider(),
             ExpansionTile(
-              title: Text(AppLocalizations.of(context).getTranslate("routes")),
+              title: Text(AppLocalizations.of(context).getTranslate("places")),
               children: [
                 SizedBox(
                   height: 300, // ExpansionTile içinde ListView.builder'ın düzgün çalışması için sabit yükseklik verildi

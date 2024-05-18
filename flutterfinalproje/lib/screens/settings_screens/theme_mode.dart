@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../bloc/client/client_cubit.dart';
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
 

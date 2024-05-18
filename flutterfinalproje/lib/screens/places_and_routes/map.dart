@@ -1,13 +1,11 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, camel_case_types, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/desktopScreens/places_and_routes/desktopmap.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../core/localizations.dart';
 import '../../core/responsive.dart';
 import '../../tabletscreens.dart/places_and_routes/tabletmap.dart';
+import '../../widgets/myappbar.dart';
 
 class MyMap extends StatefulWidget {
   const MyMap({Key? key}) : super(key: key);
@@ -26,73 +24,50 @@ class _MyMapState extends State<MyMap> {
    drawScreen(){
      switch (device) {
       case (Screen.mobile):
-       return  haritaBuild() ;
+       return  const HaritaBuild() ;
       case (Screen.tablet):
-       return TabletMap();
+       return const TabletMap();
       case (Screen.desktop):
-       return DesktopMap();
+       return const DesktopMap();
      }
    }
 
    drawAppar() {
   switch (device) {
     case (Screen.mobile):
-      return AppBarWithSearchIcon(
+      return MyAppBar(
         title: AppLocalizations.of(context).getTranslate("map_title"),
-        icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      );
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "HARİTALAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      return MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("map_title"),
+      );
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "HARİTALAR",icon: Icon(Icons.search),
-        onSearchChanged: (isSearching) {
-          setState(() {
-            this.isSearching = isSearching;
-          });
-        },);
+      return MyAppBar(
+        title: AppLocalizations.of(context).getTranslate("map_title"),
+      );
   }
 }
-//drawBottom(){
-//     switch (device) {
-//      case (Screen.mobile):
-//       return  MyBottomNavBar();
-//      case (Screen.tablet):
-//       return MyBottomNavBar();
-//      case (Screen.desktop):
-//       return ;
-//     }
-//   }
+
   @override
   Widget build(BuildContext context) {
      setState(() {
         device = detectScreen(MediaQuery.of(context).size);
       });
-    return Container(
-      child: Scaffold(
-        appBar: drawAppar(),
-        body: drawScreen(),
-        //bottomNavigationBar: drawBottom(),
-      ),
+    return Scaffold(
+      appBar: drawAppar(),
+      body: drawScreen(),
     );
   }
 }
 
-class haritaBuild extends StatelessWidget {
-  const haritaBuild({
+class HaritaBuild extends StatelessWidget {
+  const HaritaBuild({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text("HARİTALAR SAYFASI");
+    return const Text("HARİTALAR SAYFASI");
   }
 }

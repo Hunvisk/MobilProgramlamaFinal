@@ -1,4 +1,3 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
 
 class Kullanici {
   Kullanici({
@@ -41,18 +40,18 @@ class Kullanici {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['uuid'] = uuid;
-    _data['firstname'] = firstname;
-    _data['lastname'] = lastname;
-    _data['username'] = username;
-    _data['password'] = password;
-    _data['email'] = email;
-    _data['ip'] = ip;
-    _data['macAddress'] = macAddress;
-    _data['website'] = website;
-    _data['image'] = image;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['uuid'] = uuid;
+    data['firstname'] = firstname;
+    data['lastname'] = lastname;
+    data['username'] = username;
+    data['password'] = password;
+    data['email'] = email;
+    data['ip'] = ip;
+    data['macAddress'] = macAddress;
+    data['website'] = website;
+    data['image'] = image;
+    return data;
   }
 }

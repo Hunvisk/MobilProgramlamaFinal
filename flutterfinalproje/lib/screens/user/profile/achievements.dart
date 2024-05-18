@@ -1,12 +1,12 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, camel_case_types
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/localizations.dart';
-import 'package:flutterfinalproje/desktopScreens/user/profile/desktopachievements.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
+import '../../../desktopScreens/user/profile/desktopachievements.dart';
 import '../../../tabletscreens.dart/user/profile/tabletachievements.dart';
 import '../../../widgets/myappbar.dart';
 
@@ -25,7 +25,7 @@ class _AchievementsState extends State<Achievemets> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return basarimlarSayfa();
+        return const BasarimlarSayfa();
       case (Screen.tablet):
         return TabletAchievemetsScreen();
       case (Screen.desktop):
@@ -49,35 +49,23 @@ class _AchievementsState extends State<Achievemets> {
         );
     }
   }
-//drawBottom(){
-//     switch (device) {
-//      case (Screen.mobile):
-//       return  MyBottomNavBar();
-//      case (Screen.tablet):
-//       return MyBottomNavBar();
-//      case (Screen.desktop):
-//       return ;
-//     }
-//   }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
       device = detectScreen(MediaQuery.of(context).size);
     });
-    return Container(
-        child: Scaffold(
-      appBar: drawAppar(),
-      body: SafeArea(
-        child: drawScreen(),
-      ),
-      //bottomNavigationBar: drawBottom(),
-    ));
+    return Scaffold(
+          appBar: drawAppar(),
+          body: SafeArea(
+    child: drawScreen(),
+          ),
+        );
   }
 }
 
-class basarimlarSayfa extends StatelessWidget {
-  const basarimlarSayfa({
+class BasarimlarSayfa extends StatelessWidget {
+  const BasarimlarSayfa({
     super.key,
   });
 
@@ -91,122 +79,122 @@ class basarimlarSayfa extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("my_first_trip"),
                     description: AppLocalizations.of(context).getTranslate(
                         "you_completed_your_first_location_visit"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("travel_Intern"),
                     description: AppLocalizations.of(context)
                         .getTranslate("completed_venue_visits"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("senior_traveler"),
                     description: AppLocalizations.of(context)
                         .getTranslate("completed_venue"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("expert_traveler"),
                       description: AppLocalizations.of(context)
                           .getTranslate("completed_visits")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("travel_explorer"),
                     description:
                         AppLocalizations.of(context).getTranslate("venue_tour"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("this_my_may"),
                     description: AppLocalizations.of(context)
                         .getTranslate("you_created_your_first_route"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("do_you_need_advice"),
                     description: AppLocalizations.of(context)
                         .getTranslate("you_wrote_your_first_blog_post"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("blog_editor"),
                       description: AppLocalizations.of(context)
                           .getTranslate("you_wrote_a_blog_post")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("beloved_blog_author"),
                       description: AppLocalizations.of(context)
                           .getTranslate("write_a_blog")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title:
                           AppLocalizations.of(context).getTranslate("traveler"),
                       description: AppLocalizations.of(context)
                           .getTranslate("membership")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("need_help"),
                       description: AppLocalizations.of(context)
                           .getTranslate("chatbot_communication")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("half_of_the_journey_is_to_desire"),
                       description: AppLocalizations.of(context).getTranslate(
                           "saved_to_the_list_of_places_to_visit")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("achievement_hunter"),
                       description: AppLocalizations.of(context)
                           .getTranslate("you_completed_all_achievements")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context).getTranslate("think"),
                       description: AppLocalizations.of(context)
                           .getTranslate("place_or_route_comment")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("from_my_perspective"),
                       description: AppLocalizations.of(context)
                           .getTranslate("you_uploaded_a_photo")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("traveler_album"),
                     description: AppLocalizations.of(context)
                         .getTranslate("you_uploaded_photos"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                       title: AppLocalizations.of(context)
                           .getTranslate("a_little_bit_of_every_kind"),
                       description: AppLocalizations.of(context).getTranslate(
                           "at_least_one_place_from_each_category")),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("versatile_travel"),
                     description: AppLocalizations.of(context)
                         .getTranslate("different_category"),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   AchievementsBox1(
                     title: AppLocalizations.of(context)
                         .getTranslate("the_istanbul_wanderer"),
@@ -310,18 +298,18 @@ class _AchievementsBox1State extends State<AchievementsBox1> {
                             widget.title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 15,
                             ),
                           ),
-                          Gap(5),
+                          const Gap(5),
                           Text(
                             widget.description,
                             maxLines: 2,
                             softWrap: true,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.normal,
                             ),

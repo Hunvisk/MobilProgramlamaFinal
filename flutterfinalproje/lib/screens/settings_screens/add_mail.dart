@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
-//import '../../widgets/mybottomnavbar.dart';
 
 class AddMailScreen extends StatefulWidget {
   const AddMailScreen({super.key});
@@ -21,7 +20,6 @@ class _AddMailScreenState extends State<AddMailScreen> {
       body: const SafeArea(
         child: Text("E-posta Sayfası")
       ),
-      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }

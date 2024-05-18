@@ -1,4 +1,3 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
 
 class AddCardPayment {
   AddCardPayment({
@@ -26,13 +25,13 @@ class AddCardPayment {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['cardHolder'] = cardHolder;
-    _data['cardNo'] = cardNo;
-    _data['cvv2'] = cvv2;
-    _data['expYear'] = expYear;
-    _data['expMonth'] = expMonth;
-    _data['title'] = title;
-    return _data;
+    final data = <String, dynamic>{};
+    data['cardHolder'] = cardHolder;
+    data['cardNo'] = cardNo;
+    data['cvv2'] = cvv2;
+    data['expYear'] = expYear;
+    data['expMonth'] = expMonth;
+    data['title'] = title;
+    return data;
   }
 }

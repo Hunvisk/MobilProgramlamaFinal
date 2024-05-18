@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_declarations, avoid_print
-
 import 'package:dio/dio.dart';
 
 class WeatherAPI {

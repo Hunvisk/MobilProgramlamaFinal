@@ -89,7 +89,7 @@ class _SavedPlacesScreenState extends State<SavedPlacesScreen> {
                 children: [
                   Expanded(
                     child: Text(
-                      title,
+                      AppLocalizations.of(context).getTranslate(title),
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                       style: const TextStyle(

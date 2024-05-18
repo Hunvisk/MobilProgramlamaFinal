@@ -1,22 +1,21 @@
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors, non_constant_identifier_names, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../bloc/client/client_cubit.dart';
 import '../../core/localizations.dart';
 
-class Change_LanguageScreen extends StatefulWidget {
-  const Change_LanguageScreen({Key? key});
+class ChangeLanguageScreen extends StatefulWidget {
+  const ChangeLanguageScreen({Key? key}) : super(key: key);
 
   @override
-  State<Change_LanguageScreen> createState() => _Change_LanguageScreenState();
+  State<ChangeLanguageScreen> createState() => _ChangeLanguageScreenState();
 }
 
-class _Change_LanguageScreenState extends State<Change_LanguageScreen> {
+class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
   String selectedLanguage = ''; // Seçili dilin tutulacağı değişken
   late SharedPreferences prefs; // SharedPreferences nesnesi
 
@@ -50,17 +49,17 @@ class _Change_LanguageScreenState extends State<Change_LanguageScreen> {
           child: Column(
             children: [
               const Divider(),
-              LangItems(context, AppLocalizations.of(context).getTranslate("turkish"), "tr", "🇹🇷"),
+              langItems(context, AppLocalizations.of(context).getTranslate("turkish"), "tr", "🇹🇷"),
               const Divider(),
-              LangItems(context, AppLocalizations.of(context).getTranslate("english"), "en", "🇬🇧"),
+              langItems(context, AppLocalizations.of(context).getTranslate("english"), "en", "🇬🇧"),
               const Divider(),
-              LangItems(context, AppLocalizations.of(context).getTranslate("german"), "de", "🇩🇪"),
+              langItems(context, AppLocalizations.of(context).getTranslate("german"), "de", "🇩🇪"),
               const Divider(),
-              LangItems(context, AppLocalizations.of(context).getTranslate("russian"), "ru", "🇷🇺"),
+              langItems(context, AppLocalizations.of(context).getTranslate("russian"), "ru", "🇷🇺"),
               const Divider(),
-              LangItems(context, AppLocalizations.of(context).getTranslate("french"), "fr", "🇫🇷"),
+              langItems(context, AppLocalizations.of(context).getTranslate("french"), "fr", "🇫🇷"),
               const Divider(),
-              LangItems(context, AppLocalizations.of(context).getTranslate("spanish"), "es", "🇪🇸"),
+              langItems(context, AppLocalizations.of(context).getTranslate("spanish"), "es", "🇪🇸"),
               const Divider(),
             ],
           ),
@@ -69,7 +68,7 @@ class _Change_LanguageScreenState extends State<Change_LanguageScreen> {
     );
   }
 
-  Widget LangItems(BuildContext context, String name, String language, String flag) {
+  Widget langItems(BuildContext context, String name, String language, String flag) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: ElevatedButton(
@@ -80,7 +79,7 @@ class _Change_LanguageScreenState extends State<Change_LanguageScreen> {
             context.read<ClientCubit>().changeLanguage(language: language);
           });
         },
-        child: Container(
+        child: SizedBox(
           height: 50,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

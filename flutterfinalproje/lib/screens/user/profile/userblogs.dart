@@ -1,17 +1,17 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, camel_case_types, avoid_unnecessary_containers, library_private_types_in_public_api
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/profile/desktopblogs.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
+import '../../../desktopScreens/user/profile/desktopblogs.dart';
 import '../../../tabletscreens.dart/user/profile/tabletuserblogs.dart';
 import '../../../widgets/myappbar.dart';
 
 void main() {
-  runApp(UserBlogs());
+  runApp(const UserBlogs());
 }
 
 class UserBlogs extends StatefulWidget {
@@ -29,9 +29,9 @@ class _UserBlogState extends State<UserBlogs> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return blogsScr();
+        return const BlogsScr();
       case (Screen.tablet):
-        return TabletUserBlogsScreen();
+        return const TabletUserBlogsScreen();
       case (Screen.desktop):
         return DesktopUserBlogsScreen();
     }
@@ -53,16 +53,6 @@ class _UserBlogState extends State<UserBlogs> {
         );
     }
   }
-//drawBottom(){
-//     switch (device) {
-//      case (Screen.mobile):
-//       return  MyBottomNavBar();
-//      case (Screen.tablet):
-//       return MyBottomNavBar();
-//      case (Screen.desktop):
-//       return ;
-//     }
-//   }
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +66,13 @@ class _UserBlogState extends State<UserBlogs> {
         body: SingleChildScrollView(
           child: drawScreen(),
         ),
-        //bottomNavigationBar: drawBottom(),
       ),
     );
   }
 }
 
-class blogsScr extends StatelessWidget {
-  const blogsScr({
+class BlogsScr extends StatelessWidget {
+  const BlogsScr({
     super.key,
   });
 
@@ -171,7 +160,7 @@ class blogsScr extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(8),
+              const Gap(8),
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
@@ -183,7 +172,7 @@ class blogsScr extends StatelessWidget {
                           Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
-                      offset: Offset(0, 3), // Gölgenin konumu (x, y)
+                      offset: const Offset(0, 3), // Gölgenin konumu (x, y)
                     ),
                   ],
                 ),
@@ -193,7 +182,7 @@ class blogsScr extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.person,
@@ -207,20 +196,20 @@ class blogsScr extends StatelessWidget {
                           ],
                         ),
                         IconButton(
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                           onPressed: () {
                             // Düzenleme işlemi için bir diyalog göster
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("Düzenle"),
+                                  title: const Text("Düzenle"),
                                   content: TextField(
                                     controller:
                                         TextEditingController(), // Metni kontrol etmek için bir TextEditingController kullanılıyor
                                     maxLines:
                                         null, // TextField'in birden fazla satıra otomatik olarak genişlemesini sağlar
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: "Blog Yazınızı Buraya Girin",
                                     ),
                                   ),
@@ -230,7 +219,7 @@ class blogsScr extends StatelessWidget {
                                         Navigator.of(context)
                                             .pop(); // Diyalogu kapat
                                       },
-                                      child: Text("İptal"),
+                                      child: const Text("İptal"),
                                     ),
                                     TextButton(
                                       onPressed: () {
@@ -238,7 +227,7 @@ class blogsScr extends StatelessWidget {
                                         Navigator.of(context)
                                             .pop(); // Diyalogu kapat
                                       },
-                                      child: Text("Tamam"),
+                                      child: const Text("Tamam"),
                                     ),
                                   ],
                                 );
@@ -248,13 +237,13 @@ class blogsScr extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Gap(20),
+                    const Gap(20),
                     Column(
                       children: [
                         Text(
                           AppLocalizations.of(context)
                               .getTranslate("blogs_text"),
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(15),
@@ -265,22 +254,22 @@ class blogsScr extends StatelessWidget {
                                 children: [
                                   IconButton(
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.thumb_up,
                                     ),
                                   ),
-                                  Text("100"),
+                                  const Text("100"),
                                 ],
                               ),
                               Row(
                                 children: [
                                   IconButton(
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.comment,
                                     ),
                                   ),
-                                  Text("100"),
+                                  const Text("100"),
                                 ],
                               ),
                             ],
@@ -294,7 +283,7 @@ class blogsScr extends StatelessWidget {
             ],
           ),
         ),
-        Divider(),
+        const Divider(),
         Padding(
           padding: const EdgeInsets.all(12),
           child: Container(
@@ -355,7 +344,7 @@ class blogsScr extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(8),
+              const Gap(8),
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
@@ -367,7 +356,7 @@ class blogsScr extends StatelessWidget {
                           Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
-                      offset: Offset(0, 3), // Gölgenin konumu (x, y)
+                      offset: const Offset(0, 3), // Gölgenin konumu (x, y)
                     ),
                   ],
                 ),
@@ -377,7 +366,7 @@ class blogsScr extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.person,
@@ -391,20 +380,20 @@ class blogsScr extends StatelessWidget {
                           ],
                         ),
                         IconButton(
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                           onPressed: () {
                             // Düzenleme işlemi için bir diyalog göster
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("Düzenle"),
+                                  title: const Text("Düzenle"),
                                   content: TextField(
                                     controller:
                                         TextEditingController(), // Metni kontrol etmek için bir TextEditingController kullanılıyor
                                     maxLines:
                                         null, // TextField'in birden fazla satıra otomatik olarak genişlemesini sağlar
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: "Blog Yazınızı Buraya Girin",
                                     ),
                                   ),
@@ -414,7 +403,7 @@ class blogsScr extends StatelessWidget {
                                         Navigator.of(context)
                                             .pop(); // Diyalogu kapat
                                       },
-                                      child: Text("İptal"),
+                                      child: const Text("İptal"),
                                     ),
                                     TextButton(
                                       onPressed: () {
@@ -422,7 +411,7 @@ class blogsScr extends StatelessWidget {
                                         Navigator.of(context)
                                             .pop(); // Diyalogu kapat
                                       },
-                                      child: Text("Tamam"),
+                                      child: const Text("Tamam"),
                                     ),
                                   ],
                                 );
@@ -432,10 +421,10 @@ class blogsScr extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Gap(20),
+                    const Gap(20),
                     Text(
                       AppLocalizations.of(context).getTranslate("blogs_text1"),
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
@@ -446,22 +435,22 @@ class blogsScr extends StatelessWidget {
                             children: [
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.thumb_up,
                                 ),
                               ),
-                              Text("100"),
+                              const Text("100"),
                             ],
                           ),
                           Row(
                             children: [
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.comment,
                                 ),
                               ),
-                              Text("100"),
+                              const Text("100"),
                             ],
                           ),
                         ],
@@ -552,7 +541,7 @@ class blogsScr extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(8),
+              const Gap(8),
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
@@ -564,7 +553,7 @@ class blogsScr extends StatelessWidget {
                           Theme.of(context).secondaryHeaderColor, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
-                      offset: Offset(0, 3), // Gölgenin konumu (x, y)
+                      offset: const Offset(0, 3), // Gölgenin konumu (x, y)
                     ),
                   ],
                 ),
@@ -573,7 +562,7 @@ class blogsScr extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.person,
@@ -587,20 +576,20 @@ class blogsScr extends StatelessWidget {
                           ],
                         ),
                         IconButton(
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                           onPressed: () {
                             // Düzenleme işlemi için bir diyalog göster
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("Düzenle"),
+                                  title: const Text("Düzenle"),
                                   content: TextField(
                                     controller:
                                         TextEditingController(), // Metni kontrol etmek için bir TextEditingController kullanılıyor
                                     maxLines:
                                         null, // TextField'in birden fazla satıra otomatik olarak genişlemesini sağlar
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: "Blog Yazınızı Buraya Girin",
                                     ),
                                   ),
@@ -610,7 +599,7 @@ class blogsScr extends StatelessWidget {
                                         Navigator.of(context)
                                             .pop(); // Diyalogu kapat
                                       },
-                                      child: Text("İptal"),
+                                      child: const Text("İptal"),
                                     ),
                                     TextButton(
                                       onPressed: () {
@@ -618,7 +607,7 @@ class blogsScr extends StatelessWidget {
                                         Navigator.of(context)
                                             .pop(); // Diyalogu kapat
                                       },
-                                      child: Text("Tamam"),
+                                      child: const Text("Tamam"),
                                     ),
                                   ],
                                 );
@@ -628,10 +617,10 @@ class blogsScr extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Gap(20),
+                    const Gap(20),
                     Text(
                       AppLocalizations.of(context).getTranslate("blogs_text2"),
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
@@ -642,22 +631,22 @@ class blogsScr extends StatelessWidget {
                             children: [
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.thumb_up,
                                 ),
                               ),
-                              Text("100"),
+                              const Text("100"),
                             ],
                           ),
                           Row(
                             children: [
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.comment,
                                 ),
                               ),
-                              Text("100"),
+                              const Text("100"),
                             ],
                           ),
                         ],

@@ -1,12 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../../core/responsive.dart';
 import '../../../desktopScreens/shopping/product/desktop_selected_products.dart';
+import '../../../widgets/appbarwithsearchicon.dart';
 
 class SelectedProducts extends StatefulWidget {
   const SelectedProducts({Key? key}) : super(key: key);
@@ -25,12 +22,12 @@ class _SelectedProductsState extends State<SelectedProducts> {
    drawScreen(){
      switch (device) {
       case (Screen.mobile):
-       return   SelectedProductsBody();
+       return   const SelectedProductsBody();
       case (Screen.tablet):
        return  ;
 
       case (Screen.desktop):
-       return DesktopSelectedProductsBody() ;
+       return const DesktopSelectedProductsBody() ;
      }
    }
 
@@ -38,21 +35,21 @@ class _SelectedProductsState extends State<SelectedProducts> {
   switch (device) {
     case (Screen.mobile):
       return AppBarWithSearchIcon(title: "SEÇİLEN ÜRÜNLER",
-        icon: Icon(Icons.search),
+        icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "SEÇİLEN ÜRÜNLER",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: "SEÇİLEN ÜRÜNLER",icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "SEÇİLEN ÜRÜNLER",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: "SEÇİLEN ÜRÜNLER",icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -60,26 +57,14 @@ class _SelectedProductsState extends State<SelectedProducts> {
         },);
   }
 }
-//drawBottom(){
-//     switch (device) {
-//      case (Screen.mobile):
-//       return  MyBottomNavBar();
-//      case (Screen.tablet):
-//       return MyBottomNavBar();
-//      case (Screen.desktop):
-//       return ;
-//     }
-//   }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
         device = detectScreen(MediaQuery.of(context).size);
       });
-    return Container(
-      child: Scaffold(
-        body: SelectedProductsBody(),
-      )
+    return const Scaffold(
+      body: SelectedProductsBody(),
     );
   }
 }
@@ -91,6 +76,6 @@ class SelectedProductsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("routes page");
+    return const Text("routes page");
   }
 }

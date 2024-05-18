@@ -50,7 +50,6 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/images/achievements/
-    - assets/images/carouselslider/
     - assets/images/login/
     - assets/images/register/
     - assets/images/routes/
@@ -64,7 +63,6 @@ flutter:
     - assets/images/logo/
     - assets/images/thememodescreen/
     - assets/data/
-    - assets/data/places.json
 
   fonts:
     - family: Poppins

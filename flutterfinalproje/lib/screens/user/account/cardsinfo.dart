@@ -1,14 +1,14 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/responsive.dart';
 import '../../../desktopScreens/user/account/desktopCardsİnfo.dart';
 import '../../../tabletscreens.dart/user/account/tabletcardsinfo.dart';
+import '../../../widgets/appbarwithsearchicon.dart';
 
 class CardsInfo extends StatefulWidget {
   const CardsInfo({Key? key}) : super(key: key);
@@ -28,10 +28,10 @@ class _CardsInfoState extends State<CardsInfo> {
       case (Screen.mobile):
        return   kayitliKartSayfa(context);
       case (Screen.tablet):
-       return tabletCardsInfo();
+       return const tabletCardsInfo();
 
       case (Screen.desktop):
-       return desktopCardsInfo();
+       return const desktopCardsInfo();
      }
    }
 
@@ -39,21 +39,21 @@ class _CardsInfoState extends State<CardsInfo> {
   switch (device) {
     case (Screen.mobile):
       return AppBarWithSearchIcon(title: "KAYITLI KARTLARIM",
-        icon: Icon(Icons.search),
+        icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.tablet):
-      return AppBarWithSearchIcon(title: "KAYITLI KARTLARIM",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: "KAYITLI KARTLARIM",icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
           });
         },);
     case (Screen.desktop):
-      return AppBarWithSearchIcon(title: "KAYITLI KARTLARIM",icon: Icon(Icons.search),
+      return AppBarWithSearchIcon(title: "KAYITLI KARTLARIM",icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
           setState(() {
             this.isSearching = isSearching;
@@ -61,17 +61,6 @@ class _CardsInfoState extends State<CardsInfo> {
         },);
   }
 }
-//drawBottom(){
-//     switch (device) {
-//      case (Screen.mobile):
-//       return  MyBottomNavBar();
-//      case (Screen.tablet):
-//      return MyBottomNavBar();
-//      case (Screen.desktop):
-//       return ;
-//     }
-//   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -103,13 +92,13 @@ class _CardsInfoState extends State<CardsInfo> {
                       color: Colors.grey[300]!, // Gölge rengi
                       spreadRadius: 3, // Gölgenin yayılma yarıçapı
                       blurRadius: 5, // Gölgenin bulanıklık yarıçapı
-                      offset: Offset(0, 3), // Gölgenin konumu (x, y)
+                      offset: const Offset(0, 3), // Gölgenin konumu (x, y)
                     ),
                   ],
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(11.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(11.0),
                   child: Row(
                     children: [
                       Column(
@@ -138,8 +127,8 @@ class _CardsInfoState extends State<CardsInfo> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
-            child: Column(
+            padding: const EdgeInsets.all(16),
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -174,27 +163,27 @@ class _CardsInfoState extends State<CardsInfo> {
                 color: Colors.grey[300]!, // Gölge rengi
                 spreadRadius: 3, // Gölgenin yayılma yarıçapı
                 blurRadius: 5, // Gölgenin bulanıklık yarıçapı
-                offset: Offset(0, 3), // Gölgenin konumu (x, y)
+                offset: const Offset(0, 3), // Gölgenin konumu (x, y)
               ),
             ],
             borderRadius: BorderRadius.circular(15),
           ),
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Bonus Kartım',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Gap(10),
+              const Gap(10),
               Container(
                 height: 1,
                 color: Colors.black,
-                margin: EdgeInsets.only(bottom: 8),
+                margin: const EdgeInsets.only(bottom: 8),
               ),
               Row(
                 children: [
@@ -203,13 +192,13 @@ class _CardsInfoState extends State<CardsInfo> {
                     width: 50,
                     height: 50,
                   ),
-                  Gap(16),
+                  const Gap(16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         cardNumber,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                         ),
                       ),

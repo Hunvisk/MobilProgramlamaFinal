@@ -11,11 +11,11 @@ class TabletProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: MyAppBar(
         title: 'PROFİL',
       ),
-      body: const Center(
+      body: Center(
         child: Text("PROFİL SAYFASI"),
       ),
       //bottomNavigationBar: MyBottomNavBar(),

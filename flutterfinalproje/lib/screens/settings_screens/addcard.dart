@@ -1,22 +1,18 @@
-// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names, prefer_const_constructors, prefer_final_fields, deprecated_member_use, avoid_print, unused_import, unnecessary_import, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: use_build_context_synchronously, prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:flutterfinalproje/core/localizations.dart';
-import 'package:flutterfinalproje/core/storage.dart';
-import 'package:flutterfinalproje/models/addcard_card.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/localizations.dart';
 import '../../core/responsive.dart';
+import '../../core/storage.dart';
 import '../../desktopScreens/user/account/desktopAddCard.dart';
+import '../../models/addcard_card.dart';
 import '../../tabletscreens.dart/user/account/tabletaddcard.dart';
+import '../../widgets/appbarwithsearchicon.dart';
 
 class AddCard extends StatefulWidget {
   const AddCard({Key? key}) : super(key: key);
@@ -96,9 +92,9 @@ class _AddCardState extends State<AddCard> {
       case (Screen.mobile):
         return;
       case (Screen.tablet):
-        return tabletAddCard();
+        return const tabletAddCard();
       case (Screen.desktop):
-        return desktopAddCard();
+        return const desktopAddCard();
     }
   }
 
@@ -107,7 +103,7 @@ class _AddCardState extends State<AddCard> {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("add_new_card"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -117,7 +113,7 @@ class _AddCardState extends State<AddCard> {
       case (Screen.tablet):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("add_new_card"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;
@@ -127,7 +123,7 @@ class _AddCardState extends State<AddCard> {
       case (Screen.desktop):
         return AppBarWithSearchIcon(
           title: AppLocalizations.of(context).getTranslate("add_new_card"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
               this.isSearching = isSearching;

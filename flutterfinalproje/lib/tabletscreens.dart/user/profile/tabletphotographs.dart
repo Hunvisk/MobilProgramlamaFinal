@@ -9,11 +9,11 @@ class TabletPhotographs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: MyAppBar(
         title: 'FOTOĞRAFLAR',
       ),
-      body: const Text("FOTOĞRAFLAR SAYFASI"),
+      body: Text("FOTOĞRAFLAR SAYFASI"),
       //bottomNavigationBar: MyBottomNavBar(),
     );
   }

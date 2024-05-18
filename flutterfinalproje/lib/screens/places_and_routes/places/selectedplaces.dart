@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
+import '../../../widgets/myappbar.dart';
 
 class SelectedPlaces extends StatefulWidget {
   final Map<String, dynamic> place;
@@ -47,7 +47,9 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: "Selected Places"),
+      appBar: MyAppBar(
+        title: AppLocalizations.of(context).getTranslate(widget.place["title"]),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

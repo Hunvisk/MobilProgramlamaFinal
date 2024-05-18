@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -95,15 +94,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Gap(10),
-                  Divider(),
-                  Gap(10),
+                  const Gap(10),
+                  const Divider(),
+                  const Gap(10),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
                       AppLocalizations.of(context)
                           .getTranslate("notifications_inform_me"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
@@ -113,7 +112,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     title: Text(
                       AppLocalizations.of(context)
                           .getTranslate("all_new_messages"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -136,7 +135,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     title: Text(
                       AppLocalizations.of(context)
                           .getTranslate("mentioned_only"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -158,7 +157,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   ListTile(
                     title: Text(
                       AppLocalizations.of(context).getTranslate("nothing"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -186,12 +185,12 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               child: ListTile(
                 title: Text(
                   notifications[index]['title']!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 subtitle: Text(notifications[index]['description']!),
-                leading: Icon(Icons.notifications),
+                leading: const Icon(Icons.notifications),
                 trailing: Switch(
                   value: notifications[index]['enabled'],
                   onChanged: (bool value) {

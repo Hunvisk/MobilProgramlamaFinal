@@ -13,11 +13,11 @@ class TabletPlaceToVisit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
           appBar: MyAppBar(
     title: 'GEZİLMEK İSTENİLENLER',
           ),
-          body: const Text("'GEZİLMEK İSTENİLENLER SAYFASI"),
+          body: Text("'GEZİLMEK İSTENİLENLER SAYFASI"),
           //bottomNavigationBar: MyBottomNavBar(),
         );
   }

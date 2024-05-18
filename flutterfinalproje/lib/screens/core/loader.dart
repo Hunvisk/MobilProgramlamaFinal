@@ -1,11 +1,8 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:go_router/go_router.dart';
 
 import '../../bloc/client/client_cubit.dart';
@@ -27,7 +24,6 @@ class _LoaderScreenState extends State<LoaderScreen> {
   
   loadApp() async {
   final storage = Storage();
-  //await storage.clearStorage(); // Video için geçici olarak stroge sıfırladık.
   final firstLaunch = await storage.isFirstLaunch();
 
 
@@ -56,9 +52,6 @@ class _LoaderScreenState extends State<LoaderScreen> {
     await storage.setConfig(language: language, darkMode: darkMode);
     clientCubit.changeLanguage(language: config["language"]);
     clientCubit.changeDarkMode(darkMode:  config["darkMode"]);
-
-    // Chatbot verilerini temizle
-    // await storage.chatStorageClear();
 
     Future.delayed(const Duration(seconds: 2), () {
       GoRouter.of(context).replace("/Home");

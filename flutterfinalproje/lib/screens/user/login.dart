@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterfinalproje/desktopScreens/user/desktoplogin.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/localizations.dart';
 import '../../core/responsive.dart';
+import '../../desktopScreens/user/desktoplogin.dart';
 import '../../tabletscreens.dart/user/tabletlogin.dart';
+import '../../widgets/appbarwithsearchicon.dart';
 
 void main() {
   runApp(const LoginScreen());

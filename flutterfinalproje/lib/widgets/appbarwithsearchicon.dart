@@ -1,4 +1,5 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+
+// ignore_for_file: library_private_types_in_public_api
 
   import 'package:anim_search_bar/anim_search_bar.dart';
   import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@
       required this.onSearchChanged,
     }) : super(key: key);
     @override
-    Size get preferredSize => Size.fromHeight(kToolbarHeight);
+    Size get preferredSize => const Size.fromHeight(kToolbarHeight);
     @override
     _AppBarWithSearchIconState createState() => _AppBarWithSearchIconState();
   }
@@ -45,8 +46,8 @@
               
             },
             autoFocus: true,
-            prefixIcon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.search),
+            prefixIcon: const Icon(Icons.search),
+            suffixIcon: const Icon(Icons.search),
             helpText: "Search...",
             closeSearchOnSuffixTap: false,
             rtl: true,

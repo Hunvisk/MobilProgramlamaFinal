@@ -1,17 +1,17 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, sized_box_for_whitespace
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/profile/desktopcomments.dart';
-import 'package:flutterfinalproje/widgets/appbarwithsearchicon.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
+import '../../../desktopScreens/user/profile/desktopcomments.dart';
 import '../../../tabletscreens.dart/user/profile/tabletusercomments.dart';
+import '../../../widgets/appbarwithsearchicon.dart';
 
 void main() {
-  runApp(UserComments());
+  runApp(const UserComments());
 }
 
 class UserComments extends StatefulWidget {
@@ -50,7 +50,7 @@ class _UserCommentsState extends State<UserComments> {
   drawAppBar() {
     return AppBarWithSearchIcon(
       title: AppLocalizations.of(context).getTranslate("Comments"),
-      icon: Icon(Icons.search),
+      icon: const Icon(Icons.search),
       onSearchChanged: (isSearching) {
         setState(() {
           // Handle search state changes here
@@ -72,24 +72,23 @@ class _UserCommentsState extends State<UserComments> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Gap(10),
+                const Gap(10),
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 500),
                   opacity: isVisible ? 0.0 : 1.0, // Silik hali
                 ),
-                Gap(10),
+                const Gap(10),
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 500),
                   opacity: isVisible ? 1.0 : 0.0, // Görünür hali
                   child:
                       yorumSayfa(), // Doğrudan yorumSayfa metodu kullanılıyor
                 ),
-                Gap(10),
+                const Gap(10),
               ],
             ),
           ),
         ),
-        // bottomNavigationBar: drawBottom(),
       ),
     );
   }
@@ -98,68 +97,68 @@ class _UserCommentsState extends State<UserComments> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Gap(10),
-        buildColoredBox(
+        const Gap(10),
+        BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Beşiktaş',
           date: '12/02/2023',
         ),
-        Gap(10),
-        buildColoredBox(
+        const Gap(10),
+        BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kız Kulesi',
           date: '11/04/2023',
         ),
-        Gap(10),
-        buildColoredBox(
+        const Gap(10),
+        BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Sarıyer',
           date: '09/09/2023',
         ),
-        Gap(10),
-        buildColoredBox(
+        const Gap(10),
+        BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kadıköy',
           date: '14/08/2023',
         ),
-        Gap(10),
-        buildColoredBox(
+        const Gap(10),
+        BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Galata Kulesi',
           date: '14/06/2023',
         ),
-        Gap(10),
-        buildColoredBox(
+        const Gap(10),
+        BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'İstinye',
           date: '12/05/2023',
         ),
-        Gap(10),
+        const Gap(10),
       ],
     );
   }
 }
 
-class buildColoredBox extends StatefulWidget {
+class BuildColoredBox extends StatefulWidget {
   final String title;
   final String location;
   final Color color;
   final String content;
   final String date;
 
-  const buildColoredBox({
+  const BuildColoredBox({
     required this.title,
     required this.location,
     required this.color,
@@ -169,10 +168,10 @@ class buildColoredBox extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<buildColoredBox> createState() => _buildColoredBoxState();
+  State<BuildColoredBox> createState() => BuildColoredBoxState();
 }
 
-class _buildColoredBoxState extends State<buildColoredBox> {
+class BuildColoredBoxState extends State<BuildColoredBox> {
   bool isVisible = false;
 
   @override
@@ -188,7 +187,7 @@ class _buildColoredBoxState extends State<buildColoredBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       child: Stack(
         children: [
@@ -226,7 +225,7 @@ class _buildColoredBoxState extends State<buildColoredBox> {
                 child: Expanded(
                   child: Padding(
                     padding:
-                        EdgeInsets.all(15.0), // İçeriğin kenarlardan uzaklığı
+                        const EdgeInsets.all(15.0), // İçeriğin kenarlardan uzaklığı
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -236,47 +235,39 @@ class _buildColoredBoxState extends State<buildColoredBox> {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.account_circle,),
-                                Gap(5),
+                                const Icon(Icons.account_circle,),
+                                const Gap(5),
                                 Text(
                                   widget.title,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors
-                                        .black, // Metin rengini siyah olarak ayarla
                                   ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        Gap(5),
+                        const Gap(5),
                         Text(
                           widget.content,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors
-                                .black, // Metin rengini siyah olarak ayarla
                           ),
                         ),
-                        Gap(5),
+                        const Gap(5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               widget.location,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors
-                                    .black, // Metin rengini siyah olarak ayarla
                               ),
                             ),
                             Text(
                               widget.date,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors
-                                    .black, // Metin rengini siyah olarak ayarla
                               ),
                             ),
                           ],

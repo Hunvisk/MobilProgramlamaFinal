@@ -1,13 +1,11 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/desktopScreens/user/profile/desktopphotographs.dart';
 import 'package:gap/gap.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
+import '../../../desktopScreens/user/profile/desktopphotographs.dart';
 import '../../../tabletscreens.dart/user/profile/tabletphotographs.dart';
 import '../../../widgets/myappbar.dart';
 
@@ -37,9 +35,9 @@ class PhotographsState extends State<Photographs> {
   drawScreen() {
     switch (device) {
       case (Screen.mobile):
-        return FotografSayfa();
+        return fotografSayfa();
       case (Screen.tablet):
-        return TabletPhotographsScreen();
+        return const TabletPhotographsScreen();
       case (Screen.desktop):
         return DesktopPhotographsScreen();
     }
@@ -62,17 +60,6 @@ class PhotographsState extends State<Photographs> {
     }
   }
 
-  //drawBottom() {
-  //  switch (device) {
-  //    case (Screen.mobile):
-  //      return MyBottomNavBar();
-  //    case (Screen.tablet):
-  //      return MyBottomNavBar();
-  //    case (Screen.desktop):
-  //      return;
-  //  }
-  //}
-
   @override
   Widget build(BuildContext context) {
     setState(() {
@@ -90,10 +77,11 @@ class PhotographsState extends State<Photographs> {
     );
   }
 
-  Column FotografSayfa() {
+  Column fotografSayfa() {
     return Column(
       children: [
-        Divider(thickness: 3),
+        const Divider(thickness: 3),
+        // ignore: prefer_const_constructors
         FilterWidget(),
         AnimatedOpacity(
           duration: const Duration(milliseconds: 500),
@@ -108,27 +96,27 @@ class PhotographsState extends State<Photographs> {
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("camera"),
                         "1.151",
                         "assets/images/photographs/anlatan_meydanı.jpeg",
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("collage"),
                         "2.345",
                         "assets/images/photographs/yalvac.jpg",
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("flowers"),
                         "3.789",
                         "assets/images/photographs/isparta.jpg",
@@ -136,34 +124,34 @@ class PhotographsState extends State<Photographs> {
                     ),
                   ],
                 ),
-                Gap(10),
+                const Gap(10),
                 // İkinci sütun
                 Column(
                   children: [
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("animals"),
                         "1.151",
                         "assets/images/photographs/yalvac.jpg",
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("family"),
                         "2.345",
                         "assets/images/photographs/isparta.jpg",
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("facebook"),
                         "3.789",
                         "assets/images/photographs/cinaralti.jpeg",
@@ -171,34 +159,34 @@ class PhotographsState extends State<Photographs> {
                     ),
                   ],
                 ),
-                SizedBox(width: 10), // Boşluk ekleyebilirsiniz
+                const SizedBox(width: 10), // Boşluk ekleyebilirsiniz
                 // Üçüncü sütun
                 Column(
                   children: [
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("whatsApp"),
                         "1.151",
                         "assets/images/photographs/pisidia.jpeg",
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("snapchat"),
                         "2.345",
                         "assets/images/photographs/yalvac.jpg",
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: isVisible ? 1.0 : 0.0, // Görünür hali
-                      child: PhotoItem(
+                      child: photoItem(
                         AppLocalizations.of(context).getTranslate("instagram"),
                         "3.789",
                         "assets/images/photographs/isparta.jpg",
@@ -214,14 +202,14 @@ class PhotographsState extends State<Photographs> {
     );
   }
 
-  Widget PhotoItem(String title, String count, String photo) {
+  Widget photoItem(String title, String count, String photo) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
           FutureBuilder(
             future: Future.delayed(
-                Duration(milliseconds: 500)), // 0.5 saniye bekleyecek
+                const Duration(milliseconds: 500)), // 0.5 saniye bekleyecek
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Container(
@@ -255,7 +243,7 @@ class PhotographsState extends State<Photographs> {
               }
             },
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           AnimatedOpacity(
             duration: const Duration(milliseconds: 500),
             opacity: isVisible ? 1.0 : 0.0, // Görünür hali
@@ -284,47 +272,16 @@ class PhotographsState extends State<Photographs> {
     );
   }
 
-  void _showAlbumPopup(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          contentPadding: EdgeInsets.zero,
-          content: SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      AppLocalizations.of(context).getTranslate("albums"),
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
 }
 
 class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(6.0),
@@ -340,7 +297,7 @@ class FilterWidget extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 21,
                     ),
@@ -350,9 +307,9 @@ class FilterWidget extends StatelessWidget {
                     children: [
                       Text(
                         AppLocalizations.of(context).getTranslate("albums"),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.keyboard_arrow_down,
                         color: Colors.white,
                       ),
@@ -373,19 +330,19 @@ class FilterWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   AppLocalizations.of(context).getTranslate("albums"),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -394,9 +351,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -405,9 +362,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -416,9 +373,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -427,9 +384,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -438,9 +395,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -449,9 +406,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
               ],
             ),
           ),

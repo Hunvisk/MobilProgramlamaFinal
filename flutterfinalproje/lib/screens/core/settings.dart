@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/localizations.dart';
 import '../../widgets/myappbar.dart';
-//import '../../widgets/mybottomnavbar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -24,7 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           settingsItem(context, '/ThemeMode', 'screen'),
           const Divider(),
-          settingsItem(context, '/Change_LanguageScreen', 'language'),
+          settingsItem(context, '/ChangeLanguageScreen', 'language'),
           const Divider(),
           settingsItem(context, '/Permissions', 'permissions'),
           const Divider(),
@@ -42,7 +41,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(),
         ],
       ),
-      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 

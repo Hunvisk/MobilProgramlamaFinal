@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
 import 'package:gap/gap.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 
 import '../../core/localizations.dart';
+import '../../widgets/myappbar.dart';
 
 class AboutAppScreen extends StatefulWidget {
   const AboutAppScreen({Key? key}) : super(key: key);
@@ -38,10 +36,10 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
               Center(
                 child: Text(
                   AppLocalizations.of(context).getTranslate("app_name"),
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
-              Divider(),
+              const Divider(),
               const Gap(20),
               Expanded(
                 child: SingleChildScrollView(
@@ -107,14 +105,13 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
           ),
         ),
       ),
-      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 
   Widget _buildSectionTitle(String title) {
     return Text(
       title,
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
     );
   }
 
@@ -124,7 +121,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "• ",
             style: TextStyle(fontSize: 20),
           ),

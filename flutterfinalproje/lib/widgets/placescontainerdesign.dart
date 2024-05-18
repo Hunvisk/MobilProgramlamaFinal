@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, non_constant_identifier_names, sized_box_for_whitespace, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -35,7 +34,7 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Container(
+          child: SizedBox(
             height: 250,
             width: double.infinity,
             child: Image.asset(
@@ -48,26 +47,26 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
           top: 10,
           left: 0,
           right: 0,
-          child: TitleAndBookmark(widget.title),
+          child: titleAndBookmark(widget.title),
         ),
         Positioned(
           bottom: 5,
           left: 10,
           right: 10,
-          child: InfoColumns(widget.rating, widget.views, widget.comments),
+          child: infoColumns(widget.rating, widget.views, widget.comments),
         ),
       ],
     );
   }
 
-  Widget TitleAndBookmark(String title) {
+  Widget titleAndBookmark(String title) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.3),
           borderRadius: BorderRadius.circular(10),
         ),
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -76,7 +75,7 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
                 title,
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -104,14 +103,14 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
     );
   }
 
-  Widget InfoColumns(String rating, String views, String comments) {
+  Widget infoColumns(String rating, String views, String comments) {
     return Container(
       width: 140,
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.3),
         borderRadius: BorderRadius.circular(10),
       ),
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -132,79 +131,19 @@ class _PlacesContainerDesignState extends State<PlacesContainerDesign> {
     );
   }
 
-  void _showSavePopup(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return AlertDialog(
-              title: Text("Kaydedilenler"),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: isGezilmekIstenilenChecked,
-                        onChanged: (bool? newValue) {
-                          setState(() {
-                            isGezilmekIstenilenChecked = newValue ?? false;
-                          });
-                        },
-                        checkColor: Colors.white, // Checkbox işaret rengi
-                        activeColor: Colors.blue, // Checkbox aktif rengi
-                      ),
-                      Text("Gezilmek İstenilen Yerler"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: isDigerChecked,
-                        onChanged: (bool? newValue) {
-                          setState(() {
-                            isDigerChecked = newValue ?? false;
-                          });
-                        },
-                        checkColor: Colors.white, // Checkbox işaret rengi
-                        activeColor: Colors.blue, // Checkbox aktif rengi
-                      ),
-                      Text("Mekanlar"),
-                    ],
-                  ),
-                ],
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('İptal'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('Tamam'),
-                ),
-              ],
-            );
-          },
-        );
-      },
-    );
-  }
 }
 
 class InfoRow extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const InfoRow({
-    required this.icon,
-    required this.text,
-  });
+  const InfoRow(
+    {
+      super.key, 
+      required this.icon,
+      required this.text,
+    }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -217,10 +156,10 @@ class InfoRow extends StatelessWidget {
             color: Colors.white,
             size: 20,
           ),
-          Gap(5),
+          const Gap(5),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,
