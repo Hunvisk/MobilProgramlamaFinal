@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../widgets/myappbar.dart';
 import '../../../widgets/routescontainerdesign.dart';
 
 class TabletRoutes extends StatelessWidget {
@@ -13,14 +11,12 @@ class TabletRoutes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Scaffold(
-      appBar: MyAppBar(
-        title: 'ROTALAR',
-      ),
-      body: Text("ROTALAR SAYFASI"),
-      //bottomNavigationBar: MyBottomNavBar(),
-    ));
+    return const Scaffold(
+          appBar: MyAppBar(
+    title: 'ROTALAR',
+          ),
+          body: Text("ROTALAR SAYFASI"),
+        );
   }
 }
 
@@ -40,7 +36,7 @@ class TabletRoutesScreen extends StatelessWidget {
         if (isSearching)
           Container(
             height: 32,
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
               controller: searchController,
               onChanged: (value) {
@@ -49,7 +45,7 @@ class TabletRoutesScreen extends StatelessWidget {
               onSubmitted: (value) {
                 // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Ara...",
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.all(4.0),
@@ -67,7 +63,7 @@ class TabletRoutesScreen extends StatelessWidget {
                       onTap: () {
                         GoRouter.of(context).push('/SelectedRoutes');
                       },
-                      child: RoutesContainerDesign(
+                      child: const RoutesContainerDesign(
                         photo: "assets/images/routes/eminonu.jpeg",
                         title: "Eminönü",
                         puan: "5.0",
@@ -77,13 +73,13 @@ class TabletRoutesScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   Expanded(
                     child: InkWell(
                       onTap: () {
                         GoRouter.of(context).push('/SelectedRoutes');
                       },
-                      child: RoutesContainerDesign(
+                      child: const RoutesContainerDesign(
                         photo: "assets/images/routes/ortakoy.jpeg",
                         title: "Ortaköy",
                         puan: "4.5",
@@ -96,10 +92,10 @@ class TabletRoutesScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/sariyer.jpeg",
@@ -124,10 +120,10 @@ class TabletRoutesScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/camlica.jpeg",

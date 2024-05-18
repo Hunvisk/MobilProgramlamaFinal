@@ -1,22 +1,20 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
+
+import '../../../widgets/myappbar.dart';
 
 class TabletAchievemets extends StatelessWidget {
   const TabletAchievemets({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Scaffold(
-      appBar: MyAppBar(
-        title: 'BAŞARIMLAR',
-      ),
-      body: Text("BAŞARIMLAR SAYFASI"),
-      //bottomNavigationBar: MyBottomNavBar(),
-    ));
+    return const Scaffold(
+          appBar: MyAppBar(
+    title: 'BAŞARIMLAR',
+          ),
+          body: Text("BAŞARIMLAR SAYFASI"),
+          //bottomNavigationBar: MyBottomNavBar(),
+        );
   }
 }
 
@@ -87,7 +85,7 @@ class AchievementsBox1 extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.normal,
                     fontSize: 17,
@@ -95,7 +93,7 @@ class AchievementsBox1 extends StatelessWidget {
                 ),
                 Text(
                   description,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.normal,
                   ),

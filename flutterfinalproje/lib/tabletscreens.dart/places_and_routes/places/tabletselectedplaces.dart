@@ -1,18 +1,16 @@
-// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
+import '../../../widgets/myappbar.dart';
 
 class TabletSelectedPlaces extends StatelessWidget {
   const TabletSelectedPlaces({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: MyAppBar(
         title: 'SEÇİLEN MEKANLAR',
       ),
@@ -27,7 +25,6 @@ class TabletSelectedPlaces extends StatelessWidget {
           ],
         ),
       ),
-      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }
@@ -52,11 +49,11 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                 ),
                 child: Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 350,
                       width: double.infinity,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           topLeft: Radius.circular(6),
                           topRight: Radius.circular(6),
@@ -140,7 +137,7 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
               children: [
                 Text(
                   AppLocalizations.of(context).getTranslate("explanation"),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -148,25 +145,25 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                 Text(
                   AppLocalizations.of(context)
                       .getTranslate("galata_kulesi_text"),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
                     fontSize: 13,
                   ),
                 ),
-                Gap(5),
+                const Gap(5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       AppLocalizations.of(context).getTranslate("place"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'poppions',
                         fontSize: 15,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "Beşiktaş",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -176,7 +173,7 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -230,16 +227,16 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Gap(20),
+                const Gap(20),
                 Text(
                   AppLocalizations.of(context).getTranslate("comments"),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'poppions',
                     fontSize: 20,
                   ),
                 ),
-                Gap(6),
+                const Gap(6),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -249,7 +246,7 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 15),
                     child: Column(
                       children: [
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.person,
@@ -265,13 +262,13 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Gap(5),
+                        const Gap(5),
                         Row(
                           children: [
                             Text(
                               AppLocalizations.of(context)
                                   .getTranslate("comment_content"),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'poppions',
                                 fontSize: 13,
@@ -279,7 +276,7 @@ class TabletSelectedPlacesScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(

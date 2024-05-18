@@ -1,4 +1,3 @@
-// ignore_for_file: sort_child_properties_last, deprecated_member_use, file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -19,7 +18,7 @@ class _TabletForgotPasswordState extends State<TabletForgotPassword> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        body: TabletpasswordSayfa(),
+        body: const TabletpasswordSayfa(),
       ),
     );
   }
@@ -35,8 +34,8 @@ class TabletpasswordSayfa extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Şifre Değiştirme Talebi'),
-          content: Column(
+          title: const Text('Şifre Değiştirme Talebi'),
+          content: const Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,7 +49,7 @@ class TabletpasswordSayfa extends StatelessWidget {
               onPressed: () {
                 context.go('/Login');
               },
-              child: Text('Giriş Yap'),
+              child: const Text('Giriş Yap'),
             ),
           ],
         );
@@ -117,18 +116,18 @@ class TabletpasswordSayfa extends StatelessWidget {
             onPressed: () {
               _showSuccessDialog(context);
             },
-            child:  Text(
-              'Şifremi Sıfırla ',
-              style: Theme.of(context).textTheme.button!.copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            child:  Text(
+              'Şifremi Sıfırla ',
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ),

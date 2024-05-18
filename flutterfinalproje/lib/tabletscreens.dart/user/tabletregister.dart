@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, deprecated_member_use, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, non_constant_identifier_names, avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -39,7 +38,7 @@ class _TabletRegisterState extends State<TabletRegister> {
     );
   }
 
-  Center TabletRegister(BuildContext context) {
+  Center tabletRegister(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
         child: buildColumn(context),
@@ -78,7 +77,7 @@ class _TabletRegisterState extends State<TabletRegister> {
                 AppLocalizations.of(context).getTranslate("register"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(155, 154, 154, 1)),
@@ -87,23 +86,23 @@ class _TabletRegisterState extends State<TabletRegister> {
                 AppLocalizations.of(context).getTranslate("do_not_have_an_account"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color.fromRGBO(207, 206, 206, 1),
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Gap(10),
+              const Gap(10),
               Text(
                 AppLocalizations.of(context).getTranslate("username"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(155, 154, 154, 1)),
               ),
-              Gap(2),
+              const Gap(2),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
@@ -114,14 +113,14 @@ class _TabletRegisterState extends State<TabletRegister> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: const BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(
+                        const TextStyle(
                           //color: Color.fromRGBO(155, 154, 154, 1)
                         ),
                   ),
@@ -129,21 +128,21 @@ class _TabletRegisterState extends State<TabletRegister> {
                 ),
               ),
 
-              Gap(2),
+              const Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("email"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(155, 154, 154, 1)),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).getTranslate("email"),
@@ -152,16 +151,16 @@ class _TabletRegisterState extends State<TabletRegister> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black,
                       ),
                     ),
                     labelStyle:
-                        TextStyle(
+                        const TextStyle(
                           
                         ),
                   ),
@@ -170,21 +169,21 @@ class _TabletRegisterState extends State<TabletRegister> {
                 ),
               ),
 
-              Gap(2),
+              const Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("password"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(155, 154, 154, 1)),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).getTranslate("password"),
@@ -193,17 +192,17 @@ class _TabletRegisterState extends State<TabletRegister> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: const BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        const TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
                     suffixIcon: GestureDetector(
                       onTap: () {},
-                      child: Icon(
+                      child: const Icon(
                         Icons.visibility,
                         color: Color.fromRGBO(155, 154, 154, 1),
                       ),
@@ -213,22 +212,22 @@ class _TabletRegisterState extends State<TabletRegister> {
                   obscureText: true,
                 ),
               ),
-              Gap(2),
+              const Gap(2),
               Text(
                 AppLocalizations.of(context).getTranslate("password_again"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color.fromRGBO(155, 154, 154, 1),
                 ),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       backgroundColor: Color.fromRGBO(249, 249, 249, 1)),
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).getTranslate("password_again"),
@@ -237,19 +236,19 @@ class _TabletRegisterState extends State<TabletRegister> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: const BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(
+                        const TextStyle(
                           
                         ),
                     suffixIcon: GestureDetector(
                       onTap: () {},
-                      child: Icon(
+                      child: const Icon(
                         Icons.visibility,
                         color: Color.fromRGBO(155, 154, 154, 1),
                       ),
@@ -259,9 +258,9 @@ class _TabletRegisterState extends State<TabletRegister> {
                   obscureText: true,
                 ),
               ),
-              SignInButton(context),
-              Gap(2), // Boşluk ekledik
-              OtherSignInText(context),
+              signInButton(context),
+              const Gap(2), // Boşluk ekledik
+              otherSignInText(context),
             ],
           ),
         ),
@@ -269,26 +268,17 @@ class _TabletRegisterState extends State<TabletRegister> {
     );
   }
 
-  Widget SignInButton(BuildContext context) {
+  Widget signInButton(BuildContext context) {
     return Column(
       children: [
-        Gap(15),
+        const Gap(15),
         Container(
           width: double.infinity,
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           child: ElevatedButton(
             onPressed: () {
               context.push('/Login');
             },
-            child: Text(
-              AppLocalizations.of(context).getTranslate("register"),
-               maxLines: 1,
-              overflow: TextOverflow.fade,
-              style: Theme.of(context).textTheme.button!.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor:
                   Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
@@ -296,13 +286,22 @@ class _TabletRegisterState extends State<TabletRegister> {
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
+            child: Text(
+              AppLocalizations.of(context).getTranslate("register"),
+               maxLines: 1,
+              overflow: TextOverflow.fade,
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget OtherSignInText(
+  Widget otherSignInText(
     BuildContext context,
   ) {
     return Column(
@@ -314,13 +313,13 @@ class _TabletRegisterState extends State<TabletRegister> {
               AppLocalizations.of(context).getTranslate("already_have_an_account"),
               maxLines: 1,
               overflow: TextOverflow.fade,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey, // Yazı rengi
               ),
             ),
-            Gap(5),
+            const Gap(5),
             InkWell(
               onTap: () {
                 context.push('/Home');
@@ -329,7 +328,7 @@ class _TabletRegisterState extends State<TabletRegister> {
                 AppLocalizations.of(context).getTranslate("sign_in"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue,

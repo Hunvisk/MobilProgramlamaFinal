@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
+import '../../../core/responsive.dart';
+import '../../../widgets/myappbar.dart';
 import '../../../widgets/placescontainerdesign.dart';
 import '../../../widgets/routescontainerdesign.dart';
 

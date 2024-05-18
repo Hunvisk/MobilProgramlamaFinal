@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/localizations.dart';
+import '../../../widgets/myappbar.dart';
 
 class TabletUserBlogs extends StatelessWidget {
   const TabletUserBlogs({Key? key}) : super(key: key);
@@ -17,15 +15,14 @@ class TabletUserBlogs extends StatelessWidget {
       appBar: MyAppBar(
         title: AppLocalizations.of(context).getTranslate("blogs"),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
+          children: [
             TabletUserBlogsScreen(),
           ],
         ),
       ),
-      //bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }
@@ -39,9 +36,9 @@ class TabletUserBlogsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         _buildBlogCard(),
-        Divider(),
+        const Divider(),
         _buildBlogCard1(),
-        Divider(),
+        const Divider(),
         _buildBlogCard2(),
       ],
     );
@@ -110,7 +107,7 @@ class TabletUserBlogsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Gap(15),
+          const Gap(15),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -127,8 +124,8 @@ class TabletUserBlogsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(
                         Icons.person,
                         size: 25,
@@ -140,12 +137,12 @@ class TabletUserBlogsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Gap(15),
-                  Text(
+                  const Gap(15),
+                  const Text(
                     'Camiinin mimari açıdan en önemli özelliklerinden biri 18. yüzyıldan sonra özellikle Fransa ve İtalya saraylarında karşımıza çıkan Barok mimari tarzının kullanılması...',
                     style: TextStyle(fontSize: 16),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -153,22 +150,22 @@ class TabletUserBlogsScreen extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.thumb_up,
                             ),
                           ),
-                          Text("100"),
+                          const Text("100"),
                         ],
                       ),
                       Row(
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.comment,
                             ),
                           ),
-                          Text("100"),
+                          const Text("100"),
                         ],
                       ),
                     ],
@@ -243,7 +240,7 @@ Widget _buildBlogCard1() {
             ),
           ),
         ),
-        Gap(15),
+        const Gap(15),
         Expanded(
           child: Container(
             decoration: BoxDecoration(
@@ -260,8 +257,8 @@ Widget _buildBlogCard1() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(
                       Icons.person,
                       size: 25,
@@ -273,12 +270,12 @@ Widget _buildBlogCard1() {
                     ),
                   ],
                 ),
-                Gap(15),
-                Text(
+                const Gap(15),
+                const Text(
                   'Sarıyer, İstanbul"un kuzeyinde yer alan güzide ilçelerimizden birisidir. Belgrad Ormanı ve Atatürk Arboretumu gibi huzurlu yemyeşil alanların yanı sıra, Emirgan Korusu ve Rumeli Hisarı gibi turistik merkezleriyle de burası İstanbulluların en sevdiği ilçeler arasında yer alıyor.',
                   style: TextStyle(fontSize: 16),
                 ),
-                Gap(15),
+                const Gap(15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -286,22 +283,22 @@ Widget _buildBlogCard1() {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.thumb_up,
                           ),
                         ),
-                        Text("100"),
+                        const Text("100"),
                       ],
                     ),
                     Row(
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.comment,
                           ),
                         ),
-                        Text("100"),
+                        const Text("100"),
                       ],
                     ),
                   ],
@@ -375,7 +372,7 @@ Widget _buildBlogCard2() {
             ),
           ),
         ),
-        Gap(15),
+        const Gap(15),
         Expanded(
           child: Container(
             decoration: BoxDecoration(
@@ -385,15 +382,15 @@ Widget _buildBlogCard2() {
                   color: Colors.grey[300]!,
                   spreadRadius: 3,
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(
                       Icons.person,
                       size: 25,
@@ -405,12 +402,12 @@ Widget _buildBlogCard2() {
                     ),
                   ],
                 ),
-                Gap(15),
-                Text(
+                const Gap(15),
+                const Text(
                   'Eminönü vapur iskelesinde ya da Eminönü tramvay durağında indiniz. Sırtınızı denize verip karşıya baktığınızda kalabalık bir meydan göreceksiniz. İşte burası Eminönü’ne giriş noktanız. ',
                   style: TextStyle(fontSize: 16),
                 ),
-                Gap(15),
+                const Gap(15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -418,22 +415,22 @@ Widget _buildBlogCard2() {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.thumb_up,
                           ),
                         ),
-                        Text("100"),
+                        const Text("100"),
                       ],
                     ),
                     Row(
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.comment,
                           ),
                         ),
-                        Text("100"),
+                        const Text("100"),
                       ],
                     ),
                   ],

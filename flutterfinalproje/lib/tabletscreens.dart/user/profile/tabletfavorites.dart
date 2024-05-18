@@ -1,13 +1,11 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/core/responsive.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
+import '../../../core/responsive.dart';
+import '../../../widgets/myappbar.dart';
 import '../../../widgets/routescontainerdesign.dart';
 
 class TabletFavorites extends StatelessWidget {
@@ -15,14 +13,13 @@ class TabletFavorites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Scaffold(
-      appBar: MyAppBar(
-        title: 'FAVORİLER',
-      ),
-      body: Text("FAVORİLER SAYFASI"),
-      //bottomNavigationBar: MyBottomNavBar(),
-    ));
+    return const Scaffold(
+          appBar: MyAppBar(
+    title: 'FAVORİLER',
+          ),
+          body: Text("FAVORİLER SAYFASI"),
+          //bottomNavigationBar: MyBottomNavBar(),
+        );
   }
 }
 
@@ -44,7 +41,7 @@ class TabletFavoritesScreen extends StatelessWidget {
         if (isSearching)
           Container(
             height: 32, // Arama çubuğu yüksekliği
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
               controller: searchController,
               onChanged: (value) {
@@ -53,14 +50,14 @@ class TabletFavoritesScreen extends StatelessWidget {
               onSubmitted: (value) {
                 // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Ara...",
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
               ),
             ),
           ),
-        FilterWidget(),
+        const FilterWidget(),
         Column(
           children: [
             Padding(
@@ -72,8 +69,8 @@ class TabletFavoritesScreen extends StatelessWidget {
                       onTap: () {
                         GoRouter.of(context).push('/SelectedRoutes');
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
                         child: RoutesContainerDesign(
                           photo: "assets/images/routes/eminonu.jpeg",
                           title: "Eminönü",
@@ -85,8 +82,8 @@ class TabletFavoritesScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Gap(15),
-                  Expanded(
+                  const Gap(15),
+                  const Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/ortakoy.jpeg",
                       title: "Ortaköy",
@@ -99,10 +96,10 @@ class TabletFavoritesScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/sariyer.jpeg",
@@ -127,10 +124,10 @@ class TabletFavoritesScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                     child: RoutesContainerDesign(
                       photo: "assets/images/routes/camlica.jpeg",
@@ -170,61 +167,59 @@ class FilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.45,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: ElevatedButton(
-                onPressed: () {
-                  _showSortPopup(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
-                  ),
-                ),
-                child: Text(
-                  AppLocalizations.of(context).getTranslate("sort"),
-                  style: TextStyle(color: Colors.white),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.45,
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: ElevatedButton(
+              onPressed: () {
+                _showSortPopup(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21,
                 ),
               ),
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
-            ),
-            VerticalDivider(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              thickness: 4,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.45,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Show the custom sorting popup
-                  _showSortPopup2(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
-                  ),
-                ),
-                child: Text(AppLocalizations.of(context).getTranslate("filter"),
-                    style: TextStyle(
-                      color: Colors.white,
-                    )),
+              child: Text(
+                AppLocalizations.of(context).getTranslate("sort"),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
-          ],
-        ),
+          ),
+          const VerticalDivider(
+            color: Color.fromRGBO(0, 0, 0, 1),
+            thickness: 4,
+          ),
+          const VerticalDivider(
+            color: Color.fromRGBO(0, 0, 0, 1),
+            thickness: 4,
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.45,
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: ElevatedButton(
+              onPressed: () {
+                // Show the custom sorting popup
+                _showSortPopup2(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21,
+                ),
+              ),
+              child: Text(AppLocalizations.of(context).getTranslate("filter"),
+                  style: const TextStyle(
+                    color: Colors.white,
+                  )),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -235,35 +230,35 @@ class FilterWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   AppLocalizations.of(context).getTranslate("sort"),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('A - Z'),
+                  title: const Text('A - Z'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Z- A'),
+                  title: const Text('Z- A'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context).getTranslate("most_comments"),
@@ -271,9 +266,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context).getTranslate("most_likes"),
@@ -281,9 +276,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -292,9 +287,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -303,9 +298,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -314,9 +309,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   title: Text(
                     AppLocalizations.of(context)
@@ -325,9 +320,9 @@ class FilterWidget extends StatelessWidget {
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
               ],
             ),
           ),
@@ -355,29 +350,29 @@ void _showSortPopup2(BuildContext context) {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     AppLocalizations.of(context).getTranslate("filter"),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('Z - A'),
+                  title: const Text('Z - A'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  title: Text('A - Z'),
+                  title: const Text('A - Z'),
                   onTap: () {
                     GoRouter.of(context).pop();
                   },
-                  trailing: Icon(Icons.chevron_right),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                Divider(),
+                const Divider(),
               ],
             ),
           ),

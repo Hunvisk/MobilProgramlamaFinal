@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfinalproje/widgets/myappbar.dart';
-//import 'package:flutterfinalproje/widgets/mybottomnavbar.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/localizations.dart';
+import '../../../widgets/myappbar.dart';
 
 class TabletProfile extends StatelessWidget {
   const TabletProfile({Key? key}) : super(key: key);

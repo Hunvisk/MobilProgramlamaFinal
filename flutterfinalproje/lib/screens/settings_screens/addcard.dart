@@ -1,5 +1,4 @@
-
-// ignore_for_file: use_build_context_synchronously, prefer_interpolation_to_compose_strings
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -92,7 +91,7 @@ class _AddCardState extends State<AddCard> {
       case (Screen.mobile):
         return;
       case (Screen.tablet):
-        return const tabletAddCard();
+        return const TabletAddCard();
       case (Screen.desktop):
         return const desktopAddCard();
     }
@@ -362,9 +361,7 @@ class _AddCardState extends State<AddCard> {
                                 Positioned(
                                   right: 20,
                                   bottom: 20,
-                                  child: Text(cards[index].expMonth.toString() +
-                                      "/" +
-                                      cards[index].expYear.toString()),
+                                  child: Text("${cards[index].expMonth}/${cards[index].expYear}"),
                                 ),
                               ],
                             ),
@@ -383,19 +380,13 @@ class _CardNumberInputFormatter extends TextInputFormatter {
       TextEditingValue oldValue, TextEditingValue newValue) {
     String formattedText = newValue.text.replaceAll(RegExp(r'\s'), '');
     if (formattedText.length > 4) {
-      formattedText = formattedText.substring(0, 4) +
-          ' ' +
-          formattedText.substring(4, formattedText.length);
+      formattedText = '${formattedText.substring(0, 4)} ${formattedText.substring(4, formattedText.length)}';
     }
     if (formattedText.length > 9) {
-      formattedText = formattedText.substring(0, 9) +
-          ' ' +
-          formattedText.substring(9, formattedText.length);
+      formattedText = '${formattedText.substring(0, 9)} ${formattedText.substring(9, formattedText.length)}';
     }
     if (formattedText.length > 14) {
-      formattedText = formattedText.substring(0, 14) +
-          ' ' +
-          formattedText.substring(14, formattedText.length);
+      formattedText = '${formattedText.substring(0, 14)} ${formattedText.substring(14, formattedText.length)}';
     }
     return TextEditingValue(
       text: formattedText,

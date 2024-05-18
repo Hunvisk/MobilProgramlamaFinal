@@ -1,12 +1,10 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, sort_child_properties_last, empty_statements,  non_constant_identifier_names, deprecated_member_use, avoid_print, unused_import, use_build_context_synchronously
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart'; 
+
 import '../../core/localizations.dart';
-import '../../core/responsive.dart';
 
 
 class TabletLogin extends StatefulWidget {
@@ -49,7 +47,7 @@ class _TabletLoginState extends State<TabletLogin> {
         child: Scaffold(
           body: Center(
             child: SingleChildScrollView(
-              child:TabletLogin(context),
+              child:tabletLogin(context),
             ),
           ),
         ),
@@ -57,11 +55,11 @@ class _TabletLoginState extends State<TabletLogin> {
     );
   }
 
-  Widget TabletLogin(BuildContext context) {
+  Widget tabletLogin(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Logo(),
+        logo(),
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Column(
@@ -71,7 +69,7 @@ class _TabletLoginState extends State<TabletLogin> {
                 AppLocalizations.of(context).getTranslate("sign_in"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color: Color.fromRGBO(155, 154, 154, 1),
@@ -81,24 +79,24 @@ class _TabletLoginState extends State<TabletLogin> {
                 AppLocalizations.of(context).getTranslate("continue_app_description"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color.fromRGBO(207, 206, 206, 1),
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Gap(20),
+              const Gap(20),
               Text(
                 AppLocalizations.of(context).getTranslate("email"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color.fromRGBO(155, 154, 154, 1),
                 ),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
@@ -109,34 +107,34 @@ class _TabletLoginState extends State<TabletLogin> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: const BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        const TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
                   ),
                   cursorColor: Colors.black, // Yazma imleci rengi
                 ),
               ),
-              Gap(6),
+              const Gap(6),
               Text(
                 AppLocalizations.of(context).getTranslate("password"),
                 maxLines: 1,
                 overflow: TextOverflow.fade,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color.fromRGBO(155, 154, 154, 1),
                 ),
               ),
-              Gap(5),
+              const Gap(5),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       //backgroundColor: Color.fromRGBO(249, 249, 249, 1),
                       ),
                   decoration: InputDecoration(
@@ -146,14 +144,14 @@ class _TabletLoginState extends State<TabletLogin> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 10.0, right: 5.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: const BorderSide(color: Colors.black),
                     ),
                     labelStyle:
-                        TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
+                        const TextStyle(color: Color.fromRGBO(155, 154, 154, 1)),
                     suffixIcon: GestureDetector(
                       onTap: () {},
                       child: Icon(
@@ -167,11 +165,11 @@ class _TabletLoginState extends State<TabletLogin> {
                       true, // Bu satır, şifrenin görünürlüğünü kontrol eder
                 ),
               ),
-              SignInLink(context), // "Şifremi Unuttum" linki
-              SignInButton(context),
-              Gap(10), // Boşluk ekledik
-              OtherSignInText(context), // "Diğer Giriş" metni
-              Gap(10), // Boşluk ekledik
+              signInLink(context), // "Şifremi Unuttum" linki
+              signInButton(context),
+              const Gap(10), // Boşluk ekledik
+              otherSignInText(context), // "Diğer Giriş" metni
+              const Gap(10), // Boşluk ekledik
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -224,7 +222,7 @@ class _TabletLoginState extends State<TabletLogin> {
     );
   }
 
-  Widget Logo() {
+  Widget logo() {
     return Align(
       alignment: Alignment.topCenter,
       child: Column(
@@ -242,7 +240,7 @@ class _TabletLoginState extends State<TabletLogin> {
   }
 }
 
-Widget SignInLink(BuildContext context) {
+Widget signInLink(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Align(
@@ -257,7 +255,7 @@ Widget SignInLink(BuildContext context) {
             AppLocalizations.of(context).getTranslate("forgot_password"),
             maxLines: 1,
             overflow: TextOverflow.fade,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.blue,
               fontSize: 15,
               fontWeight: FontWeight.bold,
@@ -269,21 +267,14 @@ Widget SignInLink(BuildContext context) {
   );
 }
 
-Widget SignInButton(BuildContext context) {
+Widget signInButton(BuildContext context) {
   return Container(
     width: double.infinity,
-    margin: EdgeInsets.all(5),
+    margin: const EdgeInsets.all(5),
     child: ElevatedButton(
       onPressed: () {
         context.push('/Home');
       },
-      child: Text(
-        AppLocalizations.of(context).getTranslate("sign_in"),
-        maxLines: 1,
-        overflow: TextOverflow.fade,
-        style: Theme.of(context).textTheme.button!.copyWith(
-            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-      ),
       style: ElevatedButton.styleFrom(
         backgroundColor:
             Theme.of(context).primaryColor, // Tema rengi, // Buton rengi
@@ -291,11 +282,18 @@ Widget SignInButton(BuildContext context) {
           borderRadius: BorderRadius.circular(15),
         ),
       ),
+      child: Text(
+        AppLocalizations.of(context).getTranslate("sign_in"),
+        maxLines: 1,
+        overflow: TextOverflow.fade,
+        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
     ),
   );
 }
 
-Widget OtherSignInText(BuildContext context) {
+Widget otherSignInText(BuildContext context) {
   return Column(
     children: [
       Row(
@@ -305,13 +303,13 @@ Widget OtherSignInText(BuildContext context) {
             AppLocalizations.of(context).getTranslate("have_an_account"),
             maxLines: 1,
             overflow: TextOverflow.fade,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.grey, // Yazı rengi
             ),
           ),
-          Gap(5),
+          const Gap(5),
           InkWell(
             onTap: () {
               context.push('/Register');
@@ -320,7 +318,7 @@ Widget OtherSignInText(BuildContext context) {
               AppLocalizations.of(context).getTranslate("register"),
               maxLines: 1,
               overflow: TextOverflow.fade,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,

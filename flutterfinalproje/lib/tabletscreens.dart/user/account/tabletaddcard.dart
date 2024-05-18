@@ -1,7 +1,5 @@
-// ignore_for_file: file_names, prefer_const_constructors, unnecessary_import, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutterfinalproje/widgets/myappbar.dart';
 
 class TabletAddCard extends StatefulWidget {
@@ -18,21 +16,21 @@ class _TabletAddCardState extends State<TabletAddCard> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: MyAppBar(title: "title"),
-        body:tabletAddCard(), // Burada içerik belirtilmemiş, düzeltilmeli.
+        appBar: const MyAppBar(title: "title"),
+        body:const TabletAddCardBody(), // Burada içerik belirtilmemiş, düzeltilmeli.
       ),
     );
     
   }
-  }
+}
 
-class tabletAddCard extends StatelessWidget {
-  const tabletAddCard({
+class TabletAddCardBody extends StatelessWidget {
+  const TabletAddCardBody({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text("data");
+    return const Text("data");
   }
 }
