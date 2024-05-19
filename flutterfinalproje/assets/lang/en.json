@@ -316,22 +316,25 @@
     "description_about_app_7": "Information about the Terms and End User License Agreement is provided.",
 
     "notifications_title1": "Newly Opened Places",
-"notifications_description1": "Discover newly opened restaurants in Istanbul!",
-"notifications_title2": "Special Offers",
-"notifications_description2": "Exclusive discounts await you at your favorite places!",
-"notifications_title3": "Transportation Update",
-"notifications_description3": "Traffic congestion is expected in the Beşiktaş area today.",
-"notifications_title4": "Changes in Favorite Places",
-"notifications_description4": "There's a new event at your favorite venue!",
-"notifications_title5": "General Notifications",
-"notifications_description5": "The app has been updated. Explore the new features!",
-"notifications_inform_me": "Notify Me",
-"all_new_messages": "All New Messages",
-"all_new_messages_description": "Notify everyone in the channel about new messages",
-"mentioned_only": "Mentioned Only",
-"mentioned_only_description": "Only notify me when someone mentions me",
-"nothing": "Nothing",
-"nothing_description": "Don't notify me about anything"
+    "notifications_description1": "Discover newly opened restaurants in Istanbul!",
+    "notifications_title2": "Special Offers",
+    "notifications_description2": "Exclusive discounts await you at your favorite places!",
+    "notifications_title3": "Transportation Update",
+    "notifications_description3": "Traffic congestion is expected in the Beşiktaş area today.",
+    "notifications_title4": "Changes in Favorite Places",
+    "notifications_description4": "There's a new event at your favorite venue!",
+    "notifications_title5": "General Notifications",
+    "notifications_description5": "The app has been updated. Explore the new features!",
+    "notifications_inform_me": "Notify Me",
+    "all_new_messages": "All New Messages",
+    "all_new_messages_description": "Notify everyone in the channel about new messages",
+    "mentioned_only": "Mentioned Only",
+    "mentioned_only_description": "Only notify me when someone mentions me",
+    "nothing": "Nothing",
+    "nothing_description": "Don't notify me about anything",
+
+    "saving_options": "Saving Options",
+    "close": "Close"
 
 
     

@@ -329,8 +329,13 @@
    "all_new_messages_description": "Kanaldaki herkesi yeni mesajlardan haberdar et",
    "mentioned_only": "Yalnızca bahsedilenler",
    "mentioned_only_description": "Yalnızca biri benden bahsettiğinde bana haber ver",
-"nothing": "Hiçbir şey",
-"nothing_description": "Bana hiçbir şey bildirme"
+    "nothing": "Hiçbir şey",
+    "nothing_description": "Bana hiçbir şey bildirme",
+
+    "saving_options": "Kaydetme Seçenekleri",
+    "close": "Kapat"
+
+
 
 
     

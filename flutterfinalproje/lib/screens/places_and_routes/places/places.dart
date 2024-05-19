@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,13 +6,13 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../bloc/saved_places/saved_places_cubit.dart';
+import '../../../bloc/saved_placestovisit/saved_placestovisit_cubit.dart';
 import '../../../core/localizations.dart';
 import '../../../widgets/appbarwithsearchicon.dart';
 
 class PlacesScreen extends StatefulWidget {
   const PlacesScreen({super.key});
   
-
   @override
   State<PlacesScreen> createState() => _PlacesScreenState();
 }
@@ -21,14 +20,14 @@ class PlacesScreen extends StatefulWidget {
 class _PlacesScreenState extends State<PlacesScreen> {
   bool isSearching = false;
   late List<dynamic> places = [];
-  
-
   late SavedPlacesCubit savedPlacesCubit;
+  late SavedPlacesToVisitCubit savedPlacesToVisitCubit;
 
   @override
   void initState() {
     super.initState();
     savedPlacesCubit = context.read<SavedPlacesCubit>();
+    savedPlacesToVisitCubit = context.read<SavedPlacesToVisitCubit>();
     loadPlaces();
   }
 
@@ -56,36 +55,40 @@ class _PlacesScreenState extends State<PlacesScreen> {
             });
           },
         ),
-        body: BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
-          builder: (context, state) {
-            return Column( // Column ekliyorum
-              children: [
-                const FilterWidget(), // FilterWidget eklendi
-                Expanded( // ListView için genişlemiş alan
-                  child: ListView.builder(
-                    itemCount: places.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          context.push(
-                            "/SelectedPlaces", extra: places[index]);
-                        },
-                        child: placesContainerDesign(
-                          context,
-                          places[index]["id"] as int,
-                          places[index]["images"][0].toString(), 
-                          places[index]["title"].toString(), 
-                          places[index]["rating"].toString(), 
-                          places[index]["views"].toString(), 
-                          places[index]["comments"].toString(),
-                          places[index]
+        body: BlocBuilder<SavedPlacesToVisitCubit, SavedPlacesToVisitState>(
+          builder: (context, savedPlacesToVisitState) {
+            return BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+              builder: (context, savedPlacesState) {
+                return Column( // Column ekliyorum
+                  children: [
+                    const FilterWidget(), // FilterWidget eklendi
+                    Expanded( // ListView için genişlemiş alan
+                      child: ListView.builder(
+                        itemCount: places.length,
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              context.push(
+                                "/SelectedPlaces", extra: places[index]);
+                            },
+                            child: placesContainerDesign(
+                              context,
+                              places[index]["id"] as int,
+                              places[index]["images"][0].toString(), 
+                              places[index]["title"].toString(), 
+                              places[index]["rating"].toString(), 
+                              places[index]["views"].toString(), 
+                              places[index]["comments"].toString(),
+                              places[index]
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              }
             );
           }
         ),
@@ -93,7 +96,68 @@ class _PlacesScreenState extends State<PlacesScreen> {
     );
   }
 
+  void _showSaveOptions(int id, dynamic place) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        bool isSavedPlace = savedPlacesCubit.isSavedPlaces(id);
+        bool isSavedPlaceToVisit = savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Text(AppLocalizations.of(context).getTranslate("saving_options"),),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CheckboxListTile(
+                    title: Text(AppLocalizations.of(context).getTranslate("savedPlaces"),),
+                    value: isSavedPlace,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isSavedPlace = value ?? false;
+                        if (isSavedPlace) {
+                          savedPlacesCubit.addToSavedPlaces(place);
+                        } else {
+                          savedPlacesCubit.removeFromSavedPlaces(id);
+                        }
+                      });
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text(AppLocalizations.of(context).getTranslate("places_to_visit"),),
+                    value: isSavedPlaceToVisit,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isSavedPlaceToVisit = value ?? false;
+                        if (isSavedPlaceToVisit) {
+                          savedPlacesToVisitCubit.addToSavedPlacesToVisit(place);
+                        } else {
+                          savedPlacesToVisitCubit.removeFromSavedPlacesToVisit(id);
+                        }
+                      });
+                    },
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text(AppLocalizations.of(context).getTranslate("close"),),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
   Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
+    bool isSavedPlace = savedPlacesCubit.isSavedPlaces(id);
+    bool isWantedPlace = savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
+
     return Stack(
       children: [
         ClipRRect(
@@ -133,26 +197,17 @@ class _PlacesScreenState extends State<PlacesScreen> {
                       ),
                     ),
                   ),
-                  if(savedPlacesCubit.isSavedPlaces(id))
-                    IconButton(
-                      icon: const Icon(
-                        Icons.bookmark,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        savedPlacesCubit.removeFromSavedPlaces(id);
-                      },
-                    )
-                  else 
-                    IconButton(
-                      icon: const Icon(
-                        Icons.bookmark_outline,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        savedPlacesCubit.addToSavedPlaces(index);
-                      },
-                    )
+                  IconButton(
+                    icon: Icon(
+                      (isSavedPlace || isWantedPlace)
+                          ? Icons.bookmark
+                          : Icons.bookmark_outline,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      _showSaveOptions(id, index);
+                    },
+                  ),
                 ],
               ),
             ),

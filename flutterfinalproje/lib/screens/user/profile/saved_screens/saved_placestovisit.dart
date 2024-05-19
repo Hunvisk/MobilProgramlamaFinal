@@ -1,59 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterfinalproje/bloc/saved_routes/saved_routes_cubit.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../bloc/saved_placestovisit/saved_placestovisit_cubit.dart';
 import '../../../../core/localizations.dart';
 import '../../../../widgets/myappbar.dart';
 
-class SavedRoutesScreen extends StatefulWidget {
-  const SavedRoutesScreen({super.key});
+class SavedPlacesToVisitScreen extends StatefulWidget {
+  const SavedPlacesToVisitScreen({super.key});
 
   @override
-  State<SavedRoutesScreen> createState() => _SavedRoutesScreenState();
+  State<SavedPlacesToVisitScreen> createState() => _SavedPlacesToVisitScreenState();
 }
 
-class _SavedRoutesScreenState extends State<SavedRoutesScreen> {
-
-  late SavedRoutesCubit savedRoutesCubit;
+class _SavedPlacesToVisitScreenState extends State<SavedPlacesToVisitScreen> {
+  late SavedPlacesToVisitCubit savedPlacesToVisitCubit;
 
   @override
   void initState() {
     super.initState();
-    savedRoutesCubit = context.read<SavedRoutesCubit>();
+    savedPlacesToVisitCubit = context.read<SavedPlacesToVisitCubit>();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: AppLocalizations.of(context).getTranslate("savedRoutes"),
+        title: AppLocalizations.of(context).getTranslate("savedPlaces"),
       ),
-      body: BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
+      body: BlocBuilder<SavedPlacesToVisitCubit, SavedPlacesToVisitState>(
         builder: (context, state) {
           return Column(
             children: [
               const FilterWidget(),
               Expanded(
                 child: ListView.builder(
-                  itemCount: state.savedRoutes.length,
+                  itemCount: state.savedPlacesToVisit.length,
                   itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: GestureDetector(
                         onTap: () {
-                          context.push("/SelectedRoutes", extra: state.savedRoutes[index]);
+                          context.push(
+                            "/SelectedPlaces", extra: state.savedPlacesToVisit[index]);
                         },
-                        child: routesContainerDesign(
+                        child: placesContainerDesign(
                           context,
-                          state.savedRoutes[index]["id"] as int,
-                          state.savedRoutes[index]["imagePath"].toString(), 
-                          state.savedRoutes[index]["title"].toString(), 
-                          state.savedRoutes[index]["stop"].toString(), 
-                          state.savedRoutes[index]["rating"].toString(), 
-                          state.savedRoutes[index]["views"].toString(), 
-                          state.savedRoutes[index]["comments"].toString(),
-                          state.savedRoutes[index]
+                          state.savedPlacesToVisit[index]["id"] as int,
+                          state.savedPlacesToVisit[index]["images"][0].toString(), 
+                          state.savedPlacesToVisit[index]["title"].toString(), 
+                          state.savedPlacesToVisit[index]["rating"].toString(), 
+                          state.savedPlacesToVisit[index]["views"].toString(), 
+                          state.savedPlacesToVisit[index]["comments"].toString(),
+                          state.savedPlacesToVisit[index]
                         ),
                       ),
                     ),
@@ -66,7 +65,7 @@ class _SavedRoutesScreenState extends State<SavedRoutesScreen> {
     );
   }
 
-  Widget routesContainerDesign(BuildContext context, int id, String imagePath, String title, String stop, String rating, String views, String comments, index) {
+  Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
     return Stack(
       children: [
         ClipRRect(
@@ -85,35 +84,35 @@ class _SavedRoutesScreenState extends State<SavedRoutesScreen> {
           left: 0,
           right: 0,
           child: Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Text(
-                title,
-                maxLines: 1,
-                overflow: TextOverflow.fade,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(10),
               ),
-            ),
-            if(savedRoutesCubit.isSavedRoutes(id))
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(context).getTranslate(title),
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if(savedPlacesToVisitCubit.isSavedPlacesToVisit(id))
                     IconButton(
                       icon: const Icon(
                         Icons.bookmark,
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        savedRoutesCubit.removeFromSavedRoutes(id);
+                        savedPlacesToVisitCubit.removeFromSavedPlacesToVisit(id);
                       },
                     )
                   else 
@@ -123,35 +122,25 @@ class _SavedRoutesScreenState extends State<SavedRoutesScreen> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        savedRoutesCubit.addToSavedRoutes(index);
+                        savedPlacesToVisitCubit.addToSavedPlacesToVisit(index);
                       },
                     )
-          ],
-        ),
-      ),
-    ),
+                ],
+              ),
+            ),
+          )
         ),
         Positioned(
           bottom: 5,
           left: 10,
           right: 10,
-          child: infoColumns(
-            rating,
-            views,
-            comments,
-            stop,
-          ),
+          child: infoColumns(rating, views, comments),
         ),
       ],
     );
   }
 
-  Widget infoColumns(
-    String rating,
-    String views,
-    String comments,
-    String stop,
-  ) {
+  Widget infoColumns(String rating, String views, String comments) {
     return Container(
       width: 140,
       decoration: BoxDecoration(
@@ -162,45 +151,26 @@ class _SavedRoutesScreenState extends State<SavedRoutesScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              infoRow(
-                context,
-                Icons.directions_bus, // Durak ikonu
-                ": $stop", // Durak sayısı
-              ),
-              infoRow(
-                context,
-                Icons.star,
-                ": $rating",
-              ),
-            ],
+          infoRow(
+            context,
+             Icons.star,
+             ": $rating",
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              infoRow(
-                context,
-                Icons.remove_red_eye,
-                ": $views",
-              ),
-              infoRow(
-                context,
-                Icons.comment,
-                ": $comments",
-              ),
-            ],
+          infoRow(
+            context,
+            Icons.remove_red_eye,
+            ": $views",
+          ),
+          infoRow(
+            context,
+            Icons.comment,
+            ": $comments",
           ),
         ],
       ),
     );
   }
 
-  
-
-
-  
   Widget infoRow(BuildContext context, IconData icon, String text) {
     return Padding(
       padding: const EdgeInsets.all(2.0),
@@ -446,5 +416,6 @@ class FilterWidget extends StatelessWidget {
       },
     );
   }
+
 }
 

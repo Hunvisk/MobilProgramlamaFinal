@@ -316,24 +316,25 @@
     "description_about_app_7": "Предоставляются сведения о Правилах использования и Лицензионном соглашении с конечным пользователем.",
 
     "notifications_title1": "Новые открытые места",
-"notifications_description1": "Откройте для себя новые рестораны в Стамбуле!",
-"notifications_title2": "Специальные предложения",
-"notifications_description2": "Эксклюзивные скидки ждут вас в ваших любимых местах!",
-"notifications_title3": "Обновление транспорта",
-"notifications_description3": "Ожидается затор движения в районе Бешикташ сегодня.",
-"notifications_title4": "Изменения в избранных местах",
-"notifications_description4": "В вашем любимом месте есть новое мероприятие!",
-"notifications_title5": "Общие уведомления",
-"notifications_description5": "Приложение было обновлено. Исследуйте новые функции!",
-"notifications_inform_me": "Уведомите меня",
-"all_new_messages": "Все новые сообщения",
-"all_new_messages_description": "Уведомить всех в канале о новых сообщениях",
-"mentioned_only": "Только упомянутые",
-"mentioned_only_description": "Уведомлять меня только, когда меня упоминают",
-"nothing": "Ничего",
-"nothing_description": "Не уведомляйте меня о ничем"
+    "notifications_description1": "Откройте для себя новые рестораны в Стамбуле!",
+    "notifications_title2": "Специальные предложения",
+    "notifications_description2": "Эксклюзивные скидки ждут вас в ваших любимых местах!",
+    "notifications_title3": "Обновление транспорта",
+    "notifications_description3": "Ожидается затор движения в районе Бешикташ сегодня.",
+    "notifications_title4": "Изменения в избранных местах",
+    "notifications_description4": "В вашем любимом месте есть новое мероприятие!",
+    "notifications_title5": "Общие уведомления",
+    "notifications_description5": "Приложение было обновлено. Исследуйте новые функции!",
+    "notifications_inform_me": "Уведомите меня",
+    "all_new_messages": "Все новые сообщения",
+    "all_new_messages_description": "Уведомить всех в канале о новых сообщениях",
+    "mentioned_only": "Только упомянутые",
+    "mentioned_only_description": "Уведомлять меня только, когда меня упоминают",
+    "nothing": "Ничего",
+    "nothing_description": "Не уведомляйте меня о ничем",
 
-
+    "saving_options": "Варианты сохранения",
+    "close": "Закрыть"
 
 
 }

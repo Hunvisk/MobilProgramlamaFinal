@@ -40,15 +40,21 @@ class _SavedPlacesScreenState extends State<SavedPlacesScreen> {
                   itemCount: state.savedPlaces.length,
                   itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: placesContainerDesign(
-                        context,
-                        state.savedPlaces[index]["id"] as int,
-                        state.savedPlaces[index]["images"][0].toString(), 
-                        state.savedPlaces[index]["title"].toString(), 
-                        state.savedPlaces[index]["rating"].toString(), 
-                        state.savedPlaces[index]["views"].toString(), 
-                        state.savedPlaces[index]["comments"].toString(),
-                        state.savedPlaces[index]
+                      child: GestureDetector(
+                        onTap: () {
+                          context.push(
+                            "/SelectedPlaces", extra: state.savedPlaces[index]);
+                        },
+                        child: placesContainerDesign(
+                          context,
+                          state.savedPlaces[index]["id"] as int,
+                          state.savedPlaces[index]["images"][0].toString(), 
+                          state.savedPlaces[index]["title"].toString(), 
+                          state.savedPlaces[index]["rating"].toString(), 
+                          state.savedPlaces[index]["views"].toString(), 
+                          state.savedPlaces[index]["comments"].toString(),
+                          state.savedPlaces[index]
+                        ),
                       ),
                     ),
                 ), 

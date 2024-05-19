@@ -2,9 +2,9 @@
   {
     "id": 1,
     "title": "hagia_sophia",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "hagia_sophia_description",
       "hagia_sophia_description1",
@@ -19,9 +19,9 @@
   {
     "id": 2,
     "title": "monastery_of_st_yorgi",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "monastery_of_st_yorgi_description",
       "monastery_of_st_yorgi_description1"
@@ -34,9 +34,9 @@
   {
     "id": 3,
     "title": "haseki_hamam",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 3,
     "description": [
       "haseki_hamam_description",
       "haseki_hamam_description1",
@@ -50,9 +50,9 @@
   {
     "id": 4,
     "title": "st_mahmut_hudayi_mosque",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "st_mahmut_hudayi_mosque_description",
       "st_mahmut_hudayi_mosque_description1",
@@ -65,9 +65,9 @@
   {
     "id": 5,
     "title": "anadolu_hisari",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "anadolu_hisari_mosque_description",
       "anadolu_hisari_mosque_description1",
@@ -82,9 +82,9 @@
   {
     "id": 6,
     "title": "german_fountain",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "german_fountain_description"
     ],
@@ -96,9 +96,9 @@
   {
     "id": 7,
     "title": "aya_triada_greek_orthodox_church",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "aya_triada_greek_orthodox_church_description",
       "aya_triada_greek_orthodox_church_description1"
@@ -111,9 +111,9 @@
   {
     "id": 8,
     "title": "ahmet_III_fountain",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "ahmet_III_fountain_description",
       "ahmet_III_fountain_description1"
@@ -127,9 +127,9 @@
   {
     "id": 9,
     "title": "adile_sultan_pavilion",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "adile_sultan_pavilion_description",
       "adile_sultan_pavilion_description1",
@@ -144,9 +144,9 @@
   {
     "id": 10,
     "title": "ataturk_arboretum",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "ataturk_arboretum_description",
       "ataturk_arboretum_description1",
@@ -162,9 +162,9 @@
   {
     "id": 11,
     "title": "hagia_irene",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "hagia_irene_description",
       "hagia_irene_description1",
@@ -178,9 +178,9 @@
   {
     "id": 12,
     "title": "ahmed_fethi_pasha_mansion",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "ahmed_fethi_pasha_mansion_description",
       "ahmed_fethi_pasha_mansion_description1"
@@ -193,9 +193,9 @@
   {
     "id": 13,
     "title": "istanbul_archaeology_museum",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "istanbul_archaeology_museum_description"
     ],
@@ -206,9 +206,9 @@
   {
     "id": 14,
     "title": "museum_of_ancient_oriental_art",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "museum_of_ancient_oriental_art_description"
     ],
@@ -219,9 +219,9 @@
   {
     "id": 15,
     "title": "tiled_pavilion",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "tiled_pavilion_description",
       "tiled_pavilion_description1"
@@ -233,9 +233,9 @@
   {
     "id": 16,
     "title": "beylerbeyi_palace",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "beylerbeyi_palace_description"
     ],
@@ -247,9 +247,9 @@
   {
     "id": 17,
     "title": "binbirdirek_cistern",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "binbirdirek_cistern_description",
       "binbirdirek_cistern_description1",
@@ -265,9 +265,9 @@
   {
     "id": 18,
     "title": "basilica_cistern",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "basilica_cistern_description",
       "basilica_cistern_description1",
@@ -281,9 +281,9 @@
   {
     "id": 19,
     "title": "maiden_tower",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "maiden_tower_description",
       "maiden_tower_description1",
@@ -298,9 +298,9 @@
   {
     "id": 20,
     "title": "galata_tower",
-    "rating": "7.5",
-    "views": "3280",
-    "comments": "37",
+    "rating": 7.5,
+    "views": 3280,
+    "comments": 37,
     "description": [
       "galata_tower_description"
     ],

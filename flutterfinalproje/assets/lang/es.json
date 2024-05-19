@@ -316,24 +316,24 @@
     "about_app_title_3": "Información Legal:",
     "description_about_app_7": "Se proporciona información sobre los Términos y el Acuerdo de Licencia para el Usuario Final.",
 
+    "notifications_title1": "Nuevos Lugares Abiertos",
+    "notifications_description1": "¡Descubre restaurantes recién abiertos en Estambul!",
+    "notifications_title2": "Ofertas Especiales",
+    "notifications_description2": "¡Descuentos exclusivos te esperan en tus lugares favoritos!",
+    "notifications_title3": "Actualización de Transporte",
+    "notifications_description3": "Se espera congestión de tráfico en el área de Beşiktaş hoy.",
+    "notifications_title4": "Cambios en Lugares Favoritos",
+    "notifications_description4": "¡Hay un nuevo evento en tu lugar favorito!",
+    "notifications_title5": "Notificaciones Generales",
+    "notifications_description5": "¡La aplicación ha sido actualizada! ¡Explora las nuevas funciones!",
+    "notifications_inform_me": "Notifícame",
+    "all_new_messages": "Todos los Nuevos Mensajes",
+    "all_new_messages_description": "Notificar a todos en el canal sobre nuevos mensajes",
+    "mentioned_only": "Solo Mencionados",
+    "mentioned_only_description": "Solo notificarme cuando alguien me mencione",
+    "nothing": "Nada",
+    "nothing_description": "No me notifiques sobre nada",
 
-"notifications_title1": "Nuevos Lugares Abiertos",
-"notifications_description1": "¡Descubre restaurantes recién abiertos en Estambul!",
-"notifications_title2": "Ofertas Especiales",
-"notifications_description2": "¡Descuentos exclusivos te esperan en tus lugares favoritos!",
-"notifications_title3": "Actualización de Transporte",
-"notifications_description3": "Se espera congestión de tráfico en el área de Beşiktaş hoy.",
-"notifications_title4": "Cambios en Lugares Favoritos",
-"notifications_description4": "¡Hay un nuevo evento en tu lugar favorito!",
-"notifications_title5": "Notificaciones Generales",
-"notifications_description5": "¡La aplicación ha sido actualizada! ¡Explora las nuevas funciones!",
-"notifications_inform_me": "Notifícame",
-"all_new_messages": "Todos los Nuevos Mensajes",
-"all_new_messages_description": "Notificar a todos en el canal sobre nuevos mensajes",
-"mentioned_only": "Solo Mencionados",
-"mentioned_only_description": "Solo notificarme cuando alguien me mencione",
-"nothing": "Nada",
-"nothing_description": "No me notifiques sobre nada"
-
-
+    "saving_options": "Opciones de ahorro",
+    "close": "Cerrar"
 }

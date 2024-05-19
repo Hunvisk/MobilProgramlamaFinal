@@ -332,6 +332,8 @@
     "mentioned_only": "Nur Erwähnte",
     "mentioned_only_description": "Benachrichtigen Sie mich nur, wenn mich jemand erwähnt",
     "nothing": "Nichts",
-    "nothing_description": "Benachrichtigen Sie mich über nichts"
+    "nothing_description": "Benachrichtigen Sie mich über nichts",
     
+    "saving_options": "Optionen zum Speichern",
+    "close": "Schließen"
 }

@@ -5,6 +5,7 @@ import 'package:flutterfinalproje/core/localizations.dart';
 
 import 'bloc/client/client_cubit.dart';
 import 'bloc/saved_places/saved_places_cubit.dart';
+import 'bloc/saved_placestovisit/saved_placestovisit_cubit.dart';
 import 'bloc/saved_routes/saved_routes_cubit.dart';
 import 'core/routes.dart';
 import 'core/theme.dart';
@@ -34,6 +35,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SavedRoutesCubit(
             SavedRoutesState(savedRoutes: [])
+          ),
+        ),
+        BlocProvider(
+          create: (context) => SavedPlacesToVisitCubit(
+            SavedPlacesToVisitState(savedPlacesToVisit: [])
           ),
         ),
       ],

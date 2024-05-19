@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../bloc/saved_places/saved_places_cubit.dart';
+import '../../../bloc/saved_placestovisit/saved_placestovisit_cubit.dart';
 import '../../../bloc/saved_routes/saved_routes_cubit.dart';
 import '../../../core/localizations.dart';
 import '../../../widgets/myappbar.dart';
@@ -15,12 +16,14 @@ class SavedScreen extends StatefulWidget {
 }
 
 class _SavedScreenState extends State<SavedScreen> {
+  late SavedPlacesToVisitCubit savedPlacesToVisitCubit;
   late SavedPlacesCubit savedPlacesCubit;
   late SavedRoutesCubit savedRoutesCubit;
 
   @override
   void initState() {
     super.initState();
+    savedPlacesToVisitCubit = context.read<SavedPlacesToVisitCubit>();
     savedPlacesCubit = context.read<SavedPlacesCubit>();
     savedRoutesCubit = context.read<SavedRoutesCubit>();
   }
@@ -33,6 +36,9 @@ class _SavedScreenState extends State<SavedScreen> {
       ),
       body: MultiBlocListener(
         listeners: [
+          BlocListener<SavedPlacesToVisitCubit, SavedPlacesToVisitState>(
+            listener: (context, state) {},
+          ),
           BlocListener<SavedPlacesCubit, SavedPlacesState>(
             listener: (context, state) {},
           ),
@@ -43,36 +49,43 @@ class _SavedScreenState extends State<SavedScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SavedBox(
-                path: "/PlaceToVisit",
-                title: "place_to_visit",
-              ),
-              BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
-                builder: (context, savedPlacesState) {
-                  return BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
-                    builder: (context, savedRoutesState) {
-                      return Column(
-                        children: [
-                          SavedBox(
-                            path: "/SavedPlaces",
-                            title: "savedPlaces",
-                            backgroundImage: savedPlacesState.savedPlaces.isNotEmpty
-                                ? savedPlacesState.savedPlaces[0]["images"][0].toString()
-                                : null,
-                          ),
-                          SavedBox(
-                            path: "/SavedRoutes",
-                            title: "savedRoutes",
-                            backgroundImage: savedRoutesState.savedRoutes.isNotEmpty
-                                ? savedRoutesState.savedRoutes[0]["imagePath"].toString()
-                                : null,
-                          ),
-                        ],
+              BlocBuilder<SavedPlacesToVisitCubit, SavedPlacesToVisitState>(
+                builder: (context, savedPlacesToVisitState) {
+                  return BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+                    builder: (context, savedPlacesState) {
+                      return BlocBuilder<SavedRoutesCubit, SavedRoutesState>(
+                        builder: (context, savedRoutesState,) {
+                          return Column(
+                            children: [
+                              SavedBox(
+                                path: "/SavedPlacesToVisit",
+                                title: "place_to_visit",
+                                backgroundImage: savedPlacesToVisitState.savedPlacesToVisit.isNotEmpty
+                                    ? savedPlacesToVisitState.savedPlacesToVisit[0]["images"][0].toString()
+                                    : null,
+                              ),
+                              SavedBox(
+                                path: "/SavedPlaces",
+                                title: "savedPlaces",
+                                backgroundImage: savedPlacesState.savedPlaces.isNotEmpty
+                                    ? savedPlacesState.savedPlaces[0]["images"][0].toString()
+                                    : null,
+                              ),
+                              SavedBox(
+                                path: "/SavedRoutes",
+                                title: "savedRoutes",
+                                backgroundImage: savedRoutesState.savedRoutes.isNotEmpty
+                                    ? savedRoutesState.savedRoutes[0]["imagePath"].toString()
+                                    : null,
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   );
-                },
-              ),
+                }
+              )
             ],
           ),
         ),

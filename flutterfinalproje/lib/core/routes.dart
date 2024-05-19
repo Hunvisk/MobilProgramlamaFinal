@@ -51,9 +51,9 @@ import '../screens/user/Login.dart';
 import '../screens/user/profile/achievements.dart';
 import '../screens/user/profile/saved.dart';
 import '../screens/user/profile/photographs.dart';
-import '../screens/user/profile/placestovisit.dart';
 import '../screens/user/profile/profile.dart';
 import '../screens/user/profile/saved_screens/saved_places.dart';
+import '../screens/user/profile/saved_screens/saved_placestovisit.dart';
 import '../screens/user/profile/saved_screens/saved_routes.dart';
 import '../screens/user/profile/userblogs.dart';
 import '../screens/user/profile/usercomments.dart';
@@ -176,6 +176,11 @@ final routes = GoRouter(
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
+          path: '/SavedPlacesToVisit',
+          pageBuilder: (context, state) => const NoTransitionPage(child: SavedPlacesToVisitScreen()),
+        ),
+        GoRoute(
+          parentNavigatorKey: _shellNavigatorKey,
           path: '/SavedPlaces',
           pageBuilder: (context, state) => const NoTransitionPage(child: SavedPlacesScreen()),
         ),
@@ -213,11 +218,6 @@ final routes = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/DesktopPhotographs',
           pageBuilder: (context, state) => const NoTransitionPage(child: DesktopPhotographs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/PlaceToVisit',
-          pageBuilder: (context, state) => const NoTransitionPage(child: PlaceToVisit()),
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,

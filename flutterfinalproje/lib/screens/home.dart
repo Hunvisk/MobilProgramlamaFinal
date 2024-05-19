@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import '../bloc/saved_places/saved_places_cubit.dart';
+import '../bloc/saved_placestovisit/saved_placestovisit_cubit.dart';
 import '../services/api.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterfinalproje/bloc/client/client_cubit.dart';
@@ -27,6 +28,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   late SavedPlacesCubit savedPlacesCubit;
+  late SavedPlacesToVisitCubit savedPlacesToVisitCubit;
   late ClientCubit clientCubit;
   late List<dynamic> places = [];
   late List<dynamic> carouselSliderItems = [];
@@ -34,8 +36,9 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    clientCubit = context.read<ClientCubit>();
     savedPlacesCubit = context.read<SavedPlacesCubit>();
+    savedPlacesToVisitCubit = context.read<SavedPlacesToVisitCubit>();
+    clientCubit = context.read<ClientCubit>();
     loadPlaces();
   }
 
@@ -74,134 +77,138 @@ class _HomeState extends State<Home> {
         actions: const [],
       ),
       drawer: myDrawer(context),
-      body: BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
-        builder: (context, state) {
-          return SafeArea(
-            child: Column(
-              children: [
-                if (isSearching)
-                  Container(
-                    height: 32, // Arama çubuğu yüksekliği,,,,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: TextField(
-                      controller: searchController,
-                      onChanged: (value) {
-                        // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
-                      },
-                      onSubmitted: (value) {
-                        // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
-                      },
-                      decoration: const InputDecoration(
-                        hintText: "Ara...",
-                        border: OutlineInputBorder(),
-                        contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
-                      ),
-                    ),
-                  ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        const WeatherBox(),
-                        GestureDetector(
-                            onTap: () {
-                              context.push('/VipGezginInfo');
-                            },
-                            child: NavigatorBox(
-                              title: AppLocalizations.of(context)
-                                  .getTranslate("become_a_VIP_traveler_now"),
-                            )),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Theme.of(context).secondaryHeaderColor),
-                            width: double.infinity,
-                            child: Column(
-                              children: [
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Text(
-                                        AppLocalizations.of(context)
-                                            .getTranslate("popular_this_week"),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall,
-                                      )),
-                                ),
-                                const Divider(),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: CarouselSlider(
-                                    options: CarouselOptions(
-                                      autoPlay: true,
-                                      height: 250,
-                                      autoPlayCurve: Curves.fastOutSlowIn,
-                                      autoPlayAnimationDuration:
-                                          const Duration(milliseconds: 1000),
-                                      autoPlayInterval:
-                                          const Duration(seconds: 3),
-                                      enlargeCenterPage: true,
-                                      aspectRatio: 2.0,
-                                      onPageChanged: (index, reason) {
-                                        setState(() {
-                                          myCurrentIndex = index;
-                                        });
-                                      },
-                                    ),
-                                    items: carouselSliderItems.map((e) => placesContainerDesign(
-                                        context,
-                                        e["id"] as int,
-                                        e["images"][0].toString(), 
-                                        e["title"].toString(), 
-                                        e["rating"].toString(), 
-                                        e["views"].toString(), 
-                                        e["comments"].toString(),
-                                        e
-                                    )).toList()
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: AnimatedSmoothIndicator(
-                                    activeIndex: myCurrentIndex,
-                                    count: carouselSliderItems.length,
-                                    effect: WormEffect(
-                                      dotHeight: 8,
-                                      dotWidth: 8,
-                                      spacing: 5,
-                                      dotColor: Colors.grey.shade400,
-                                      activeDotColor: Colors.white,
-                                      paintStyle: PaintingStyle.fill,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+      body: BlocBuilder<SavedPlacesToVisitCubit, SavedPlacesToVisitState>(
+        builder: (context, savedPlacesToVisitState) {
+          return BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+            builder: (context, savedPlacesState) {
+              return SafeArea(
+                child: Column(
+                  children: [
+                    if (isSearching)
+                      Container(
+                        height: 32, // Arama çubuğu yüksekliği,,,,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: TextField(
+                          controller: searchController,
+                          onChanged: (value) {
+                            // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
+                          },
+                          onSubmitted: (value) {
+                            // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Ara...",
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
                           ),
                         ),
-                        GestureDetector(
-                            onTap: () {
-                              context.push('/Home');
-                            },
-                            child: NavigatorBox(
-                              title: AppLocalizations.of(context)
-                                  .getTranslate("discover_traveler_products"),
-                            )),
-                      ],
+                      ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            const WeatherBox(),
+                            GestureDetector(
+                                onTap: () {
+                                  context.push('/VipGezginInfo');
+                                },
+                                child: NavigatorBox(
+                                  title: AppLocalizations.of(context)
+                                      .getTranslate("become_a_VIP_traveler_now"),
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Theme.of(context).secondaryHeaderColor),
+                                width: double.infinity,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.topLeft,
+                                      child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .getTranslate("popular_this_week"),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headlineSmall,
+                                          )),
+                                    ),
+                                    const Divider(),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: CarouselSlider(
+                                        options: CarouselOptions(
+                                          autoPlay: true,
+                                          height: 250,
+                                          autoPlayCurve: Curves.fastOutSlowIn,
+                                          autoPlayAnimationDuration:
+                                              const Duration(milliseconds: 1000),
+                                          autoPlayInterval:
+                                              const Duration(seconds: 3),
+                                          enlargeCenterPage: true,
+                                          aspectRatio: 2.0,
+                                          onPageChanged: (index, reason) {
+                                            setState(() {
+                                              myCurrentIndex = index;
+                                            });
+                                          },
+                                        ),
+                                        items: carouselSliderItems.map((e) => placesContainerDesign(
+                                            context,
+                                            e["id"] as int,
+                                            e["images"][0].toString(), 
+                                            e["title"].toString(), 
+                                            e["rating"].toString(), 
+                                            e["views"].toString(), 
+                                            e["comments"].toString(),
+                                            e
+                                        )).toList()
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: AnimatedSmoothIndicator(
+                                        activeIndex: myCurrentIndex,
+                                        count: carouselSliderItems.length,
+                                        effect: WormEffect(
+                                          dotHeight: 8,
+                                          dotWidth: 8,
+                                          spacing: 5,
+                                          dotColor: Colors.grey.shade400,
+                                          activeDotColor: Colors.white,
+                                          paintStyle: PaintingStyle.fill,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  context.push('/Home');
+                                },
+                                child: NavigatorBox(
+                                  title: AppLocalizations.of(context)
+                                      .getTranslate("discover_traveler_products"),
+                                )),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           );
-        },
+        }
       ),
     );
   }
@@ -383,13 +390,75 @@ class _HomeState extends State<Home> {
     );
   }
 
+  void _showSaveOptions(int id, dynamic place) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        bool isSavedPlace = savedPlacesCubit.isSavedPlaces(id);
+        bool isSavedPlaceToVisit = savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Text(AppLocalizations.of(context).getTranslate("saving_options"),),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CheckboxListTile(
+                    title: Text(AppLocalizations.of(context).getTranslate("savedPlaces"),),
+                    value: isSavedPlace,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isSavedPlace = value ?? false;
+                        if (isSavedPlace) {
+                          savedPlacesCubit.addToSavedPlaces(place);
+                        } else {
+                          savedPlacesCubit.removeFromSavedPlaces(id);
+                        }
+                      });
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text(AppLocalizations.of(context).getTranslate("places_to_visit"),),
+                    value: isSavedPlaceToVisit,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isSavedPlaceToVisit = value ?? false;
+                        if (isSavedPlaceToVisit) {
+                          savedPlacesToVisitCubit.addToSavedPlacesToVisit(place);
+                        } else {
+                          savedPlacesToVisitCubit.removeFromSavedPlacesToVisit(id);
+                        }
+                      });
+                    },
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text(AppLocalizations.of(context).getTranslate("close"),),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
   Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
+    bool isSavedPlace = savedPlacesCubit.isSavedPlaces(id);
+    bool isWantedPlace = savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
+
     return Stack(
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: SizedBox(
-            height: 300,
+            height: 250,
+            width: double.infinity,
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -400,53 +469,46 @@ class _HomeState extends State<Home> {
           top: 10,
           left: 0,
           right: 0,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    AppLocalizations.of(context).getTranslate(title),
-                    maxLines: 1,
-                    overflow: TextOverflow.fade,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(context).getTranslate(title),
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                if(savedPlacesCubit.isSavedPlaces(id))
                   IconButton(
-                    icon: const Icon(
-                      Icons.bookmark,
+                    icon: Icon(
+                      (isSavedPlace || isWantedPlace)
+                          ? Icons.bookmark
+                          : Icons.bookmark_outline,
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      savedPlacesCubit.removeFromSavedPlaces(id);
+                      _showSaveOptions(id, index);
                     },
-                  )
-                else 
-                  IconButton(
-                    icon: const Icon(
-                      Icons.bookmark_outline,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      savedPlacesCubit.addToSavedPlaces(index);
-                    },
-                  )
-              ],
+                  ),
+                ],
+              ),
             ),
           )
         ),
         Positioned(
-          bottom: 10,
+          bottom: 5,
           left: 10,
           right: 10,
           child: infoColumns(rating, views, comments),

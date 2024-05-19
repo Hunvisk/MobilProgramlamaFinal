@@ -156,17 +156,17 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
                   infoRow(
                     context,
                     Icons.star,
-                    widget.place["rating"],
+                    widget.place["rating"].toString(),
                   ),
                   infoRow(
                     context,
                     Icons.remove_red_eye,
-                    widget.place["views"],
+                    widget.place["views"].toString(),
                   ),
                   infoRow(
                     context,
                     Icons.comment,
-                    widget.place["comments"],
+                    widget.place["comments"].toString(),
                   ),
                 ],
               ),
