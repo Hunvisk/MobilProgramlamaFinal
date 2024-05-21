@@ -335,5 +335,16 @@
     "nothing_description": "Benachrichtigen Sie mich über nichts",
     
     "saving_options": "Optionen zum Speichern",
-    "close": "Schließen"
+    "close": "Schließen",
+    "save": "Speichern",
+
+    "account_information": "Kontoinformationen",
+    "user_name": "Benutzername",
+    "user_name_cannot_empty": "Benutzername Darf Nicht Leer Sein",
+    "email_cannot_empty": "E-Mail Darf Nicht Leer Sein",
+    "phone_number_cannot_empty": "Telefonnummer Darf Nicht Leer Sein",
+    "phone_number_digits": "Telefonnummer Muss 10 Ziffern Haben",
+    "enter_valid_mail": "Bitte Geben Sie Eine Gültige E-Mail-Adresse Ein",
+    "information_saved": "Informationen Gespeichert"
+
 }

@@ -335,5 +335,17 @@
     "nothing_description": "No me notifiques sobre nada",
 
     "saving_options": "Opciones de ahorro",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "save": "Guardar",
+
+
+    "account_information": "Información de la Cuenta",
+    "user_name": "Nombre de Usuario",
+    "user_name_cannot_empty": "El Nombre de Usuario No Puede Estar Vacío",
+    "email_cannot_empty": "El Correo Electrónico No Puede Estar Vacío",
+    "phone_number_cannot_empty": "El Número de Teléfono No Puede Estar Vacío",
+    "phone_number_digits": "El Número de Teléfono Debe Tener 10 Dígitos",
+    "enter_valid_mail": "Por Favor, Introduzca un Correo Electrónico Válido",
+    "information_saved": "Información Guardada"
+
 }

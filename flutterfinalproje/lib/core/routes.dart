@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/screens/core/settings.dart';
+import 'package:flutterfinalproje/screens/user/profile/account_information.dart';
 import 'package:go_router/go_router.dart';
 
 import '../dashboard/dashboard.dart';
@@ -35,8 +36,6 @@ import '../screens/places_and_routes/places/selectedplaces.dart';
 import '../screens/places_and_routes/routes/routes.dart';
 import '../screens/places_and_routes/routes/selectedroutes.dart';
 import '../screens/settings_screens/about_app.dart';
-import '../screens/settings_screens/add_mail.dart';
-import '../screens/settings_screens/add_phone_number.dart';
 import '../screens/settings_screens/notifications.dart';
 import '../screens/settings_screens/past_payments.dart';
 import '../screens/settings_screens/permissions.dart';
@@ -84,370 +83,414 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 // GoRouter configuration
 final routes = GoRouter(
-  navigatorKey: _rootNavigatorKey,
-  errorBuilder: (context, state) => const ErrorScreen(),
-  routes: [
-    ShellRoute(
-      navigatorKey: _shellNavigatorKey,
-      builder: (context, state, child) => DashboardScreen(
-        state: state,
-        child: child,
+    navigatorKey: _rootNavigatorKey,
+    errorBuilder: (context, state) => const ErrorScreen(),
+    routes: [
+      ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) => DashboardScreen(
+                state: state,
+                child: child,
+              ),
+          routes: [
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Home',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: Home()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Places',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: PlacesScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletPlaces',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletPlaces()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopPlaces',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopPlaces()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Map',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: MyMap()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletMap',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletMap()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopMap',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopMap()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Routes',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: RoutesScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletRoutes',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletRoutes()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopRoutes',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopRoutes()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/VipGezginInfo',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: VipGezginInfo()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletVipGezginInfo',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletVipGezginInfo()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopVipGezginInfo',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopVipGezginInfo()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Profile',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: ProfileScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletProfile',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletProfile()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopProfile',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopProfile()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/SavedPlacesToVisit',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SavedPlacesToVisitScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/SavedPlaces',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SavedPlacesScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/SavedRoutes',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SavedRoutesScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Saved',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SavedScreen()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletFavorites',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletFavorites()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopFavorites',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopFavorites()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Photographs',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: Photographs()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletPhotographs',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletPhotographs()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopPhotographs',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopPhotographs()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletPlaceToVisit',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletPlaceToVisit()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopPlaceToVisit',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopPlaceToVisit()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/UserBlogs',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: UserBlogs()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletUserBlogs',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletUserBlogs()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopUserBlogs',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopUserBlogs()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/UserComments',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: UserComments()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletUserComments',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletUserComments()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopUserComments',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopUserComments()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Products',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: Products()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletProducts',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletProducts()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopProducts',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopProducts()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/SelectedProducts',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SelectedProducts()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/TabletSelectedProducts',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TabletSelectedProducts()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/DesktopSelectedProducts',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: DesktopSelectedProducts()),
+            ),
+            GoRoute(
+              parentNavigatorKey: _shellNavigatorKey,
+              path: '/Achievemets',
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: Achievemets()),
+            ),
+          ]),
+
+      GoRoute(
+        path: '/ChatBot',
+        builder: (context, state) => const ChatBot(),
       ),
-      routes: [
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Home',
-          pageBuilder: (context, state) => const NoTransitionPage(child: Home()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Places',
-          pageBuilder: (context, state) => const NoTransitionPage(child: PlacesScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletPlaces',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletPlaces()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopPlaces',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopPlaces()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Map',
-          pageBuilder: (context, state) => const NoTransitionPage(child: MyMap()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletMap',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletMap()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopMap',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopMap()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Routes',
-          pageBuilder: (context, state) => const NoTransitionPage(child: RoutesScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletRoutes',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletRoutes()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopRoutes',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopRoutes()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/VipGezginInfo',
-          pageBuilder: (context, state) => const NoTransitionPage(child: VipGezginInfo()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletVipGezginInfo',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletVipGezginInfo()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopVipGezginInfo',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopVipGezginInfo()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Profile',
-          pageBuilder: (context, state) => const NoTransitionPage(child: ProfileScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletProfile',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletProfile()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopProfile',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopProfile()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/SavedPlacesToVisit',
-          pageBuilder: (context, state) => const NoTransitionPage(child: SavedPlacesToVisitScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/SavedPlaces',
-          pageBuilder: (context, state) => const NoTransitionPage(child: SavedPlacesScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/SavedRoutes',
-          pageBuilder: (context, state) => const NoTransitionPage(child: SavedRoutesScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Saved',
-          pageBuilder: (context, state) => const NoTransitionPage(child: SavedScreen()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletFavorites',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletFavorites()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopFavorites',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopFavorites()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Photographs',
-          pageBuilder: (context, state) => const NoTransitionPage(child: Photographs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletPhotographs',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletPhotographs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopPhotographs',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopPhotographs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletPlaceToVisit',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletPlaceToVisit()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopPlaceToVisit',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopPlaceToVisit()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/UserBlogs',
-          pageBuilder: (context, state) => const NoTransitionPage(child: UserBlogs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletUserBlogs',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletUserBlogs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopUserBlogs',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopUserBlogs()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/UserComments',
-          pageBuilder: (context, state) => const NoTransitionPage(child: UserComments()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletUserComments',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletUserComments()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopUserComments',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopUserComments()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Products',
-          pageBuilder: (context, state) => const NoTransitionPage(child: Products()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletProducts',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletProducts()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopProducts',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopProducts()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/SelectedProducts',
-          pageBuilder: (context, state) => const NoTransitionPage(child: SelectedProducts()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/TabletSelectedProducts',
-          pageBuilder: (context, state) => const NoTransitionPage(child: TabletSelectedProducts()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/DesktopSelectedProducts',
-          pageBuilder: (context, state) => const NoTransitionPage(child: DesktopSelectedProducts()),
-        ),
-        GoRoute(
-          parentNavigatorKey: _shellNavigatorKey,
-          path: '/Achievemets',
-          pageBuilder: (context, state) => const NoTransitionPage(child: Achievemets()),
-        ),
-      ]
-    ),
+      GoRoute(
+        path: '/SettingsScreen',
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      // Settings Screens
+      GoRoute(
+        path: '/ChangeLanguageScreen',
+        builder: (context, state) => const ChangeLanguageScreen(),
+      ),
+      GoRoute(
+        path: '/AboutApp',
+        builder: (context, state) => const AboutAppScreen(),
+      ),
+      // GoRoute(
+      //   path: '/AddMail',
+      //   builder: (context, state) => const AddMailScreen(),
+      // ),
+      GoRoute(
+        path: '/AddInformations',
+        builder: (context, state) => const AddInformationScreen(),
+      ),
+      // GoRoute(
+      //   path: '/AddPhoneNumber',
+      //   builder: (context, state) => const AddPhoneNumberScreen(),
+      // ),
+      GoRoute(
+        path: '/Notifications',
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        path: '/PastPayments',
+        builder: (context, state) => const PastPaymentsScreen(),
+      ),
+      GoRoute(
+        path: '/Permissions',
+        builder: (context, state) => const PermissionsScreen(),
+      ),
+      GoRoute(
+        path: '/ThemeMode',
+        builder: (context, state) => const ThemeModeScreen(),
+      ),
+      // Profile Screens
 
-            GoRoute(
-              path: '/ChatBot',
-              builder: (context, state) => const ChatBot(),
-            ),
-            GoRoute(
-              path: '/SettingsScreen',
-              builder: (context, state) => const SettingsScreen(),
-            ),
-            // Settings Screens
-            GoRoute(
-              path: '/ChangeLanguageScreen',
-              builder: (context, state) => const ChangeLanguageScreen(),
-            ),
-            GoRoute(
-              path: '/AboutApp',
-              builder: (context, state) => const AboutAppScreen(),
-            ),
-            GoRoute(
-              path: '/AddMail',
-              builder: (context, state) => const AddMailScreen(),
-            ),
-            GoRoute(
-              path: '/AddPhoneNumber',
-              builder: (context, state) => const AddPhoneNumberScreen(),
-            ),
-            GoRoute(
-              path: '/Notifications',
-              builder: (context, state) => const NotificationsScreen(),
-            ),
-            GoRoute(
-              path: '/PastPayments',
-              builder: (context, state) => const PastPaymentsScreen(),
-            ),
-            GoRoute(
-              path: '/Permissions',
-              builder: (context, state) => const PermissionsScreen(),
-            ),
-            GoRoute(
-              path: '/ThemeMode',
-              builder: (context, state) => const ThemeModeScreen(),
-            ),
-            // Profile Screens
-            
-            GoRoute(
-              path: '/TabletAchievemets',
-              builder: (context, state) => const TabletAchievemets(),
-            ),
-            GoRoute(
-              path: '/DesktopAchievemets',
-              builder: (context, state) => const DesktopAchievemets(),
-            ),
-            GoRoute(
-              path: '/SelectedPlaces',
-              builder: (context, state) => SelectedPlaces(place: state.extra as Map<String, dynamic>,),
-            ),
-            GoRoute(
-              path: '/TabletSelectedPlaces',
-              builder: (context, state) => const TabletSelectedPlaces(),
-            ),
-            GoRoute(
-              path: '/DesktopSelectedPlaces',
-              builder: (context, state) => const DesktopSelectedPlaces(),
-            ),
-            GoRoute(
-              path: '/SelectedRoutes',
-              builder: (context, state) => SelectedRoutes(route: state.extra as Map<String, dynamic>,),
-            ),
-            GoRoute(
-              path: '/TabletSelectedRoutes',
-              builder: (context, state) => const TabletSelectedRoutes(),
-            ),
-            GoRoute(
-              path: '/DesktopSelectedRoutes',
-              builder: (context, state) => const DesktopSelectedRoutes(),
-            ),
-    // Loader
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const LoaderScreen(),
-    ),
-    // Boarding
-    GoRoute(
-      path: '/Boarding',
-      builder: (context, state) => const BoardingScreen(),
-    ),
+      GoRoute(
+        path: '/TabletAchievemets',
+        builder: (context, state) => const TabletAchievemets(),
+      ),
+      GoRoute(
+        path: '/DesktopAchievemets',
+        builder: (context, state) => const DesktopAchievemets(),
+      ),
+      GoRoute(
+        path: '/SelectedPlaces',
+        builder: (context, state) => SelectedPlaces(
+          place: state.extra as Map<String, dynamic>,
+        ),
+      ),
+      GoRoute(
+        path: '/TabletSelectedPlaces',
+        builder: (context, state) => const TabletSelectedPlaces(),
+      ),
+      GoRoute(
+        path: '/DesktopSelectedPlaces',
+        builder: (context, state) => const DesktopSelectedPlaces(),
+      ),
+      GoRoute(
+        path: '/SelectedRoutes',
+        builder: (context, state) => SelectedRoutes(
+          route: state.extra as Map<String, dynamic>,
+        ),
+      ),
+      GoRoute(
+        path: '/TabletSelectedRoutes',
+        builder: (context, state) => const TabletSelectedRoutes(),
+      ),
+      GoRoute(
+        path: '/DesktopSelectedRoutes',
+        builder: (context, state) => const DesktopSelectedRoutes(),
+      ),
+      // Loader
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const LoaderScreen(),
+      ),
+      // Boarding
+      GoRoute(
+        path: '/Boarding',
+        builder: (context, state) => const BoardingScreen(),
+      ),
 
-    // Login 
-    GoRoute(
-      path: '/Login',
-      builder: (context, state) => const LoginScreen(),
-    ),
-    GoRoute(
-      path: '/TabletLogin',
-      builder: (context, state) => const TabletLogin(),
-    ),
-    GoRoute(
-      path: '/DesktopLogin',
-      builder: (context, state) => const DesktopLogin(),
-    ),
-    //Register
-    GoRoute(
-      path: '/Register',
-      builder: (context, state) => const RegisterScreen(),
-    ),
-    GoRoute(
-      path: '/TabletRegister',
-      builder: (context, state) => const TabletRegister(),
-    ),
-    GoRoute(
-      path: '/DesktopRegister',
-      builder: (context, state) => const DesktopRegister(),
-    ),
-    // Forgot Password
-    GoRoute(
-      path: '/ForgotPassword',
-      builder: (context, state) => const ForgotPassword(),
-    ),
-    GoRoute(
-      path: '/TabletForgotPassword',
-      builder: (context, state) => const TabletForgotPassword(),
-    ),
-    GoRoute(
-      path: '/DesktopForgotPassword',
-      builder: (context, state) => const DesktopForgotPassword(),
-    ),
-    
+      // Login
+      GoRoute(
+        path: '/Login',
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/TabletLogin',
+        builder: (context, state) => const TabletLogin(),
+      ),
+      GoRoute(
+        path: '/DesktopLogin',
+        builder: (context, state) => const DesktopLogin(),
+      ),
+      //Register
+      GoRoute(
+        path: '/Register',
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: '/TabletRegister',
+        builder: (context, state) => const TabletRegister(),
+      ),
+      GoRoute(
+        path: '/DesktopRegister',
+        builder: (context, state) => const DesktopRegister(),
+      ),
+      // Forgot Password
+      GoRoute(
+        path: '/ForgotPassword',
+        builder: (context, state) => const ForgotPassword(),
+      ),
+      GoRoute(
+        path: '/TabletForgotPassword',
+        builder: (context, state) => const TabletForgotPassword(),
+      ),
+      GoRoute(
+        path: '/DesktopForgotPassword',
+        builder: (context, state) => const DesktopForgotPassword(),
+      ),
 
-    
-    GoRoute(
-      path: '/CardsInfo',
-      builder: (context, state) => const CardsInfo(),
-    ),
-    GoRoute(
-      path: '/TabletCardsInfo',
-      builder: (context, state) => const TabletCardsInfo(),
-    ),
-    GoRoute(
-      path: '/DesktopCardsInfo',
-      builder: (context, state) => const DesktopCardsInfo(),
-    ),
-    GoRoute(
-      path: '/AddCard',
-      builder: (context, state) => const AddCard(),
-    ),
-    GoRoute(
-      path: '/TabletAddCard',
-      builder: (context, state) => const TabletAddCard(),
-    ),
-    GoRoute(
-      path: '/DesktopAddCard',
-      builder: (context, state) => const DesktopAddCard(),
-    ),
-  ]
-);
+      GoRoute(
+        path: '/CardsInfo',
+        builder: (context, state) => const CardsInfo(),
+      ),
+      GoRoute(
+        path: '/TabletCardsInfo',
+        builder: (context, state) => const TabletCardsInfo(),
+      ),
+      GoRoute(
+        path: '/DesktopCardsInfo',
+        builder: (context, state) => const DesktopCardsInfo(),
+      ),
+      GoRoute(
+        path: '/AddCard',
+        builder: (context, state) => const AddCard(),
+      ),
+      GoRoute(
+        path: '/TabletAddCard',
+        builder: (context, state) => const TabletAddCard(),
+      ),
+      GoRoute(
+        path: '/DesktopAddCard',
+        builder: (context, state) => const DesktopAddCard(),
+      ),
+    ]);

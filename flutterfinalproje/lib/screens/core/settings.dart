@@ -35,10 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(),
           settingsItem(context, '/PastPayments', 'past_payments'),
           const Divider(),
-          settingsItem(context, '/AddMail', 'email'),
-          const Divider(),
-          settingsItem(context, '/AddPhoneNumber', 'phone_number'),
-          const Divider(),
+         
         ],
       ),
     );

@@ -337,6 +337,18 @@
     "nothing_description": "Ne me notifier de rien",
 
     "saving_options": "Options d'enregistrement",
-    "close": "Éteindre"
+    "close": "Éteindre",
+    "save": "Enregistrer", 
 
+    "account_information": "Informations du Compte",
+    "user_name": "Nom d'utilisateur",
+    "user_name_cannot_empty": "Le Nom d'utilisateur Ne Peut Pas Être Vide",
+    "email_cannot_empty": "L'e-mail Ne Peut Pas Être Vide",
+    "phone_number_cannot_empty": "Le Numéro de Téléphone Ne Peut Pas Être Vide",
+    "phone_number_digits": "Le Numéro de Téléphone Doit Comporter 10 Chiffres",
+    "enter_valid_mail": "Veuillez Entrer un E-mail Valide",
+    "information_saved": "Informations Enregistrées"
 }
+
+
+

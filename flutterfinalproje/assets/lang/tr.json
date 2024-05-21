@@ -302,7 +302,7 @@
    
     "app_name": "Gezginin Rotası",
     "general_description": "Genel Tanım:",
-    "explanation_of_general_definition": "'Gezginin Rotası' mobil uygulaması, gezi tutkunlarına yönelik kullanıcı dostu ve profesyonel bir gezi rehberi sunar. Ana sayfada hava durumu, ilgi çekici mekanlar ve kullanıcı profili gibi özellikler bulunurken, Drawer menüsü hesap yönetimi ve VIP avantajları gibi seçenekler sunar. Bottom Navigation Bar ile gezinim kolaylaşırken, kullanıcılar profil sayfasında fotoğraf paylaşabilir ve seyahat deneyimlerini aktarabilirler. Mekanlar ve Rotalar sayfalarında detaylı bilgiler ve kullanıcı yorumları yer alır.",
+    "explanation_of_general_definition": "Gezginin Rotası' mobil uygulaması, gezi tutkunlarına yönelik kullanıcı dostu ve profesyonel bir gezi rehberi sunar. Ana sayfada hava durumu, ilgi çekici mekanlar ve kullanıcı profili gibi özellikler bulunurken, Drawer menüsü hesap yönetimi ve VIP avantajları gibi seçenekler sunar. Bottom Navigation Bar ile gezinim kolaylaşırken, kullanıcılar profil sayfasında fotoğraf paylaşabilir ve seyahat deneyimlerini aktarabilirler. Mekanlar ve Rotalar sayfalarında detaylı bilgiler ve kullanıcı yorumları yer alır.",
     "about_app_title_1": "Gezginin Rotası Mobil Uygulaması Özellikleri:",
     "description_about_app_1": "En iyi turistik mekanlar, rotalar ve daha fazlasını görüntüleme.",
     "description_about_app_2": " Seyahat editörleri ve gezginlerden alınan önerilerle en iyi yerleri keşfetme.",
@@ -312,7 +312,7 @@
     "description_about_app_5": " Yardım sayfası: help.gezginin.rotasi.com",
    "description_about_app_6": " İletişim: Team@travel.gezginin.rotasi.com",
    "about_app_title_3": "Yasal Bilgiler:",
-   "description_about_app_7":    " Şartlar ve Son Kullanıcı Lisans Anlaşması hakkında bilgiler sunulur.",
+   "description_about_app_7":"Şartlar ve Son Kullanıcı Lisans Anlaşması hakkında bilgiler sunulur.",
 
    "notifications_title1":"Yeni Açılan Yerler",
    "notifications_description1":"İstanbul'da yeni açılan restoranları keşfedin!",
@@ -329,11 +329,23 @@
    "all_new_messages_description": "Kanaldaki herkesi yeni mesajlardan haberdar et",
    "mentioned_only": "Yalnızca bahsedilenler",
    "mentioned_only_description": "Yalnızca biri benden bahsettiğinde bana haber ver",
-    "nothing": "Hiçbir şey",
-    "nothing_description": "Bana hiçbir şey bildirme",
+   "nothing": "Hiçbir şey",
+   "nothing_description": "Bana hiçbir şey bildirme",
 
     "saving_options": "Kaydetme Seçenekleri",
-    "close": "Kapat"
+    "close": "Kapat",
+    "save":"Kaydet",
+    
+    "account_information":"Hesap Bilgileri",
+    "user_name":"Kullanıcı Adı",
+    "user_name_cannot_empty":"Kullanıcı Adı Boş Olamaz",
+    "email_cannot_empty":"E-Posta Boş Bırakılamaz",
+    "phone_number_cannot_empty":"Telefon Numarası Boş Olamaz",
+    "phone_number_digits":"Telefon Numarası 10 Haneli Olmalıdır",
+    "enter_valid_mail":"Geçerli Bir E-mail Giriniz",
+    "information_saved":"Bilgiler Kaydedildi"
+    
+
 
 
 

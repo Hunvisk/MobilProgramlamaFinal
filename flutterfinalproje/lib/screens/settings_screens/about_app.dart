@@ -65,7 +65,7 @@ class _AboutAppScreenState extends State<AboutAppScreen> {
                       ),
                       _buildListItemWithIcon(
                         AppLocalizations.of(context)
-                            .getTranslate(" description_about_app_2"),
+                            .getTranslate("description_about_app_2"),
                       ),
                       _buildListItemWithIcon(
                         AppLocalizations.of(context)

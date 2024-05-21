@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:animated_text_kit/animated_text_kit.dart'; // Ekledik
 
 class ChatMessage {
   final String userMessage;
@@ -25,6 +25,8 @@ class _ChatBotState extends State<ChatBot> {
   final ScrollController _scrollController = ScrollController();
   final List<ChatMessage> _chatMessages = [];
 
+  Map<String, dynamic> _conversationData = {};
+
   @override
   void initState() {
     super.initState();
@@ -32,39 +34,36 @@ class _ChatBotState extends State<ChatBot> {
   }
 
   Future<void> _loadMessages() async {
-  String jsonString = await rootBundle.loadString('assets/chatbot/dialog.json');
-  Map<String, dynamic> jsonData = json.decode(jsonString); // Json verisini harita olarak işle
-
-  List<dynamic> conversation = jsonData['conversation'];
-
-  setState(() {
-    _chatMessages.addAll(
-      conversation.map(
-        (item) => ChatMessage(
-          userMessage: item['user']['message'],
-          botMessage: item['chatbot']['message'],
-        ),
-      ),
-    );
-  });
-
-  // Yeni bir mesaj geldiğinde otomatik olarak en altına kaydır
-  _scrollController.animateTo(
-    _scrollController.position.maxScrollExtent,
-    duration: const Duration(milliseconds: 300),
-    curve: Curves.easeOut,
-  );
-}
-
-
-  void _sendMessage(String message) {
-    if (message.isEmpty) return; // Metin alanı boşsa göndermeyi durdur
-
+    String jsonString = await rootBundle.loadString('assets/chatbot/dialog.json');
     setState(() {
-      _chatMessages.add(ChatMessage(userMessage: message, botMessage: 'Bot yanıtı buraya gelecek'));
+      _conversationData = json.decode(jsonString);
     });
 
-    // Yeni bir mesaj geldiğinde otomatik olarak en altına kaydır
+    _scrollToBottom();
+  }
+
+  void _sendMessage(String message) {
+    if (message.isEmpty) return;
+
+    setState(() {
+      String botMessage = _getBotReply(message);
+      _chatMessages.add(ChatMessage(userMessage: message, botMessage: botMessage));
+    });
+
+    _scrollToBottom();
+  }
+
+  String _getBotReply(String message) {
+    List<dynamic> conversation = _conversationData['conversation'];
+    for (var item in conversation) {
+      if (item['user']['message'] == message) {
+        return item['chatbot']['message'];
+      }
+    }
+    return 'Üzgünüm, anlayamadım. Şifremi nasıl değiştirebilirim ?, Şifremi nasıl sıfırlarım ?, Nasıl abone olabilirim ?, Abone olduktan sonra hangi özellikleri kullanabilirim ? Gibi Şeyler Yazarak Size Daha Kolay Geri Dönüş Sağlayabilirim. Ammmmaaaannnn Dikkat Baş Harfleri Büyük Yazmayı Unutma!!!';
+  }
+
+  void _scrollToBottom() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
       duration: const Duration(milliseconds: 300),
@@ -90,7 +89,20 @@ class _ChatBotState extends State<ChatBot> {
 
                 return ListTile(
                   title: Text(message.userMessage),
-                  subtitle: Text(message.botMessage),
+                  subtitle: AnimatedTextKit( // Ekledik
+                    animatedTexts: [
+                      
+                      TyperAnimatedText(
+
+                        message.botMessage,
+                        textStyle:   TextStyle(color:Theme.of(context).colorScheme.primary),
+                        speed: const Duration(milliseconds: 50),
+
+                      ),
+                    ],
+                    repeatForever:false,
+                    isRepeatingAnimation: false,
+                  ),
                 );
               },
             ),
@@ -138,3 +150,4 @@ class _ChatBotState extends State<ChatBot> {
     );
   }
 }
+
