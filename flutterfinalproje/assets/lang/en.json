@@ -345,7 +345,8 @@
     "phone_number_cannot_empty": "Phone Number Cannot Be Empty",
     "phone_number_digits": "Phone Number Must Be 10 Digits",
     "enter_valid_mail": "Please Enter a Valid Email",
-    "information_saved": "Information Saved"
+    "information_saved": "Information Saved",
+    "products": "Products"
 
 
 

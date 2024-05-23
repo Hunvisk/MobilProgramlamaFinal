@@ -346,6 +346,7 @@
     "phone_number_cannot_empty": "El Número de Teléfono No Puede Estar Vacío",
     "phone_number_digits": "El Número de Teléfono Debe Tener 10 Dígitos",
     "enter_valid_mail": "Por Favor, Introduzca un Correo Electrónico Válido",
-    "information_saved": "Información Guardada"
-
+    "information_saved": "Información Guardada",
+    "products": "Productos"
+ 
 }

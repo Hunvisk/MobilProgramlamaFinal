@@ -348,14 +348,17 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.help, color: Colors.white),
+                        Icon(
+                          Icons.help, 
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                         const SizedBox(width: 10),
                         Column(
                           children: [
                             Text(
                               AppLocalizations.of(context)
                                   .getTranslate("having_trouble"),
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(color: Theme.of(context).colorScheme.primary), 
                             ),
                             InkWell(
                               onTap: () {
@@ -364,9 +367,9 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 AppLocalizations.of(context)
                                     .getTranslate("help_for_you"),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   decoration: TextDecoration.underline,
-                                  color: Colors.white,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                               ),
                             ),
