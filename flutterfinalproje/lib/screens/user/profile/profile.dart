@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields, library_private_types_in_public_api, sized_box_for_whitespace, use_build_context_synchronously, avoid_print, prefer_interpolation_to_compose_strings, non_constant_identifier_names, unused_local_variable, unnecessary_null_comparison, dead_code, unnecessary_brace_in_string_interps
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print, sized_box_for_whitespace
 
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -26,31 +26,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
   File? file;
   File? coverPhoto;
   String size = "";
-  File? cacheFile;
   MemoryImage? currentAvatar;
 
-profileIfYouLoad() async {
- final Directory appCahceDir =  await getApplicationCacheDirectory();
-    File f = File("${appCahceDir}/avatar.jpg");
+  profileIfYouLoad() async {
+    final Directory appCacheDir = await getApplicationCacheDirectory();
+    File f = File("$appCacheDir/avatar.jpg");
 
-    if(f.existsSync()){
+    if (f.existsSync()) {
       print("Dosya Bulundu");
       var bytes = f.readAsBytesSync();
-      
+
       setState(() {
         currentAvatar = MemoryImage(bytes);
       });
-    }else{
+    } else {
       print("Dosya Bulunamadı");
     }
-}
-
-
+  }
 
   @override
   void initState() {
     super.initState();
-   
+    profileIfYouLoad();
   }
 
   @override
@@ -76,9 +73,9 @@ profileIfYouLoad() async {
       case Screen.mobile:
         return profileMenu(context);
       case Screen.tablet:
-        return TabletProfileScreen();
+        return const TabletProfileScreen();
       case Screen.desktop:
-        return DesktopProfileScreen();
+        return const DesktopProfileScreen();
     }
   }
 
@@ -97,23 +94,22 @@ profileIfYouLoad() async {
       }
 
       var fileLength = await selectedFile.length();
-      
-
       var fileFormat = selectedFile.name.split(".").last;
 
-      bool make_small = false;
+      bool makeSmall = false;
 
       switch (fileFormat.toLowerCase()) {
         case ("jpg"):
+        case ("jpeg"):
         case ("png"):
         case ("bmp"):
         case ("tiff"):
         case ("ico"):
         case ("gif"):
-          make_small = true;
+          makeSmall = true;
       }
 
-      if(!make_small){
+      if (!makeSmall) {
         showDialog(
           context: context,
           builder: (context) => const AlertDialog(
@@ -123,31 +119,39 @@ profileIfYouLoad() async {
             ),
           ),
         );
+        return;
       }
 
       img.Image? temp;
 
-      if(fileFormat.toLowerCase()== "jpg" || fileFormat.toLowerCase() == "jpeg"){
+      if (fileFormat.toLowerCase() == "jpg" ||
+          fileFormat.toLowerCase() == "jpeg") {
         temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "png") {
+        temp = img.decodePng(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "bmp") {
+        temp = img.decodeBmp(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "tiff") {
+        temp = img.decodeTiff(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "ico") {
+        temp = img.decodeIco(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "gif") {
+        temp = img.decodeGif(File(selectedFile.path).readAsBytesSync());
       }
-      else if(fileFormat.toLowerCase() == "png"){
-        temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
+      else {
+        showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            title: Text("Dosya Formati"),
+            content: Text(
+              "Dosya Formati JPG, BMP, GIF, PNG, TIFF olabilir.",
+            ),
+          ),
+        );
+        return;
       }
-      else if(fileFormat.toLowerCase() == "bmp"){
-        temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
-      }
-      else if(fileFormat.toLowerCase() == "tiff"){
-        temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
-      }
-      else if(fileFormat.toLowerCase() == "ico"){
-        temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
-      }
-      else if(fileFormat.toLowerCase() == "gif"){
-        temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
-      }
-         
 
-      if (temp!.width < 500 || temp.height < 500 || temp == null) {
+      if (temp!.width < 500 || temp.height < 500) {
         showDialog(
           context: context,
           builder: (context) => const AlertDialog(
@@ -159,30 +163,23 @@ profileIfYouLoad() async {
         );
         return;
       }
-      //RESIZE IMAGE
 
-       img.Image thumbnail; 
-       if(temp.width>=temp.height){
-        thumbnail =  img.copyResize(temp, width: 500);
-       }else {
-        thumbnail =  img.copyResize(temp, width: 500);
-       }
-        
-      // Save the thumbnail to a jpeg file.
+      img.Image thumbnail;
+      if (temp.width >= temp.height) {
+        thumbnail = img.copyResize(temp, width: 500);
+      } else {
+        thumbnail = img.copyResize(temp, height: 500);
+      }
+
       final resizedFileData = img.encodeJpg(thumbnail, quality: 85);
 
-      final Directory tempDir = await getTemporaryDirectory();
-      final Directory appSupportDir =  await getApplicationSupportDirectory();
-      final Directory appCahceDir =  await getApplicationCacheDirectory();
-      return;
-      
-      File newFile = File("${appCahceDir.path}/avatar.jpg");
+      final Directory appCacheDir = await getApplicationCacheDirectory();
+      File newFile = File("${appCacheDir.path}/avatar.jpg");
       newFile.writeAsBytesSync(resizedFileData);
 
-      // final newFile =File.fromRawPath(resizedFileData);
-      // newFile.writeAsBytes(resizedFileData);
       setState(() {
         file = newFile;
+        currentAvatar = MemoryImage(resizedFileData);
         size = "${temp!.width}x${temp.height}";
       });
     } catch (e) {
@@ -208,6 +205,7 @@ profileIfYouLoad() async {
   void deleteProfilePhoto() {
     setState(() {
       file = null;
+      currentAvatar = null;
     });
   }
 
@@ -227,7 +225,7 @@ profileIfYouLoad() async {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () async {
                     await profilePhotoUpdate();
@@ -235,23 +233,25 @@ profileIfYouLoad() async {
                         .pop(); // Close the dialog after the operation
                   },
                   child: ListTile(
-                    leading: Icon(Icons.photo, size: 30),
+                    leading: const Icon(Icons.photo, size: 30),
                     title: Text(AppLocalizations.of(context)
                         .getTranslate("select_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     deleteProfilePhoto();
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    leading:
+                        const Icon(Icons.delete, size: 30, color: Colors.red),
                     title: Text(
-                        AppLocalizations.of(context)
-                            .getTranslate("delete_the_photo"),
-                        style: TextStyle(color: Colors.red)),
+                      AppLocalizations.of(context)
+                          .getTranslate("delete_the_photo"),
+                      style: const TextStyle(color: Colors.red),
+                    ),
                   ),
                 ),
               ],
@@ -272,30 +272,32 @@ profileIfYouLoad() async {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () async {
                     await coverPhotoUpdate(); // Galeriden fotoğraf seçme işlemi
                     Navigator.of(context).pop(); // Dialogu kapat
                   },
                   child: ListTile(
-                    leading: Icon(Icons.photo, size: 30),
+                    leading: const Icon(Icons.photo, size: 30),
                     title: Text(AppLocalizations.of(context)
                         .getTranslate("select_a_photo")),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 GestureDetector(
                   onTap: () {
                     deleteCoverPhoto();
                     Navigator.of(context).pop();
                   },
                   child: ListTile(
-                    leading: Icon(Icons.delete, size: 30, color: Colors.red),
+                    leading:
+                        const Icon(Icons.delete, size: 30, color: Colors.red),
                     title: Text(
-                        AppLocalizations.of(context)
-                            .getTranslate("delete_the_photo"),
-                        style: TextStyle(color: Colors.red)),
+                      AppLocalizations.of(context)
+                          .getTranslate("delete_the_photo"),
+                      style: const TextStyle(color: Colors.red),
+                    ),
                   ),
                 ),
               ],
@@ -315,7 +317,7 @@ profileIfYouLoad() async {
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -339,8 +341,7 @@ profileIfYouLoad() async {
                   onTap: () {
                     _showCoverPhotoOptionsDialog();
                   },
-                  //if(cacheFile == null)
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 20,
                     child: Icon(Icons.add_a_photo, color: Colors.white),
                   ),
@@ -354,15 +355,14 @@ profileIfYouLoad() async {
                     onTap: () {
                       _showImageOptionsDialog();
                     },
-                    
                     child: CircleAvatar(
                       radius: 45,
-                      backgroundImage: file != null ? FileImage(file!) : null,
-                      child: file == null
-                          ? Icon(Icons.person, size: 50, color: Colors.white)
+                      backgroundImage: currentAvatar,
+                      child: currentAvatar == null
+                          ? const Icon(Icons.person,
+                              size: 50, color: Colors.white)
                           : null,
                     ),
-                    //if(cacheFile != null)
                   ),
                 ),
               ),
@@ -372,7 +372,7 @@ profileIfYouLoad() async {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "İlknur Kavaklı",
                       style: TextStyle(
                         color: Colors.white,
@@ -383,13 +383,14 @@ profileIfYouLoad() async {
                     Text(
                       AppLocalizations.of(context)
                           .getTranslate("ultra_pro_traveler"),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),
                     ),
                     if (file != null)
-                      Text("File Size: ${(file!.lengthSync() / 1000)} KB"),
+                      if (file != null)
+                        Text("File Size: ${(file!.lengthSync() / 1000)} KB"),
                     Text("Size: $size"),
                   ],
                 ),
@@ -403,7 +404,7 @@ profileIfYouLoad() async {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Gap(18),
+                const Gap(18),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -413,96 +414,98 @@ profileIfYouLoad() async {
                           context.push('/AddInformations');
                         },
                         child: ListTile(
-                          leading:
-                              Icon(Icons.person, color: Colors.grey),
+                          leading: const Icon(Icons.person, color: Colors.grey),
                           title: Text(
-                              AppLocalizations.of(context)
-                                  .getTranslate("account_information"),
-                              style: TextStyle(fontFamily: 'poppions')),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                            AppLocalizations.of(context)
+                                .getTranslate("account_information"),
+                            style: const TextStyle(fontFamily: 'poppions'),
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios,
+                              color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Photographs');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.photo_camera, color: Colors.grey),
+                          leading: const Icon(Icons.photo_camera,
+                              color: Colors.grey),
                           title: Text(
                             AppLocalizations.of(context).getTranslate("photos"),
-                            style: TextStyle(
-                              fontFamily: 'poppions',
-                            ),
+                            style: const TextStyle(fontFamily: 'poppions'),
                           ),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                          trailing: const Icon(Icons.arrow_forward_ios,
+                              color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserBlogs');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.save, color: Colors.grey),
+                          leading: const Icon(Icons.save, color: Colors.grey),
                           title: Text(
-                              AppLocalizations.of(context).getTranslate("blog"),
-                              style: TextStyle(fontFamily: 'poppions')),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                            AppLocalizations.of(context).getTranslate("blog"),
+                            style: const TextStyle(fontFamily: 'poppions'),
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios,
+                              color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/UserComments');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.mode_comment, color: Colors.grey),
+                          leading: const Icon(Icons.mode_comment,
+                              color: Colors.grey),
                           title: Text(
-                              AppLocalizations.of(context)
-                                  .getTranslate("comments"),
-                              style: TextStyle(fontFamily: 'poppions')),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                            AppLocalizations.of(context)
+                                .getTranslate("comments"),
+                            style: const TextStyle(fontFamily: 'poppions'),
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios,
+                              color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Saved');
                         },
                         child: ListTile(
-                          leading: Icon(Icons.bookmark, color: Colors.grey),
+                          leading:
+                              const Icon(Icons.bookmark, color: Colors.grey),
                           title: Text(
-                              AppLocalizations.of(context)
-                                  .getTranslate("saved"),
-                              style: TextStyle(fontFamily: 'poppions')),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                            AppLocalizations.of(context).getTranslate("saved"),
+                            style: const TextStyle(fontFamily: 'poppions'),
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios,
+                              color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
+                      const Divider(thickness: 3),
                       InkWell(
                         onTap: () {
                           context.push('/Achievemets');
                         },
                         child: ListTile(
-                          leading:
-                              Icon(Icons.military_tech, color: Colors.grey),
+                          leading: const Icon(Icons.military_tech,
+                              color: Colors.grey),
                           title: Text(
-                              AppLocalizations.of(context)
-                                  .getTranslate("achievemets"),
-                              style: TextStyle(fontFamily: 'poppions')),
-                          trailing:
-                              Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                            AppLocalizations.of(context)
+                                .getTranslate("achievemets"),
+                            style: const TextStyle(fontFamily: 'poppions'),
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios,
+                              color: Colors.grey),
                         ),
                       ),
-                      Divider(thickness: 3),
-                      
-                      
+                      const Divider(thickness: 3),
                     ],
                   ),
                 ),
