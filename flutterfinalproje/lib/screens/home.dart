@@ -614,24 +614,33 @@ class _WeatherBoxState extends State<WeatherBox> {
     _weatherFuture = weatherAPI.getWeather('İstanbul');
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<Map<String, dynamic>>(
-      future: _weatherFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return Text('Hata: ${snapshot.error}');
-        } else {
-          final weatherData = snapshot.data!;
-          return _buildWeatherBox(weatherData);
-        }
-      },
-    );
-  }
+@override
+Widget build(BuildContext context) {
+  return FutureBuilder<Map<String, dynamic>>(
+    future: _weatherFuture,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const CircularProgressIndicator();
+      } else if (snapshot.hasError) {
+        return Text('Hata: ${snapshot.error}');
+      } else if (snapshot.hasData) {
+        final weatherData = snapshot.data!;
+        return _buildWeatherBox(weatherData);
+      } else {
+        return const Text('Veri bulunamadı.');
+      }
+    },
+  );
+}
+
 
   Widget _buildWeatherBox(Map<String, dynamic> weatherData) {
+    // Hava durumu ikon kodunu al
+final iconCode = weatherData['weather'][0]['icon'];
+
+// Hava durumu ikonunun URL'sini oluştur
+final iconUrl = 'http://openweathermap.org/img/wn/$iconCode@2x.png';
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
@@ -652,14 +661,14 @@ class _WeatherBoxState extends State<WeatherBox> {
               alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Icon(
-                  Icons.cloudy_snowing,
-                  size: 100,
-                  color: Theme.of(context).colorScheme.primary,
+                child: Image.network(
+                  iconUrl,
+                  width: 100,
+                  height: 100,
                 ),
               ),
             ),
-            Expanded(
+             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -765,7 +774,6 @@ class WeatherInfo extends StatelessWidget {
     );
   }
 }
-
 Widget listTileItem(BuildContext context, String name, String screen,
     IconData iconData) {
   return BlocBuilder<ClientCubit, ClientState>(
