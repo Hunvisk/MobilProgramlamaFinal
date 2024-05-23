@@ -202,12 +202,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  void deleteProfilePhoto() {
-    setState(() {
-      file = null;
-      currentAvatar = null;
-    });
-  }
+void deleteProfilePhoto() {
+  setState(() {
+    file = null;
+    currentAvatar = null;
+    size = ""; // Reset the size variable
+  });
+}
+
 
   void deleteCoverPhoto() {
     setState(() {
