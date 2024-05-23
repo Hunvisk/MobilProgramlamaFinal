@@ -17,7 +17,7 @@ class _DesktopAddCardState extends State<DesktopAddCard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: MyAppBar(title: "title"),
         body:desktopAddCard(), // Burada içerik belirtilmemiş, düzeltilmeli.
       ),

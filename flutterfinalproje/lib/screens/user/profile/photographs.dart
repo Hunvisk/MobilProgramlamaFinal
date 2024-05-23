@@ -67,7 +67,7 @@ class PhotographsState extends State<Photographs> {
     });
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: drawAppar(),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,

@@ -61,7 +61,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     });
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: MyAppBar(
           title: AppLocalizations.of(context).getTranslate("forgot_password"),
         ),
@@ -177,10 +177,10 @@ class PasswordPage extends StatelessWidget {
             ),
             child: Text(
               AppLocalizations.of(context).getTranslate("reset_password"),
-              style: Theme.of(context).textTheme.button!.copyWith(
+              style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.white
                   ),
             ),
           ),

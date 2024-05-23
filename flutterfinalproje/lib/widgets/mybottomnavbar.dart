@@ -21,7 +21,7 @@ class MyBottomNavBar extends StatelessWidget {
               }, 
               icon: Icon(
                 Icons.home,
-                color: currentPath == "/Home" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onBackground,
+                color: currentPath == "/Home" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface,
               ),
             ),
             IconButton(
@@ -30,7 +30,7 @@ class MyBottomNavBar extends StatelessWidget {
               }, 
               icon: Icon(
                 Icons.place_sharp,
-                color: currentPath == "/Places" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onBackground,
+                color: currentPath == "/Places" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface,
               ),
             ),
             IconButton(
@@ -39,7 +39,7 @@ class MyBottomNavBar extends StatelessWidget {
               }, 
               icon: Icon(
                 Icons.map,
-                color: currentPath == "/Map" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onBackground,
+                color: currentPath == "/Map" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface,
               ),
             ),
             IconButton(
@@ -48,7 +48,7 @@ class MyBottomNavBar extends StatelessWidget {
               }, 
               icon: Icon(
                 Icons.route,
-                color: currentPath == "/Routes" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onBackground,
+                color: currentPath == "/Routes" ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ],

@@ -17,7 +17,7 @@ class _TabletForgotPasswordState extends State<TabletForgotPassword> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: const TabletpasswordSayfa(),
       ),
     );

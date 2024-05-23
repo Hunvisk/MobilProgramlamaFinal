@@ -54,7 +54,7 @@ class _VipGezginInfoState extends State<VipGezginInfo> {
       device = detectScreen(MediaQuery.of(context).size);
     });
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: drawAppar(),
       body: SafeArea(child: drawScreen()),
     );

@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 
+import '../../../core/localizations.dart';
 import '../../../core/responsive.dart';
 import '../../../desktopScreens/shopping/product/desktopproducs.dart';
 import '../../../tabletscreens.dart/shopping/product/tabletproducs.dart';
@@ -34,7 +34,7 @@ class _PlacesState extends State<Products> {
     switch (device) {
       case (Screen.mobile):
         return AppBarWithSearchIcon(
-          title: "HARİTALAR",
+          title: AppLocalizations.of(context).getTranslate("products"),
           icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -44,7 +44,7 @@ class _PlacesState extends State<Products> {
         );
       case (Screen.tablet):
         return AppBarWithSearchIcon(
-          title: "HARİTALAR",
+          title: AppLocalizations.of(context).getTranslate("products"),
           icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {
@@ -54,7 +54,7 @@ class _PlacesState extends State<Products> {
         );
       case (Screen.desktop):
         return AppBarWithSearchIcon(
-          title: "HARİTALAR",
+          title: AppLocalizations.of(context).getTranslate("products"),
           icon: const Icon(Icons.search),
           onSearchChanged: (isSearching) {
             setState(() {

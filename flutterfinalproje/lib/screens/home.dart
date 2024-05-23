@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background, 
+      backgroundColor: Theme.of(context).colorScheme.surface, 
       appBar: MyHomeAppBar(
         icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
@@ -111,14 +111,10 @@ class _HomeState extends State<Home> {
                               height: 50,
                             ),
                             const WeatherBox(),
-                            GestureDetector(
-                                onTap: () {
-                                  context.push('/VipGezginInfo');
-                                },
-                                child: NavigatorBox(
-                                  title: AppLocalizations.of(context)
-                                      .getTranslate("become_a_VIP_traveler_now"),
-                                )),
+                            NavigatorBox(
+                              title: AppLocalizations.of(context).getTranslate("become_a_VIP_traveler_now"),
+                              route: "/VipGezginInfo",
+                            ),
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Container(
@@ -191,14 +187,10 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             ),
-                            GestureDetector(
-                                onTap: () {
-                                  context.push('/Home');
-                                },
-                                child: NavigatorBox(
-                                  title: AppLocalizations.of(context)
-                                      .getTranslate("discover_traveler_products"),
-                                )),
+                            NavigatorBox(
+                              title: AppLocalizations.of(context).getTranslate("discover_traveler_products"),
+                              route: "/Products",
+                            ),
                           ],
                         ),
                       ),
@@ -217,7 +209,7 @@ class _HomeState extends State<Home> {
 
   Drawer myDrawer(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -333,8 +325,7 @@ class _HomeState extends State<Home> {
                   ),
                   listTileItem(
                     context,
-                    "Ürünler",
-                    //AppLocalizations.of(context).getTranslate("products"),
+                    AppLocalizations.of(context).getTranslate("products"),
                     '/Products',
                     Icons.shopping_cart,
                   ),
@@ -346,41 +337,44 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              Container(
-                alignment: Alignment.bottomCenter,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Icon(Icons.help),
-                    ),
-                    Column(
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Column(
-                            children: [
-                              Text(AppLocalizations.of(context)
-                                  .getTranslate("having_trouble")),
-                              InkWell(
-                                onTap: () {
-                                  context.push('/ChatBot');
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)
-                                      .getTranslate("help_for_you"),
-                                  style: const TextStyle(
-                                    decoration: TextDecoration.underline,
-                                  ),
+                        const Icon(Icons.help, color: Colors.white),
+                        const SizedBox(width: 10),
+                        Column(
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)
+                                  .getTranslate("having_trouble"),
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                context.push('/ChatBot');
+                              },
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .getTranslate("help_for_you"),
+                                style: const TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.white,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ],
@@ -575,8 +569,9 @@ class _HomeState extends State<Home> {
 
 class NavigatorBox extends StatelessWidget {
   final String title;
+  final String route;
 
-  const NavigatorBox({Key? key, required this.title}) : super(key: key);
+  const NavigatorBox({Key? key, required this.title, required this.route}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -593,7 +588,7 @@ class NavigatorBox extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           onTap: () {
-            // Buraya tıklandığında yapılacak işlemler
+            context.push(route);
           },
         ),
       ),

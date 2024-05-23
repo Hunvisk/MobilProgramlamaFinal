@@ -284,8 +284,11 @@ Widget SignInButton(BuildContext context) {
         AppLocalizations.of(context).getTranslate("sign_in"),
         maxLines: 1,
         overflow: TextOverflow.fade,
-        style: Theme.of(context).textTheme.button!.copyWith(
-            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+        style: TextStyle(
+            fontSize: 16, 
+            fontWeight: FontWeight.bold, 
+            color: Theme.of(context).colorScheme.primary,
+          ),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor:

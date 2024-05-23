@@ -17,7 +17,7 @@ class _DesktopAddCardState extends State<DesktopAddCard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body:desktopCardsInfo(), // Burada içerik belirtilmemiş, düzeltilmeli.
       ),
     );

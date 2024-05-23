@@ -61,7 +61,7 @@ class _UserBlogState extends State<UserBlogs> {
     });
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: drawAppar(),
         body: SingleChildScrollView(
           child: drawScreen(),

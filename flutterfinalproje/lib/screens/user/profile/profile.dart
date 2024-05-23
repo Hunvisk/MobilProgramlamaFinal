@@ -183,7 +183,7 @@ profileIfYouLoad() async {
       // newFile.writeAsBytes(resizedFileData);
       setState(() {
         file = newFile;
-        size = "${temp!.width}x${temp!.height}";
+        size = "${temp!.width}x${temp.height}";
       });
     } catch (e) {
       print("Hata Oluştu: $e");

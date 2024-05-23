@@ -15,7 +15,7 @@ class _TabletAddCardState extends State<TabletAddCard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body:const TabletCardsInfoBody(), // Burada içerik belirtilmemiş, düzeltilmeli.
       ),
     );

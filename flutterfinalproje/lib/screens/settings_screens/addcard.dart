@@ -290,7 +290,7 @@ class _AddCardState extends State<AddCard> {
     });
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           actions: [
             Padding(

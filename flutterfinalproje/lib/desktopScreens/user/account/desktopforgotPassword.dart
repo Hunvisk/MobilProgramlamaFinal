@@ -18,7 +18,7 @@ class _DesktopForgotPasswordState extends State<DesktopForgotPassword> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: DesktoppasswordSayfa(),
       ),
     );
@@ -119,10 +119,10 @@ class DesktoppasswordSayfa extends StatelessWidget {
             },
             child:  Text(
               'Şifremi Sıfırla ',
-              style: Theme.of(context).textTheme.button!.copyWith(
+              style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             style: ElevatedButton.styleFrom(

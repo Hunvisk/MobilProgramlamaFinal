@@ -281,10 +281,11 @@ class DesktopRegister extends StatefulWidget {
               AppLocalizations.of(context).getTranslate("register"),
               maxLines: 1,
               overflow: TextOverflow.fade,
-              style: Theme.of(context).textTheme.button!.copyWith(
+              style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor:
