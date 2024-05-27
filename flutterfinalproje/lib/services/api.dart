@@ -18,7 +18,7 @@ class WeatherAPI {
       );
       return response.data;
     } catch (e) {
-      throw Exception('Hava durumu verileri alınamadı: $e');
+      throw Exception('Hava durumu verileri alınamadı');
     }
   }
 }

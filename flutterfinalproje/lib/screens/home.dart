@@ -1,4 +1,3 @@
-
 // ignore_for_file: library_private_types_in_public_api
 
 import 'dart:convert';
@@ -25,8 +24,9 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
 
+
+class _HomeState extends State<Home> {
   late SavedPlacesCubit savedPlacesCubit;
   late SavedPlacesToVisitCubit savedPlacesToVisitCubit;
   late ClientCubit clientCubit;
@@ -50,7 +50,8 @@ class _HomeState extends State<Home> {
     // State'i güncelle ve verileri atama
     setState(() {
       places = jsonList;
-      carouselSliderItems = getCarouselSliderItems([0, 2, 4]); // Seçilen indeksler
+      carouselSliderItems =
+          getCarouselSliderItems([0, 2, 4]); // Seçilen indeksler
     });
   }
 
@@ -66,7 +67,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface, 
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: MyHomeAppBar(
         icon: const Icon(Icons.search),
         onSearchChanged: (isSearching) {
@@ -78,74 +79,79 @@ class _HomeState extends State<Home> {
       ),
       drawer: myDrawer(context),
       body: BlocBuilder<SavedPlacesToVisitCubit, SavedPlacesToVisitState>(
-        builder: (context, savedPlacesToVisitState) {
-          return BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
-            builder: (context, savedPlacesState) {
-              return SafeArea(
-                child: Column(
-                  children: [
-                    if (isSearching)
-                      Container(
-                        height: 32, // Arama çubuğu yüksekliği,,,,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: TextField(
-                          controller: searchController,
-                          onChanged: (value) {
-                            // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
-                          },
-                          onSubmitted: (value) {
-                            // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
-                          },
-                          decoration: const InputDecoration(
-                            hintText: "Ara...",
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.all(4.0), // Dikey iç boşluk
-                          ),
+          builder: (context, savedPlacesToVisitState) {
+        return BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
+          builder: (context, savedPlacesState) {
+            return SafeArea(
+              child: Column(
+                children: [
+                  if (isSearching)
+                    Container(
+                      height: 32, // Arama çubuğu yüksekliği,,,,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: TextField(
+                        controller: searchController,
+                        onChanged: (value) {
+                          // Arama çubuğu değiştiğinde yapılacak işlemleri ekleyin.
+                        },
+                        onSubmitted: (value) {
+                          // Arama çubuğundan 'Submit' tuşuna basıldığında yapılacak işlemleri ekleyin.
+                        },
+                        decoration: const InputDecoration(
+                          hintText: "Ara...",
+                          border: OutlineInputBorder(),
+                          contentPadding:
+                              EdgeInsets.all(4.0), // Dikey iç boşluk
                         ),
                       ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            const WeatherBox(),
-                            NavigatorBox(
-                              title: AppLocalizations.of(context).getTranslate("become_a_VIP_traveler_now"),
-                              route: "/VipGezginInfo",
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Theme.of(context).secondaryHeaderColor),
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text(
-                                            AppLocalizations.of(context)
-                                                .getTranslate("popular_this_week"),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineSmall,
-                                          )),
-                                    ),
-                                    const Divider(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: CarouselSlider(
+                    ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          const WeatherBox(),
+                          NavigatorBox(
+                            title: AppLocalizations.of(context)
+                                .getTranslate("become_a_VIP_traveler_now"),
+                            route: "/VipGezginInfo",
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color:
+                                      Theme.of(context).secondaryHeaderColor),
+                              width: double.infinity,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          AppLocalizations.of(context)
+                                              .getTranslate(
+                                                  "popular_this_week"),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall,
+                                        )),
+                                  ),
+                                  const Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: CarouselSlider(
                                         options: CarouselOptions(
                                           autoPlay: true,
                                           height: 250,
                                           autoPlayCurve: Curves.fastOutSlowIn,
                                           autoPlayAnimationDuration:
-                                              const Duration(milliseconds: 1000),
+                                              const Duration(
+                                                  milliseconds: 1000),
                                           autoPlayInterval:
                                               const Duration(seconds: 3),
                                           enlargeCenterPage: true,
@@ -156,56 +162,54 @@ class _HomeState extends State<Home> {
                                             });
                                           },
                                         ),
-                                        items: carouselSliderItems.map((e) => placesContainerDesign(
-                                            context,
-                                            e["id"] as int,
-                                            e["images"][0].toString(), 
-                                            e["title"].toString(), 
-                                            e["rating"].toString(), 
-                                            e["views"].toString(), 
-                                            e["comments"].toString(),
-                                            e
-                                        )).toList()
+                                        items: carouselSliderItems
+                                            .map((e) => placesContainerDesign(
+                                                context,
+                                                e["id"] as int,
+                                                e["images"][0].toString(),
+                                                e["title"].toString(),
+                                                e["rating"].toString(),
+                                                e["views"].toString(),
+                                                e["comments"].toString(),
+                                                e))
+                                            .toList()),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: AnimatedSmoothIndicator(
+                                      activeIndex: myCurrentIndex,
+                                      count: carouselSliderItems.length,
+                                      effect: WormEffect(
+                                        dotHeight: 8,
+                                        dotWidth: 8,
+                                        spacing: 5,
+                                        dotColor: Colors.grey.shade400,
+                                        activeDotColor: Colors.white,
+                                        paintStyle: PaintingStyle.fill,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: AnimatedSmoothIndicator(
-                                        activeIndex: myCurrentIndex,
-                                        count: carouselSliderItems.length,
-                                        effect: WormEffect(
-                                          dotHeight: 8,
-                                          dotWidth: 8,
-                                          spacing: 5,
-                                          dotColor: Colors.grey.shade400,
-                                          activeDotColor: Colors.white,
-                                          paintStyle: PaintingStyle.fill,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
                             ),
-                            NavigatorBox(
-                              title: AppLocalizations.of(context).getTranslate("discover_traveler_products"),
-                              route: "/Products",
-                            ),
-                          ],
-                        ),
+                          ),
+                          NavigatorBox(
+                            title: AppLocalizations.of(context)
+                                .getTranslate("discover_traveler_products"),
+                            route: "/Products",
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          );
-        }
-      ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      }),
     );
   }
-
-  
 
   Drawer myDrawer(BuildContext context) {
     return Drawer(
@@ -264,7 +268,8 @@ class _HomeState extends State<Home> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Theme.of(context).secondaryHeaderColor, // Border rengi
+                                color: Theme.of(context)
+                                    .secondaryHeaderColor, // Border rengi
                                 width: 4, // Border genişliği
                               ),
                             ),
@@ -349,7 +354,7 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.help, 
+                          Icons.help,
                           color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(width: 10),
@@ -358,7 +363,8 @@ class _HomeState extends State<Home> {
                             Text(
                               AppLocalizations.of(context)
                                   .getTranslate("having_trouble"),
-                              style: TextStyle(color: Theme.of(context).colorScheme.primary), 
+                              style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary),
                             ),
                             InkWell(
                               onTap: () {
@@ -392,16 +398,21 @@ class _HomeState extends State<Home> {
       context: context,
       builder: (context) {
         bool isSavedPlace = savedPlacesCubit.isSavedPlaces(id);
-        bool isSavedPlaceToVisit = savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
+        bool isSavedPlaceToVisit =
+            savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text(AppLocalizations.of(context).getTranslate("saving_options"),),
+              title: Text(
+                AppLocalizations.of(context).getTranslate("saving_options"),
+              ),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CheckboxListTile(
-                    title: Text(AppLocalizations.of(context).getTranslate("savedPlaces"),),
+                    title: Text(
+                      AppLocalizations.of(context).getTranslate("savedPlaces"),
+                    ),
                     value: isSavedPlace,
                     onChanged: (bool? value) {
                       setState(() {
@@ -415,15 +426,20 @@ class _HomeState extends State<Home> {
                     },
                   ),
                   CheckboxListTile(
-                    title: Text(AppLocalizations.of(context).getTranslate("places_to_visit"),),
+                    title: Text(
+                      AppLocalizations.of(context)
+                          .getTranslate("places_to_visit"),
+                    ),
                     value: isSavedPlaceToVisit,
                     onChanged: (bool? value) {
                       setState(() {
                         isSavedPlaceToVisit = value ?? false;
                         if (isSavedPlaceToVisit) {
-                          savedPlacesToVisitCubit.addToSavedPlacesToVisit(place);
+                          savedPlacesToVisitCubit
+                              .addToSavedPlacesToVisit(place);
                         } else {
-                          savedPlacesToVisitCubit.removeFromSavedPlacesToVisit(id);
+                          savedPlacesToVisitCubit
+                              .removeFromSavedPlacesToVisit(id);
                         }
                       });
                     },
@@ -432,7 +448,9 @@ class _HomeState extends State<Home> {
               ),
               actions: [
                 TextButton(
-                  child: Text(AppLocalizations.of(context).getTranslate("close"),),
+                  child: Text(
+                    AppLocalizations.of(context).getTranslate("close"),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -445,7 +463,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget placesContainerDesign(BuildContext context, int id, String imagePath, String title, String rating, String views, String comments, index) {
+  Widget placesContainerDesign(BuildContext context, int id, String imagePath,
+      String title, String rating, String views, String comments, index) {
     bool isSavedPlace = savedPlacesCubit.isSavedPlaces(id);
     bool isWantedPlace = savedPlacesToVisitCubit.isSavedPlacesToVisit(id);
 
@@ -463,47 +482,46 @@ class _HomeState extends State<Home> {
           ),
         ),
         Positioned(
-          top: 10,
-          left: 0,
-          right: 0,
-          child: Center(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Text(
-                      AppLocalizations.of(context).getTranslate(title),
-                      maxLines: 1,
-                      overflow: TextOverflow.fade,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+            top: 10,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(context).getTranslate(title),
+                        maxLines: 1,
+                        overflow: TextOverflow.fade,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      (isSavedPlace || isWantedPlace)
-                          ? Icons.bookmark
-                          : Icons.bookmark_outline,
-                      color: Colors.white,
+                    IconButton(
+                      icon: Icon(
+                        (isSavedPlace || isWantedPlace)
+                            ? Icons.bookmark
+                            : Icons.bookmark_outline,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        _showSaveOptions(id, index);
+                      },
                     ),
-                    onPressed: () {
-                      _showSaveOptions(id, index);
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          )
-        ),
+            )),
         Positioned(
           bottom: 5,
           left: 10,
@@ -527,8 +545,8 @@ class _HomeState extends State<Home> {
         children: [
           infoRow(
             context,
-             Icons.star,
-             ": $rating",
+            Icons.star,
+            ": $rating",
           ),
           infoRow(
             context,
@@ -574,7 +592,8 @@ class NavigatorBox extends StatelessWidget {
   final String title;
   final String route;
 
-  const NavigatorBox({Key? key, required this.title, required this.route}) : super(key: key);
+  const NavigatorBox({Key? key, required this.title, required this.route})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -617,32 +636,48 @@ class _WeatherBoxState extends State<WeatherBox> {
     _weatherFuture = weatherAPI.getWeather('İstanbul');
   }
 
-@override
-Widget build(BuildContext context) {
-  return FutureBuilder<Map<String, dynamic>>(
-    future: _weatherFuture,
-    builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return const CircularProgressIndicator();
-      } else if (snapshot.hasError) {
-        return Text('Hata: ${snapshot.error}');
-      } else if (snapshot.hasData) {
-        final weatherData = snapshot.data!;
-        return _buildWeatherBox(weatherData);
-      } else {
-        return const Text('Veri bulunamadı.');
-      }
-    },
-  );
-}
-
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Map<String, dynamic>>(
+      future: _weatherFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+                height: 85,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).secondaryHeaderColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Text('Hata: Hava durumu bilgisi alınamadı.'),
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.sync))
+                  ],
+                ))),
+          );
+        } else if (snapshot.hasData) {
+          final weatherData = snapshot.data!;
+          return _buildWeatherBox(weatherData);
+        } else {
+          return const Text('HAVA DURUMU  BULUNAMADI!!');
+        }
+      },
+    );
+  }
 
   Widget _buildWeatherBox(Map<String, dynamic> weatherData) {
     // Hava durumu ikon kodunu al
-final iconCode = weatherData['weather'][0]['icon'];
+    final iconCode = weatherData['weather'][0]['icon'];
 
 // Hava durumu ikonunun URL'sini oluştur
-final iconUrl = 'http://openweathermap.org/img/wn/$iconCode@2x.png';
+    final iconUrl = 'http://openweathermap.org/img/wn/$iconCode@2x.png';
 
     return Padding(
       padding: const EdgeInsets.all(10.0),
@@ -671,7 +706,7 @@ final iconUrl = 'http://openweathermap.org/img/wn/$iconCode@2x.png';
                 ),
               ),
             ),
-             Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -711,15 +746,17 @@ final iconUrl = 'http://openweathermap.org/img/wn/$iconCode@2x.png';
                         ),
                         WeatherInfo(
                           icon: Icons.air,
-                          labelText: AppLocalizations.of(context)
-                              .getTranslate("wind"),
+                          labelText:
+                              AppLocalizations.of(context).getTranslate("wind"),
                           valueText: '${weatherData['wind']['speed']}km/h',
                         ),
                         WeatherInfo(
                           icon: Icons.umbrella,
                           labelText: AppLocalizations.of(context)
                               .getTranslate("rainfall"),
-                          valueText: weatherData['rain'] != null ? '${weatherData['rain']['1h']}mm' : '0mm',
+                          valueText: weatherData['rain'] != null
+                              ? '${weatherData['rain']['1h']}mm'
+                              : '0mm',
                         ),
                       ],
                     ),
@@ -777,8 +814,9 @@ class WeatherInfo extends StatelessWidget {
     );
   }
 }
-Widget listTileItem(BuildContext context, String name, String screen,
-    IconData iconData) {
+
+Widget listTileItem(
+    BuildContext context, String name, String screen, IconData iconData) {
   return BlocBuilder<ClientCubit, ClientState>(
     builder: (context, state) {
       bool isDarkMode = state.darkMode; // Varsayılan olarak false kullanıyoruz
@@ -823,5 +861,3 @@ Widget listTileItem(BuildContext context, String name, String screen,
     },
   );
 }
-
-

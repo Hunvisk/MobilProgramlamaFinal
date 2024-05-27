@@ -56,4 +56,6 @@ class SavedPlacesToVisitCubit extends Cubit<SavedPlacesToVisitState> {
 
     emit(updatedState);
   }
+
+ 
 }
