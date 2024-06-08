@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print, sized_box_for_whitespace
 
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutterfinalproje/core/localizations.dart';
 import 'package:flutterfinalproje/core/responsive.dart';
@@ -27,20 +28,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
   File? coverPhoto;
   String size = "";
   MemoryImage? currentAvatar;
+  String? currentCoverPhoto;
 
   profileIfYouLoad() async {
     final Directory appCacheDir = await getApplicationCacheDirectory();
-    File f = File("$appCacheDir/avatar.jpg");
+    final avatarDir = Directory("${appCacheDir.path}/avatar");
+    if (avatarDir.existsSync()) {
+      final files = avatarDir.listSync();
+      if (files.isNotEmpty) {
+        File f = File(files.first.path);
+        var bytes = f.readAsBytesSync();
+        setState(() {
+          currentAvatar = MemoryImage(bytes);
+        });
+      }
+    }
+  }
 
-    if (f.existsSync()) {
-      print("Dosya Bulundu");
-      var bytes = f.readAsBytesSync();
-
-      setState(() {
-        currentAvatar = MemoryImage(bytes);
-      });
-    } else {
-      print("Dosya Bulunamadı");
+  coverPhotoLoad() async {
+    final Directory appCacheDir = await getApplicationCacheDirectory();
+    final coverPhotoDir = Directory("${appCacheDir.path}/coverphoto");
+    if (coverPhotoDir.existsSync()) {
+      final files = coverPhotoDir.listSync();
+      if (files.isNotEmpty) {
+        // File f = File(files.first.path);
+        // var bytes = f.readAsBytesSync();
+        setState(() {
+          currentCoverPhoto = files.first.path;
+        });
+      }
     }
   }
 
@@ -48,6 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     profileIfYouLoad();
+    coverPhotoLoad();
   }
 
   @override
@@ -93,7 +110,140 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return;
       }
 
-      var fileLength = await selectedFile.length();
+      var fileFormat = selectedFile.name.split(".").last;
+
+      bool makeSmall = false;
+
+      switch (fileFormat.toLowerCase()) {
+        case ("jpg"):
+        case ("jpeg"):
+        case ("png"):
+        case ("bmp"):
+        case ("tiff"):
+        case ("ico"):
+        case ("gif"):
+          makeSmall = true;
+      }
+
+      if (!makeSmall) {
+        showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            title: Text("Dosya Türü"),
+            content: Text(
+              "Seçtiğiniz dosya, dosya türünü desteklemiyor!!",
+            ),
+          ),
+        );
+        return;
+      }
+
+      img.Image? temp;
+      if (fileFormat.toLowerCase() == "jpg" ||
+          fileFormat.toLowerCase() == "jpeg") {
+        temp = img.decodeJpg(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "png") {
+        temp = img.decodePng(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "bmp") {
+        temp = img.decodeBmp(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "tiff") {
+        temp = img.decodeTiff(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "ico") {
+        temp = img.decodeIco(File(selectedFile.path).readAsBytesSync());
+      } else if (fileFormat.toLowerCase() == "gif") {
+        temp = img.decodeGif(File(selectedFile.path).readAsBytesSync());
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            title: Text("Dosya Formati"),
+            content: Text(
+              "Dosya Formati JPG, BMP, GIF, PNG, TIFF olabilir.",
+            ),
+          ),
+        );
+        return;
+      }
+
+      if (temp!.width < 500 || temp.height < 500) {
+        await showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            title: Text("Dosya Boyutu"),
+            content: Text(
+              "Seçtiğiniz dosya boyutları çok küçük. En az 500px yükseklik ve genişlik gerekmektedir.",
+            ),
+          ),
+        );
+        return;
+      }
+
+      img.Image thumbnail;
+      if (temp.width >= temp.height) {
+        thumbnail = img.copyResize(temp, width: 500);
+      } else {
+        thumbnail = img.copyResize(temp, height: 500);
+      }
+
+      final resizedFileData = img.encodeJpg(thumbnail, quality: 85);
+
+      final Directory appCacheDir = await getApplicationCacheDirectory();
+
+      final avatarDir = Directory("${appCacheDir.path}/avatar");
+      if (avatarDir.existsSync()) {
+        final files = avatarDir.listSync();
+        if (files.isNotEmpty) {
+          for (var element in files) {
+            File(element.path).deleteSync();
+          }
+        }
+      } else {
+        avatarDir.createSync();
+      }
+
+      File newFile =
+          File("${appCacheDir.path}/avatar/avatar.${fileFormat.toLowerCase()}");
+      newFile.writeAsBytesSync(resizedFileData);
+
+      setState(() {
+        file = newFile;
+        currentAvatar = MemoryImage(resizedFileData);
+        size = "${temp!.width}x${temp.height}";
+      });
+    } catch (e) {
+      print("Hata Oluştu: $e");
+    }
+  }
+
+  // Future<void> coverrrPhotoUpdate() async {
+  //   try {
+  //     ImagePicker picker = ImagePicker();
+  //     XFile? selectedCoverPhotoFile =
+  //         await picker.pickImage(source: ImageSource.gallery);
+  //     if (selectedCoverPhotoFile != null) {
+  //       setState(() {
+  //         coverPhoto = File(selectedCoverPhotoFile.path);
+  //       });
+  //     }
+  //   } catch (e) {
+  //     print("Hata Oluştu: $e");
+  //   }
+  // }
+
+  Future<void> coverPhotoUpdate() async {
+    try {
+      ImagePicker picker = ImagePicker();
+      XFile? selectedFile = await picker.pickImage(
+        source: ImageSource.gallery,
+      );
+
+      if (selectedFile == null) {
+        setState(() {
+          file = null;
+        });
+        return;
+      }
+
       var fileFormat = selectedFile.name.split(".").last;
 
       bool makeSmall = false;
@@ -137,8 +287,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         temp = img.decodeIco(File(selectedFile.path).readAsBytesSync());
       } else if (fileFormat.toLowerCase() == "gif") {
         temp = img.decodeGif(File(selectedFile.path).readAsBytesSync());
-      }
-      else {
+      } else {
         showDialog(
           context: context,
           builder: (context) => const AlertDialog(
@@ -151,13 +300,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return;
       }
 
-      if (temp!.width < 500 || temp.height < 500) {
-        showDialog(
+      if (temp!.width < 1000 || temp.height < 400) {
+        await showDialog(
           context: context,
           builder: (context) => const AlertDialog(
             title: Text("Dosya Boyutu"),
             content: Text(
-              "Seçtiğiniz dosya boyutları çok küçük. En az 500px yükseklik ve genişlik gerekmektedir.",
+              "Seçtiğiniz dosya boyutları çok küçük. En az 1000px genişlik ve 400px yükseklik gerekmektedir.",
             ),
           ),
         );
@@ -166,20 +315,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       img.Image thumbnail;
       if (temp.width >= temp.height) {
-        thumbnail = img.copyResize(temp, width: 500);
+        thumbnail = img.copyResize(temp, width: 1000);
       } else {
-        thumbnail = img.copyResize(temp, height: 500);
+        thumbnail = img.copyResize(temp, height: 400);
       }
 
       final resizedFileData = img.encodeJpg(thumbnail, quality: 85);
 
       final Directory appCacheDir = await getApplicationCacheDirectory();
-      File newFile = File("${appCacheDir.path}/avatar.jpg");
+
+      final coverPhotoDir = Directory("${appCacheDir.path}/coverphoto");
+      if (coverPhotoDir.existsSync()) {
+        final files = coverPhotoDir.listSync();
+        if (files.isNotEmpty) {
+          for (var element in files) {
+            File(element.path).deleteSync();
+          }
+        }
+      } else {
+        coverPhotoDir.createSync();
+      }
+
+      var rng = Random();
+
+      final x = 1000 + rng.nextInt(8999);
+      File newFile = File(
+          "${appCacheDir.path}/coverphoto/cover$x.${fileFormat.toLowerCase()}");
       newFile.writeAsBytesSync(resizedFileData);
 
       setState(() {
+        currentCoverPhoto = null;
+      });
+      setState(() {
         file = newFile;
-        currentAvatar = MemoryImage(resizedFileData);
+        currentCoverPhoto =
+            "${appCacheDir.path}/coverphoto/cover$x.${fileFormat.toLowerCase()}";
         size = "${temp!.width}x${temp.height}";
       });
     } catch (e) {
@@ -187,33 +357,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> coverPhotoUpdate() async {
-    try {
-      ImagePicker picker = ImagePicker();
-      XFile? selectedCoverPhotoFile =
-          await picker.pickImage(source: ImageSource.gallery);
-      if (selectedCoverPhotoFile != null) {
-        setState(() {
-          coverPhoto = File(selectedCoverPhotoFile.path);
-        });
+  void deleteProfilePhoto() async {
+    final Directory appCacheDir = await getApplicationCacheDirectory();
+
+    final avatarDir = Directory("${appCacheDir.path}/avatar");
+    if (avatarDir.existsSync()) {
+      final files = avatarDir.listSync();
+      if (files.isNotEmpty) {
+        for (var element in files) {
+          File(element.path).deleteSync();
+        }
       }
-    } catch (e) {
-      print("Hata Oluştu: $e");
     }
+
+    setState(() {
+      file = null;
+      currentAvatar = null;
+      size = ""; // Reset the size variable
+    });
   }
 
-void deleteProfilePhoto() {
-  setState(() {
-    file = null;
-    currentAvatar = null;
-    size = ""; // Reset the size variable
-  });
-}
+  void deleteCoverPhoto() async {
+    final Directory appCacheDir = await getApplicationCacheDirectory();
 
+    final avatarDir = Directory("${appCacheDir.path}/coverphoto");
+    if (avatarDir.existsSync()) {
+      final files = avatarDir.listSync();
+      if (files.isNotEmpty) {
+        for (var element in files) {
+          File(element.path).deleteSync();
+        }
+      }
+    }
 
-  void deleteCoverPhoto() {
     setState(() {
-      coverPhoto = null;
+      file = null;
+      currentCoverPhoto = null;
+      size = ""; // Reset the size variable
     });
   }
 
@@ -277,7 +457,7 @@ void deleteProfilePhoto() {
                 const Gap(20),
                 GestureDetector(
                   onTap: () async {
-                    await coverPhotoUpdate(); // Galeriden fotoğraf seçme işlemi
+                    coverPhotoUpdate(); // Galeriden fotoğraf seçme işlemi
                     Navigator.of(context).pop(); // Dialogu kapat
                   },
                   child: ListTile(
@@ -323,15 +503,15 @@ void deleteProfilePhoto() {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
-                child: coverPhoto != null
+                child: currentCoverPhoto != null
                     ? Image.file(
-                        coverPhoto!,
+                        File(currentCoverPhoto!),
                         width: double.infinity,
                         height: 300, // Sabit yükseklik
                         fit: BoxFit.cover,
                       )
                     : Container(
-                        color: Colors.grey, // Arka plan rengi
+                        // color: Colors.grey, // Arka plan rengi
                         width: double.infinity,
                         height: 300, // Sabit yükseklik
                       ),
@@ -375,7 +555,7 @@ void deleteProfilePhoto() {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
-                      "İlknur Kavaklı",
+                      "Talha Pamukcu",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -390,10 +570,6 @@ void deleteProfilePhoto() {
                         fontSize: 12,
                       ),
                     ),
-                    if (file != null)
-                      if (file != null)
-                        Text("File Size: ${(file!.lengthSync() / 1000)} KB"),
-                    Text("Size: $size"),
                   ],
                 ),
               ),

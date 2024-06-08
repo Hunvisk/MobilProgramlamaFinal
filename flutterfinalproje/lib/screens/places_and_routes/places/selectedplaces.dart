@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -58,7 +60,8 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+                    padding: const EdgeInsets.only(
+                        left: 10.0, right: 10.0, bottom: 10.0),
                     child: Container(
                       width: double.infinity,
                       height: 350,
@@ -89,7 +92,10 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: (widget.place["images"] as List<dynamic>).asMap().entries.map((entry) {
+                            children: (widget.place["images"] as List<dynamic>)
+                                .asMap()
+                                .entries
+                                .map((entry) {
                               final int index = entry.key;
                               final String imagePath = entry.value;
                               return GestureDetector(
@@ -106,8 +112,10 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: _selectedImageIndex == index
-                                            ? Colors.blue // Seçilen resmin kenarlığı mavi olacak
-                                            : Colors.transparent, // Seçilmeyen resimlerin kenarlığı şeffaf olacak
+                                            ? Colors
+                                                .blue // Seçilen resmin kenarlığı mavi olacak
+                                            : Colors
+                                                .transparent, // Seçilmeyen resimlerin kenarlığı şeffaf olacak
                                         width: 2.0,
                                       ),
                                       borderRadius: BorderRadius.circular(10),
@@ -130,15 +138,18 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  AppLocalizations.of(context).getTranslate(widget.place["title"]),
+                  AppLocalizations.of(context)
+                      .getTranslate(widget.place["title"]),
                   style: const TextStyle(fontSize: 20),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: (widget.place["description"] as List<dynamic>).map((desc) {
+                  children: (widget.place["description"] as List<dynamic>)
+                      .map((desc) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
@@ -196,9 +207,11 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
     );
   }
 
-  Widget commentsBox(BuildContext context, String photo, String name, String comment) {
+  Widget commentsBox(
+      BuildContext context, String photo, String name, String comment) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // Düzenleme: iç ve dış boşluklar
+      padding: const EdgeInsets.symmetric(
+          vertical: 8.0, horizontal: 16.0), // Düzenleme: iç ve dış boşluklar
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).secondaryHeaderColor,
@@ -229,6 +242,48 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
                   ],
                 ),
               ),
+              IconButton(
+                icon: const Icon(Icons.edit, size: 20),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Yorumu Düzenle'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Yorumunuzu buraya girin',
+                              ),
+                              controller: TextEditingController(text: comment),
+                              onChanged: (value) {
+                                // Yorumu güncelleyecek kod buraya gelecek
+                              },
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('İptal'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              // Yorumu kaydetmek için yapılacak işlemler buraya gelecek
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('Kaydet'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -248,9 +303,7 @@ class _SelectedPlacesState extends State<SelectedPlaces> {
           const Gap(5),
           Text(
             text,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
           ),
         ],
       ),

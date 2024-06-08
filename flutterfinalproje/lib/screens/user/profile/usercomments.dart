@@ -1,4 +1,3 @@
-
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
@@ -101,49 +100,49 @@ class _UserCommentsState extends State<UserComments> {
         BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
+          date: '4 yıl önce',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Beşiktaş',
-          date: '12/02/2023',
         ),
         const Gap(10),
         BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
+          date: '3 ay önce',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kız Kulesi',
-          date: '11/04/2023',
         ),
         const Gap(10),
         BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
+          date: '1 yıl önce',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Sarıyer',
-          date: '09/09/2023',
         ),
         const Gap(10),
         BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
+          date: '1 ay önce',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Kadıköy',
-          date: '14/08/2023',
         ),
         const Gap(10),
         BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
+          date: '1 gün önce',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'Galata Kulesi',
-          date: '14/06/2023',
         ),
         const Gap(10),
         BuildColoredBox(
           color: Theme.of(context).secondaryHeaderColor,
           title: 'Hüseyin Çakal',
+          date: '1 saat önce',
           content: AppLocalizations.of(context).getTranslate("comments_text"),
           location: 'İstinye',
-          date: '12/05/2023',
         ),
         const Gap(10),
       ],
@@ -173,16 +172,25 @@ class BuildColoredBox extends StatefulWidget {
 
 class BuildColoredBoxState extends State<BuildColoredBox> {
   bool isVisible = false;
-
+  late TextEditingController _controller;
+  // Güncellenmiş içeriği tutmak için bir değişken ekleyin
   @override
   void initState() {
     super.initState();
+    _controller = TextEditingController(text: widget.content);
+    // Başlangıçta içeriği güncellenmiş içeriğe eşitleyin
     // Sayfa yüklendiğinde 0.5 saniye sonra görünürlüğü değiştir
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         isVisible = true;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose(); // Denetleyiciyi temizleyin
+    super.dispose();
   }
 
   @override
@@ -194,18 +202,8 @@ class BuildColoredBoxState extends State<BuildColoredBox> {
           AnimatedOpacity(
             duration: const Duration(milliseconds: 500),
             opacity: isVisible ? 0.0 : 1.0, // Silik hali
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: widget.color.withOpacity(0.5),
-                  border: Border.all(
-                    width: 1,
-                    color: Theme.of(context).secondaryHeaderColor,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
             ),
           ),
           AnimatedOpacity(
@@ -213,67 +211,58 @@ class BuildColoredBoxState extends State<BuildColoredBox> {
             opacity: isVisible ? 1.0 : 0.0, // Görünür hali
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).secondaryHeaderColor,
-                  border: Border.all(
-                    width: 1,
-                    color: Theme.of(context).secondaryHeaderColor,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Expanded(
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.all(15.0), // İçeriğin kenarlardan uzaklığı
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.account_circle,),
-                                const Gap(5),
-                                Text(
-                                  widget.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const Gap(5),
-                        Text(
-                          widget.content,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(
+                      15.0), // İçeriğin kenarlardan uzaklığı
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.account_circle,
                           ),
-                        ),
-                        const Gap(5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              widget.location,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                          const Gap(5),
+                          Text(
+                            widget.title,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
                             ),
-                            Text(
-                              widget.date,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                          ),
+                          const Gap(8),
+                          const Icon(Icons.circle, size: 5),
+                          const Gap(2),
+                          Text(
+                            widget.date,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
+                          ),
+                          const Spacer(),
+                        ],
+                      ),
+                      const Gap(5),
+                      Text(
+                        widget.content,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    ),
+                      ),
+                      const Gap(5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            widget.location,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),

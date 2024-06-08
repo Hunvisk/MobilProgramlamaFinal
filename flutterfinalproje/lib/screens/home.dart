@@ -24,8 +24,6 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-
-
 class _HomeState extends State<Home> {
   late SavedPlacesCubit savedPlacesCubit;
   late SavedPlacesToVisitCubit savedPlacesToVisitCubit;
@@ -214,179 +212,185 @@ class _HomeState extends State<Home> {
   Drawer myDrawer(BuildContext context) {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          SizedBox(
-            height: 250,
-            child: DrawerHeader(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return CircleAvatar(
-                              maxRadius: 50,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: SizedBox(
-                                  width: 300,
-                                  height: 300,
-                                  child: Hero(
-                                    tag: "profilFoto",
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/images/logo/GR_Logo.png"), // Profil fotoğrafı
-                                          fit: BoxFit.cover,
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                SizedBox(
+                  height: 250,
+                  child: DrawerHeader(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return CircleAvatar(
+                                    maxRadius: 50,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: SizedBox(
+                                        width: 300,
+                                        height: 300,
+                                        child: Hero(
+                                          tag: "profilFoto",
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                .size
+                                                .height,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/logo/GR_Logo.png"), // Profil fotoğrafı
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
+                                  );
+                                },
+                              );
+                            },
+                            child: SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Hero(
+                                tag: "profilFoto",
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Theme.of(context)
+                                          .secondaryHeaderColor, // Border rengi
+                                      width: 4, // Border genişliği
+                                    ),
+                                  ),
+                                  child: const CircleAvatar(
+                                    radius: 45,
+                                    backgroundImage: AssetImage(
+                                        "assets/images/logo/GR_Logo.png"),
                                   ),
                                 ),
                               ),
-                            );
-                          },
-                        );
-                      },
-                      child: SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: Hero(
-                          tag: "profilFoto",
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Theme.of(context)
-                                    .secondaryHeaderColor, // Border rengi
-                                width: 4, // Border genişliği
-                              ),
-                            ),
-                            child: const CircleAvatar(
-                              radius: 45,
-                              backgroundImage:
-                                  AssetImage("assets/images/logo/GR_Logo.png"),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Text(
-                      "Name",
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          context.push('/Profile');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).secondaryHeaderColor,
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context).getTranslate("profile"),
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: <Widget>[
-                  listTileItem(
-                    context,
-                    AppLocalizations.of(context).getTranslate("settings"),
-                    '/SettingsScreen',
-                    Icons.settings,
-                  ),
-                  listTileItem(
-                    context,
-                    AppLocalizations.of(context).getTranslate("vip_traveler"),
-                    '/VipGezginInfo',
-                    Icons.star,
-                  ),
-                  listTileItem(
-                    context,
-                    AppLocalizations.of(context).getTranslate("products"),
-                    '/Products',
-                    Icons.shopping_cart,
-                  ),
-                  listTileItem(
-                    context,
-                    AppLocalizations.of(context).getTranslate("log_out"),
-                    '/LogIn',
-                    Icons.logout,
-                  ),
-                ],
-              ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.help,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)
-                                  .getTranslate("having_trouble"),
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary),
+                        const Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Text(
+                            "Name",
+                            style: TextStyle(
+                              fontSize: 15,
                             ),
-                            InkWell(
-                              onTap: () {
-                                context.push('/ChatBot');
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                context.push('/Profile');
                               },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Theme.of(context).secondaryHeaderColor,
+                              ),
                               child: Text(
                                 AppLocalizations.of(context)
-                                    .getTranslate("help_for_you"),
-                                style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                              ),
-                            ),
-                          ],
+                                    .getTranslate("profile"),
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              )),
                         ),
                       ],
                     ),
                   ),
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: <Widget>[
+                        listTileItem(
+                          context,
+                          AppLocalizations.of(context).getTranslate("settings"),
+                          '/SettingsScreen',
+                          Icons.settings,
+                        ),
+                        listTileItem(
+                          context,
+                          AppLocalizations.of(context)
+                              .getTranslate("vip_traveler"),
+                          '/VipGezginInfo',
+                          Icons.star,
+                        ),
+                        listTileItem(
+                          context,
+                          AppLocalizations.of(context).getTranslate("products"),
+                          '/Products',
+                          Icons.shopping_cart,
+                        ),
+                        listTileItem(
+                          context,
+                          AppLocalizations.of(context).getTranslate("log_out"),
+                          '/LogIn',
+                          Icons.logout,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.help,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)
+                            .getTranslate("having_trouble"),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.push('/ChatBot');
+                        },
+                        child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate("help_for_you"),
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ],
       ),
