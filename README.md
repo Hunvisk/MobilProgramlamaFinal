@@ -10,13 +10,6 @@
 
 ## Ekip Üyeleri
 
-Öğrenci : [@Eda Aydın]	(https://github.com/edaaydin) 
-<br>
-Öğrenci No: 221216038
-<br>
-Öğrenci Mail: 221216038@stu.istinye.edu.tr
-<br>
-
 Öğrenci : [@Emirhan Ceylan]	(https://github.com/Hunvisk) 
 <br>
 Öğrenci No: 221216028
